@@ -13,9 +13,24 @@ namespace DXWebMRCS.Controllers
 {
     public class MenuController : Controller
     {
+        private UsersContext db = new UsersContext();
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Menu menu = db.Menus.Find(id);
+            if (menu == null)
+            {
+                return HttpNotFound();
+            }
+            return View(menu);
         }
 
         public ActionResult TreeListPartial()
