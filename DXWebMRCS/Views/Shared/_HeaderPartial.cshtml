@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DXWebMRCS.Models.Menu>
 @{
     ViewBag.Title = "_HeaderPartial";
 }
@@ -54,7 +54,17 @@
                         <img src="~/Content/images/logo-wide.png" alt="">
                     </a>
                     <ul class="menuzord-menu">
-                        <li class="active">
+                        @foreach (var item in Model.Where(x=> x.ParentId == null))
+                        { 
+                            <li>
+                                <a href="~/Content/#home">@item.NameMon</a>
+                                @if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
+	                            {
+		                            
+	                            }
+                            </li>
+                        }
+                        @*<li class="active">
                             <a href="~/Content/#home">Home</a>
                             <ul class="dropdown">
                                 <li>
@@ -642,7 +652,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>*@
                     </ul>
                 </nav>
             </div>

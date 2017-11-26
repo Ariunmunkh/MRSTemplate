@@ -5004,6 +5004,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\UploadImages\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711200639150_initial-content.resx">
