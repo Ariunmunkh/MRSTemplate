@@ -5,7 +5,6 @@
         ViewBag.Title = "Index";
         Layout = "~/Views/Shared/_SysLayout.cshtml";
     }
-
     @Html.DevExpress().Button(settings =>
 {
     settings.Name = "Button1";
@@ -34,37 +33,5 @@
     settings.ClientSideEvents.Click = "function(s, e) { TreeList.CancelEdit(); }";
 }).GetHtml()
 
-
-
-
-    @Html.DevExpress().TreeList(settings =>
-{
-    settings.Name = "TreeList";
-    settings.KeyFieldName = "MenuID";
-    settings.ParentFieldName = "ParentId";
-    settings.CallbackRouteValues = new { Controller = "Home", Action = "TreeListPartial" };
-    settings.SettingsEditing.AddNewNodeRouteValues = new { Controller = "Home", Action = "TreeListAddNewPartial" };
-    settings.SettingsEditing.UpdateNodeRouteValues = new { Controller = "Home", Action = "TreeListUpdatePartial" };
-    settings.SettingsEditing.NodeDragDropRouteValues = new { Controller = "Home", Action = "TreeListMovePartial" };
-    settings.SettingsEditing.DeleteNodeRouteValues = new { Controller = "Home", Action = "TreeListDeletePartial" };
-
-    settings.SettingsBehavior.AllowFocusedNode = true;
-
-    settings.CommandColumn.Visible = true;
-    settings.CommandColumn.EditButton.Visible = true;
-    settings.CommandColumn.NewButton.Visible = true;
-    settings.CommandColumn.DeleteButton.Visible = true;
-
-    settings.Columns.Add("NameMon");
-    settings.Columns.Add("NameEng");
-    settings.Columns.Add("NavigateUrl");
-    settings.Columns.Add("ParentId");
-
-    settings.PreRender = (s, e) =>
-    {
-        MVCxTreeList treeList = (MVCxTreeList)s;
-        treeList.ExpandAll();
-    };
-}).SetEditErrorText((string)ViewData["EditError"]).Bind(Model).GetHtml()
-
+    @Html.Action("TreeListPartial")
 </div>

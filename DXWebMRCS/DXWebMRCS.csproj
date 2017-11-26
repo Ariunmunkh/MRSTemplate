@@ -4955,6 +4955,7 @@
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Menu\_MenuBodyMonPartial.cshtml" />
     <Content Include="Views\Menu\_MenuBodyEngPartial.cshtml" />
+    <Content Include="Views\Menu\TreeListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

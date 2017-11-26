@@ -1,0 +1,31 @@
+﻿@model System.Collections.IEnumerable
+
+@Html.DevExpress().TreeList(settings =>
+{
+    settings.Name = "TreeList";
+    settings.KeyFieldName = "MenuID";
+    settings.ParentFieldName = "ParentId";
+    settings.CallbackRouteValues = new { Controller = "Menu", Action = "TreeListPartial" };
+    settings.SettingsEditing.AddNewNodeRouteValues = new { Controller = "Menu", Action = "TreeListAddNewPartial" };
+    settings.SettingsEditing.UpdateNodeRouteValues = new { Controller = "Menu", Action = "TreeListUpdatePartial" };
+    settings.SettingsEditing.NodeDragDropRouteValues = new { Controller = "Menu", Action = "TreeListMovePartial" };
+    settings.SettingsEditing.DeleteNodeRouteValues = new { Controller = "Menu", Action = "TreeListDeletePartial" };
+
+    settings.SettingsBehavior.AllowFocusedNode = true;
+
+    settings.CommandColumn.Visible = true;
+    settings.CommandColumn.EditButton.Visible = true;
+    settings.CommandColumn.NewButton.Visible = true;
+    settings.CommandColumn.DeleteButton.Visible = true;
+
+    settings.Columns.Add("NameMon");
+    settings.Columns.Add("NameEng");
+    settings.Columns.Add("NavigateUrl");
+    settings.Columns.Add("ParentId");
+
+    settings.PreRender = (s, e) =>
+    {
+        MVCxTreeList treeList = (MVCxTreeList)s;
+        treeList.ExpandAll();
+    };
+}).SetEditErrorText((string)ViewData["EditError"]).Bind(Model).GetHtml()
