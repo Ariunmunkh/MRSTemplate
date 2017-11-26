@@ -34,7 +34,7 @@ namespace DXWebMRCS.Controllers
         #region Menu code
         public ActionResult TreeListPartial()
         {
-            return PartialView(NorthwindDataProvider.GetMenus());
+            return PartialView(db.Menus.ToList());
         }
 
         public ActionResult TreeListAddNewPartial(Menu Menu)
@@ -43,7 +43,8 @@ namespace DXWebMRCS.Controllers
             {
                 try
                 {
-                    NorthwindDataProvider.InsertMenu(Menu);
+                    db.Menus.Add(Menu);
+                    db.SaveChanges();
                 }
                 catch (Exception e)
                 {
@@ -53,7 +54,7 @@ namespace DXWebMRCS.Controllers
             else
                 ViewData["EditError"] = "Please, correct all errors.";
 
-            return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
+            return PartialView("TreeListPartial", db.Menus.ToList());
         }
 
         public ActionResult TreeListUpdatePartial(Menu Menu)
@@ -62,7 +63,7 @@ namespace DXWebMRCS.Controllers
             {
                 try
                 {
-                    NorthwindDataProvider.UpdateMenu(Menu);
+                    //NorthwindDataProvider.UpdateMenu(Menu);
                 }
                 catch (Exception e)
                 {
@@ -72,27 +73,27 @@ namespace DXWebMRCS.Controllers
             else
                 ViewData["EditError"] = "Please, correct all errors.";
 
-            return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
+            return PartialView("TreeListPartial", db.Menus.ToList());
         }
 
         public ActionResult TreeListMovePartial(int ID, int? PARENTID)
         {
-            NorthwindDataProvider.MoveMenu(ID, Convert.ToInt32(PARENTID));
-            return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
+            //NorthwindDataProvider.MoveMenu(ID, Convert.ToInt32(PARENTID));
+            return PartialView("TreeListPartial", db.Menus.ToList());
         }
 
         public ActionResult TreeListDeletePartial(int ID)
         {
             try
             {
-                NorthwindDataProvider.DeleteMenu(ID);
+                db.Database.ExecuteSqlCommand("DELETE FROM Menus WHERE MenuID = " + ID);
             }
             catch (Exception e)
             {
                 ViewData["EditError"] = e.Message;
             }
 
-            return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
+            return PartialView("TreeListPartial", db.Menus.ToList());
         }
         #endregion
     }

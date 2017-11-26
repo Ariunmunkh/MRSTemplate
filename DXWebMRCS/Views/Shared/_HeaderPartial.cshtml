@@ -57,11 +57,28 @@
                         @foreach (var item in Model.Where(x=> x.ParentId == null))
                         { 
                             <li>
-                                <a href="~/Content/#home">@item.NameMon</a>
+                                <a href='@Url.Action("Details", "Menu", new { id = @item.MenuID })'>@item.NameMon</a>
                                 @if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
-	                            {
-		                            
-	                            }
+                                {
+                                    <ul class="dropdown">
+                                       @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
+                                        {
+                                            <li>
+                                                <a href='@Url.Action("Details", "Menu", new { id = @item2.MenuID })'>@item2.NameMon</a>
+                                                @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
+                                                {
+                                                    <ul class="dropdown">
+                                                        @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
+                                                        {
+                                                            <li><a href='@Url.Action("Details", "Menu", new { id = @item3.MenuID })'>@item3.NameMon</a></li>
+                                                        }                                            
+                                                    </ul>
+                                                }
+
+                                            </li>
+                                        }
+                                    </ul>
+                                }
                             </li>
                         }
                         @*<li class="active">

@@ -7,16 +7,16 @@
 
 <h2>Details</h2>
 
-<div>
+<div class="right_col" role="main">
     <h4>Menu</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Menu1.NameMon)
+            @*@Html.DisplayNameFor(model => model.Menu1.NameMon)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Menu1.NameMon)
+            @*@Html.DisplayFor(model => model.Menu1.NameMon)*@
         </dd>
 
         <dt>
@@ -48,7 +48,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BodyMon)
+            @Html.Raw(Model.BodyMon)
+
         </dd>
 
         <dt>
@@ -56,7 +57,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BodyEng)
+            @Html.Raw(Model.BodyEng)
         </dd>
 
         <dt>
