@@ -4998,6 +4998,7 @@
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NorthwindDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,79 +1,70 @@
-﻿@model IEnumerable<DXWebMRCS.Models.Menu>
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_SysLayout.cshtml";
-}
-
-<h2>Index</h2>
-
+﻿
+@model System.Collections.IEnumerable
 <div class="right_col" role="main">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Menu1.NameMon)*@
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NameMon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NameEng)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NavigateUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyMon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyEng)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th></th>
-        </tr>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_SysLayout.cshtml";
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Menu1.NameMon)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameMon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NavigateUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyMon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyEng)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MenuID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MenuID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MenuID })
-                </td>
-            </tr>
-        }
+    @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "Button1";
+    settings.Text = "Add";
+    settings.ClientSideEvents.Click = "function(s, e) { TreeList.StartEditNewNode(); }";
+}).GetHtml()
 
-    </table>
+    @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "Button2";
+    settings.Text = "Modify";
+    settings.ClientSideEvents.Click = "function(s, e) { TreeList.StartEdit(TreeList.GetFocusedNodeKey()); }";
+}).GetHtml()
+
+    @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "Button3";
+    settings.Text = "Apply";
+    settings.ClientSideEvents.Click = "function(s, e) { TreeList.UpdateEdit(); }";
+}).GetHtml()
+
+    @Html.DevExpress().Button(settings =>
+{
+    settings.Name = "Button4";
+    settings.Text = "Cancel";
+    settings.ClientSideEvents.Click = "function(s, e) { TreeList.CancelEdit(); }";
+}).GetHtml()
+
+
+
+
+    @Html.DevExpress().TreeList(settings =>
+{
+    settings.Name = "TreeList";
+    settings.KeyFieldName = "MenuID";
+    settings.ParentFieldName = "ParentId";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "TreeListPartial" };
+    settings.SettingsEditing.AddNewNodeRouteValues = new { Controller = "Home", Action = "TreeListAddNewPartial" };
+    settings.SettingsEditing.UpdateNodeRouteValues = new { Controller = "Home", Action = "TreeListUpdatePartial" };
+    settings.SettingsEditing.NodeDragDropRouteValues = new { Controller = "Home", Action = "TreeListMovePartial" };
+    settings.SettingsEditing.DeleteNodeRouteValues = new { Controller = "Home", Action = "TreeListDeletePartial" };
+
+    settings.SettingsBehavior.AllowFocusedNode = true;
+
+    settings.CommandColumn.Visible = true;
+    settings.CommandColumn.EditButton.Visible = true;
+    settings.CommandColumn.NewButton.Visible = true;
+    settings.CommandColumn.DeleteButton.Visible = true;
+
+    settings.Columns.Add("NameMon");
+    settings.Columns.Add("NameEng");
+    settings.Columns.Add("NavigateUrl");
+    settings.Columns.Add("ParentId");
+
+    settings.PreRender = (s, e) =>
+    {
+        MVCxTreeList treeList = (MVCxTreeList)s;
+        treeList.ExpandAll();
+    };
+}).SetEditErrorText((string)ViewData["EditError"]).Bind(Model).GetHtml()
+
 </div>
