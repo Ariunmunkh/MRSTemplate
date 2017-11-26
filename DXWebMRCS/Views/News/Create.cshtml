@@ -1,0 +1,132 @@
+﻿@model DXWebMRCS.Models.News
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Form Elements</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>News</h4>
+                        <hr />
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TitleMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TitleMon)
+                                @Html.ValidationMessageFor(model => model.TitleMon)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TitleEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TitleEng)
+                                @Html.ValidationMessageFor(model => model.TitleEng)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BodyMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.Action("BodyMonPartial")
+                                    @Html.Action("BodyEngPartial")
+                                }
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BodyEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @*@using (Html.BeginForm("ImageUpload", "News", FormMethod.Post))
+                                {
+                                    @Html.DevExpress().UploadControl(settings =>
+{
+    settings.Name = "Image";
+    settings.CallbackRouteValues = new { Controller = "News", Action = "ImageUpload" };
+
+    settings.AdvancedModeSettings.EnableMultiSelect = true;
+    settings.AdvancedModeSettings.EnableFileList = true;
+    settings.AdvancedModeSettings.EnableDragAndDrop = true;
+
+    settings.ShowUploadButton = true;
+    settings.ShowProgressPanel = true;
+
+    settings.ValidationSettings.Assign(DXWebMRCS.Controllers.NewsControllerImageSettings.UploadValidationSettings);
+}).GetHtml()
+                                }*@
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContentType, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ContentType", new List<SelectListItem>
+
+                            {
+                               new SelectListItem{ Text="Меню", Value = "Menu" },
+                               new SelectListItem{ Text="Мэдээ", Value = "News" }
+                            }, "Төрөл сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ContentType)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

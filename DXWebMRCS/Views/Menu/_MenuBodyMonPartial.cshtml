@@ -1,0 +1,15 @@
+@using DXWebMRCS.Controllers;
+
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "MenuBodyMon";
+    settings.CallbackRouteValues = new { Controller = "Menu", Action = "MenuBodyMonPartial" };
+    settings.Width = 500;
+	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
+
+    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "Menu", Action = "MenuBodyMonPartialImageUpload" };
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = MenuControllerMenuBodyMonSettings.ImageUploadDirectory;
+	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(MenuControllerMenuBodyMonSettings.ImageUploadValidationSettings);
+
+
+			settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(MenuControllerMenuBodyMonSettings.ImageSelectorSettings);
+	}).GetHtml()

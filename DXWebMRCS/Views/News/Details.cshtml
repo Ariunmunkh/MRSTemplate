@@ -1,0 +1,75 @@
+﻿@model DXWebMRCS.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TitleMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TitleMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TitleEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TitleEng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BodyMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BodyEng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

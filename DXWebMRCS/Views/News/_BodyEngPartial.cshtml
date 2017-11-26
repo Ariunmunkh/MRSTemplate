@@ -1,0 +1,16 @@
+
+@using DXWebMRCS.Controllers;
+
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "BodyEng";
+    settings.CallbackRouteValues = new { Controller = "News", Action = "BodyEngPartial" };
+    settings.Width = 500;
+	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
+
+    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "News", Action = "BodyEngPartialImageUpload" };
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = NewsControllerBodyEngSettings1.ImageUploadDirectory;
+	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(NewsControllerBodyEngSettings1.ImageUploadValidationSettings);
+
+
+			settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(NewsControllerBodyEngSettings1.ImageSelectorSettings);
+	}).GetHtml()

@@ -1,0 +1,107 @@
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DXWebMRCS.dll.config
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DXWebMRCS.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DXWebMRCS.pdb
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.AspNet.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.Core.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OAuth.Consumer.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OAuth.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OpenId.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\EntityFramework.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\EntityFramework.SqlServer.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\Microsoft.Web.Infrastructure.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\Newtonsoft.Json.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Net.Http.Formatting.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Helpers.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Http.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Http.WebHost.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Mvc.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Razor.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.Deployment.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.Razor.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\WebMatrix.Data.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\WebMatrix.WebData.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.AspNet.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.Core.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OAuth.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OAuth.Consumer.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OpenId.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\EntityFramework.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\EntityFramework.SqlServer.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\Newtonsoft.Json.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Net.Http.Formatting.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Helpers.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Http.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Http.WebHost.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Mvc.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.Razor.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.Deployment.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\System.Web.WebPages.Razor.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\WebMatrix.Data.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\bin\WebMatrix.WebData.xml
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.dll
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.pdb
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.initialcontent.resources
+c:\users\user\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.csproj.GenerateResource.Cache
+C:\Users\User\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.menu.resources
+C:\Users\User\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.updatedmenu.resources
+C:\Users\User\documents\visual studio 2013\Projects\DXWebMRCS\DXWebMRCS\obj\Debug\DXWebMRCS.csprojResolveAssemblyReference.cache
+D:\Project\MRSTemplate\DXWebMRCS\bin\DXWebMRCS.dll.config
+D:\Project\MRSTemplate\DXWebMRCS\bin\DXWebMRCS.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DXWebMRCS.pdb
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.AspNet.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.Core.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OAuth.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OpenId.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\EntityFramework.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\EntityFramework.SqlServer.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\Newtonsoft.Json.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Net.Http.Formatting.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Helpers.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.WebHost.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Mvc.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Razor.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.Deployment.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.Razor.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.Data.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.WebData.dll
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.AspNet.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.Core.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OAuth.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OpenId.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\EntityFramework.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\EntityFramework.SqlServer.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\Newtonsoft.Json.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Net.Http.Formatting.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Helpers.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.WebHost.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Mvc.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Razor.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.Deployment.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.WebPages.Razor.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.Data.xml
+D:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.WebData.xml
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.csprojResolveAssemblyReference.cache
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.initialcontent.resources
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.menu.resources
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.updatedmenu.resources
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.csproj.GenerateResource.Cache
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.dll
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.pdb
+D:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.test.resources

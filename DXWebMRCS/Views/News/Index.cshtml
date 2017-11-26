@@ -1,0 +1,115 @@
+﻿@*@model IEnumerable<DXWebMRCS.Models.News>*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Form Elements</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                @*<table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TitleMon)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TitleEng)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BodyMon)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BodyEng)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContentType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TitleMon)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TitleEng)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BodyMon)
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BodyEng)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Image)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.CID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>*@
+
+                @Html.Action("NewsViewPartial")
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

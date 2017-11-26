@@ -1,0 +1,35 @@
+@model DXWebMRCS.Models.News
+@using DXWebMRCS.Controllers;
+
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "HtmlEditor";
+    settings.CallbackRouteValues = new { Controller = "SysAdmin", Action = "HtmlEditorPartial" };
+    settings.Width = 1000;
+	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
+    settings.CssFiles.Add("~/Content/HtmlEditor/DemoCss/CustomCss.css");
+
+    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "SysAdmin", Action = "HtmlEditorPartialImageUpload" };
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = SysAdminControllerHtmlEditorSettings.ImageUploadDirectory;
+	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(SysAdminControllerHtmlEditorSettings.ImageUploadValidationSettings);
+
+
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(SysAdminControllerHtmlEditorSettings.ImageSelectorSettings);
+    HtmlEditorToolbar toolbar = new HtmlEditorToolbar();
+    toolbar.Items.Add(new ToolbarUndoButton());
+    toolbar.Items.Add(new ToolbarRedoButton());
+    toolbar.Items.Add(new ToolbarBoldButton(true));
+    toolbar.Items.Add(new ToolbarItalicButton());
+    toolbar.Items.Add(new ToolbarUnderlineButton());
+    toolbar.Items.Add(new ToolbarStrikethroughButton());
+    toolbar.Items.Add(new ToolbarJustifyLeftButton(true));
+    toolbar.Items.Add(new ToolbarJustifyCenterButton());
+    toolbar.Items.Add(new ToolbarJustifyRightButton());
+    toolbar.Items.Add(new ToolbarBackColorButton(true));
+    toolbar.Items.Add(new ToolbarFontColorButton());
+
+    ToolbarTableOperationsDropDownButton tableOperationsButton = new ToolbarTableOperationsDropDownButton(true);
+    tableOperationsButton.CreateDefaultItems();
+    toolbar.Items.Add(tableOperationsButton);
+
+    toolbar.Items.Add(new ToolbarInsertPlaceholderDialogButton(true));
+	}).GetHtml()

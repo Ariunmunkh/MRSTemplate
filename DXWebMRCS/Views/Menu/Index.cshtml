@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="right_col" role="main">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Menu1.NameMon)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameMon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameEng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NavigateUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyMon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyEng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Menu1.NameMon)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameMon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NavigateUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyMon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyEng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MenuID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MenuID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MenuID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

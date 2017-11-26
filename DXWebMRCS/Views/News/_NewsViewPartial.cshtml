@@ -1,0 +1,67 @@
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "NewsView";
+        settings.CallbackRouteValues = new { Controller = "News", Action = "NewsViewPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "News", Action = "NewsViewPartialAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "News", Action = "NewsViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "News", Action = "NewsViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.Width = Unit.Percentage(100);
+
+        settings.Styles.Header.Wrap = DefaultBoolean.True;
+        settings.SettingsPager.EnableAdaptivity = true;
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "#";
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("Edit", "Edit", new { id = DataBinder.Eval(c.DataItem, "CID") }) + "&nbsp;" +
+                    Html.ActionLink("Delete", "Delete", new { id = DataBinder.Eval(c.DataItem, "CID") },
+                        new { onclick = "return confirm('Do you really want to delete this record?')" })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("New", "Create").ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.Width = 70;
+        });
+
+        settings.KeyFieldName = "CID";
+
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("CID");
+        settings.Columns.Add("TitleMon");
+        settings.Columns.Add("TitleEng");
+        settings.Columns.Add("BodyMon");
+        settings.Columns.Add("BodyEng");
+        settings.Columns.Add("Image");
+        settings.Columns.Add("ContentType");
+        settings.Columns.Add("Date");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
