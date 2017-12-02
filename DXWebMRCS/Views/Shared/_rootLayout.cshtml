@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -48,7 +48,7 @@ new Script { ExtensionSuite = ExtensionSuite.Bootstrap }
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    @Html.DevExpress().Splitter(settings => {
+    @*@Html.DevExpress().Splitter(settings => {
         settings.Name = "MainSplitter";
         settings.AllowResize = false;
         settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
@@ -84,6 +84,6 @@ new Script { ExtensionSuite = ExtensionSuite.Bootstrap }
                 Html.RenderPartial("FooterPartialView");
             });
         });
-    }).GetHtml()
+    }).GetHtml()*@
 </body>
 </html>

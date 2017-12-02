@@ -50,26 +50,29 @@ namespace DXWebMRCS.Models {
 
     public class LoginModel {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        bool? rememberMe;
+        bool rememberMe;
         [Display(Name = "Remember me?")]
-        public bool? RememberMe {
-            get { return rememberMe ?? false; }
+        public bool RememberMe {
+            get { return rememberMe; }
             set { rememberMe = value; }
         }
     }
 
     public class RegisterModel {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        //[Required]
+        //[Display(Name = "User name")]
+        //public string UserName { get; set; }
 
         [Required]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]

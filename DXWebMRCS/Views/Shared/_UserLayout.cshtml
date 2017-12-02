@@ -21,6 +21,10 @@
     <script src="~/Scripts/_references.js"></script>
     <script src="~/Scripts/multiLanguajeDemo.js"></script>
 
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
     <!-- Favicon and Touch Icons -->
     <link href="~/Content/images/favicon.png" rel="shortcut icon" type="image/png">
     <link href="~/Content/images/apple-touch-icon.png" rel="apple-touch-icon">
@@ -81,7 +85,8 @@
                 </div>
                 <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
             </div>*@
-        @Html.Partial("_HeaderPartial");
+        @{Html.RenderAction("_HeaderPartial", "Home");}
+        @*@Html.Partial("_HeaderPartial");*@
         @RenderBody();
         @Html.Partial("_FooterPartial");
 

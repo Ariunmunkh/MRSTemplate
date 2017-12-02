@@ -14,10 +14,12 @@ namespace DXWebMRCS.Controllers {
     [InitializeSimpleMembership]
     public class AccountController : Controller {
 
+        private UsersContext db = new UsersContext();
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login() {
+        public ActionResult Login(string returnUrl)
+        {
             return View();
         }
 
@@ -29,7 +31,7 @@ namespace DXWebMRCS.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl) {
             if(ModelState.IsValid) {
-                if(WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe.Value)) {
+                if(WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe)) {
                     return Redirect(returnUrl ?? "/");
                 }
                 ViewBag.ErrorMessage = "The user name or password provided is incorrect";
@@ -52,7 +54,8 @@ namespace DXWebMRCS.Controllers {
 
         [AllowAnonymous]
         public ActionResult Register() {
-            return View();
+            
+            return View();   
         }
 
         //
@@ -61,12 +64,13 @@ namespace DXWebMRCS.Controllers {
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model) {
+        public ActionResult Register(RegisterModel model)
+        {
             if(ModelState.IsValid) {
                 // Attempt to register the user
                 try {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.Email, model.Password);
+                    WebSecurity.Login(model.Email, model.Password);
                     return Redirect("/");
                 }
                 catch(MembershipCreateUserException e) {

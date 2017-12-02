@@ -10,11 +10,13 @@ namespace DXWebMRCS.Controllers
     public class HomeController : Controller
     {
         private UsersContext db = new UsersContext();
+        public IEnumerable<Menu> menuList;
         public ActionResult Index()
         {
             // DXCOMMENT: Pass a data model for GridView
+            
             var menuList = db.Menus.ToList();
-            return View(menuList);    
+            return View();    
         }
         
         public ActionResult GridViewPartialView() 
@@ -23,13 +25,17 @@ namespace DXWebMRCS.Controllers
             return PartialView();
         }
 
-        [HttpGet]
+        
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
-            var menuList = db.Menus.ToList();
-            return View(menuList);
+            if (menuList != null && menuList.Count() > 0)
+            {
+                 return PartialView("_HeaderPartial", menuList);
+            }
+            menuList = db.Menus.ToList();
+            return PartialView("_HeaderPartial", menuList);
         }
-
+        
     }
 }
