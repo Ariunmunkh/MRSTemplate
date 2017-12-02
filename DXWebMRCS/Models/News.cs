@@ -26,6 +26,7 @@ namespace DXWebMRCS.Models
         public byte[] Image { get; set; }
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }
+        [Display(Name = "Өөрчилсөн огноо")]
         public System.DateTime Date { get; set; }
     }
 }

@@ -58,7 +58,6 @@
                                 @using (Html.BeginForm())
                                 {
                                     @Html.Action("BodyMonPartial")
-                                    @Html.Action("BodyEngPartial")
                                 }
 
 
@@ -69,7 +68,10 @@
                             @Html.LabelFor(model => model.BodyEng, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
 
-
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.Action("BodyEngPartial")
+                                }
 
                             </div>
                         </div>
