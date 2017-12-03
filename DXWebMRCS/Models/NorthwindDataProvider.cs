@@ -32,6 +32,7 @@ namespace DXWebMRCS.Models
                         NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
                         NavigateUrl = reader["NavigateUrl"] == DBNull.Value ? string.Empty : (string)reader["NavigateUrl"],
                         MenuType = reader["MenuType"] == DBNull.Value ? string.Empty : (string)reader["MenuType"],
+                        Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
                         ParentId = (reader["ParentId"] == DBNull.Value ? null : (int?)reader["ParentId"])
                     });
                 }
@@ -46,7 +47,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO Menu (NameMon, NameEng, NavigateUrl, MenuType, ParentId) VALUES (@NameMon, @NameEng, @NavigateUrl, @MenuType, @ParentId)", connection);
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Menu (NameMon, NameEng, NavigateUrl, MenuType, Image, ParentId) VALUES (@NameMon, @NameEng, @NavigateUrl, @MenuType, @Image, @ParentId)", connection);
 
                 insertCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon);
                 insertCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng);
@@ -59,6 +60,11 @@ namespace DXWebMRCS.Models
                     insertCommand.Parameters.AddWithValue("@MenuType", DBNull.Value);
                 else
                     insertCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType);
+
+                if (Menu.Image == null)
+                    insertCommand.Parameters.AddWithValue("@Image", DBNull.Value);
+                else
+                    insertCommand.Parameters.AddWithValue("@Image", Menu.Image);
 
                 if (Menu.ParentId.HasValue)
                     insertCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
@@ -74,7 +80,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand updateCommand = new SqlCommand("UPDATE [Menu] SET [NameMon] = @NameMon, [NameEng] = @NameEng, [NavigateUrl] = @NavigateUrl, [MenuType] = @MenuType, [ParentId] = @ParentId WHERE [MenuID] = @MenuID", connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Menu] SET [NameMon] = @NameMon, [NameEng] = @NameEng, [NavigateUrl] = @NavigateUrl, [MenuType] = @MenuType, Image = @Image, [ParentId] = @ParentId WHERE [MenuID] = @MenuID", connection);
 
                 updateCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon);
                 updateCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng);
@@ -86,6 +92,12 @@ namespace DXWebMRCS.Models
                     updateCommand.Parameters.AddWithValue("@MenuType", DBNull.Value);
                 else
                     updateCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType);
+
+                if (Menu.Image == null)
+                    updateCommand.Parameters.AddWithValue("@Image", DBNull.Value);
+                else
+                    updateCommand.Parameters.AddWithValue("@Image", Menu.Image);
+
                 if (Menu.ParentId.HasValue)
                     updateCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
                 else
@@ -97,13 +109,16 @@ namespace DXWebMRCS.Models
             }
         }
 
-        public static void MoveMenu(int MenuID, int ParentId)
+        public static void MoveMenu(int MenuID, int? ParentId)
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 SqlCommand updateCommand = new SqlCommand("UPDATE Menu SET ParentId = @ParentId WHERE MenuID = @MenuID", connection);
 
-                updateCommand.Parameters.AddWithValue("@ParentId", ParentId);
+                if (ParentId == null)
+                    updateCommand.Parameters.AddWithValue("@ParentId", DBNull.Value);
+                else
+                    updateCommand.Parameters.AddWithValue("@ParentId", ParentId);
                 updateCommand.Parameters.AddWithValue("@MenuID", MenuID);
 
                 connection.Open();

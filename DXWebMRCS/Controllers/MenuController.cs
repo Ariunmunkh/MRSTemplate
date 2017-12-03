@@ -76,9 +76,9 @@ namespace DXWebMRCS.Controllers
             return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
         }
 
-        public ActionResult TreeListMovePartial(int ID, int? PARENTID)
+        public ActionResult TreeListMovePartial(Menu Menu)
         {
-            NorthwindDataProvider.MoveMenu(ID, Convert.ToInt32(PARENTID));
+            NorthwindDataProvider.MoveMenu(Menu.MenuID, Menu.ParentId);
             return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
         }
 

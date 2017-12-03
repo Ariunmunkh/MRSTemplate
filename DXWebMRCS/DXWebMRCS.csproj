@@ -5365,13 +5365,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\GridViewPartialView.cshtml" />
-    <Content Include="Views\Menu\Create.cshtml" />
-    <Content Include="Views\Menu\Delete.cshtml" />
-    <Content Include="Views\Menu\Details.cshtml" />
-    <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
-    <Content Include="Views\Menu\_MenuBodyMonPartial.cshtml" />
-    <Content Include="Views\Menu\_MenuBodyEngPartial.cshtml" />
     <Content Include="Views\Menu\TreeListPartial.cshtml" />
     <Content Include="Views\Account\RegisterPartial.cshtml" />
     <Content Include="Views\Home\MainView.cshtml" />
