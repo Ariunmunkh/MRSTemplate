@@ -36,6 +36,21 @@ namespace DXWebMRCS.Controllers
             return View(news);
         }
 
+        // GET: /News/NewsDetail/5
+        public ActionResult NewsDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            News news = db.News.Find(16);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            return View(news);
+        }
+
         // GET: /News/Create
         public ActionResult Create()
         {
