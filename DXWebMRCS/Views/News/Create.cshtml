@@ -96,7 +96,8 @@
                                         settings.ValidationSettings.Assign(DXWebMRCS.Controllers.NewsControllerImageSettings.UploadValidationSettings);
                                     }).GetHtml()
                                                                     }*@
-                                <input type="file" name="ImageFile" required>                                
+                                <input type="file" name="ImageFile" required onchange="show(this)">   
+                                <img id="user_img" height="100" width="90" />                            
                             </div>
                         </div>
 
@@ -131,3 +132,15 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  

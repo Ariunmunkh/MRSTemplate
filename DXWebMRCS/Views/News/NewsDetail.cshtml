@@ -1,0 +1,40 @@
+﻿@model DXWebMRCS.Models.News
+@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider layer-overlay overlay-white-8" data-bg-img="http://placehold.it/1920x1280">
+        <div class="container pt-60 pb-60">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-sm-8 text-left flip xs-text-center">
+                        <h2 class="title">@Model.TitleMon</h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <ol class="breadcrumb text-right sm-text-center text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Detail</a></li>
+                            <li class="active text-gray-silver">@Model.TitleMon</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: About -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Raw(Model.BodyMon)
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

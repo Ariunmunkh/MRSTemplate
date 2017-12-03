@@ -72,7 +72,7 @@ namespace DXWebMRCS.Controllers
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    news.Image = "~/Content/Images/NewsImage/" + fileName;
+                    news.Image = "/Content/Images/NewsImage/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
                     ImageFile.SaveAs(fileName); 
                 }
@@ -97,7 +97,7 @@ namespace DXWebMRCS.Controllers
             if (news == null)
             {
                 return HttpNotFound();
-            }
+            }            
             return View(news);
         }
 

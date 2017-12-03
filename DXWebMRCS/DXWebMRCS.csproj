@@ -5376,6 +5376,8 @@
     <Content Include="Views\Account\RegisterPartial.cshtml" />
     <Content Include="Views\Home\MainView.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\News\NewsDetail.cshtml" />
+    <Content Include="Views\News\NewsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5418,6 +5420,14 @@
     <Compile Include="Migrations\201711261103553_test1.Designer.cs">
       <DependentUpon>201711261103553_test1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031232238_test2.cs" />
+    <Compile Include="Migrations\201712031232238_test2.Designer.cs">
+      <DependentUpon>201712031232238_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031243404_test3.cs" />
+    <Compile Include="Migrations\201712031243404_test3.Designer.cs">
+      <DependentUpon>201712031243404_test3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -5429,6 +5439,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\NewsImage\" />
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\UploadImages\" />
   </ItemGroup>
@@ -5447,6 +5458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711261103553_test1.resx">
       <DependentUpon>201711261103553_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031232238_test2.resx">
+      <DependentUpon>201712031232238_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031243404_test3.resx">
+      <DependentUpon>201712031243404_test3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
