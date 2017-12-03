@@ -54,39 +54,60 @@
                         <img src="~/Content/images/logo-wide.png" alt="">
                     </a>
                     <ul class="menuzord-menu">
-                        @{string isActive = "active";}
-                        @foreach (var item in Model.Where(x=> x.ParentId == null))
-                        {
-                            <li class=@isActive>                            
-                            @if (isActive == "active")
-                            {
-                                isActive = "";
-                            }
-                            
-                            <a href='@Url.Action("Details", "Menu", new { id = @item.MenuID })'>@item.NameMon</a>
-                            @if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
-                                {
-                                <ul class="dropdown">
-                                    @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
-                                        {
-                                        <li>
-                                            <a href='@Url.Action("Details", "Menu", new { id = @item2.MenuID })'>@item2.NameMon</a>
-                                            @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
-                                                {
-                                                <ul class="dropdown">
-                                                    @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
-                                                        {
-                                                        <li><a href='@Url.Action("Details", "Menu", new { id = @item3.MenuID })'>@item3.NameMon</a></li>
-                                                        }
-                                                </ul>
-                                                }
+@{string isActive = "active";}
+@foreach (var item in Model.Where(x => x.ParentId == null))
+{
+    <li class=@isActive>
+        @if (isActive == "active")
+        {
+            isActive = "";
+        }
 
-                                        </li>
-                                        }
+        <a href='@Url.Action("NewsDetail", "News", new { id = @item.MenuID })'>@item.NameMon</a>
+        @if (@item.MenuType == "Single" || @item.MenuType == null)
+        {
+            if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
+            {
+                <ul class="dropdown">
+                    @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
+                    {
+                        <li>
+                            <a href='@Url.Action("NewsDetail", "News", new { id = @item2.MenuID })'>@item2.NameMon</a>
+                            @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
+                            {
+                                <ul class="dropdown">
+                                    @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
+                                    {
+                                        <li><a href='@Url.Action("NewsDetail", "News", new { id = @item3.MenuID })'>@item3.NameMon</a></li>
+                                    }
                                 </ul>
-                                }
+                            }
+
                         </li>
-                        }                        
+                    }
+                </ul>
+            }
+        }
+        else
+        {
+            <div class="megamenu">
+                <div class="megamenu-row">
+                    @if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
+                    {
+                        <div class="col3">
+                            <ul class="list-unstyled list-dashed">
+                                @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
+                                {
+                                    <li><a href='@Url.Action("NewsDetail", "News", new { id = @item2.MenuID })'><i class="fa fa-list-ul"></i> @item2.NameMon</a></li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </li>
+}                        
                     </ul>
                 </nav>
             </div>

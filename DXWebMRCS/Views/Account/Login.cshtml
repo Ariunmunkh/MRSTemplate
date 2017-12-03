@@ -22,7 +22,7 @@
               <div class="row">
                 <div class="form-group col-md-12">
                   <label for="form_password">Password</label>
-                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
               </div>
@@ -34,7 +34,7 @@
                 <button type="submit" class="btn btn-dark btn-sm">Login</button>
               </div>
               <div class="clear text-center pt-10">
-                <a class="text-theme-colored font-weight-600 font-12" href="#">Forgot Your Password?</a>
+                <a>@Html.ActionLink("Forget Password", "ChangePassword", "Account", routeValues: null, htmlAttributes: new { title = "Forget", @class = "text-theme-colored font-weight-600 font-12" })</a>
               </div>
               <div class="clear text-center pt-10">
                 <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>

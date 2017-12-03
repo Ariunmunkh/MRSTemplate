@@ -70,9 +70,9 @@ namespace DXWebMRCS.Models {
     }
 
     public class RegisterModel {
-        //[Required]
-        //[Display(Name = "User name")]
-        //public string UserName { get; set; }
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
 
         [Required]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
