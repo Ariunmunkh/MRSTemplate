@@ -25,8 +25,11 @@ namespace DXWebMRCS.Models
         [Display(Name = "Үндсэн цэс сонгох")]
         public string NavigateUrl { get; set; }
 
+        [Display(Name = "Төрөл")]
+        public string MenuType { get; set; }
+
         [Display(Name = "Зураг")]
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public int? ParentId { get; set; }
 

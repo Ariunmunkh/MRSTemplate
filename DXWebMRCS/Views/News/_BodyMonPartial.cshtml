@@ -1,15 +1,13 @@
 @using DXWebMRCS.Controllers;
-
-@Html.DevExpress().HtmlEditor(settings => {
+@model DXWebMRCS.Models.News
+@Html.DevExpress().HtmlEditor(settings =>
+{
     settings.Name = "BodyMon";
-    settings.CallbackRouteValues = new { Controller = "News", Action = "BodyMonPartial" };
+    settings.CallbackRouteValues = new { Controller = "News", Action = "EditBodyMonPartial" ,Model};
     settings.Width = 500;
-	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
-
-    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "News", Action = "BodyMonPartialImageUpload" };
+    settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "News", Action = "BodyMonPartialImageUpload" };
     settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = NewsControllerBodyMonSettings.ImageUploadDirectory;
-	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(NewsControllerBodyMonSettings.ImageUploadValidationSettings);
-
-
-			settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(NewsControllerBodyMonSettings.ImageSelectorSettings);
-	}).GetHtml()
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(NewsControllerBodyMonSettings.ImageUploadValidationSettings);
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(NewsControllerBodyMonSettings.ImageSelectorSettings);
+}).Bind(Model.BodyMon).GetHtml()

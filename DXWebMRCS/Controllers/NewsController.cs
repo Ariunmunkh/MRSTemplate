@@ -127,9 +127,13 @@ namespace DXWebMRCS.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult BodyMonPartial()
+        //public ActionResult BodyMonPartial()
+        //{
+        //    return PartialView("_BodyMonPartial");
+        //}
+        public ActionResult EditBodyMonPartial(News objectValue)
         {
-            return PartialView("_BodyMonPartial");
+            return PartialView("_BodyMonPartial", objectValue);
         }
         public ActionResult BodyMonPartialImageSelectorUpload()
         {
@@ -148,9 +152,13 @@ namespace DXWebMRCS.Controllers
             return null;
         }
 
-        public ActionResult BodyEngPartial()
+        //public ActionResult BodyEngPartial()
+        //{
+        //    return PartialView("_BodyEngPartial");
+        //}
+        public ActionResult EditBodyEngPartial(News objectValue)
         {
-            return PartialView("_BodyEngPartial");
+            return PartialView("_BodyEngPartial", objectValue);
         }
         public ActionResult BodyEngPartialImageSelectorUpload()
         {

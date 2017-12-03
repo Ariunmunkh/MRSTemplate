@@ -20,9 +20,26 @@
 
     settings.Columns.Add("NameMon");
     settings.Columns.Add("NameEng");
+    settings.Columns.Add("MenuType", MVCxTreeListColumnType.ComboBox);
     settings.Columns.Add("NavigateUrl");
-    settings.Columns.Add("ParentId");
+    settings.Columns.Add("Image",MVCxTreeListColumnType.Image);
+    settings.Columns.Add("MenuID", MVCxTreeListColumnType.SpinEdit);
+    settings.Columns.Add("ParentId", MVCxTreeListColumnType.SpinEdit);
 
+    settings.CellEditorInitialize += (s, e) =>
+    {
+        MVCxTreeList treeList = (MVCxTreeList)s;
+        if (e.Column.FieldName == "MenuType")
+        {
+            ASPxComboBox cb = (ASPxComboBox)e.Editor;
+            cb.Items.Add("Нэг баганаар", "Single");
+            cb.Items.Add("Олон баганаар", "Multi");
+        }
+        else if (e.Column.FieldName == "MenuID")
+        {
+            e.Column.ReadOnly = true;
+        }
+    };
     settings.PreRender = (s, e) =>
     {
         MVCxTreeList treeList = (MVCxTreeList)s;
