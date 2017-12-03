@@ -17,27 +17,35 @@
     settings.CommandColumn.EditButton.Visible = true;
     settings.CommandColumn.NewButton.Visible = true;
     settings.CommandColumn.DeleteButton.Visible = true;
-
     settings.Columns.Add("NameMon");
     settings.Columns.Add("NameEng");
     settings.Columns.Add("MenuType", MVCxTreeListColumnType.ComboBox);
     settings.Columns.Add("NavigateUrl");
-    settings.Columns.Add("Image", MVCxTreeListColumnType.Image);
+    settings.Columns.Add("Image", MVCxTreeListColumnType.ComboBox);
     //settings.Columns.Add("MenuID", MVCxTreeListColumnType.SpinEdit);
     //settings.Columns.Add("ParentId", MVCxTreeListColumnType.SpinEdit);
-
     settings.CellEditorInitialize += (s, e) =>
     {
         MVCxTreeList treeList = (MVCxTreeList)s;
         if (e.Column.FieldName == "MenuType")
         {
             ASPxComboBox cb = (ASPxComboBox)e.Editor;
-            cb.Items.Add("Нэг баганаар", "Single");
-            cb.Items.Add("Олон баганаар", "Multi");
+            cb.Items.Add("Нэг баганаар", "Single");//, "https://quwa.org/wp-content/uploads/2016/10/TAI-Anka-01-TAI-692x360.png");
+            cb.Items.Add("Олон баганаар", "Multi");//, "https://quwa.org/wp-content/plugins/accesspress-social-icons/icon-sets/png/set7/facebook.png");
         }
-        else if (e.Column.FieldName == "MenuID")
+        else if (e.Column.FieldName == "Image")
         {
-            e.Column.ReadOnly = true;
+            ASPxComboBox cb = (ASPxComboBox)e.Editor;
+            cb.Items.Add("about.svg", "about.svg", "https://marketplace.canva.com/MAB7k1mbVlU/1/thumbnail/canva-png-file-icon-MAB7k1mbVlU.png");
+            cb.Items.Add("accept_database.svg", "accept_database.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/accept_database.svg");
+            cb.Items.Add("add_column.svg", "add_column.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_column.svg");
+            cb.Items.Add("add_database.svg", "add_database.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_database.svg");
+            cb.Items.Add("add_image.svg", "add_image.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_image.svg");
+            cb.Items.Add("add_row.svg", "add_row.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_row.svg");
+            cb.Items.Add("address_book.svg", "address_book.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/address_book.svg");
+            cb.Items.Add("advance.svg", "advance.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/advance.svg");
+            cb.Items.Add("advertising.svg", "advertising.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/advertising.svg");
+            cb.Items.Add("alarm_clock.svg", "alarm_clock.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/alarm_clock.svg");
         }
     };
     settings.PreRender = (s, e) =>
