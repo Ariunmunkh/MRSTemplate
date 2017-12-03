@@ -23,7 +23,8 @@ namespace DXWebMRCS.Models
         [Display(Name = "Агуулга Англи")]
         public string BodyEng { get; set; }
         [Display(Name = "Зураг")]
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
+        //public HttpPostedFileBase ImageFile { get; set; }
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }
         [Display(Name = "Өөрчилсөн огноо")]

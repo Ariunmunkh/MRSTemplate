@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DXWebMRCS.Models;
 using DevExpress.Web.Mvc;
+using System.IO;
 
 namespace DXWebMRCS.Controllers
 {
@@ -43,7 +44,7 @@ namespace DXWebMRCS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(16);
+            News news = db.News.Find(15);
             if (news == null)
             {
                 return HttpNotFound();
@@ -62,10 +63,20 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news)
+        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    news.Image = "~/Content/Images/NewsImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    ImageFile.SaveAs(fileName); 
+                }
+
                 news.Date = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();

@@ -27,7 +27,7 @@
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -96,8 +96,7 @@
                                         settings.ValidationSettings.Assign(DXWebMRCS.Controllers.NewsControllerImageSettings.UploadValidationSettings);
                                     }).GetHtml()
                                                                     }*@
-
-
+                                <input type="file" name="ImageFile" required>                                
                             </div>
                         </div>
 
