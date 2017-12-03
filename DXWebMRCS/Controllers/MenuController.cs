@@ -82,11 +82,11 @@ namespace DXWebMRCS.Controllers
             return PartialView("TreeListPartial", NorthwindDataProvider.GetMenus());
         }
 
-        public ActionResult TreeListDeletePartial(int ID)
+        public ActionResult TreeListDeletePartial(Menu Menu)
         {
             try
             {
-                NorthwindDataProvider.DeleteMenu(ID);
+                NorthwindDataProvider.DeleteMenu(Menu.MenuID);
             }
             catch (Exception e)
             {

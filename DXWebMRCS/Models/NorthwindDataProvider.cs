@@ -115,7 +115,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Menu WHERE MenuID = " + MenuID.ToString(), connection);
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Menu WHERE MenuID = " + MenuID + " OR ParentId = " + MenuID, connection);
 
                 connection.Open();
                 deleteCommand.ExecuteNonQuery();
