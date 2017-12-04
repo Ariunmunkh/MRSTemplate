@@ -10,6 +10,7 @@ using DXWebMRCS.Models;
 using DevExpress.Web.Mvc;
 using System.IO;
 using ImageResizer;
+using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
@@ -25,13 +26,32 @@ namespace DXWebMRCS.Controllers
 
         public ActionResult MenuClick(int id)
         {
-            List<News> news = db.Database.SqlQuery<News>("SELECT * FROM News").ToList();
+            var pageNumber = 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
             }
 
             if (news.Count == 1)
+            {
+                return View("NewsDetail", news.First());
+            }
+            return View("NewsList", news);
+        }
+
+        public ActionResult PageClick(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (news.Count() == 1)
             {
                 return View("NewsDetail", news.First());
             }
@@ -53,20 +73,30 @@ namespace DXWebMRCS.Controllers
             return View(news);
         }
 
-        // GET: /News/NewsDetail/5
+         //GET: /News/NewsDetail/5
         public ActionResult NewsDetail(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(24);
+            News news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + id).FirstOrDefault();
             if (news == null)
             {
                 return HttpNotFound();
             }
             return View(news);
         }
+
+        // GET: /News/NewsDetail/5
+        //public ActionResult NewsDetail(News news)
+        //{            
+        //    if (news == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(news);
+        //}
 
         // GET: /News/Create
         public ActionResult Create()

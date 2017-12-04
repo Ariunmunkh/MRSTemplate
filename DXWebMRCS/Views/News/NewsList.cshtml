@@ -1,4 +1,7 @@
-﻿@model IEnumerable<DXWebMRCS.Models.News>
+﻿@using DXWebMRCS.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DXWebMRCS.Models.News>
 @{
     ViewBag.Title = "NewsList";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -49,14 +52,15 @@
                                     </div>
                                     <div class="media-body pl-15">
                                         <div class="event-content pull-left flip">
-                                            <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="blog-single-right-sidebar.html">@item.TitleMon</a></h4>
+                                            <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>@item.TitleMon</a></h4>
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                                <a href="#" class="btn-read-more">Read more</a>
+                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Read more</a>
+                                @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
                                 <div class="clearfix"></div>
                             </div>
                         </article>
@@ -64,8 +68,8 @@
                     }                    
                     
                     <div class="col-md-12">
-                        <nav>
-                            
+                        @Html.PagedListPager(Model, page => Url.Action("PageClick", new { page = page }))
+                        @*<nav>                            
                             <ul class="pagination">
                                 <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
                                 <li class="active"><a href="#">1</a></li>
@@ -76,7 +80,7 @@
                                 <li><a href="#">...</a></li>
                                 <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
                             </ul>
-                        </nav>
+                        </nav>*@
                     </div>
                 </div>
             </div>

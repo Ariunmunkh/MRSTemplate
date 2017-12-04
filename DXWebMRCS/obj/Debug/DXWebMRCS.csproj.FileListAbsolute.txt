@@ -120,6 +120,8 @@ E:\Project\MRSTemplate\DXWebMRCS\bin\ImageResizer.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.Infrastructure.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\Newtonsoft.Json.dll
+E:\Project\MRSTemplate\DXWebMRCS\bin\PagedList.dll
+E:\Project\MRSTemplate\DXWebMRCS\bin\PagedList.Mvc.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Net.Http.Formatting.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Helpers.dll
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.dll
@@ -144,6 +146,8 @@ E:\Project\MRSTemplate\DXWebMRCS\bin\EntityFramework.SqlServer.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\ImageResizer.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\Microsoft.Web.WebPages.OAuth.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\Newtonsoft.Json.xml
+E:\Project\MRSTemplate\DXWebMRCS\bin\PagedList.xml
+E:\Project\MRSTemplate\DXWebMRCS\bin\PagedList.Mvc.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Net.Http.Formatting.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Helpers.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\System.Web.Http.xml
@@ -157,8 +161,8 @@ E:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.Data.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\WebMatrix.WebData.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\Org.Mentalis.Security.Cryptography.xml
 E:\Project\MRSTemplate\DXWebMRCS\bin\Mono.Math.xml
+E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.csprojResolveAssemblyReference.cache
 E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.Migrations.test.resources
 E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.csproj.GenerateResource.Cache
 E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.dll
 E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.pdb
-E:\Project\MRSTemplate\DXWebMRCS\obj\Debug\DXWebMRCS.csprojResolveAssemblyReference.cache

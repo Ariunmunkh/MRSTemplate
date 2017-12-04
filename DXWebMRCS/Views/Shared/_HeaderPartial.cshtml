@@ -54,15 +54,11 @@
                         <img src="~/Content/images/logo-wide.png" alt="">
                     </a>
                     <ul class="menuzord-menu">
-@{string isActive = "active";}
+@*@{string isActive = "active";}*@
 @foreach (var item in Model.Where(x => x.ParentId == null))
 {
-    <li class=@isActive>
-        @if (isActive == "active")
-        {
-            isActive = "";
-        }
-
+    <li>
+        
         @if (@item.MenuType == "Single" || @item.MenuType == null)
         {
             if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
