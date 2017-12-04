@@ -63,48 +63,62 @@
             isActive = "";
         }
 
-        <a href='@Url.Action("NewsDetail", "News", new { id = @item.MenuID })'>@item.NameMon</a>
         @if (@item.MenuType == "Single" || @item.MenuType == null)
         {
             if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
             {
+                <a>@item.NameMon</a>
                 <ul class="dropdown">
                     @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
                     {
-                        <li>
-                            <a href='@Url.Action("NewsDetail", "News", new { id = @item2.MenuID })'>@item2.NameMon</a>
+                        <li>                            
                             @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
                             {
+                                <a>@item2.NameMon</a>                                
                                 <ul class="dropdown">
                                     @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
                                     {
-                                        <li><a href='@Url.Action("NewsDetail", "News", new { id = @item3.MenuID })'>@item3.NameMon</a></li>
+                                        <li><a href='@Url.Action("MenuClick", "News", new { id = @item3.MenuID })'>@item3.NameMon</a></li>
                                     }
                                 </ul>
                             }
-
+                            else
+	                        {
+                               <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>@item2.NameMon</a>
+	                        }
                         </li>
                     }
                 </ul>
             }
+            else
+            {
+                <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>@item.NameMon</a>                
+            }
         }
-        else
+        else if (@item.MenuType == "Multi")
         {
-            <div class="megamenu">
-                <div class="megamenu-row">
-                    @if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
-                    {
-                        <div class="col3">
-                            <ul class="list-unstyled list-dashed">
-                                @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
-                                {
-                                    <li><a href='@Url.Action("NewsDetail", "News", new { id = @item2.MenuID })'><i class="fa fa-list-ul"></i> @item2.NameMon</a></li>
-                                }
-                            </ul>
-                        </div>
-                    }
+            if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
+            {
+                <a>@item.NameMon</a>
+                <div class="megamenu">
+                    <div class="megamenu-row">
+                    
+                            <div class="col3">
+                                <ul class="list-unstyled list-dashed">
+                                    @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
+                                    {
+                                        <li><a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'><i class="fa fa-list-ul"></i> @item2.NameMon</a></li>
+                                    }
+                                </ul>
+                            </div>
+                    
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>@item.NameMon</a>                
+            }
         }
     </li>
 }                        

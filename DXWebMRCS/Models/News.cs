@@ -24,7 +24,9 @@ namespace DXWebMRCS.Models
         public string BodyEng { get; set; }
         [Display(Name = "Зураг")]
         public string Image { get; set; }
-        //public HttpPostedFileBase ImageFile { get; set; }
+        public string ImageMedium { get; set; }
+        public int? MenuID { get; set; }
+        
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }
         [Display(Name = "Өөрчилсөн огноо")]

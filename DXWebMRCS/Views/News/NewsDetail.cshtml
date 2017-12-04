@@ -6,8 +6,9 @@
 
 <!-- Start main-content -->
 <div class="main-content">
+    @{string imageUrl = @Model.Image == null ? "http://localhost:4659" + @Model.Image : "http://placehold.it/1920x1280";}
     <!-- Section: inner-header -->
-    <section class="inner-header divider layer-overlay overlay-white-8" data-bg-img="http://placehold.it/1920x1280">
+    <section class="inner-header divider layer-overlay overlay-white-8" data-bg-img=@imageUrl>
         <div class="container pt-60 pb-60">
             <!-- Section Content -->
             <div class="section-content">

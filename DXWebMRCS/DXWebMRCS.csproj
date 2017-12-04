@@ -67,6 +67,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ImageResizer">
+      <HintPath>..\packages\ImageResizer.4.2.0\lib\net45\ImageResizer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -5394,33 +5397,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711200639150_initial-content.cs" />
-    <Compile Include="Migrations\201711200639150_initial-content.Designer.cs">
-      <DependentUpon>201711200639150_initial-content.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711250533158_menu.cs" />
-    <Compile Include="Migrations\201711250533158_menu.Designer.cs">
-      <DependentUpon>201711250533158_menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711250613349_updated-menu.cs" />
-    <Compile Include="Migrations\201711250613349_updated-menu.Designer.cs">
-      <DependentUpon>201711250613349_updated-menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711260605181_test.cs" />
-    <Compile Include="Migrations\201711260605181_test.Designer.cs">
-      <DependentUpon>201711260605181_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711261103553_test1.cs" />
-    <Compile Include="Migrations\201711261103553_test1.Designer.cs">
-      <DependentUpon>201711261103553_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031232238_test2.cs" />
-    <Compile Include="Migrations\201712031232238_test2.Designer.cs">
-      <DependentUpon>201712031232238_test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712031243404_test3.cs" />
-    <Compile Include="Migrations\201712031243404_test3.Designer.cs">
-      <DependentUpon>201712031243404_test3.cs</DependentUpon>
+    <Compile Include="Migrations\201712041227347_test.cs" />
+    <Compile Include="Migrations\201712041227347_test.Designer.cs">
+      <DependentUpon>201712041227347_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -5438,26 +5417,8 @@
     <Folder Include="Content\UploadImages\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711200639150_initial-content.resx">
-      <DependentUpon>201711200639150_initial-content.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711250533158_menu.resx">
-      <DependentUpon>201711250533158_menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711250613349_updated-menu.resx">
-      <DependentUpon>201711250613349_updated-menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711260605181_test.resx">
-      <DependentUpon>201711260605181_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711261103553_test1.resx">
-      <DependentUpon>201711261103553_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031232238_test2.resx">
-      <DependentUpon>201712031232238_test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712031243404_test3.resx">
-      <DependentUpon>201712031243404_test3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712041227347_test.resx">
+      <DependentUpon>201712041227347_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

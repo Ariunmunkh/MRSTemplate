@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DXWebMRCS.Models;
 using DevExpress.Web.Mvc;
 using System.IO;
+using ImageResizer;
 
 namespace DXWebMRCS.Controllers
 {
@@ -20,6 +21,21 @@ namespace DXWebMRCS.Controllers
         public ActionResult Index()
         {
             return View(db.News.ToList());
+        }
+
+        public ActionResult MenuClick(int id)
+        {
+            List<News> news = db.Database.SqlQuery<News>("SELECT * FROM News").ToList();
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (news.Count == 1)
+            {
+                return View("NewsDetail", news.First());
+            }
+            return View("NewsList", news);
         }
 
         // GET: /News/Details/5
@@ -44,7 +60,7 @@ namespace DXWebMRCS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(15);
+            News news = db.News.Find(24);
             if (news == null)
             {
                 return HttpNotFound();
@@ -72,9 +88,28 @@ namespace DXWebMRCS.Controllers
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string fileNameMedium = fileName + "360x240" + DateTime.Now.ToString("yymmssfff") + extension;
                     news.Image = "/Content/Images/NewsImage/" + fileName;
+                    news.ImageMedium = "/Content/Images/NewsImage/" + fileNameMedium;
                     fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
-                    ImageFile.SaveAs(fileName); 
+                    fileNameMedium = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileNameMedium);
+                    ImageFile.SaveAs(fileName);
+                    ImageFile.SaveAs(fileNameMedium);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                    ResizeSettings resizeSetting2 = new ResizeSettings
+                    {
+                        Width = 360,
+                        Height = 240,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);  
                 }
 
                 news.Date = DateTime.Now;
@@ -106,10 +141,39 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news)
+        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string fileNameMedium = fileName + "360x240" + DateTime.Now.ToString("yymmssfff") + extension;
+                    news.Image = "/Content/Images/NewsImage/" + fileName;
+                    news.ImageMedium = "/Content/Images/NewsImage/" + fileNameMedium;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    fileNameMedium = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileNameMedium);
+                    ImageFile.SaveAs(fileName);
+                    ImageFile.SaveAs(fileNameMedium);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                    ResizeSettings resizeSetting2 = new ResizeSettings
+                    {
+                        Width = 360,
+                        Height = 240,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);  
+                }
+
                 news.Date = DateTime.Now;
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();

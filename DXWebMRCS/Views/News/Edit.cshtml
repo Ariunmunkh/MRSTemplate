@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 <div class="right_col" role="main">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -60,9 +60,10 @@
                 @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @{string imageUrl = "http://localhost:4659" + @Model.Image;}
-                    <input type="file" name="ImageFile" required onchange="show(this)">
+                    <input type="file" name="ImageFile" onchange="show(this)">
                     <img id="user_img" src=@imageUrl height="100" width="90" />
-     
+                    @Html.HiddenFor(model => model.Image)
+                    @Html.HiddenFor(model => model.ImageMedium)
                 </div>
             </div>
 
