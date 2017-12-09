@@ -42,7 +42,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Гамшгийн тухай <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("SafeType", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Зуд", Value = "Зуд" },
                                                                    new SelectListItem{ Text="Хүчтэй цасан болон шороон шуурга", Value = "Хүчтэй цасан болон шороон шуурга" },
@@ -62,7 +62,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Email <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("DepartmentType", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Хувь хүн", Value = "Хувь хүн" },
                                                                    new SelectListItem{ Text="Байгууллага", Value = "Байгууллага" }
@@ -112,7 +112,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Өөрийн амьдардаг улс <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("Country", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Afghanistan", Value = "1" },
                                                                    new SelectListItem{ Text="Albania", Value = "2" }
@@ -171,7 +171,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Аймаг\хотын нэр <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("StateProvince", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Архангай", Value = "1" },
                                                                    new SelectListItem{ Text="Баян-Өлгий", Value = "2" }
@@ -185,7 +185,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Сум\дүүргийн нэр <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("District", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="ta songo", Value = "1" }
                                                                 }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
@@ -199,7 +199,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Одоо байрлаж байгаа улс <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("NowCountry", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Afghanistan", Value = "1" },
                                                                    new SelectListItem{ Text="Albania", Value = "2" }
@@ -231,7 +231,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Аймаг\хотын нэр <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("NowStateProvince", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Архангай", Value = "1" },
                                                                    new SelectListItem{ Text="Баян-Өлгий", Value = "2" }
@@ -244,7 +244,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Сум\дүүргийн нэр <small>*</small></label>
-                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                        @Html.DropDownList("NowDistrict", new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="ta songo", Value = "1" }
                                                                 }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })

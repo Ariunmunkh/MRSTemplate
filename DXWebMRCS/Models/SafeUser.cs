@@ -15,6 +15,7 @@ namespace DXWebMRCS.Models
         public string FirstName { get; set; }
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string WorkPhone { get; set; }
         public string OtherPhone { get; set; }
