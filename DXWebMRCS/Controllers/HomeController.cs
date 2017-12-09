@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DXWebMRCS.Models;
+using System.Threading;
+using System.Globalization;
 
 namespace DXWebMRCS.Controllers
 {
@@ -36,6 +38,20 @@ namespace DXWebMRCS.Controllers
             menuList = db.Menus.ToList();
             return PartialView("_HeaderPartial", menuList);
         }
-        
+
+        public ActionResult Change(String languageAbbrevation)
+        {
+            if (languageAbbrevation != null)
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(languageAbbrevation);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageAbbrevation);
+            }
+            
+            HttpCookie cookie = new HttpCookie("Language");
+            cookie.Value = languageAbbrevation;
+            Response.Cookies.Add(cookie);
+
+            return View("Index");
+        }
     }
 }

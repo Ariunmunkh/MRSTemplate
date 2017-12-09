@@ -20,6 +20,7 @@ namespace DXWebMRCS.Models {
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<SafeUser> SafeUsers { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {

@@ -5382,6 +5382,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\News\NewsDetail.cshtml" />
     <Content Include="Views\News\NewsList.cshtml" />
+    <Content Include="Views\Safe\Index.cshtml" />
+    <Content Include="Views\Safe\AddSafeUser.cshtml" />
+    <Content Include="Views\Safe\SafeUserList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5394,19 +5397,43 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SafeController.cs" />
     <Compile Include="Controllers\SysAdminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Language\RGlobal.mn.Designer.cs">
+      <DependentUpon>RGlobal.mn.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Language\RGlobal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RGlobal.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201712041227347_test.cs" />
     <Compile Include="Migrations\201712041227347_test.Designer.cs">
       <DependentUpon>201712041227347_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061418013_test1.cs" />
+    <Compile Include="Migrations\201712061418013_test1.Designer.cs">
+      <DependentUpon>201712061418013_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081518060_test2.cs" />
+    <Compile Include="Migrations\201712081518060_test2.Designer.cs">
+      <DependentUpon>201712081518060_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091047155_test3.cs" />
+    <Compile Include="Migrations\201712091047155_test3.Designer.cs">
+      <DependentUpon>201712091047155_test3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -5414,6 +5441,7 @@
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
+    <Compile Include="Models\SafeUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
   </ItemGroup>
@@ -5424,8 +5452,25 @@
     <Folder Include="Content\UploadImages\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Language\RGlobal.mn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RGlobal.mn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\RGlobal.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712041227347_test.resx">
       <DependentUpon>201712041227347_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061418013_test1.resx">
+      <DependentUpon>201712061418013_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081518060_test2.resx">
+      <DependentUpon>201712081518060_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091047155_test3.resx">
+      <DependentUpon>201712091047155_test3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

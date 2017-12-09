@@ -1,0 +1,320 @@
+﻿@model DXWebMRCS.Models.SafeUser
+@{
+    ViewBag.Title = "AddSafeUser";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<!-- Start main-content -->
+<div class="main-content">
+
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title text-white">Job Application Form</h2>
+                        <ol class="breadcrumb text-center text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li class="active text-gray-silver">Page Title</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Job Apply Form -->
+    <section class="divider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <div class="border-1px p-30 mb-0">
+                        <h3 class="text-theme-colored mt-0 pt-5">Аюулгүй, эсэн мэнд байгаагаа мэдэгдээрэй</h3>
+                        <hr>
+                        <p>Хэрэв Та ямар нэг байдлаар гамшигт нэрвэгдсэн бол “Аюулгүй, эсэн мэнд байна” гэсэн энэхүү хуудсаар дамжуулан ойр дотныхондоо өөрийгөө мэдэгдээрэй. Энэхүү “Аюулгүй, эсэн мэнд байна” хуудсанд бүртгүүлэх эсэх нь сайн дурын үндсэн дээр явагдах ба Та хэзээ ч хамаагүй бүртгүүлж, өөрийн мэдээллийг шинэчлэх боломжтой юм. Таны тухай мэдээллийг хайж байгаа хүмүүс Таны нэр, утасны дугаар, гэрийн хаягийн мэдээллийг оруулж, нэвтэрнэ. Хайлтын дүн зөвхөн таны овог, нэр, бүртгүүлсэн огноо, цаг болон Таны бусдад хэлэхийг хүссэн захидлыг л харуулах болно. Алга болсон хүмүүсийн мэдээллийг гэр бүлтэй нь холбож өгөх эсвэл гамшгийн үеийн хүмүүнлэгийн тусламжид хамруулах зорилгоор бусад байгууллагуудтай мөн хуваалцаж болзошгүй. Та өөрийгөө? “Аюулгүй, эсэн мэнд байна” хуудсанд бүртгүүлэхийн тулд дараах мэдээллийг бөглөнө үү.</p>
+                        <form id="job_apply_form" name="job_apply_form" action="includes/job.php" method="post" enctype="multipart/form-data">
+                            <p>Миний тухай</p>
+                            <hr>
+                            <p>Улаан өнгийн * тэмдэглэгдсэн хэсгийг бөглөнө үү.</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Гамшгийн тухай <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Зуд", Value = "Зуд" },
+                                                                   new SelectListItem{ Text="Хүчтэй цасан болон шороон шуурга", Value = "Хүчтэй цасан болон шороон шуурга" },
+                                                                   new SelectListItem{ Text="Тал хээрийн түймэр", Value = "Тал хээрийн түймэр" },
+                                                                   new SelectListItem{ Text="Ахуйн түймэр", Value = "Ахуйн түймэр" },
+                                                                   new SelectListItem{ Text="Газар хөдлөлт", Value = "Газар хөдлөлт" },
+                                                                   new SelectListItem{ Text="Үер", Value = "Үер" },
+                                                                   new SelectListItem{ Text="Халдварт өвчин", Value = "Халдварт өвчин" },
+                                                                   new SelectListItem{ Text="Ган", Value = "Ган" },
+                                                                   new SelectListItem{ Text="Химийн хорт бодис алдагдах", Value = "Химийн хорт бодис алдагдах" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                        
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class ="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Хувь хүн", Value = "Хувь хүн" },
+                                                                   new SelectListItem{ Text="Байгууллага", Value = "Байгууллага" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Овог <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.LastName)
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Өөрийн нэр <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Цахим хаяг <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Төрсөн он сар өдөр \ он-сар-өдөр \ <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Өөрийн амьдардаг улс <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Afghanistan", Value = "1" },
+                                                                   new SelectListItem{ Text="Albania", Value = "2" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Хувийн утасны дугаар <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Ажлын утасны дугаар <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.WorkPhone, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Бусад холбогдох утасны дугаар <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.OtherPhone, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Гэрийн хаяг 1 \Сум\дүүрэг, хороолол, хороо, гудамж, байр\байшин\хашааны дугаар, тоот\ <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Гэрийн хаяг 2 \ <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Аймаг\хотын нэр <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Архангай", Value = "1" },
+                                                                   new SelectListItem{ Text="Баян-Өлгий", Value = "2" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Сум\дүүргийн нэр <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="ta songo", Value = "1" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Одоо байрлаж байгаа улс <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Afghanistan", Value = "1" },
+                                                                   new SelectListItem{ Text="Albania", Value = "2" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Гэрийн хаяг 1 \Сум\дүүрэг, хороолол, хороо, гудамж, байр\байшин\хашааны дугаар, тоот\ <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.NowAddress, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Гэрийн хаяг 2 \ <small>*</small></label>
+                                        @Html.TextBoxFor(m => m.HomeAddress2, new { @class = "form-control" })
+                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Аймаг\хотын нэр <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="Архангай", Value = "1" },
+                                                                   new SelectListItem{ Text="Баян-Өлгий", Value = "2" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Сум\дүүргийн нэр <small>*</small></label>
+                                        @Html.DropDownList("ContentType", new List<SelectListItem>
+                                                                {
+                                                                   new SelectListItem{ Text="ta songo", Value = "1" }
+                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <p>Аюулгүй, эсэн мэнд захиаг энд бичнэ үү, Та 255 тэмдэгтэд багтааж захиагаа бичихийг анхаарна уу. Та энд бүртгүүлснээр Таны захидал олон нийтэд харагдах ба нэр болон, өөрийн талаарх мэдээлэлд бусдын тухай дурьдах үед гарч болох хор уршгийг тооцоорой. Энэхүү захиаг Монголын улаан загалмай нийгэмлэг хянах боломжгүй болно. Хэрэв Танд гамшиг, осол тохиолдвол 101 \Гал түймрийн дуудлага\, 105 \Гамшиг, ослын дуудлага\-руу хандаарай.</p>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">                                       
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail1)@Html.DisplayNameFor(x => Model.SafeMail1)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail2)@Html.DisplayNameFor(x => Model.SafeMail2)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail3)@Html.DisplayNameFor(x => Model.SafeMail3)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail4)@Html.DisplayNameFor(x => Model.SafeMail4)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail5)@Html.DisplayNameFor(x => Model.SafeMail5)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail6)@Html.DisplayNameFor(x => Model.SafeMail6)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail7)@Html.DisplayNameFor(x => Model.SafeMail7)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail8)@Html.DisplayNameFor(x => Model.SafeMail8)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail9)@Html.DisplayNameFor(x => Model.SafeMail9)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail10)@Html.DisplayNameFor(x => Model.SafeMail10)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail11)@Html.DisplayNameFor(x => Model.SafeMail11)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail12)@Html.DisplayNameFor(x => Model.SafeMail12)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail13)@Html.DisplayNameFor(x => Model.SafeMail13)</label>
+                                        <label>@Html.CheckBoxFor(m => m.SafeMail14)@Html.DisplayNameFor(x => Model.SafeMail14)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Бусад мэдээлэл <small>*</small></label>
+                                @Html.TextAreaFor(m => m.OtherNews, new { @class = "form-control" })
+                                @*<textarea name="form_message" class="form-control required" rows="5" placeholder="Your cover letter/message sent to the employer"></textarea>*@
+                            </div>
+                            <div class="form-group">
+                                <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                                <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
+                            </div>
+                        </form>
+                        <!-- Job Form Validation-->
+                        <script type="text/javascript">
+                            $("#job_apply_form").validate({
+                                submitHandler: function (form) {
+                                    var form_btn = $(form).find('button[type="submit"]');
+                                    var form_result_div = '#form-result';
+                                    $(form_result_div).remove();
+                                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                                    var form_btn_old_msg = form_btn.html();
+                                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                                    $(form).ajaxSubmit({
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.status == 'true') {
+                                                $(form).find('.form-control').val('');
+                                            }
+                                            form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                            $(form_result_div).html(data.message).fadeIn('slow');
+                                            setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end main-content -->
+

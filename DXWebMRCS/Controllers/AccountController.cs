@@ -15,6 +15,8 @@ namespace DXWebMRCS.Controllers {
     public class AccountController : Controller {
 
         private UsersContext db = new UsersContext();
+
+        
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -70,6 +72,7 @@ namespace DXWebMRCS.Controllers {
                 // Attempt to register the user
                 try {
                     WebSecurity.CreateUserAndAccount(model.Email, model.Password);
+                    
                     WebSecurity.Login(model.Email, model.Password);
                     return Redirect("/");
                 }
