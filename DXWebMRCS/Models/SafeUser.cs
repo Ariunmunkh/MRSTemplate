@@ -9,20 +9,26 @@ namespace DXWebMRCS.Models
     public class SafeUser
     {
         public int Id { get; set; }
+        [Required]
         public string SafeType { get; set; }
         public string DepartmentType { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string FirstName { get; set; }
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
+        [Required]
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string WorkPhone { get; set; }
         public string OtherPhone { get; set; }
+        [Required]
         public string Address { get; set; }
         public string Address2 { get; set; }
         public string StateProvince { get; set; }
         public string District { get; set; }
+        [Required]
         public string NowCountry { get; set; }
         public string NowAddress { get; set; }
         public string HomeAddress2 { get; set; }

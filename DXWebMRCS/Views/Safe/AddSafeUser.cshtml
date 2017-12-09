@@ -34,7 +34,8 @@
                         <h3 class="text-theme-colored mt-0 pt-5">Аюулгүй, эсэн мэнд байгаагаа мэдэгдээрэй</h3>
                         <hr>
                         <p>Хэрэв Та ямар нэг байдлаар гамшигт нэрвэгдсэн бол “Аюулгүй, эсэн мэнд байна” гэсэн энэхүү хуудсаар дамжуулан ойр дотныхондоо өөрийгөө мэдэгдээрэй. Энэхүү “Аюулгүй, эсэн мэнд байна” хуудсанд бүртгүүлэх эсэх нь сайн дурын үндсэн дээр явагдах ба Та хэзээ ч хамаагүй бүртгүүлж, өөрийн мэдээллийг шинэчлэх боломжтой юм. Таны тухай мэдээллийг хайж байгаа хүмүүс Таны нэр, утасны дугаар, гэрийн хаягийн мэдээллийг оруулж, нэвтэрнэ. Хайлтын дүн зөвхөн таны овог, нэр, бүртгүүлсэн огноо, цаг болон Таны бусдад хэлэхийг хүссэн захидлыг л харуулах болно. Алга болсон хүмүүсийн мэдээллийг гэр бүлтэй нь холбож өгөх эсвэл гамшгийн үеийн хүмүүнлэгийн тусламжид хамруулах зорилгоор бусад байгууллагуудтай мөн хуваалцаж болзошгүй. Та өөрийгөө? “Аюулгүй, эсэн мэнд байна” хуудсанд бүртгүүлэхийн тулд дараах мэдээллийг бөглөнө үү.</p>
-                        <form id="job_apply_form" name="job_apply_form" action="includes/job.php" method="post" enctype="multipart/form-data">
+                        @using (Html.BeginForm("AddSafeUser", "Safe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <p>Миний тухай</p>
                             <hr>
                             <p>Улаан өнгийн * тэмдэглэгдсэн хэсгийг бөглөнө үү.</p>
@@ -285,31 +286,7 @@
                                 <input name="form_botcheck" class="form-control" type="hidden" value="" />
                                 <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
                             </div>
-                        </form>
-                        <!-- Job Form Validation-->
-                        <script type="text/javascript">
-                            $("#job_apply_form").validate({
-                                submitHandler: function (form) {
-                                    var form_btn = $(form).find('button[type="submit"]');
-                                    var form_result_div = '#form-result';
-                                    $(form_result_div).remove();
-                                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                    var form_btn_old_msg = form_btn.html();
-                                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                    $(form).ajaxSubmit({
-                                        dataType: 'json',
-                                        success: function (data) {
-                                            if (data.status == 'true') {
-                                                $(form).find('.form-control').val('');
-                                            }
-                                            form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                            $(form_result_div).html(data.message).fadeIn('slow');
-                                            setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
-                                        }
-                                    });
-                                }
-                            });
-                        </script>
+                        }                        
                     </div>
                 </div>
             </div>
