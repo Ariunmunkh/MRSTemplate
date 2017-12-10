@@ -79,7 +79,38 @@
                     @Html.ValidationMessageFor(model => model.ContentType)
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MenuID, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
 
+                    @Html.DevExpress().ComboBox(
+                        settings =>
+                        {
+                            settings.Name = "MenuID";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Height = 25;
+                            settings.PreRender = (s, e) =>
+                            {
+                                if (Model.MenuID != null)
+                                {
+                                    MVCxComboBox c = s as MVCxComboBox;
+                                    c.SelectedItem = c.Items.FindByValue(Model.MenuID);
+                                }
+                            };
+                            settings.SelectedIndex = 0;
+                            settings.Properties.NullDisplayText = "No data available...";
+                            settings.Properties.TextField = "NAMEMON";
+                            settings.Properties.Columns.Add("NAMEMON", "NAMEMON", 150);
+                            settings.Properties.ValueField = "MENUID";
+                            settings.ShowModelErrors = true;
+                            settings.Properties.ValueType = typeof(int);
+                            settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+                            settings.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetMenus()).GetHtml()
+
+                    @Html.ValidationMessageFor(model => model.MenuID)
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
@@ -102,5 +133,5 @@
             filerdr.readAsDataURL(input.files[0]);
         }
     }
-</script>  
+</script>
 

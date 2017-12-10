@@ -109,7 +109,7 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news, HttpPostedFileBase ImageFile)
+        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -171,7 +171,7 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType")] News news, HttpPostedFileBase ImageFile)
+        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {

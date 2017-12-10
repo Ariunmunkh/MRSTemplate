@@ -25,6 +25,8 @@ namespace DXWebMRCS.Models
         [Display(Name = "Зураг")]
         public string Image { get; set; }
         public string ImageMedium { get; set; }
+
+        [Display(Name = "Цэсний дугаар")]
         public int? MenuID { get; set; }
         
         [Display(Name = "Төрөл")]
