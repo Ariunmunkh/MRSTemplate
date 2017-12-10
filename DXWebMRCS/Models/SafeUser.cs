@@ -64,10 +64,4 @@ namespace DXWebMRCS.Models
         public bool SafeMail14 { get; set; }
         public string OtherNews { get; set; }
     }
-
-    public class SafeType
-    {
-        public string name { get; set; }
-        public bool value { get; set; }
-    }
 }

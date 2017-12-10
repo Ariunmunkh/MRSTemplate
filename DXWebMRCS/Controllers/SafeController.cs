@@ -17,6 +17,7 @@ namespace DXWebMRCS.Controllers
         }
 
         // GET: /Safe/
+        [HttpGet]
         public ActionResult AddSafeUser()
         {
             return View();
@@ -25,14 +26,18 @@ namespace DXWebMRCS.Controllers
         [HttpPost]
         public ActionResult AddSafeUser(SafeUser safeUser)
         {
-            db.SafeUsers.Add(safeUser);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.SafeUsers.Add(safeUser);
+                db.SaveChanges();
+            }
             return View();
         }
 
         public ActionResult SafeUserList()
         {
-            return View();
+            var list = db.SafeUsers.ToList();
+            return View(list);
         }
 	}
 }

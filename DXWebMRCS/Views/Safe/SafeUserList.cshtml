@@ -1,8 +1,33 @@
-﻿
+﻿@model IEnumerable<DXWebMRCS.Models.SafeUser>
 @{
     ViewBag.Title = "SafeUserList";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>SafeUserList</h2>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead style="background-color: #df0030;color:white">
+                    <tr>
+                        <th>№</th>
+                        <th>ОВОГ</th>
+                        <th>НЭР</th>
+                        <th>СТАТУС</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    { 
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.LastName</td>
+                        <td>@item.FirstName</td>
+                        <td>АМЬД</td>
+                    </tr>   
+                    }                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

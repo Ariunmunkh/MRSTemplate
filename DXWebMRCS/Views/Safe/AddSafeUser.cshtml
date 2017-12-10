@@ -5,31 +5,12 @@
 }
 <!-- Start main-content -->
 <div class="main-content">
-
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
-        <div class="container pt-70 pb-20">
-            <!-- Section Content -->
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2 class="title text-white">Job Application Form</h2>
-                        <ol class="breadcrumb text-center text-black mt-10">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li class="active text-gray-silver">Page Title</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Section: Job Apply Form -->
     <section class="divider">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-push-3">
+                <div class="col-md-8 col-md-push-2">
                     <div class="border-1px p-30 mb-0">
                         <h3 class="text-theme-colored mt-0 pt-5">Аюулгүй, эсэн мэнд байгаагаа мэдэгдээрэй</h3>
                         <hr>
@@ -104,7 +85,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Төрсөн он сар өдөр \ он-сар-өдөр \ <small>*</small></label>
-                                        @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control datepicker", placeholder = "1900-11-24" })
                                         @*@Html.ValidationMessageFor(m => m.FirstName)*@
                                     </div>
                                 </div>
@@ -295,3 +276,8 @@
 </div>
 <!-- end main-content -->
 
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+</script>
