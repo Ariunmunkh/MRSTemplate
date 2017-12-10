@@ -99,8 +99,10 @@
                             };
                             settings.SelectedIndex = 0;
                             settings.Properties.NullDisplayText = "No data available...";
+                            settings.Properties.TextFormatString = "{0} - {1}";
                             settings.Properties.TextField = "NAMEMON";
-                            settings.Properties.Columns.Add("NAMEMON", "NAMEMON", 150);
+                            settings.Properties.Columns.Add("NAMEMON", "Монгол");
+                            settings.Properties.Columns.Add("NameEng", "English");
                             settings.Properties.ValueField = "MENUID";
                             settings.ShowModelErrors = true;
                             settings.Properties.ValueType = typeof(int);
