@@ -15,9 +15,7 @@ namespace DXWebMRCS.Controllers
         public IEnumerable<Menu> menuList;
         public ActionResult Index()
         {
-            // DXCOMMENT: Pass a data model for GridView
-            
-            var menuList = db.Menus.ToList();
+            // DXCOMMENT: Pass a data model for GridView            
             return View();    
         }
         
@@ -26,8 +24,7 @@ namespace DXWebMRCS.Controllers
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView();
         }
-
-        
+                
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
@@ -52,6 +49,12 @@ namespace DXWebMRCS.Controllers
             Response.Cookies.Add(cookie);
 
             return View("Index");
+        }
+
+        public ActionResult SliderAdd()
+        {
+            // DXCOMMENT: Pass a data model for GridView            
+            return View();
         }
     }
 }

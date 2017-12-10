@@ -5385,6 +5385,7 @@
     <Content Include="Views\Safe\Index.cshtml" />
     <Content Include="Views\Safe\AddSafeUser.cshtml" />
     <Content Include="Views\Safe\SafeUserList.cshtml" />
+    <Content Include="Views\Home\SliderAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5443,6 +5444,10 @@
     <Compile Include="Migrations\201712091201052_test5.Designer.cs">
       <DependentUpon>201712091201052_test5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712100807260_test6.cs" />
+    <Compile Include="Migrations\201712100807260_test6.Designer.cs">
+      <DependentUpon>201712100807260_test6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -5450,6 +5455,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
     <Compile Include="Models\SafeUser.cs" />
+    <Compile Include="Models\SliderPhoto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
   </ItemGroup>
@@ -5485,6 +5491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712091201052_test5.resx">
       <DependentUpon>201712091201052_test5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712100807260_test6.resx">
+      <DependentUpon>201712100807260_test6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

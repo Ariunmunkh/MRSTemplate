@@ -21,6 +21,7 @@ namespace DXWebMRCS.Models {
         public DbSet<News> News { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<SafeUser> SafeUsers { get; set; }
+        public DbSet<SliderPhoto> SliderPhotos { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {
@@ -28,6 +29,7 @@ namespace DXWebMRCS.Models {
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Name { get; set; }
     }
         
  
