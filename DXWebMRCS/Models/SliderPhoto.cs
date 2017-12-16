@@ -10,7 +10,7 @@ namespace DXWebMRCS.Models
     {
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Та зураг аа оруулна уу.")]
+        [Display(Name = "Зураг")]
         public string ImagePath { get; set; }
         public DateTime CreatedDate { get; set; }
     }
