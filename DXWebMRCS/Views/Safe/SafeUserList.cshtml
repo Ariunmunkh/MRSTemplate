@@ -7,9 +7,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <table class="table">
+            <table class="table table-striped jambo_table bulk_action">
                 <thead style="background-color: #df0030;color:white">
-                    <tr>
+                    <tr class="headings">
                         <th>№</th>
                         <th>ОВОГ</th>
                         <th>НЭР</th>
@@ -18,14 +18,14 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    { 
-                    <tr>
-                        <th scope="row">@item.Id</th>
-                        <td>@item.LastName</td>
-                        <td>@item.FirstName</td>
-                        <td>АМЬД</td>
-                    </tr>   
-                    }                 
+                    {
+                        <tr class="even pointer">
+                            <th scope="row">@item.Id</th>
+                            <td>@item.LastName</td>
+                            <td>@item.FirstName</td>
+                            <td>АМЬД</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

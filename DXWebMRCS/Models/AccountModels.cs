@@ -22,6 +22,8 @@ namespace DXWebMRCS.Models {
         public DbSet<Menu> Menus { get; set; }
         public DbSet<SafeUser> SafeUsers { get; set; }
         public DbSet<SliderPhoto> SliderPhotos { get; set; }
+        public DbSet<Branch> Branchs { get; set; }
+        public DbSet<Training> Trainings { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {
