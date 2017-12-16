@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +6,10 @@ using System.Web.Mvc;
 using DXWebMRCS.Models;
 using System.Threading;
 using System.Globalization;
+using ImageResizer;
+using System.IO;
+using System.Net.Mail;
+using System.Net;
 
 namespace DXWebMRCS.Controllers
 {
@@ -59,14 +63,41 @@ namespace DXWebMRCS.Controllers
         }
 
         [HttpPost]
-        public ActionResult SliderAdd(SliderPhoto slider)
+        public ActionResult SliderAdd(SliderPhoto slider, HttpPostedFileBase ImageFile)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string fileNameMedium = fileName + "1920x1280" + DateTime.Now.ToString("yymmssfff") + extension;
+                    slider.ImagePath = "/Content/Images/SliderImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/SliderImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "jpg"
+                    };
+
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+                slider.CreatedDate = DateTime.Now;
                 db.SliderPhotos.Add(slider);
                 db.SaveChanges();
-            }       
-            return View();
+            //}
+            return View(slider);
+        }
+
+        [HttpGet]
+        public ActionResult SliderList()
+        {
+            // DXCOMMENT: Pass a data model for GridView      
+            var list = db.SliderPhotos.OrderByDescending(x => x.CreatedDate).ToList();
+            return View(list);
         }
     }
 }

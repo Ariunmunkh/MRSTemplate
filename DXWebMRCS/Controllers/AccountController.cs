@@ -34,6 +34,10 @@ namespace DXWebMRCS.Controllers {
         public ActionResult Login(LoginModel model, string returnUrl) {
             if(ModelState.IsValid) {
                 if(WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe)) {
+                    if (Roles.IsUserInRole("Admin"))
+                    {
+                         return Redirect(returnUrl ?? "/SysAdmin");
+                    }
                     return Redirect(returnUrl ?? "/");
                 }
                 ViewBag.ErrorMessage = "The user name or password provided is incorrect";
@@ -71,8 +75,16 @@ namespace DXWebMRCS.Controllers {
             if(ModelState.IsValid) {
                 // Attempt to register the user
                 try {
-                    WebSecurity.CreateUserAndAccount(model.Email, model.Password);
-                    
+                    WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
+                    {
+                        Name = model.UserName
+                    });
+                    var isRole = Roles.RoleExists("User");
+                    if (!isRole)
+                    {
+                        Roles.CreateRole("User");
+                    }
+                    Roles.AddUserToRole(model.Email, "User");
                     WebSecurity.Login(model.Email, model.Password);
                     return Redirect("/");
                 }

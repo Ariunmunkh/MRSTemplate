@@ -21,7 +21,14 @@
                     <div class="widget no-border m-0">
                         <ul class="list-inline text-right sm-text-center">
                             <li>
-                                <a href="~/Content/#" class="text-white">FAQ</a>
+                                @*@if (Roles.IsUserInRole("User"))
+                                {
+                                    
+                                }
+                                else if(Roles.IsUserInRole("Admin"))
+                                {*@
+                                    <a href="~/Content/#" class="text-white">FAQ</a>
+                                @*}*@
                             </li>
                             <li class="text-white">|</li>
                             <li>

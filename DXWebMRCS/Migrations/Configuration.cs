@@ -1,9 +1,12 @@
 namespace DXWebMRCS.Migrations
 {
+    using DXWebMRCS.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Security;
+    using WebMatrix.WebData;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DXWebMRCS.Models.UsersContext>
     {
@@ -26,6 +29,14 @@ namespace DXWebMRCS.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            
+            //WebSecurity.CreateUserAndAccount("Admin@redcross.mn", "Admin123.", propertyValues: new
+            //{
+            //    Name = "Admin"
+            //});
+
+            //Roles.RoleExists("Admin");
+            
         }
     }
 }
