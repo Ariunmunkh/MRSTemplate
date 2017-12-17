@@ -28,6 +28,9 @@ namespace DXWebMRCS.Models
 
         [Display(Name = "Цэс")]
         public int? MenuID { get; set; }
+
+        [Display(Name = "Салбар")]
+        public int? BranchID { get; set; }
         
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }

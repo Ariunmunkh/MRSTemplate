@@ -33,5 +33,8 @@ namespace DXWebMRCS.Models
 
         public int? ParentId { get; set; }
 
+        [Display(Name = "Салбар")]
+        public int? BranchID { get; set; }
+
     }
 }
