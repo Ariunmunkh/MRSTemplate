@@ -6,6 +6,7 @@ using System.Data;
 using System.Web.Configuration;
 using DXWebMRCS.Models;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace DXWebMRCS.Models
 {
@@ -135,6 +136,77 @@ namespace DXWebMRCS.Models
                 connection.Open();
                 deleteCommand.ExecuteNonQuery();
             }
+        }
+
+        private static UsersContext DB = new UsersContext();
+        public static IEnumerable GetBranchs()
+        {
+            List<Branch> Branch = new List<Branch>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Branch", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Branch.Add(new Branch()
+                    {
+                        BranchID = (int)reader["BranchID"],
+                        NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
+                        NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Branch;
+        }
+
+        public static void DeleteBranch(int BranchID)
+        {
+            Branch Branch = GetEditableBranch(BranchID);
+            if (Branch != null)
+                GetEditableBranchs().Remove(Branch);
+        }
+
+        public static void InsertBranch(Branch Branch)
+        {
+            Branch editBranch = new Branch();
+            editBranch.BranchID = GetNewEditableBranchID();
+            editBranch.NameMon = Branch.NameMon;
+            editBranch.NameEng = Branch.NameEng;
+            GetEditableBranchs().Add(editBranch);
+        }
+
+        public static void UpdateBranch(Branch Branch)
+        {
+            Branch editBranch = GetEditableBranch(Branch.BranchID);
+            if (editBranch != null)
+            {
+                editBranch.BranchID = Branch.BranchID;
+                editBranch.NameMon = Branch.NameMon;
+                editBranch.NameEng = Branch.NameEng;
+            }
+        }
+
+        public static IEnumerable GetBranchReports()
+        {
+            var query = from sale in DB.Sales_by_Categories
+                        join invoice in DB.Invoices on sale.BranchName equals invoice.BranchName
+                        where invoice.ShippedDate != null
+                        select new
+                        {
+                            sale.CategoryName,
+                            sale.BranchName,
+                            sale.BranchSales,
+                            invoice.ShippedDate,
+                        };
+            return query.ToList();
         }
     }
 }

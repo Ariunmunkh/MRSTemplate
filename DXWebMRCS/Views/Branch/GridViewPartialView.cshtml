@@ -1,0 +1,20 @@
+@* DXCOMMENT: Configure GridView *@
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "Branch";
+        settings.CallbackRouteValues = new { Controller = "Branch", Action = "GridViewPartialView" };
+
+        settings.KeyFieldName = "BranchID";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.SettingsPager.PageSize = 32;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 350;
+        settings.ControlStyle.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
+        settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+        settings.ControlStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(1);
+
+        // DXCOMMENT: Configure grid's columns in accordance with data model fields
+        settings.Columns.Add("NameMon");
+        settings.Columns.Add("NameEng");
+    }).Bind(Model).GetHtml()
