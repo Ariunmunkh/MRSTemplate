@@ -169,44 +169,44 @@ namespace DXWebMRCS.Models
 
         public static void DeleteBranch(int BranchID)
         {
-            Branch Branch = GetEditableBranch(BranchID);
-            if (Branch != null)
-                GetEditableBranchs().Remove(Branch);
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Branch WHERE BranchID = " + BranchID, connection);
+
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
         }
 
         public static void InsertBranch(Branch Branch)
         {
-            Branch editBranch = new Branch();
-            editBranch.BranchID = GetNewEditableBranchID();
-            editBranch.NameMon = Branch.NameMon;
-            editBranch.NameEng = Branch.NameEng;
-            GetEditableBranchs().Add(editBranch);
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Branch (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
+
+                insertCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
+                insertCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);
+
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
         }
 
         public static void UpdateBranch(Branch Branch)
         {
-            Branch editBranch = GetEditableBranch(Branch.BranchID);
-            if (editBranch != null)
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                editBranch.BranchID = Branch.BranchID;
-                editBranch.NameMon = Branch.NameMon;
-                editBranch.NameEng = Branch.NameEng;
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Branch] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [BranchID] = @BranchID", connection);
+
+                updateCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
+                updateCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);
+
+                updateCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
+
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
             }
         }
 
-        public static IEnumerable GetBranchReports()
-        {
-            var query = from sale in DB.Sales_by_Categories
-                        join invoice in DB.Invoices on sale.BranchName equals invoice.BranchName
-                        where invoice.ShippedDate != null
-                        select new
-                        {
-                            sale.CategoryName,
-                            sale.BranchName,
-                            sale.BranchSales,
-                            invoice.ShippedDate,
-                        };
-            return query.ToList();
-        }
     }
 }

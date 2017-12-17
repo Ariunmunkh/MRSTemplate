@@ -17,12 +17,12 @@ namespace DXWebMRCS.Controllers
         [ValidateInput(false)]
         public ActionResult EditModesPartial()
         {
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableBranchs());
+            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
         }
         public ActionResult ChangeEditModePartial(GridViewEditingMode editMode)
         {
             //GridViewEditingHelper.EditMode = editMode;
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableBranchs());
+            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesAddNewPartial(Branch Branch)
@@ -40,7 +40,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableBranchs());
+            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesUpdatePartial(Branch Branch)
@@ -59,7 +59,7 @@ namespace DXWebMRCS.Controllers
             else
                 ViewData["EditError"] = "Please, correct all errors.";
 
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableBranchs());
+            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesDeletePartial(int BranchID = -1)
@@ -75,7 +75,7 @@ namespace DXWebMRCS.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetEditableBranchs());
+            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
         }
 	}
 }
