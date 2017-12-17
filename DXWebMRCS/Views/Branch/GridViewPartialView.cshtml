@@ -1,6 +1,4 @@
-
-@{
-    Html.EnableClientValidation();
+@{    Html.EnableClientValidation();
     Html.EnableUnobtrusiveJavaScript();
 
     var grid = Html.DevExpress().GridView(
@@ -8,7 +6,7 @@
         {
             settings.Name = "gvEditing";
             settings.KeyFieldName = "BranchID";
-            settings.CallbackRouteValues = new { Controller = "Branch", Action = "EditModesPartial" };
+            settings.CallbackRouteValues = new { Controller = "Branch", Action = "GridViewPartialView" };
             settings.CustomActionRouteValues = new { Controller = "Branch", Action = "ChangeEditModePartial" };
             settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Branch", Action = "EditModesAddNewPartial" };
             settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Branch", Action = "EditModesUpdatePartial" };
@@ -33,7 +31,7 @@
 
             settings.Columns.Add("NameMon");
             settings.Columns.Add("NameEng");
-          
+
         });
 
     if (ViewData["EditError"] != null)

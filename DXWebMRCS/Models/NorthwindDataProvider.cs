@@ -145,7 +145,7 @@ namespace DXWebMRCS.Models
 
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Branch", connection);
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Branches", connection);
 
                 connection.Open();
 
@@ -171,7 +171,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Branch WHERE BranchID = " + BranchID, connection);
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Branches WHERE BranchID = " + BranchID, connection);
 
                 connection.Open();
                 deleteCommand.ExecuteNonQuery();
@@ -182,7 +182,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO Branch (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Branches (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
 
                 insertCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
                 insertCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);
@@ -196,7 +196,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand updateCommand = new SqlCommand("UPDATE [Branch] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [BranchID] = @BranchID", connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Branches] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [BranchID] = @BranchID", connection);
 
                 updateCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
                 updateCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);

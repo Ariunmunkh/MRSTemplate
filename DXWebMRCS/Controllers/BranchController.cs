@@ -10,19 +10,20 @@ namespace DXWebMRCS.Controllers
 {
     public class BranchController : Controller
     {
-        public ActionResult EditModes()
+        public ActionResult Index()
         {
-            return null;// DemoView("EditModes", NorthwindDataProvider.GetEditableBranchs());
+            return View();
         }
+
         [ValidateInput(false)]
-        public ActionResult EditModesPartial()
+        public ActionResult GridViewPartialView()
         {
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
+            return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
         public ActionResult ChangeEditModePartial(GridViewEditingMode editMode)
         {
             //GridViewEditingHelper.EditMode = editMode;
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
+            return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesAddNewPartial(Branch Branch)
@@ -40,7 +41,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
+            return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesUpdatePartial(Branch Branch)
@@ -59,7 +60,7 @@ namespace DXWebMRCS.Controllers
             else
                 ViewData["EditError"] = "Please, correct all errors.";
 
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
+            return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesDeletePartial(int BranchID = -1)
@@ -75,7 +76,7 @@ namespace DXWebMRCS.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("EditModesPartial", NorthwindDataProvider.GetBranchs());
+            return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
 	}
 }
