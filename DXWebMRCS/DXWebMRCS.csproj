@@ -5469,6 +5469,10 @@
     <Compile Include="Migrations\201712160804418_test10.Designer.cs">
       <DependentUpon>201712160804418_test10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181422152_test11.cs" />
+    <Compile Include="Migrations\201712181422152_test11.Designer.cs">
+      <DependentUpon>201712181422152_test11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -5530,6 +5534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712160804418_test10.resx">
       <DependentUpon>201712160804418_test10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181422152_test11.resx">
+      <DependentUpon>201712181422152_test11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
