@@ -1,0 +1,42 @@
+@{    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "gvEditing";
+            settings.KeyFieldName = "BranchID";
+            settings.CallbackRouteValues = new { Controller = "Branch", Action = "GridViewPartialView" };
+            settings.CustomActionRouteValues = new { Controller = "Branch", Action = "ChangeEditModePartial" };
+            settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Branch", Action = "EditModesAddNewPartial" };
+            settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Branch", Action = "EditModesUpdatePartial" };
+            settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Branch", Action = "EditModesDeletePartial" };
+            settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
+            settings.SettingsBehavior.ConfirmDelete = true;
+            settings.SettingsPopup.EditForm.Width = 600;
+            settings.Width = Unit.Percentage(100);
+
+            settings.Styles.Header.Wrap = DefaultBoolean.True;
+            settings.SettingsPager.EnableAdaptivity = true;
+            //settings.SettingsPopup.EditForm.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.OnWindowInnerWidth;
+            //settings.SettingsPopup.EditForm.SettingsAdaptivity.SwitchAtWindowInnerWidth = 768;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
+
+
+            settings.CommandColumn.Visible = true;
+            settings.CommandColumn.ShowNewButton = true;
+            settings.CommandColumn.ShowDeleteButton = true;
+            settings.CommandColumn.ShowEditButton = true;
+
+            settings.Columns.Add("NameMon");
+            settings.Columns.Add("NameEng");
+
+        });
+
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

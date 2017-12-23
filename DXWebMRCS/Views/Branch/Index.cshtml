@@ -1,0 +1,12 @@
+﻿@model System.Collections.IEnumerable
+<div class="right_col" role="main">
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_SysLayout.cshtml";
+    }
+
+    @using (Html.BeginForm())
+    {
+        @Html.Partial("GridViewPartialView", Model)
+    }
+</div>

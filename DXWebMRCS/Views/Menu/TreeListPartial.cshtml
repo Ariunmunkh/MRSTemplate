@@ -22,8 +22,22 @@
     settings.Columns.Add("MenuType", MVCxTreeListColumnType.ComboBox);
     settings.Columns.Add("NavigateUrl");
     settings.Columns.Add("Image", MVCxTreeListColumnType.ComboBox);
-    //settings.Columns.Add("MenuID", MVCxTreeListColumnType.SpinEdit);
-    //settings.Columns.Add("ParentId", MVCxTreeListColumnType.SpinEdit);
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "BranchID";
+        column.EditFormSettings.Visible = DefaultBoolean.True;
+        column.ColumnType = MVCxTreeListColumnType.ComboBox;
+
+        var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+        comboBoxProperties.DataSource = DXWebMRCS.Models.NorthwindDataProvider.GetBranchs();
+        comboBoxProperties.ValueField = "BranchID";
+        comboBoxProperties.TextFormatString = "{0} - {1}";
+        comboBoxProperties.TextField = "NameMon";
+        comboBoxProperties.Columns.Add("NameMon", "Монгол");
+        comboBoxProperties.Columns.Add("NameEng", "English");
+        comboBoxProperties.ValueType = typeof(int);
+    });
+
     settings.CellEditorInitialize += (s, e) =>
     {
         MVCxTreeList treeList = (MVCxTreeList)s;
