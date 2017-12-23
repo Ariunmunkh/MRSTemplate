@@ -3728,6 +3728,8 @@
     <Content Include="Content\css\ytplayer\raster.png" />
     <Content Include="Content\css\ytplayer\raster_dot%402x.png" />
     <Content Include="Content\css\ytplayer\raster_dot.png" />
+    <Content Include="Content\elearncss\all\all.css" />
+    <Content Include="Content\elearncss\app\app.css" />
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\flaticon-set-charity.html" />
     <Content Include="Content\fonts\flaticons\flaticon-set-charity.html" />
@@ -4066,6 +4068,7 @@
     <Content Include="Content\Images\flat-color-icons-svg\workflow.svg" />
     <Content Include="Content\Images\footer-bg.png" />
     <Content Include="Content\Images\GlassHeader.jpg" />
+    <Content Include="Content\Images\guy-8.jpg" />
     <Content Include="Content\Images\logo-white-footer.png" />
     <Content Include="Content\Images\logo-wide%402x.png" />
     <Content Include="Content\Images\logo-wide-white%402x.png" />
@@ -4104,6 +4107,8 @@
     <Content Include="Content\Images\pattern\pattern7.png" />
     <Content Include="Content\Images\payment-card-logo-sm.png" />
     <Content Include="Content\Images\payment-card-logo.png" />
+    <Content Include="Content\Images\photodune-4161018-group-of-students-m.jpg" />
+    <Content Include="Content\Images\photodune-6745579-modern-creative-man-relaxing-on-workspace-m.jpg" />
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\preloaders\1.gif" />
     <Content Include="Content\Images\preloaders\10.gif" />
@@ -4389,6 +4394,8 @@
     <Content Include="Scripts\cldr.unresolved.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\custom.min.js" />
+    <Content Include="Scripts\elearnjs\all\all.js" />
+    <Content Include="Scripts\elearnjs\app\app.js" />
     <Content Include="Scripts\ext-language_tools.js" />
     <Content Include="Scripts\globalize.currency.js" />
     <Content Include="Scripts\globalize.date.js" />
@@ -5391,6 +5398,14 @@
     <Content Include="Views\Safe\SafeUserList.cshtml" />
     <Content Include="Views\Home\SliderAdd.cshtml" />
     <Content Include="Views\Home\SliderList.cshtml" />
+    <Content Include="Views\Branch\Index.cshtml" />
+    <Content Include="Views\Branch\GridViewPartialView.cshtml" />
+    <Content Include="Views\Shared\_ElearnLayout.cshtml" />
+    <Content Include="Views\Elearn\Index.cshtml" />
+    <Content Include="Views\Shared\_ElearnHeader.cshtml" />
+    <Content Include="Views\Shared\ElearnFooter.cshtml" />
+    <Content Include="Views\SysAdmin\SliderList.cshtml" />
+    <Content Include="Views\SysAdmin\SliderAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5405,6 +5420,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\ElearnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />

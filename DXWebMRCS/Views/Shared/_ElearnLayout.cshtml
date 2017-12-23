@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "_ElearnLayout";
+}
+<!DOCTYPE html>
+<html class="transition-navbar-scroll top-navbar-xlarge bottom-footer" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Learning</title>
+
+    <link href="~/Content/elearncss/all/all.css" rel="stylesheet">    
+    <link href="~/Content/elearncss/app/app.css" rel="stylesheet">
+    
+</head>
+<body>
+    
+    @Html.Partial("_ElearnHeader");
+    @RenderBody();
+    @Html.Partial("ElearnFooter");
+    <!-- // Footer -->
+    <!-- Inline Script for colors and config objects; used by various external scripts; -->
+    <script>
+        var colors = {
+            "danger-color": "#e74c3c",
+            "success-color": "#81b53e",
+            "warning-color": "#f0ad4e",
+            "inverse-color": "#2c3e50",
+            "info-color": "#2d7cb5",
+            "default-color": "#6e7882",
+            "default-light-color": "#cfd9db",
+            "purple-color": "#9D8AC7",
+            "mustard-color": "#d4d171",
+            "lightred-color": "#e15258",
+            "body-bg": "#f6f6f6"
+        };
+        var config = {
+            theme: "html",
+            skins: {
+                "default": {
+                    "primary-color": "#42a5f5"
+                }
+            }
+        };
+    </script>
+    <script src="~/Scripts/elearnjs/all/all.js"></script>
+    <script src="~/Scripts/elearnjs/app/app.js"></script>
+</body>
+</html>
+
