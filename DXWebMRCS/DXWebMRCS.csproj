@@ -5391,6 +5391,13 @@
     <Content Include="Views\Safe\SafeUserList.cshtml" />
     <Content Include="Views\Home\SliderAdd.cshtml" />
     <Content Include="Views\Home\SliderList.cshtml" />
+    <Content Include="Views\Branch\Index.cshtml" />
+    <Content Include="Views\Branch\GridViewPartialView.cshtml" />
+    <Content Include="Views\Training\Index.cshtml" />
+    <Content Include="Views\Training\Delete.cshtml" />
+    <Content Include="Views\Training\Create.cshtml" />
+    <Content Include="Views\Training\Edit.cshtml" />
+    <Content Include="Views\Training\_TrainingViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5405,11 +5412,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SafeController.cs" />
     <Compile Include="Controllers\SysAdminController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -5424,54 +5433,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712041227347_test.cs" />
-    <Compile Include="Migrations\201712041227347_test.Designer.cs">
-      <DependentUpon>201712041227347_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712061418013_test1.cs" />
-    <Compile Include="Migrations\201712061418013_test1.Designer.cs">
-      <DependentUpon>201712061418013_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081518060_test2.cs" />
-    <Compile Include="Migrations\201712081518060_test2.Designer.cs">
-      <DependentUpon>201712081518060_test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712091047155_test3.cs" />
-    <Compile Include="Migrations\201712091047155_test3.Designer.cs">
-      <DependentUpon>201712091047155_test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712091056130_test4.cs" />
-    <Compile Include="Migrations\201712091056130_test4.Designer.cs">
-      <DependentUpon>201712091056130_test4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712091201052_test5.cs" />
-    <Compile Include="Migrations\201712091201052_test5.Designer.cs">
-      <DependentUpon>201712091201052_test5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712100807260_test6.cs" />
-    <Compile Include="Migrations\201712100807260_test6.Designer.cs">
-      <DependentUpon>201712100807260_test6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712100829271_test7.cs" />
-    <Compile Include="Migrations\201712100829271_test7.Designer.cs">
-      <DependentUpon>201712100829271_test7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712160749497_test8.cs" />
-    <Compile Include="Migrations\201712160749497_test8.Designer.cs">
-      <DependentUpon>201712160749497_test8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712160802193_test9.cs" />
-    <Compile Include="Migrations\201712160802193_test9.Designer.cs">
-      <DependentUpon>201712160802193_test9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712160804418_test10.cs" />
-    <Compile Include="Migrations\201712160804418_test10.Designer.cs">
-      <DependentUpon>201712160804418_test10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181422152_test11.cs" />
-    <Compile Include="Migrations\201712181422152_test11.Designer.cs">
-      <DependentUpon>201712181422152_test11.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -5501,42 +5462,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712041227347_test.resx">
-      <DependentUpon>201712041227347_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712061418013_test1.resx">
-      <DependentUpon>201712061418013_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081518060_test2.resx">
-      <DependentUpon>201712081518060_test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712091047155_test3.resx">
-      <DependentUpon>201712091047155_test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712091056130_test4.resx">
-      <DependentUpon>201712091056130_test4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712091201052_test5.resx">
-      <DependentUpon>201712091201052_test5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712100807260_test6.resx">
-      <DependentUpon>201712100807260_test6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712100829271_test7.resx">
-      <DependentUpon>201712100829271_test7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712160749497_test8.resx">
-      <DependentUpon>201712160749497_test8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712160802193_test9.resx">
-      <DependentUpon>201712160802193_test9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712160804418_test10.resx">
-      <DependentUpon>201712160804418_test10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181422152_test11.resx">
-      <DependentUpon>201712181422152_test11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,13 @@
+@using DXWebMRCS.Controllers;
+@model DXWebMRCS.Models.News
+@Html.DevExpress().ComboBox(settings =>
+    {
+        settings.Name = "ContentType";
+        settings.Width = 180;
+        settings.SelectedIndex = 0;
+        settings.CallbackRouteValues = new { Controller = "News", Action = "ComboBoxPartial", Model };
+        settings.Properties.CallbackPageSize = 15;
+        settings.Properties.TextField = "NameMon";
+        settings.Properties.ValueField = "MenuID";
+        settings.Properties.ClearButton.DisplayMode = ClearButtonDisplayMode.OnHover;
+    }).BindList(Model.MenuID).GetHtml()
