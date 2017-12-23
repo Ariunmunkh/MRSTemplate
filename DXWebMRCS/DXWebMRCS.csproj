@@ -5393,11 +5393,17 @@
     <Content Include="Views\Home\SliderList.cshtml" />
     <Content Include="Views\Branch\Index.cshtml" />
     <Content Include="Views\Branch\GridViewPartialView.cshtml" />
+    <Content Include="Views\Shared\_ElearnLayout.cshtml" />
+    <Content Include="Views\Elearn\Index.cshtml" />
+    <Content Include="Views\Shared\_ElearnHeader.cshtml" />
+    <Content Include="Views\Shared\ElearnFooter.cshtml" />
+    <Content Include="Views\SysAdmin\SliderList.cshtml" />
     <Content Include="Views\Training\Index.cshtml" />
     <Content Include="Views\Training\Delete.cshtml" />
     <Content Include="Views\Training\Create.cshtml" />
     <Content Include="Views\Training\Edit.cshtml" />
     <Content Include="Views\Training\_TrainingViewPartial.cshtml" />
+    <Content Include="Views\SysAdmin\SliderAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5413,6 +5419,7 @@
     <Compile Include="Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\ElearnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
