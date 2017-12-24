@@ -1,0 +1,62 @@
+﻿@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "UserManagerView";
+        settings.CallbackRouteValues = new { Controller = "SysAdmin", Action = "UserManagerViewPartial" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "SysAdmin", Action = "BranchUserCreate" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "SysAdmin", Action = "UserManagerViewPartialUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "SysAdmin", Action = "UserManagerViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+        settings.Width = Unit.Percentage(100);
+
+        settings.Styles.Header.Wrap = DefaultBoolean.True;
+        settings.SettingsPager.EnableAdaptivity = true;
+
+        settings.Columns.Add(column =>
+        {
+            column.Caption = "#";
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("Edit", "BranchUserEdit", new { id = DataBinder.Eval(c.DataItem, "UserId") }) + "&nbsp;" +
+                    Html.ActionLink("Delete", "BranchUserDelete", new { id = DataBinder.Eval(c.DataItem, "UserId") })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("New", "BranchUserCreate").ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.Width = 70;
+        });
+
+        settings.KeyFieldName = "UserId";
+
+        settings.SettingsPager.Visible = true;
+        settings.SettingsSearchPanel.Visible = true;
+        settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("UserName");
+        settings.Columns.Add("Name");
+        settings.Columns.Add("BranchId");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()
