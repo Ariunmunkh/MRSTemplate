@@ -5389,8 +5389,6 @@
     <Content Include="Views\Safe\Index.cshtml" />
     <Content Include="Views\Safe\AddSafeUser.cshtml" />
     <Content Include="Views\Safe\SafeUserList.cshtml" />
-    <Content Include="Views\Home\SliderAdd.cshtml" />
-    <Content Include="Views\Home\SliderList.cshtml" />
     <Content Include="Views\Branch\Index.cshtml" />
     <Content Include="Views\Branch\GridViewPartialView.cshtml" />
     <Content Include="Views\Shared\_ElearnLayout.cshtml" />
@@ -5405,6 +5403,9 @@
     <Content Include="Views\Training\_TrainingViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\SliderAdd.cshtml" />
     <Content Include="Views\SysAdmin\BranchUserCreate.cshtml" />
+    <Content Include="Views\SysAdmin\_UserManagerViewPartial.cshtml" />
+    <Content Include="Views\SysAdmin\BranchUserEdit.cshtml" />
+    <Content Include="Views\Home\_SliderViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5446,6 +5447,10 @@
     <Compile Include="Migrations\201712230843347_test.Designer.cs">
       <DependentUpon>201712230843347_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712231446253_test1.cs" />
+    <Compile Include="Migrations\201712231446253_test1.Designer.cs">
+      <DependentUpon>201712231446253_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -5477,6 +5482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712230843347_test.resx">
       <DependentUpon>201712230843347_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231446253_test1.resx">
+      <DependentUpon>201712231446253_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

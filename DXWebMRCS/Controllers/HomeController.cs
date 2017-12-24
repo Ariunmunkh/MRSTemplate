@@ -56,12 +56,12 @@ namespace DXWebMRCS.Controllers
             return View("Index");
         }
 
-        //[HttpGet]
-        //public ActionResult SliderAdd()
-        //{
-        //    // DXCOMMENT: Pass a data model for GridView            
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult SliderViewPartial()
+        {
+            var list = db.SliderPhotos.ToList();
+            return PartialView("_SliderViewPartial", list);
+        }
 
         
     }

@@ -8,9 +8,15 @@ using DXWebMRCS.Models;
 using System.IO;
 using ImageResizer;
 using System.Data.Entity;
+using WebMatrix.WebData;
+using System.Web.Security;
+using DXWebMRCS.Filters;
+using System.Net;
 
 namespace DXWebMRCS.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class SysAdminController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -103,6 +109,93 @@ namespace DXWebMRCS.Controllers
             // DXCOMMENT: Pass a data model for GridView      
             var list = db.SliderPhotos.OrderByDescending(x => x.CreatedDate).ToList();
             return View(list);
+        }
+
+        
+        [AllowAnonymous]
+        public ActionResult BranchUserCreate()
+        {
+            ViewBag.BranchList = db.Branchs.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult BranchUserCreate([Bind(Include = "UserName,Email,Password,ConfirmPassword,BranchId")] BranchRegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
+                {
+                    Name = model.UserName,
+                    BranchId = model.BranchId
+                });
+                var isRole = Roles.RoleExists("BranchUser");
+                if (!isRole)
+                {
+                    Roles.CreateRole("BranchUser");
+                }
+                Roles.AddUserToRole(model.Email, "BranchUser");
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult UserManagerViewPartial()
+        {
+            var model = db.UserProfiles;
+            return PartialView("_UserManagerViewPartial", model.ToList());
+        }
+
+        public ActionResult BranchUserEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserProfile user = db.UserProfiles.Find(id);
+            ViewBag.BranchList = db.Branchs.ToList();
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BranchUserEdit([Bind(Include = "UserId,UserName,Name,BranchId")] UserProfile User)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(User).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(User);
+        }
+
+        
+        public ActionResult BranchUserDelete(int id)
+        {
+            if (id >= 0)
+            {
+                try
+                {
+                    db.Database.ExecuteSqlCommand("DELETE FROM webpages_UsersInRoles WHERE UserId = " + id + " " +
+                                                  "DELETE FROM UserProfile WHERE UserId = " + id + " " +
+                                                  "DELETE FROM webpages_Membership WHERE UserId = " + id);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return RedirectToAction("index");
         }
 	}
 

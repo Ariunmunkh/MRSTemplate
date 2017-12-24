@@ -34,9 +34,16 @@ namespace DXWebMRCS.Controllers {
         public ActionResult Login(LoginModel model, string returnUrl) {
             if(ModelState.IsValid) {
                 if(WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe)) {
-                    if (Roles.IsUserInRole("Admin"))
+                    //var role1 = Roles.GetRolesForUser();
+                    //var role2 = Roles.IsUserInRole(model.Email, "BranchUser");
+                    //var role3 = Roles.GetRolesForUser(model.Email);
+                    if (Roles.IsUserInRole(model.Email, "BranchUser"))
                     {
                          return Redirect(returnUrl ?? "/SysAdmin");
+                    }
+                    if (Roles.IsUserInRole(model.Email, "Admin"))
+                    {
+                        return Redirect(returnUrl ?? "/SysAdmin");
                     }
                     return Redirect(returnUrl ?? "/");
                 }

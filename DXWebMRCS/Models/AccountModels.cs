@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -121,7 +121,7 @@ namespace DXWebMRCS.Models {
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         [Required]
-        [StringLength(100, ErrorMessage = "Select Branch")]
+        [Display(Name = "Салбар сонгох")]
         public int BranchId { get; set; }
     }  
 }
