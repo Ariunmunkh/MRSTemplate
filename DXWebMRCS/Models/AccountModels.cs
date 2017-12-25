@@ -124,5 +124,34 @@ namespace DXWebMRCS.Models {
         [Required]
         [Display(Name = "Салбар сонгох")]
         public int BranchId { get; set; }
-    }  
+    }
+
+    public class TrainingModel
+    {
+        public int TrainingID { get; set; }
+        public string NameMon { get; set; }
+        public string NameEng { get; set; }
+        public string ContentMon { get; set; }
+        public string ContentEng { get; set; }
+        public string Where { get; set; }
+        public DateTime When { get; set; }
+        public decimal Duration { get; set; }
+
+        /*
+         0-Бүртгэж байна
+         1-Хүлээгдэж байна
+         2-Заралсан
+         3-Явагдаж байна
+         4-Дууссан
+         5-Цуцалсан*/
+        public decimal Status { get; set; }
+        public int? RequestID { get; set; }
+        public int? UserID { get; set; }
+        /*
+         * 0-Хүсэлт илгээсэн
+         * 1-Хүлээн авсан
+         * 9-Цуцалсан
+        */
+        public int? RequestStatus { get; set; }
+    }
 }

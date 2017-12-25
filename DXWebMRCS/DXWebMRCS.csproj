@@ -5454,6 +5454,8 @@
     <Content Include="Views\SysAdmin\_UserManagerViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\BranchUserEdit.cshtml" />
     <Content Include="Views\Home\_SliderViewPartial.cshtml" />
+    <Content Include="Views\Home\TrainingList.cshtml" />
+    <Content Include="Views\News\MenuNewsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5492,10 +5494,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712240519140_test.cs" />
-    <Compile Include="Migrations\201712240519140_test.Designer.cs">
-      <DependentUpon>201712240519140_test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -5526,9 +5524,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712240519140_test.resx">
-      <DependentUpon>201712240519140_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

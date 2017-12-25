@@ -28,17 +28,32 @@ namespace DXWebMRCS.Controllers
         {
             var pageNumber = 1;
             var pageSize = 4;
-            var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + id + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
             }
 
+            ViewBag.menuId = id;
+
             if (news.Count == 1)
             {
                 return View("NewsDetail", news.First());
             }
-            return View("NewsList", news);
+            return View("MenuNewsList", news);
+        }
+
+        public ActionResult MenuPageClick(int? page, int menuId)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + menuId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.menuId = menuId;
+            return View("MenuNewsList", news);
         }
 
         public ActionResult PageClick(int? page)
@@ -49,11 +64,6 @@ namespace DXWebMRCS.Controllers
             if (news == null)
             {
                 return HttpNotFound();
-            }
-
-            if (news.Count() == 1)
-            {
-                return View("NewsDetail", news.First());
             }
             return View("NewsList", news);
         }
@@ -81,6 +91,18 @@ namespace DXWebMRCS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             News news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + id).FirstOrDefault();
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            return View(news);
+        }
+
+        public ActionResult NewsList()
+        {
+            var pageNumber = 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
