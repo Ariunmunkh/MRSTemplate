@@ -6,7 +6,7 @@
     ViewBag.Title = "NewsList";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
+@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
  <!-- Start main-content -->
 <div class="main-content">
     <!-- Section: inner-header -->
@@ -47,12 +47,32 @@
                                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                                         <ul>
                                             <li class="font-16 text-white font-weight-600">@item.Date.Day</li>
-                                            <li class="font-12 text-white text-uppercase">@item.Date.ToString("MMM")</li>
+                                            <li class="font-10 text-white text-uppercase">                                                
+                                                @if (language == "en-US")
+                                                {
+                                                    @item.Date.ToString("MMM")
+                                                }
+                                                else
+                                                {
+                                                    @item.Date.ToString("MM' сар'") 
+                                                }
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="media-body pl-15">
                                         <div class="event-content pull-left flip">
-                                            <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>@item.TitleMon</a></h4>
+                                            <h4 class="entry-title text-white text-uppercase m-0 mt-5">
+                                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                                    @if (language == "en-US")
+                                                    {
+                                                        @item.TitleEng
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.TitleMon
+                                                    }
+                                                </a>
+                                            </h4>
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
                                             <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
                                         </div>
