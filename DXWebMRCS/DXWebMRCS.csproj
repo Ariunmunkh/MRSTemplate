@@ -5453,13 +5453,10 @@
     <Content Include="Views\SysAdmin\_UserManagerViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\BranchUserEdit.cshtml" />
     <Content Include="Views\Home\_SliderViewPartial.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Training\GridViewDetailPartial.cshtml" />
     <Content Include="Views\Training\GridViewMasterPartial.cshtml" />
-=======
     <Content Include="Views\Home\TrainingList.cshtml" />
     <Content Include="Views\News\MenuNewsList.cshtml" />
->>>>>>> 3dc7ba81c249b1bc13671af96a83b4e51bc3ec01
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
