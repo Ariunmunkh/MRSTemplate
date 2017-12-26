@@ -23,7 +23,10 @@
                             <li>
                                 @if (language == "en-US")
                                 {
-                                    <a href="~/Content/#" class="text-white">FAQ</a>
+                                    if (Roles.IsUserInRole("Admin"))
+                                    {
+                                        <a href="~/Content/#" class="text-white">FAQ</a>
+                                    }                                    
                                 }
                                 else 
                                 {

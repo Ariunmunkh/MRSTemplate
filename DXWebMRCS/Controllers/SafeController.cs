@@ -30,6 +30,7 @@ namespace DXWebMRCS.Controllers
             {
                 db.SafeUsers.Add(safeUser);
                 db.SaveChanges();
+                return RedirectToAction("SafeUserList");
             }
             return View();
         }

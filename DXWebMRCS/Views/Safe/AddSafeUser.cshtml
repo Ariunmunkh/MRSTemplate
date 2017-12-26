@@ -24,7 +24,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Гамшгийн тухай <small>*</small></label>
-                                        @Html.DropDownList("SafeType", new List<SelectListItem>
+                                        @Html.DropDownListFor(model => model.SafeType, new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Зуд", Value = "Зуд" },
                                                                    new SelectListItem{ Text="Хүчтэй цасан болон шороон шуурга", Value = "Хүчтэй цасан болон шороон шуурга" },
@@ -36,19 +36,19 @@
                                                                    new SelectListItem{ Text="Ган", Value = "Ган" },
                                                                    new SelectListItem{ Text="Химийн хорт бодис алдагдах", Value = "Химийн хорт бодис алдагдах" }
                                                                 }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
-                                        
+                                        @Html.ValidationMessageFor(m => m.SafeType, "", new { @class = "text-danger" })
                                     </div>
                                 </div>                                
                             </div>
                             <div class ="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Email <small>*</small></label>
-                                        @Html.DropDownList("DepartmentType", new List<SelectListItem>
+                                        <label>Та байгууллагын нэрийн өмнөөс бүртгүүлж байна уу? <small>*</small></label>
+                                        @Html.DropDownListFor(model => model.DepartmentType, new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Хувь хүн", Value = "Хувь хүн" },
                                                                    new SelectListItem{ Text="Байгууллага", Value = "Байгууллага" }
-                                                                }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
+                                                                }, htmlAttributes: new { @class = "form-control" })
 
 
                                     </div>
@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label>Овог <small>*</small></label>
                                         @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.LastName)
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>                                
                             </div>
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label>Өөрийн нэр <small>*</small></label>
                                         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                     <div class="form-group">
                                         <label>Төрсөн он сар өдөр \ он-сар-өдөр \ <small>*</small></label>
                                         @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control datepicker", placeholder = "1900-11-24" })
-                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                        @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -94,12 +94,12 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Өөрийн амьдардаг улс <small>*</small></label>
-                                        @Html.DropDownList("Country", new List<SelectListItem>
+                                        @Html.DropDownListFor(model => model.Country, new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Afghanistan", Value = "1" },
                                                                    new SelectListItem{ Text="Albania", Value = "2" }
                                                                 }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
-
+                                        @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
 
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                     <div class="form-group">
                                         <label>Гэрийн хаяг 1 \Сум\дүүрэг, хороолол, хороо, гудамж, байр\байшин\хашааны дугаар, тоот\ <small>*</small></label>
                                         @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                                        @*@Html.ValidationMessageFor(m => m.FirstName)*@
+                                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -181,12 +181,12 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Одоо байрлаж байгаа улс <small>*</small></label>
-                                        @Html.DropDownList("NowCountry", new List<SelectListItem>
+                                        @Html.DropDownListFor(model => model.NowCountry, new List<SelectListItem>
                                                                 {
                                                                    new SelectListItem{ Text="Afghanistan", Value = "1" },
                                                                    new SelectListItem{ Text="Albania", Value = "2" }
                                                                 }, "Та сонгоно уу!", htmlAttributes: new { @class = "form-control" })
-                                        
+                                        @Html.ValidationMessageFor(m => m.NowCountry, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@
                             <p>Аюулгүй, эсэн мэнд захиаг энд бичнэ үү, Та 255 тэмдэгтэд багтааж захиагаа бичихийг анхаарна уу. Та энд бүртгүүлснээр Таны захидал олон нийтэд харагдах ба нэр болон, өөрийн талаарх мэдээлэлд бусдын тухай дурьдах үед гарч болох хор уршгийг тооцоорой. Энэхүү захиаг Монголын улаан загалмай нийгэмлэг хянах боломжгүй болно. Хэрэв Танд гамшиг, осол тохиолдвол 101 \Гал түймрийн дуудлага\, 105 \Гамшиг, ослын дуудлага\-руу хандаарай.</p>
 
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-10">
                                     <div class="form-group">                                       
                                         <label>@Html.CheckBoxFor(m => m.SafeMail1)@Html.DisplayNameFor(x => Model.SafeMail1)</label>
                                         <label>@Html.CheckBoxFor(m => m.SafeMail2)@Html.DisplayNameFor(x => Model.SafeMail2)</label>
@@ -265,7 +265,7 @@
                             </div>
                             <div class="form-group">
                                 <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                                <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
+                                <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Бүртгүүлэх</button>
                             </div>
                         }                        
                     </div>

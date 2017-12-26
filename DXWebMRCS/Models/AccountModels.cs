@@ -56,13 +56,13 @@ namespace DXWebMRCS.Models {
     }
 
     public class LoginModel {
-        [Required]
+        [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Та нууц үгээ оруулна уу.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -77,17 +77,17 @@ namespace DXWebMRCS.Models {
     }
 
     public class RegisterModel {
-        [Required]
+        [Required(ErrorMessage = "Та өөрийн нэрээ оруулна уу.")]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Та нууц үгээ оруулна уу.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

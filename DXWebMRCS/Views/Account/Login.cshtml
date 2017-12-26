@@ -1,4 +1,4 @@
-@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
+﻿@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
 @model DXWebMRCS.Models.LoginModel
 
 @using(Html.BeginForm(Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, null))) {
@@ -14,16 +14,16 @@
             <form name="login-form" class="clearfix">
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="form_username_email">Username/Email</label>
+                  <label for="form_username_email">Хэрэглэгчийн мэйл</label>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="form_password">Password</label>
+                  <label for="form_password">Нууц үг</label>
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
               </div>
               <div class="checkbox pull-left mt-15">
