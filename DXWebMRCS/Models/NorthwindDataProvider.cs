@@ -219,5 +219,149 @@ namespace DXWebMRCS.Models
             }
         }
 
+        public static IEnumerable GetTraining()
+        {
+            List<Training> Training = new List<Training>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Trainings ", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Training.Add(new Training()
+                    {
+                        TrainingID = (int)reader["TrainingID"],
+                        NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
+                        NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                        ContentMon = reader["ContentMon"] == DBNull.Value ? string.Empty : (string)reader["ContentMon"],
+                        ContentEng = reader["ContentEng"] == DBNull.Value ? string.Empty : (string)reader["ContentEng"],
+                        Where = reader["Where"] == DBNull.Value ? string.Empty : (string)reader["Where"],
+                        When = reader["When"] == DBNull.Value ? new DateTime() : (DateTime)reader["When"],
+                        Duration = reader["Duration"] == DBNull.Value ? 0 : (decimal)reader["Duration"],
+                        Status = reader["Status"] == DBNull.Value ? 0 : (decimal)reader["Status"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Training;
+        }
+
+        public static IEnumerable GetTrainingRequests()
+        {
+            List<TrainingRequest> TrainingRequest = new List<TrainingRequest>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM TrainingRequests ", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    TrainingRequest.Add(new TrainingRequest()
+                    {
+                        ID = (int)reader["ID"],
+                        UserID = (int)reader["UserID"],
+                        TrainingID = (int)reader["TrainingID"],
+                        Status = (int)reader["Status"]
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return TrainingRequest;
+        }
+        public static IEnumerable GetTrainingRequests(int TrainingID)
+        {
+            List<TrainingRequest> TrainingRequest = new List<TrainingRequest>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM TrainingRequests where TrainingID = " + TrainingID, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    TrainingRequest.Add(new TrainingRequest()
+                    {
+                        ID = (int)reader["ID"],
+                        UserID = (int)reader["UserID"],
+                        TrainingID = (int)reader["TrainingID"],
+                        Status = (int)reader["Status"]
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return TrainingRequest;
+        }
+
+        public static void RemoveUserByID(int UserID)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM TrainingRequests WHERE UserID = " + UserID, connection);
+
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void DeleteTrainingRequest(int ID)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM TrainingRequests WHERE ID = " + ID, connection);
+
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertTrainingRequest(TrainingRequest TrainingRequest)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO TrainingRequests (TrainingID, UserID, Status) VALUES (@TrainingID, @UserID, 0)", connection);
+
+                insertCommand.Parameters.AddWithValue("@UserID", TrainingRequest.UserID);
+                insertCommand.Parameters.AddWithValue("@TrainingID", TrainingRequest.TrainingID);
+
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateTrainingRequest(TrainingRequest TrainingRequest)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand updateCommand = new SqlCommand("UPDATE [TrainingRequests] SET [TrainingID] = @TrainingID, [UserID] = @UserID, Status = @Status WHERE [ID] = @ID", connection);
+
+                updateCommand.Parameters.AddWithValue("@UserID", TrainingRequest.UserID);
+                updateCommand.Parameters.AddWithValue("@TrainingID", TrainingRequest.TrainingID);
+                updateCommand.Parameters.AddWithValue("@Status", TrainingRequest.Status);
+
+                updateCommand.Parameters.AddWithValue("@ID", TrainingRequest.ID);
+
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+            }
+        }
+
     }
 }

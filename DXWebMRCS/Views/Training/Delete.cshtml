@@ -1,4 +1,4 @@
-﻿@model DXWebMRCS.Models.News
+﻿@model DXWebMRCS.Models.Training
 
 @{
     ViewBag.Title = "Delete";
@@ -10,65 +10,40 @@
 <h3></h3>
 <div class="right_col" role="main">
 
-    <h4>News</h4>
+    <h4>Training</h4>
     <hr>Are you sure you want to delete this? </hr>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TitleMon)
+            @Html.DisplayNameFor(model => model.NameMon)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TitleMon)
+            @Html.DisplayFor(model => model.NameEng)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TitleEng)
+            @Html.DisplayNameFor(model => model.ContentMon)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TitleEng)
+            @Html.DisplayFor(model => model.ContentEng)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BodyMon)
+            @Html.DisplayNameFor(model => model.Where)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BodyMon)
+            @Html.DisplayFor(model => model.When)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BodyEng)
+            @Html.DisplayNameFor(model => model.Duration)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BodyEng)
+            @Html.DisplayFor(model => model.Status)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContentType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContentType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm())

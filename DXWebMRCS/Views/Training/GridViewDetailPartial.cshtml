@@ -1,0 +1,30 @@
+﻿
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvEditing" + ViewData["TrainingID"];
+        settings.KeyFieldName = "ID";
+        settings.SettingsDetail.MasterGridName = "TrainingView";
+        settings.CallbackRouteValues = new { Controller = "Training", Action = "GridViewDetailPartial", TrainingID = ViewData["TrainingID"] };
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Training", Action = "DetailsAddNewPartial" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Training", Action = "DetailsUpdatePartial" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Training", Action = "DetailsDeletePartial" };
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+        
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.SettingsEditing.ShowModelErrorsForEditors = true;
+
+        settings.Columns.Add("TrainingID");
+        settings.Columns.Add("UserID");
+        settings.Columns.Add("Status");
+
+        settings.DataBinding = (sender, e) =>
+        {
+            ((MVCxGridView)sender).ForceDataRowType(typeof(DXWebMRCS.Models.TrainingRequest));
+        };
+    }).Bind(Model).GetHtml()
