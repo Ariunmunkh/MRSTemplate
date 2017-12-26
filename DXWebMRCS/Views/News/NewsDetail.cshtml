@@ -3,7 +3,7 @@
     ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
+@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 <!-- Start main-content -->
 <div class="main-content">
     @{string imageUrl = @Model.Image != null ? "http://localhost:4659" + @Model.Image : "http://placehold.it/1920x1280";}
@@ -14,13 +14,31 @@
             <div class="section-content">
                 <div class="row">
                     <div class="col-sm-8 text-left flip xs-text-center">
-                        <h2 class="title">@Model.TitleMon</h2>
+                        <h2 class="title">
+                        @if (language == "en-US")
+                        {
+                            @Model.TitleEng
+                        }
+                        else
+                        {
+                            @Model.TitleMon
+                        }
+                        </h2>
                     </div>
                     <div class="col-sm-4">
                         <ol class="breadcrumb text-right sm-text-center text-black mt-10">
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Detail</a></li>
-                            <li class="active text-gray-silver">@Model.TitleMon</li>
+                            <li class="active text-gray-silver">
+                                @if (language == "en-US")
+                                {
+                                    @Model.TitleEng
+                                }
+                                else
+                                {
+                                    @Model.TitleMon
+                                }
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -33,7 +51,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    @Html.Raw(Model.BodyMon)
+                    @if (language == "en-US")
+                    {
+                        @Html.Raw(Model.BodyEng)
+                    }
+                    else
+                    {
+                        @Html.Raw(Model.BodyMon)
+                    }
+                    
                 </div>
             </div>
         </div>
