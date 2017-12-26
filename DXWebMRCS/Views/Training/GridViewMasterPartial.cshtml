@@ -2,7 +2,7 @@
     var grid = Html.DevExpress().GridView(settings =>
     {
         settings.Name = "TrainingView";
-        settings.CallbackRouteValues = new { Controller = "Training", Action = "TrainingViewPartial" };
+        settings.CallbackRouteValues = new { Controller = "Training", Action = "GridViewMasterPartial" };
 
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Training", Action = "TrainingViewPartialAddNew" };
         settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Training", Action = "TrainingViewPartialUpdate" };
@@ -59,6 +59,20 @@
         settings.Columns.Add("When");
         settings.Columns.Add("Duration");
         settings.Columns.Add("Status");
+
+        settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
+        settings.SettingsDetail.ShowDetailRow = true;
+        settings.SettingsPager.EnableAdaptivity = true;
+
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            ViewContext.Writer.Write("Contact Phone: <b></b>, Fax: <b></b><br /><br />");
+            Html.RenderAction("GridViewDetailPartial", new { TrainingID = DataBinder.Eval(c.DataItem, "TrainingID") });
+        });
+        settings.PreRender = (sender, e) =>
+        {
+            ((MVCxGridView)sender).DetailRows.ExpandRow(0);
+        };
     });
     if (ViewData["EditError"] != null)
     {

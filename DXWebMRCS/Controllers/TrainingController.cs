@@ -174,10 +174,10 @@ namespace DXWebMRCS.Controllers
 
 
         [ValidateInput(false)]
-        public ActionResult TrainingViewPartial()
+        public ActionResult GridViewMasterPartial()
         {
             var model = db.Trainings;
-            return PartialView("_TrainingViewPartial", model.ToList());
+            return PartialView("GridViewMasterPartial", model.ToList());
         }
 
         [HttpPost, ValidateInput(false)]
@@ -198,7 +198,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_TrainingViewPartial", model.ToList());
+            return PartialView("GridViewMasterPartial", model.ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult TrainingViewPartialUpdate(Training item)
@@ -222,7 +222,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_TrainingViewPartial", model.ToList());
+            return PartialView("GridViewMasterPartial", model.ToList());
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult TrainingViewPartialDelete(Int32 TrainingID)
@@ -242,8 +242,69 @@ namespace DXWebMRCS.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_TrainingViewPartial", model.ToList());
+            return PartialView("GridViewMasterPartial", model.ToList());
+        }
+
+        public ActionResult GridViewDetailPartial(string TrainingID)
+        {
+            ViewData["TrainingID"] = TrainingID;
+            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequests(Convert.ToInt32( TrainingID)));
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult DetailsAddNewPartial(TrainingRequest TrainingRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.InsertTrainingRequest(TrainingRequest);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequests(TrainingRequest.TrainingID));
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult DetailsUpdatePartial(TrainingRequest TrainingRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.UpdateTrainingRequest(TrainingRequest);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+
+            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequests(TrainingRequest.TrainingID));
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult DetailsDeletePartial(int TrainingRequestID = -1)
+        {
+            if (TrainingRequestID >= 0)
+            {
+                try
+                {
+                    NorthwindDataProvider.DeleteTrainingRequest(TrainingRequestID);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequests(TrainingRequestID));
         }
     }
-
 }

@@ -5447,13 +5447,14 @@
     <Content Include="Views\Training\Delete.cshtml" />
     <Content Include="Views\Training\Create.cshtml" />
     <Content Include="Views\Training\Edit.cshtml" />
-    <Content Include="Views\Training\_TrainingViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\SliderAdd.cshtml" />
     <Content Include="Views\SysAdmin\BranchUserCreate.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\SysAdmin\_UserManagerViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\BranchUserEdit.cshtml" />
     <Content Include="Views\Home\_SliderViewPartial.cshtml" />
+    <Content Include="Views\Training\GridViewDetailPartial.cshtml" />
+    <Content Include="Views\Training\GridViewMasterPartial.cshtml" />
     <Content Include="Views\Home\TrainingList.cshtml" />
     <Content Include="Views\News\MenuNewsList.cshtml" />
     <None Include="Web.Debug.config">

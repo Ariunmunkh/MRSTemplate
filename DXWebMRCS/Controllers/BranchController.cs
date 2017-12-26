@@ -28,6 +28,7 @@ namespace DXWebMRCS.Controllers
             //GridViewEditingHelper.EditMode = editMode;
             return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
+
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesAddNewPartial(Branch Branch)
         {
@@ -46,6 +47,7 @@ namespace DXWebMRCS.Controllers
                 ViewData["EditError"] = "Please, correct all errors.";
             return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
+
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesUpdatePartial(Branch Branch)
         {
@@ -65,6 +67,7 @@ namespace DXWebMRCS.Controllers
 
             return PartialView("GridViewPartialView", NorthwindDataProvider.GetBranchs());
         }
+
         [HttpPost, ValidateInput(false)]
         public ActionResult EditModesDeletePartial(int BranchID = -1)
         {
