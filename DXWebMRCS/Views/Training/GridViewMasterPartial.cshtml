@@ -21,8 +21,8 @@
             column.SetDataItemTemplateContent(c =>
             {
                 ViewContext.Writer.Write(
-                    Html.ActionLink("Edit", "Edit", new { TrainingID = DataBinder.Eval(c.DataItem, "TrainingID") }) + "&nbsp;" +
-                    Html.ActionLink("Delete", "Delete", new { TrainingID = DataBinder.Eval(c.DataItem, "TrainingID") })
+                    Html.ActionLink("Edit", "Edit", new { id = DataBinder.Eval(c.DataItem, "TrainingID") }) + "&nbsp;" +
+                    Html.ActionLink("Delete", "Delete", new { id = DataBinder.Eval(c.DataItem, "TrainingID") })
                 );
             });
             column.SetHeaderTemplateContent(c =>
