@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Elearn>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.Raw("<img width=100 " + item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ELID }) |
+           @Html.ActionLink("Details", "Details", null, null, new { @href = item.LessonBody, id = item.ELID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ELID })
+        </td>
+    </tr>
+}
+
+</table>
