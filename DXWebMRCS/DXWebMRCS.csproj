@@ -5457,6 +5457,8 @@
     <Content Include="Views\Training\GridViewMasterPartial.cshtml" />
     <Content Include="Views\Home\TrainingList.cshtml" />
     <Content Include="Views\News\MenuNewsList.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSendEmail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

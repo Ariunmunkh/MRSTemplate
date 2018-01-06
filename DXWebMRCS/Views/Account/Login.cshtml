@@ -34,11 +34,15 @@
                 <button type="submit" class="btn btn-dark btn-sm">Login</button>
               </div>
               <div class="clear text-center pt-10">
-                <a>@Html.ActionLink("Forget Password", "ChangePassword", "Account", routeValues: null, htmlAttributes: new { title = "Forget", @class = "text-theme-colored font-weight-600 font-12" })</a>
+                <a>@Html.ActionLink("Forget Password", "ChangePasswordSendEmail", "Account", routeValues: null, htmlAttributes: new { title = "Forget", @class = "text-theme-colored font-weight-600 font-12" })</a>
               </div>
               <div class="clear text-center pt-10">
                 <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>
                 <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a>
+
+                  @*<section id="socialLoginForm">
+                      @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+                  </section>*@
               </div>
             </form>
           </div>

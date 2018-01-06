@@ -35,13 +35,18 @@ namespace DXWebMRCS.Models {
         public string Name { get; set; }
         public int BranchId { get; set; }
     }
-        
- 
+
+    public class ChangePasswordSendEmailModel {
+        [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
+        [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
+    }
+
     public class ChangePasswordModel {
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
-        public string OldPassword { get; set; }
+
+        public string email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -74,6 +79,17 @@ namespace DXWebMRCS.Models {
             get { return rememberMe; }
             set { rememberMe = value; }
         }
+    }
+
+    public class ExternalLoginConfirmationViewModel
+    {
+        [Required(ErrorMessage = "Та нэр ээ оруулна уу.")]
+        [Display(Name = "Нэр")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
+        [Display(Name = "Мэйл")]
+        public string Email { get; set; }
     }
 
     public class RegisterModel {

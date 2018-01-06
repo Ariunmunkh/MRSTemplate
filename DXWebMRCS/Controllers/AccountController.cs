@@ -8,6 +8,11 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using DXWebMRCS.Filters;
 using DXWebMRCS.Models;
+using System.Threading.Tasks;
+using System.Net;
+using Microsoft.Owin.Security;
+using System.Net.Mail;
+using System.Text;
 
 namespace DXWebMRCS.Controllers {
     [Authorize]
@@ -106,21 +111,74 @@ namespace DXWebMRCS.Controllers {
 
         //
         // GET: /Account/ChangePassword
+        [AllowAnonymous]
+        public ActionResult ChangePassword(string email)
+        {
+            ChangePasswordModel changePass = new ChangePasswordModel();
+            changePass.email = email;
+            return View(changePass);
+        }
 
-        public ActionResult ChangePassword() {
+        [AllowAnonymous]
+        public ActionResult ChangePasswordSendEmail()
+        {
             return View();
         }
 
+        [HttpPost]
+        // Post: /Account/ChangePasswordSendEmail
+        [AllowAnonymous]
+        public ActionResult ChangePasswordSendEmail(ChangePasswordSendEmailModel mail)
+        {
+            if (ModelState.IsValid)
+            {
+                var _user = db.Database.SqlQuery<UserProfile>("SELECT TOP 1 * FROM UserProfile WHERE UserName = '" + mail.Email + "'").FirstOrDefault();
+
+                if (_user != null)
+                {
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    client.EnableSsl = true;
+                    client.Timeout = 100000;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("gmunkhuu1124@gmail.com", "Uuriin1234");
+
+                    var callbackUrl = "http://localhost:4659/Account/ChangePassword?email=" + mail.Email;
+
+                    var body = string.Format("Dear {0} <BR/>" +
+                                "Thank you for registering our site!!! Please click link below in resert your password."
+                                + "Please reset your password by clicking <a href=\"{1}\" >{1} here. </a>" +
+                                " If you get any difficulties please contact our support. <br/><br/>From Red cross.<br/>Mongolia 2017</p>",
+                                _user.UserName, callbackUrl);
+
+                    MailMessage mailMessage = new MailMessage("gmunkhuu1124@gmail.com", mail.Email, "Reset Password Red Cross", body);
+                    mailMessage.IsBodyHtml = true;
+                    mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+                    client.Send(mailMessage);
+                    return RedirectToAction("ChangePasswordSuccess");  
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Not Send";
+                    return View();  
+                }
+            }
+
+            return View();
+        }
         //
         // POST: /Account/ChangePassword
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model) {
             if(ModelState.IsValid) {
                 bool changePasswordSucceeded;
                 try {
-                    changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                    //changePasswordSucceeded = WebSecurity.ChangePassword(model.email, model.OldPassword, model.NewPassword);
+                    var token = WebSecurity.GeneratePasswordResetToken(model.email);
+                    changePasswordSucceeded = WebSecurity.ResetPassword(token, model.NewPassword);
                 }
                 catch(Exception) {
                     changePasswordSucceeded = false;
@@ -139,8 +197,66 @@ namespace DXWebMRCS.Controllers {
         }
 
         //
-        // GET: /Account/ChangePasswordSuccess
+        // POST: /Account/ExternalLogin
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ExternalLogin(string provider, string returnUrl)
+        {
+            // Request a redirect to the external login provider
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+        }
 
+        //
+        // GET: /Account/ExternalLoginCallback
+        [AllowAnonymous]
+        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
+        {
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            // Sign in the user with this external login provider if the user already has a login
+            //var user = await UserManager.FindAsync(loginInfo.Login);
+            if (loginInfo != null)
+            {
+                //await SignInAsync(user, isPersistent: false);
+                return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                // If the user does not have an account, then prompt the user to create an account
+                ViewBag.ReturnUrl = returnUrl;
+                ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
+            }
+        }
+        
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        //
+        // GET: /Account/ChangePasswordSuccess
+        [AllowAnonymous]
         public ActionResult ChangePasswordSuccess() {
             return View();
         }
@@ -183,5 +299,34 @@ namespace DXWebMRCS.Controllers {
             }
         }
         #endregion
+        private const string XsrfKey = "XsrfId";
+        private class ChallengeResult : HttpUnauthorizedResult
+        {
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
+            {
+            }
+
+            public ChallengeResult(string provider, string redirectUri, string userId)
+            {
+                LoginProvider = provider;
+                RedirectUri = redirectUri;
+                UserId = userId;
+            }
+
+            public string LoginProvider { get; set; }
+            public string RedirectUri { get; set; }
+            public string UserId { get; set; }
+
+            public override void ExecuteResult(ControllerContext context)
+            {
+                var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
+                if (UserId != null)
+                {
+                    properties.Dictionary[XsrfKey] = UserId;
+                }
+                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+            }
+        }
     }
 }
