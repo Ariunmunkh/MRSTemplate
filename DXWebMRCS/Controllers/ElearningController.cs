@@ -47,10 +47,11 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ELID,LessonName,Description,Image,LessonBody")] Elearn elearn)
+        public ActionResult Create([Bind(Include="ELID,LessonName,Description,Image,LessonBody,Time")] Elearn elearn)
         {
             if (ModelState.IsValid)
             {
+                elearn.Date = DateTime.Now;
                 db.Elearn.Add(elearn);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +80,7 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ELID,LessonName,Description,Image,LessonBody")] Elearn elearn)
+        public ActionResult Edit([Bind(Include="ELID,LessonName,Description,Image,LessonBody,Time,Date")] Elearn elearn)
         {
             if (ModelState.IsValid)
             {
@@ -210,5 +211,5 @@ namespace DXWebMRCS.Controllers
 
         public static string Model { get { return RootFolder; } }
     }
-
+    
 }

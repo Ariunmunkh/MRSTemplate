@@ -4744,6 +4744,7 @@
     <Content Include="Content\css\ytplayer\raster_dot.png" />
     <Content Include="Content\elearncss\all\all.css" />
     <Content Include="Content\elearncss\app\app.css" />
+    <Content Include="Content\elearn\elicon.png" />
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\flaticon-set-charity.html" />
     <Content Include="Content\fonts\flaticons\flaticon-set-charity.html" />
@@ -6503,6 +6504,10 @@
     <Compile Include="Migrations\201801050809593_elearn-2nd.Designer.cs">
       <DependentUpon>201801050809593_elearn-2nd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801061223391_elearning-3rd.cs" />
+    <Compile Include="Migrations\201801061223391_elearning-3rd.Designer.cs">
+      <DependentUpon>201801061223391_elearning-3rd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6521,7 +6526,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\elearn\" />
     <Folder Include="Content\HtmlEditor\AudioFiles\" />
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
     <Folder Include="Content\HtmlEditor\Images\" />
@@ -6545,6 +6549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801050809593_elearn-2nd.resx">
       <DependentUpon>201801050809593_elearn-2nd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801061223391_elearning-3rd.resx">
+      <DependentUpon>201801061223391_elearning-3rd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

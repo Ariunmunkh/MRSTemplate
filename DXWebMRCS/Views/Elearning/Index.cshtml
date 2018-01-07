@@ -4,44 +4,93 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ElearnLayout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-       
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.Raw("<img width=100 " + item.Image)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ELID }) |
-           @Html.ActionLink("Details", "Details", null, null, new { @href = item.LessonBody, id = item.ELID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ELID })
-        </td>
-    </tr>
+@{
+    var db = new DXWebMRCS.Models.UsersContext();
+    var elearnlist = db.Elearn.ToList();
 }
-
-</table>
+<div class="parallax bg-white page-section">
+    <div class="container parallax-layer" data-opacity="true">
+        <div class="media v-middle">
+            <div class="media-body">
+                <h1 class="text-display-2 margin-none">Онлайн сургалтын хичээл</h1>
+                <p class="text-light lead">Та хичээлээ сонгож үзнэ үү</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-section">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row" data-toggle="isotope">
+                    @foreach (var list in elearnlist)
+                    {
+                        <div class="item col-xs-12 col-sm-6 col-lg-4">
+                        <div class="panel panel-default paper-shadow" data-z="0.5">
+                            <div class="cover overlay cover-image-full hover">
+                                <span class="img icon-block height-150 bg-default"></span>
+                                <a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" class="padding-none overlay overlay-full icon-block bg-default">
+                                    <span class="v-center">
+                                        @*<img class="fa fa-github"></img>*@@Html.Raw("<img width=170," + list.Image)
+                                    </span>
+                                </a>
+                                <a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" class="overlay overlay-full overlay-hover overlay-bg-white">
+                                    <span class="v-center">
+                                        <span class="btn btn-circle btn-white btn-lg"><i class="fa fa-graduation-cap"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="text-headline margin-v-0-10"><a href="@Url.Action("Details", "Elearning", new { id = list.ELID })">@list.LessonName</a></h4>
+                                <p class="small margin-none">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                            </div>
+                            <hr class="margin-none" />
+                            <div class="panel-body">
+                                <p>@list.Description.Substring(0, 120)</p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Хичээл жагсаалт</h4>
+                    </div>
+                    @foreach (var listname in elearnlist)
+                    {
+                        <div class="panel-body list-group">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge pull-right">@listname.Time цаг</span>
+                                <a class="list-group-link" href="@Url.Action("Details", "Elearning", new { id = listname.ELID })">@listname.LessonName</a>
+                            </li>
+                        </ul>
+                    </div>
+                    }
+                    
+                </div>
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Нэмэгдсэн хичээл</h4>
+                    </div>
+                    <div class="panel-body list-group">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <span class="badge pull-right">@elearnlist.Count()</span>
+                                <a class="list-group-link" href="index.html">Нэмэгдсэн хичээл</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

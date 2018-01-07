@@ -25,7 +25,11 @@ namespace DXWebMRCS.Models
         [AllowHtml]
         public string LessonBody { get; set; }
 
+        [Required]
+        [Display(Name = "Хичээлийн хугацаа")]
+        public int Time { get; set; }
 
-
+        [Display(Name = "Oгноо")]
+        public System.DateTime Date { get; set; }
     }
 }

@@ -45,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LessonBody, new { @class = "control-label col-md-2" })
             <div class="col-md-7">
-                @Html.TextAreaFor(model => model.LessonBody, new { @class = "ckeditor", placeholder = "Lesson Body" })
+                @Html.TextAreaFor(model => model.LessonBody, new { @class = "ckeditor", placeholder = "Lesson Body", id = "LessonBody" })
                 @Html.ValidationMessageFor(model => model.LessonBody)
             </div>
         </div>
@@ -67,6 +67,7 @@
         var editor = CKEDITOR.instances['LessonBody'];
         if(editor) { editor.destroy(true);}
         CKEDITOR.replace('LessonBody', {
+            toolbar: 'Basic',
         enterMode:CKEDITOR.ENTER_BR,
         });
         CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")');
@@ -83,8 +84,9 @@
 <script type="text/javascript">
     //<![CDATA[
 
-    CKEDITOR.replace('editor1',
+    CKEDITOR.replace('LessonBody',
 {
+    toolbar: 'LessonBody',
     filebrowserBrowseUrl: '~/Content/elearn/ckfinder.html',
     filebrowserImageBrowseUrl: 'ckeditor/ckfinder/ckfinder.html?type=Images',
     filebrowserFlashBrowseUrl: '~/Content/ckfinder.html?type=Flash',
