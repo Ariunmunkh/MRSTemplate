@@ -1,0 +1,21 @@
+@using DXWebMRCS.Controllers;
+@model DXWebMRCS.Models.Elearn
+
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "Image";
+    settings.CallbackRouteValues = new { Controller = "Elearning", Action = "ImageHTMLEditorPartial", Model };
+    settings.Height = Unit.Pixel(360);
+    settings.Width = Unit.Pixel(645);
+
+    HtmlEditorToolbar toolbar = new HtmlEditorToolbar();
+    toolbar.Items.Add(new ToolbarInsertImageDialogButton(true));
+    toolbar.Items.Add(new ToolbarFullscreenButton(true));
+    settings.Toolbars.Add(toolbar);
+
+    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "Elearning", Action = "ImageHTMLEditorPartialImageUpload" };
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = ElearningControllerImageHtmlEditorSettings.ImageUploadDirectory;
+	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(ElearningControllerImageHtmlEditorSettings.ImageUploadValidationSettings);
+
+
+			settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(ElearningControllerImageHtmlEditorSettings.ImageSelectorSettings);
+	}).GetHtml()

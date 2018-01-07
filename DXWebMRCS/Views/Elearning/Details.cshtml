@@ -1,0 +1,51 @@
+﻿@model DXWebMRCS.Models.Elearn
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Elearn</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonBody)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ELID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
