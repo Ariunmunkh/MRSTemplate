@@ -14,6 +14,7 @@ using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
+    [Authorize]
     public class TrainingController : Controller
     {
 

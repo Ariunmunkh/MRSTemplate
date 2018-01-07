@@ -14,6 +14,7 @@ using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {
         private UsersContext db = new UsersContext();
