@@ -63,6 +63,7 @@
                     <a class="menuzord-brand pull-left flip" href="~/Content/javascript:void(0)">
                         <img src="~/Content/images/logo-wide.png" alt="">
                     </a>
+
                     <ul class="menuzord-menu">
 @*@{string isActive = "active";}*@
 @foreach (var item in Model.Where(x => x.ParentId == null))
@@ -203,7 +204,9 @@
     </li>
 }                        
                     </ul>
-                </nav>
+
+                </nav>          
+                
             </div>
         </div>
     </div>

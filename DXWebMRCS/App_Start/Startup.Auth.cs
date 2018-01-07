@@ -28,9 +28,9 @@ namespace DXWebMRCS
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "201374110425261",
+               appSecret: "3a37da3bf6d615fa1f18e9906ec0f457");
 
             //app.UseGoogleAuthentication();
         }
