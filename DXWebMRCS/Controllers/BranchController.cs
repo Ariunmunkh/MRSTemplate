@@ -10,6 +10,7 @@ using WebMatrix.WebData;
 
 namespace DXWebMRCS.Controllers
 {
+    [Authorize]
     public class BranchController : Controller
     {
         private UsersContext db = new UsersContext();

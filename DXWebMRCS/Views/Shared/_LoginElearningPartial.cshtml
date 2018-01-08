@@ -1,0 +1,28 @@
+﻿
+
+
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav navbar-nav navbar-nav-bordered navbar-nav-margin-right" }))
+        {
+            <ul class="nav navbar-nav navbar-nav-bordered navbar-nav-margin-right">
+                <!-- user -->
+                <li class="dropdown user">
+                    @Html.AntiForgeryToken()
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name)<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })</li>
+                        <li><a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    </ul>
+                </li>
+                <!-- // END user -->
+            </ul>
+        }
+    }
+    else
+    {
+        <a>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "navbar-btn btn btn-primary" })</a>
+        <a>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "navbar-btn btn btn-primary" })    </a>
+    }

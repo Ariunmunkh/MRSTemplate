@@ -11,6 +11,7 @@ using DevExpress.Web.Mvc;
 
 namespace DXWebMRCS.Controllers
 {
+    [Authorize]
     public class MenuController : Controller
     {
         private UsersContext db = new UsersContext();
