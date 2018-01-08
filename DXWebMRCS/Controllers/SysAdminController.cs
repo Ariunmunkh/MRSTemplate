@@ -42,6 +42,31 @@ namespace DXWebMRCS.Controllers
             return null;
         }
 
+        public ActionResult UserProfile()
+        {
+            var model = db.Database.SqlQuery<EditRegisterModel>("SELECT TOP 1 UserId as Id, LastName, Name AS UserName, BirthOfDay, PhoneNumber, UserName AS Email, CONVERT(varchar(5), Type) AS TYPE FROM UserProfile WHERE UserId = " + WebSecurity.CurrentUserId).FirstOrDefault();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult UserProfile(EditRegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var _user = db.UserProfiles.Find(model.Id);
+                _user.LastName = model.LastName;
+                _user.Name = model.UserName;
+                _user.UserName = model.Email;
+                _user.PhoneNumber = model.PhoneNumber;
+                _user.Type = Convert.ToInt32(model.Type);
+
+                db.Entry(_user).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return View(model);
+        }
+
+        #region Slider
         [HttpPost]
         public ActionResult SliderAdd(SliderPhoto slider, HttpPostedFileBase ImageFile)
         {
@@ -110,8 +135,9 @@ namespace DXWebMRCS.Controllers
             var list = db.SliderPhotos.OrderByDescending(x => x.CreatedDate).ToList();
             return View(list);
         }
+        #endregion
 
-        
+        #region Branch
         [AllowAnonymous]
         public ActionResult BranchUserCreate()
         {
@@ -179,7 +205,7 @@ namespace DXWebMRCS.Controllers
             return View(User);
         }
 
-        
+
         public ActionResult BranchUserDelete(int id)
         {
             if (id >= 0)
@@ -196,7 +222,8 @@ namespace DXWebMRCS.Controllers
                 }
             }
             return RedirectToAction("index");
-        }
+        } 
+        #endregion
 	}
 
     public class SysAdminControllerHtmlEditorSettings

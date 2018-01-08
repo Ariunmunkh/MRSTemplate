@@ -5125,6 +5125,7 @@
     <Content Include="Content\Images\pattern\pattern7.png" />
     <Content Include="Content\Images\payment-card-logo-sm.png" />
     <Content Include="Content\Images\payment-card-logo.png" />
+    <Content Include="Content\Images\place1-full.jpg" />
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\preloaders\1.gif" />
     <Content Include="Content\Images\preloaders\10.gif" />
@@ -6465,6 +6466,7 @@
     <Content Include="Views\Home\_TrainingEventPartial.cshtml" />
     <Content Include="Views\Home\TrainingEventDetail.cshtml" />
     <Content Include="Views\Home\_TrainingDetailUserListPartial.cshtml" />
+    <Content Include="Views\SysAdmin\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6509,6 +6511,10 @@
     <Compile Include="Migrations\201801081350304_test.Designer.cs">
       <DependentUpon>201801081350304_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801081710095_test1.cs" />
+    <Compile Include="Migrations\201801081710095_test1.Designer.cs">
+      <DependentUpon>201801081710095_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6547,6 +6553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081350304_test.resx">
       <DependentUpon>201801081350304_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801081710095_test1.resx">
+      <DependentUpon>201801081710095_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

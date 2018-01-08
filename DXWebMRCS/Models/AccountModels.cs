@@ -39,6 +39,7 @@ namespace DXWebMRCS.Models {
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
         public int Type { get; set; }
+        public string AvatarPath { get; set; }
         public int BranchId { get; set; }
     }
 
@@ -107,6 +108,8 @@ namespace DXWebMRCS.Models {
 
     public class RegisterModel
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Та овог нэрээ оруулна уу.")]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
@@ -121,7 +124,7 @@ namespace DXWebMRCS.Models {
 
         [Required(ErrorMessage = "Та хүйсээ сонгоно уу.")]
         [Display(Name = "Gender")]
-        public int Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required(ErrorMessage = "Та утасны дугаараа оруулна уу.")]
         [Display(Name = "PhoneNumber")]
@@ -135,7 +138,7 @@ namespace DXWebMRCS.Models {
 
         [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
         [Display(Name = "Type")]
-        public int Type { get; set; }
+        public string Type { get; set; }
 
         [Required(ErrorMessage = "Та нууц үгээ оруулна уу.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -147,6 +150,42 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Confirm password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string EditPassword { get; set; }
+    }
+
+    public class EditRegisterModel
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Та овог нэрээ оруулна уу.")]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Та өөрийн нэрээ оруулна уу.")]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Та төрсөн он сар өдөрөө оруулна уу.")]
+        [Display(Name = "Birth Of Day")]
+        public DateTime BirthOfDay { get; set; }
+
+        public string Gender { get; set; }
+
+        [Required(ErrorMessage = "Та утасны дугаараа оруулна уу.")]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
+        [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
+        [Display(Name = "Type")]
+        public string Type { get; set; }        
+        public string EditPassword { get; set; }
     } 
     #endregion
 
@@ -212,7 +251,7 @@ namespace DXWebMRCS.Models {
 
     public class EnumValue {
         public string Text { get; set; }
-        public int Value { get; set; }
+        public int ValueId { get; set; }
     }
 
 }
