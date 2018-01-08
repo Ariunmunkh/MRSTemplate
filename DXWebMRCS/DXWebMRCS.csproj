@@ -5400,6 +5400,7 @@
     <Content Include="Content\js\vertical-timeline\img\cd-icon-picture.svg" />
     <Content Include="Content\js\vertical-timeline\js\main.js" />
     <Content Include="Content\js\vertical-timeline\js\modernizr.js" />
+    <Content Include="Content\logo\logo.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -6458,6 +6459,7 @@
     <Content Include="Views\Elearning\_ImageHTMLEditorPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ChangePasswordSendEmail.cshtml" />
+    <Content Include="Views\Shared\_LoginElearningPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
