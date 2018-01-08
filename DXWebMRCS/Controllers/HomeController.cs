@@ -45,21 +45,22 @@ namespace DXWebMRCS.Controllers
             return PartialView("_HeaderPartial", menuList);
         }
 
-        public ActionResult Change(String languageAbbrevation)
+        public ActionResult Change(String lan)
         {
-            if (languageAbbrevation != null)
+            if (lan != null)
             {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(languageAbbrevation);
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageAbbrevation);
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lan);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lan);
             }
             
             HttpCookie cookie = new HttpCookie("Language");
-            cookie.Value = languageAbbrevation;
+            cookie.Value = lan;
             Response.Cookies.Add(cookie);
 
             return View("Index");
         }
 
+        #region Home Partial Page
         [HttpGet]
         public ActionResult SliderViewPartial()
         {
@@ -67,6 +68,64 @@ namespace DXWebMRCS.Controllers
             return PartialView("_SliderViewPartial", list);
         }
 
+        [HttpGet]
+        public ActionResult RecentNewsPartial()
+        {
+            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
+            return PartialView("_RecentNewsPartial", newslist);
+        }
+
+        [HttpGet]
+        public ActionResult TrainingEventPartial()
+        {
+            IEnumerable<TrainingModel> traininglist;
+            if (WebSecurity.CurrentUserId > 0)
+            {
+                traininglist = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                                                                    "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).ToList();                
+            }
+            else
+            {
+                traininglist = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                                                                    "FROM Trainings t ").ToList();
+            }
+            return PartialView("_TrainingEventPartial", traininglist);
+        }
+
+
+        [HttpGet]
+        public ActionResult TrainingDetailUserListPartial(int trainingId)
+        {
+            var userlist = db.Database.SqlQuery<UserProfile>("SELECT * FROM UserProfile u INNER JOIN TrainingRequests r ON u.UserId = r.UserID WHERE r.TrainingID = " + trainingId).ToList();
+            return PartialView("_TrainingDetailUserListPartial", userlist);
+        }
+        #endregion
+
+        #region Training
+
+        public ActionResult TrainingEventDetail(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TrainingModel training;
+            if (WebSecurity.CurrentUserId > 0)
+            {
+                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                                                                    "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
+            }
+            else
+            {
+                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                                                                    "FROM Trainings t ").FirstOrDefault();
+            }
+            if (training == null)
+            {
+                return HttpNotFound();
+            }
+            return View(training);
+        }
         public ActionResult TrainingList()
         {
             var pageNumber = 1;
@@ -89,6 +148,7 @@ namespace DXWebMRCS.Controllers
             return View("TrainingList", list);
         }
 
+        [Authorize]
         public ActionResult TrainingRegister(int id)
         {
             var count = db.Database.SqlQuery<TrainingRequest>("SELECT TOP 1 * FROM TrainingRequests WHERE TrainingID = " + id + " AND UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
@@ -105,15 +165,17 @@ namespace DXWebMRCS.Controllers
                 request.Status = 0;
                 db.TrainingRequests.Add(request);
                 db.SaveChanges();
-                return Json(new {success = true, userId = request.UserID }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, userId = request.UserID }, JsonRequestBehavior.AllowGet);
             }
         }
 
+        [Authorize]
         public ActionResult TrainingCancel(int userid, int trainingid)
         {
             db.Database.ExecuteSqlCommand("UPDATE TrainingRequests SET [Status] = 9 WHERE UserID = " + userid + " AND TrainingID = " + trainingid);
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
-        }
+        } 
+        #endregion
 
         
     }

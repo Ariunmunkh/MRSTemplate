@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DXWebMRCS.Models.UserProfile>
+
+<div class="col-md-12">
+    <h4 class="mb-20">Keynote Speakers</h4>
+    @*@if (Model.Count() < 7)
+    {   <div class="row" data-nav="true">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="attorney">
+                        @*@{string imageUrl = item.ImageMedium != null ? "http://localhost:4659" + item.ImageMedium : "http://placehold.it/180x200";}
+                        @*<div class="thumb"><img src="http://placehold.it/180x200" alt=""></div>
+                        <div class="content text">
+                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">@item.Name</a></h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {*@
+        <div class="owl-carousel-6col" data-nav="true">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="attorney">
+                        @*@{string imageUrl = item.ImageMedium != null ? "http://localhost:4659" + item.ImageMedium : "http://placehold.it/180x200";}*@
+                        <div class="thumb"><img src="http://placehold.it/180x200" alt=""></div>
+                        <div class="content text-center">
+                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">@item.Name</a></h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    @* } *@
+    
+</div>
+
+<script src="~/Scripts/jquery-plugin-collection.js"></script>
+

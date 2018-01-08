@@ -616,86 +616,7 @@
     <section id="events" class="">
         <div class="container pt-60 pb-40">
             <div class="section-content">
-                <div class="row">
-                    <div class="col-md-4 hidden-sm">
-                        <h3 class="text-uppercase title line-bottom mt-0 mb-30"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Upcoming <span class="text-theme-colored">Events</span></h3>
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="~/Content/#" class="post-thumb mr-20"><img alt="" src="http://placehold.it/120x120"></a>
-                            <div class="post-right">
-                                <h4 class="mt-0 mb-5"><a href="~/Content/page-single-event.html">Upcoming Event Title</a></h4>
-                                <ul class="list-inline font-12 mb-5">
-                                    <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                    <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                </ul>
-                                <p class="mb-0 font-13">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a class="text-theme-colored font-13" href="~/Content/page-single-event.html">Read More →</a>
-                            </div>
-                        </article>
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="~/Content/#" class="post-thumb mr-20"><img alt="" src="http://placehold.it/120x120"></a>
-                            <div class="post-right">
-                                <h4 class="mt-0 mb-5"><a href="~/Content/page-single-event.html">Upcoming Event Title</a></h4>
-                                <ul class="list-inline font-12 mb-5">
-                                    <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                    <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                </ul>
-                                <p class="mb-0 font-13">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a class="text-theme-colored font-13" href="~/Content/page-single-event.html">Read More →</a>
-                            </div>
-                        </article>
-                        <article class="post media-post clearfix pb-0 mb-10">
-                            <a href="~/Content/#" class="post-thumb mr-20"><img alt="" src="http://placehold.it/120x120"></a>
-                            <div class="post-right">
-                                <h4 class="mt-0 mb-5"><a href="~/Content/page-single-event.html">Upcoming Event Title</a></h4>
-                                <ul class="list-inline font-12 mb-5">
-                                    <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                    <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                </ul>
-                                <p class="mb-0 font-13">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a class="text-theme-colored font-13" href="~/Content/page-single-event.html">Read More →</a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-md-8 col-sm-12">
-                        <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>Branches <span class="text-theme-colored"> Worldwide</span></h3>
-                        <div class="row mt-20 multi-row-clearfix">
-                            <div class="owl-carousel-3col" data-nav="true">
-                                <div class="item">
-                                    <div class="thumb"> <a href="~/Content/#"><img class="img-fullwidth mb-20" src="http://placehold.it/250x215" alt="..."></a> </div>
-                                    <div class="caption">
-                                        <h4 class="text-uppercase letter-space-1 mt-0">Office<span class="text-theme-colored"> in Africa</span></h4>
-                                        <p>Quam distinctio quis perspiciatis facere accusamus perferendis eligendi odit cum</p>
-                                        <p><a href="~/Content/#" class="btn btn-theme-colored btn-flat mt-10 btn-sm" role="button">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb"> <a href="~/Content/#"><img class="img-fullwidth mb-20" src="http://placehold.it/250x215" alt="..."></a> </div>
-                                    <div class="caption">
-                                        <h4 class="text-uppercase letter-space-1 mt-0">Office<span class="text-theme-colored"> in Nepal</span></h4>
-                                        <p>Quam distinctio quis perspiciatis facere accusamus perferendis eligendi odit cum</p>
-                                        <p><a href="~/Content/#" class="btn btn-theme-colored btn-flat mt-10 btn-sm" role="button">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb"> <a href="~/Content/#"><img class="img-fullwidth mb-20" src="http://placehold.it/250x215" alt="..."></a> </div>
-                                    <div class="caption">
-                                        <h4 class="text-uppercase letter-space-1 mt-0">Office<span class="text-theme-colored"> in India</span></h4>
-                                        <p>Quam distinctio quis perspiciatis facere accusamus perferendis eligendi odit cum</p>
-                                        <p><a href="~/Content/#" class="btn btn-theme-colored btn-flat mt-10 btn-sm" role="button">Read More</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb"> <a href="~/Content/#"><img class="img-fullwidth mb-20" src="http://placehold.it/250x215" alt="..."></a> </div>
-                                    <div class="caption">
-                                        <h4 class="text-uppercase letter-space-1 mt-0">Office<span class="text-theme-colored"> in Africa</span></h4>
-                                        <p>Quam distinctio quis perspiciatis facere accusamus perferendis eligendi odit cum</p>
-                                        <p><a href="~/Content/#" class="btn btn-theme-colored btn-flat mt-10 btn-sm" role="button">Read More</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @{Html.RenderAction("TrainingEventPartial", "Home");}
             </div>
         </div>
     </section>
@@ -1245,101 +1166,13 @@
                 </div>
             </div>
             <div class="section-content">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <article class="post clearfix mb-sm-30">
-                            <div class="entry-header">
-                                <div class="entry-date media-left flip text-center">
-                                    <ul>
-                                        <li class="font-16 font-weight-600 border-bottom bg-white-f1 pt-5 pr-15 pb-5 pl-15">28</li>
-                                        <li class="font-12 text-white text-uppercase bg-theme-colored pt-5 pr-15 pb-5 pl-15">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="post-thumb thumb">
-                                    <img src="http://placehold.it/360x240" alt="" class="img-responsive img-fullwidth">
-                                </div>
-                            </div>
-                            <div class="entry-content p-20 pr-10">
-                                <div class="entry-meta mt-0 no-bg no-border">
-                                    <div class="event-content">
-                                        <h4 class="entry-title text-white text-capitalize m-0"><a href="~/Content/#">This is a standard post with thumbnail</a></h4>
-                                    </div>
-                                </div>
-                                <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis</p>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <article class="post clearfix mb-sm-30">
-                            <div class="entry-header">
-                                <div class="entry-date media-left flip text-center">
-                                    <ul>
-                                        <li class="font-16 font-weight-600 border-bottom bg-white-f1 pt-5 pr-15 pb-5 pl-15">28</li>
-                                        <li class="font-12 text-white text-uppercase bg-theme-colored pt-5 pr-15 pb-5 pl-15">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="post-thumb thumb">
-                                    <img src="http://placehold.it/360x240" alt="" class="img-responsive img-fullwidth">
-                                </div>
-                            </div>
-                            <div class="entry-content p-20 pr-10">
-                                <div class="entry-meta mt-0 no-bg no-border">
-                                    <div class="event-content">
-                                        <h4 class="entry-title text-white text-capitalize m-0"><a href="~/Content/#">This is a standard post with thumbnail</a></h4>
-                                    </div>
-                                </div>
-                                <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis</p>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <article class="post clearfix mb-sm-30">
-                            <div class="entry-header">
-                                <div class="entry-date media-left flip text-center">
-                                    <ul>
-                                        <li class="font-16 font-weight-600 border-bottom bg-white-f1 pt-5 pr-15 pb-5 pl-15">28</li>
-                                        <li class="font-12 text-white text-uppercase bg-theme-colored pt-5 pr-15 pb-5 pl-15">Feb</li>
-                                    </ul>
-                                </div>
-                                <div class="post-thumb thumb">
-                                    <img src="http://placehold.it/360x240" alt="" class="img-responsive img-fullwidth">
-                                </div>
-                            </div>
-                            <div class="entry-content p-20 pr-10">
-                                <div class="entry-meta mt-0 no-bg no-border">
-                                    <div class="event-content">
-                                        <h4 class="entry-title text-white text-capitalize m-0"><a href="~/Content/#">This is a standard post with thumbnail</a></h4>
-                                    </div>
-                                </div>
-                                <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis</p>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
-                                <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                @{Html.RenderAction("RecentNewsPartial", "Home");}
             </div>
         </div>
     </section>
 
     <!-- Divider: Clients -->
-    <section class="clients bg-theme-colored">
+    @*<section class="clients bg-theme-colored">
         <div class="container pt-10 pb-10 pb-sm-0 pt-sm-0">
             <div class="row">
                 <div class="col-md-12">
@@ -1359,7 +1192,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section*@>
 
 </div>
 <!-- end main-content -->

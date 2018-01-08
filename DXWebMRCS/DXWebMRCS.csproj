@@ -6359,6 +6359,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\jquery-plugin-collection.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -6458,6 +6459,10 @@
     <Content Include="Views\Elearning\_ImageHTMLEditorPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ChangePasswordSendEmail.cshtml" />
+    <Content Include="Views\Home\_RecentNewsPartial.cshtml" />
+    <Content Include="Views\Home\_TrainingEventPartial.cshtml" />
+    <Content Include="Views\Home\TrainingEventDetail.cshtml" />
+    <Content Include="Views\Home\_TrainingDetailUserListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6498,18 +6503,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712300717117_initial-elearn.cs" />
-    <Compile Include="Migrations\201712300717117_initial-elearn.Designer.cs">
-      <DependentUpon>201712300717117_initial-elearn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801050809593_elearn-2nd.cs" />
-    <Compile Include="Migrations\201801050809593_elearn-2nd.Designer.cs">
-      <DependentUpon>201801050809593_elearn-2nd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801061223391_elearning-3rd.cs" />
-    <Compile Include="Migrations\201801061223391_elearning-3rd.Designer.cs">
-      <DependentUpon>201801061223391_elearning-3rd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6545,15 +6538,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712300717117_initial-elearn.resx">
-      <DependentUpon>201712300717117_initial-elearn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801050809593_elearn-2nd.resx">
-      <DependentUpon>201801050809593_elearn-2nd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801061223391_elearning-3rd.resx">
-      <DependentUpon>201801061223391_elearning-3rd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

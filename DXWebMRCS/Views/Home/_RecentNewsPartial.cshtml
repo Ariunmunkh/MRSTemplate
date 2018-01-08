@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DXWebMRCS.Models.News>
+
+@{  string language = System.Globalization.CultureInfo.CurrentCulture.Name; }
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <article class="post clearfix mb-sm-30">
+                <div class="entry-header">
+                    <div class="entry-date media-left flip text-center">
+                        <ul>
+                            <li class="font-16 font-weight-600 border-bottom bg-white-f1 pt-5 pr-15 pb-5 pl-15">@item.Date.Day</li>
+                            <li class="font-12 text-white text-uppercase bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                            @if (language == "en-US")
+                            {
+                                @item.Date.ToString("MMM")
+                            }
+                            else
+                            {
+                                @item.Date.ToString("MM' сар'")
+                            }</li>
+                        </ul>
+                    </div>
+                    <div class="post-thumb thumb">
+                        @{string imageUrl = item.ImageMedium != null ? "http://localhost:4659" + item.ImageMedium : "http://placehold.it/360x240";}
+                        <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
+                    </div>
+                </div>
+                <div class="entry-content p-20 pr-10">
+                    <div class="entry-meta mt-0 no-bg no-border">
+                        <div class="event-content">
+                            <h4 class="entry-title text-white text-capitalize m-0">
+                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                    @if (language == "en-US")
+                                    {
+                                        @item.TitleEng
+                                    }
+                                    else
+                                    {
+                                        @item.TitleMon
+                                    }
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                    <p class="mt-10">
+                        Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
+                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
+                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
+                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
+                </div>
+            </article>
+        </div>
+    }
+
+</div>
+

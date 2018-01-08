@@ -37,7 +37,9 @@ namespace DXWebMRCS.Models {
         public int BranchId { get; set; }
     }
 
-    public class ChangePasswordSendEmailModel {
+    #region Change password ViewModel
+    public class ChangePasswordSendEmailModel
+    {
         [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
@@ -45,7 +47,8 @@ namespace DXWebMRCS.Models {
         public string Email { get; set; }
     }
 
-    public class ChangePasswordModel {
+    public class ChangePasswordModel
+    {
 
         public string email { get; set; }
 
@@ -59,9 +62,12 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Confirm new password")]
         [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    }
+    } 
+    #endregion
 
-    public class LoginModel {
+    #region Login and register ViewModel
+    public class LoginModel
+    {
         [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
@@ -76,7 +82,8 @@ namespace DXWebMRCS.Models {
 
         bool rememberMe;
         [Display(Name = "Remember me?")]
-        public bool RememberMe {
+        public bool RememberMe
+        {
             get { return rememberMe; }
             set { rememberMe = value; }
         }
@@ -93,7 +100,8 @@ namespace DXWebMRCS.Models {
         public string Email { get; set; }
     }
 
-    public class RegisterModel {
+    public class RegisterModel
+    {
         [Required(ErrorMessage = "Та өөрийн нэрээ оруулна уу.")]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -114,8 +122,10 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Confirm password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    }
+    } 
+    #endregion
 
+    #region Branch and Training ViewModel
     public class BranchRegisterModel
     {
         [Required]
@@ -170,5 +180,8 @@ namespace DXWebMRCS.Models {
          * 9-Цуцалсан
         */
         public int? RequestStatus { get; set; }
+        public int? type { get; set; }
     }
+
+    #endregion
 }
