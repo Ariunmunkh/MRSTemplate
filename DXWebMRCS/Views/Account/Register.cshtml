@@ -1,4 +1,4 @@
-@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
+﻿@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
 @model DXWebMRCS.Models.RegisterModel
 
 <!-- Start main-content -->
@@ -38,14 +38,45 @@
                         <hr>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>User name</label>
+                                <label>Овог нэр</label>
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Өөрийн нэр</label>
                                 @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="form-group col-md-6">
-                                <label>Email</label>
+                                <label>Төрсөн он сар өдөр</label>
+                                @Html.TextBoxFor(m => m.BirthOfDay, new { @class = "form-control datepicker", placeholder = "yyyy-MM-dd" })
+                                @Html.ValidationMessageFor(m => m.BirthOfDay, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Хүйс</label>
+                                @Html.DropDownListFor(model => model.Gender, new SelectList(ViewBag.GenderList, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Утасны дугаар</label>
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Е-мэйл</label>
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Төрөл</label>
+                                @Html.DropDownListFor(model => model.Type, new SelectList(ViewBag.TypeList, "Value", "Text"), htmlAttributes: new { @class = "form-control" })                               
+                                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">

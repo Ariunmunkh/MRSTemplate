@@ -32,8 +32,13 @@ namespace DXWebMRCS.Models {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
+        public string LastName { get; set; }
+        public string Name { get; set; }        
+        public DateTime BirthOfDay { get; set; }
+        public int Gender { get; set; }
+        public string PhoneNumber { get; set; }
         public string UserName { get; set; }
-        public string Name { get; set; }
+        public int Type { get; set; }
         public int BranchId { get; set; }
     }
 
@@ -102,15 +107,35 @@ namespace DXWebMRCS.Models {
 
     public class RegisterModel
     {
+        [Required(ErrorMessage = "Та овог нэрээ оруулна уу.")]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
         [Required(ErrorMessage = "Та өөрийн нэрээ оруулна уу.")]
         [Display(Name = "User name")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Та төрсөн он сар өдөрөө оруулна уу.")]
+        [Display(Name = "Birth Of Day")]
+        public DateTime BirthOfDay { get; set; }
+
+        [Required(ErrorMessage = "Та хүйсээ сонгоно уу.")]
+        [Display(Name = "Gender")]
+        public int Gender { get; set; }
+
+        [Required(ErrorMessage = "Та утасны дугаараа оруулна уу.")]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Та мэйл хаягаа оруулна уу.")]
         [RegularExpression("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*", ErrorMessage = "Please enter a valid email address.")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
+        [Display(Name = "Type")]
+        public int Type { get; set; }
 
         [Required(ErrorMessage = "Та нууц үгээ оруулна уу.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -184,4 +209,10 @@ namespace DXWebMRCS.Models {
     }
 
     #endregion
+
+    public class EnumValue {
+        public string Text { get; set; }
+        public int Value { get; set; }
+    }
+
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -72,7 +72,18 @@ namespace DXWebMRCS.Controllers {
 
         [AllowAnonymous]
         public ActionResult Register() {
-            
+            ViewBag.GenderList = new List<EnumValue>() 
+                                        {
+                                            new EnumValue(){ Text = "Эрэгтэй", Value = 1 },
+                                            new EnumValue(){ Text = "Эмэгтэй", Value = 2 }
+                                        };
+
+            ViewBag.TypeList = new List<EnumValue>() 
+                                        {
+                                            new EnumValue(){ Text = "МУЗН-ийн ажилтан", Value = 1 },
+                                            new EnumValue(){ Text = "Сайн дурын идэвхтэн", Value = 2 },
+                                            new EnumValue(){ Text = "Хэрэглэгч", Value = 3 }
+                                        };
             return View();   
         }
 
@@ -89,7 +100,12 @@ namespace DXWebMRCS.Controllers {
                 try {
                     WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
                     {
-                        Name = model.UserName
+                        Name = model.UserName,
+                        LastName = model.LastName,
+                        BirthOfDay = model.BirthOfDay,
+                        Gender = model.Gender,
+                        PhoneNumber = model.PhoneNumber,
+                        Type = model.Type
                     });
                     var isRole = Roles.RoleExists("User");
                     if (!isRole)
