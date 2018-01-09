@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 namespace DXWebMRCS.Models {
+    
         public class UsersContext : DbContext {
         public UsersContext()
             : base("DefaultConnection") {
@@ -184,7 +186,8 @@ namespace DXWebMRCS.Models {
 
         [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
         [Display(Name = "Type")]
-        public string Type { get; set; }        
+        public string Type { get; set; }
+        public string AvatarPath { get; set; }
         public string EditPassword { get; set; }
     } 
     #endregion

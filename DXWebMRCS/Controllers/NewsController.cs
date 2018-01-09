@@ -14,17 +14,20 @@ using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,BranchUser")]
     public class NewsController : Controller
     {
         private UsersContext db = new UsersContext();
 
         // GET: /News/
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.News.ToList());
         }
 
+        #region News Role user
+        [AllowAnonymous]
         public ActionResult MenuClick(int id)
         {
             var pageNumber = 1;
@@ -44,6 +47,7 @@ namespace DXWebMRCS.Controllers
             return View("MenuNewsList", news);
         }
 
+        [AllowAnonymous]
         public ActionResult MenuPageClick(int? page, int menuId)
         {
             var pageNumber = page ?? 1;
@@ -57,6 +61,7 @@ namespace DXWebMRCS.Controllers
             return View("MenuNewsList", news);
         }
 
+        [AllowAnonymous]
         public ActionResult PageClick(int? page)
         {
             var pageNumber = page ?? 1;
@@ -69,6 +74,7 @@ namespace DXWebMRCS.Controllers
             return View("NewsList", news);
         }
 
+        [AllowAnonymous]
         // GET: /News/Details/5
         public ActionResult Details(int? id)
         {
@@ -84,7 +90,8 @@ namespace DXWebMRCS.Controllers
             return View(news);
         }
 
-         //GET: /News/NewsDetail/5
+        [AllowAnonymous]
+        //GET: /News/NewsDetail/5
         public ActionResult NewsDetail(int? id)
         {
             if (id == null)
@@ -99,6 +106,7 @@ namespace DXWebMRCS.Controllers
             return View(news);
         }
 
+        [AllowAnonymous]
         public ActionResult NewsList()
         {
             var pageNumber = 1;
@@ -109,7 +117,8 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
             return View(news);
-        }
+        } 
+        #endregion
 
         // GET: /News/NewsDetail/5
         //public ActionResult NewsDetail(News news)
@@ -121,6 +130,7 @@ namespace DXWebMRCS.Controllers
         //    return View(news);
         //}
 
+        #region News Create, Edit, Delete
         // GET: /News/Create
         public ActionResult Create()
         {
@@ -162,7 +172,7 @@ namespace DXWebMRCS.Controllers
                         Height = 240,
                         Format = "png"
                     };
-                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);  
+                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);
                 }
 
                 news.Date = DateTime.Now;
@@ -185,7 +195,7 @@ namespace DXWebMRCS.Controllers
             if (news == null)
             {
                 return HttpNotFound();
-            }            
+            }
             return View(news);
         }
 
@@ -224,7 +234,7 @@ namespace DXWebMRCS.Controllers
                         Height = 240,
                         Format = "png"
                     };
-                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);  
+                    ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);
                 }
 
                 news.Date = DateTime.Now;
@@ -259,7 +269,8 @@ namespace DXWebMRCS.Controllers
             db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        } 
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

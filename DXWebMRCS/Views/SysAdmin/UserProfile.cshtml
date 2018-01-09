@@ -9,12 +9,12 @@
 <link href="~/Content/Admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
 <link href="~/Content/Admin/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
-<div>
-    <div class="">
+<div class="main-content">
+    <div class="main-content">
         <div class="page-title">
             <div class="title_left">
                 <h3>User Profile</h3>
-            </div>            
+            </div>
         </div>
 
         <div class="clearfix"></div>
@@ -27,48 +27,48 @@
                             @Html.HiddenFor(m => m.Id)
                             <div id="account" class="tab-pane active">
                                 @*<form class="form-horizontal">*@
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Зураг</label>
-                                        <div class="col-md-6">
-                                            <div class="media v-middle">
-                                                @*<div class="media-left">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Зураг</label>
+                                    <div class="col-md-6">
+                                        <div class="media v-middle">
+                                            @*<div class="media-left">
                                                     <div class="icon-block width-100 bg-grey-100">
                                                         <i class="fa fa-photo text-light"></i>
-                                                    </div>                                                    
+                                                    </div>
                                                 </div>*@
-                                                @if (string.IsNullOrEmpty(Model.ImagePath))
-                                                {
-                                                    <img src="~/Content/images/place1-full.jpg" class="avatar" width="100" height="100" alt="Avatar">
-                                                }
-                                                else
-                                                {
-                                                    <img src="@Url.Content("http://localhost:4659" + Model.ImagePath)" height="100" width="100" alt="Avatar" />
-                                                }
-                                                
-                                                <div class="media-body">
-                                                    <input type="file" name="ImageFile" class="btn btn-white btn-sm paper-shadow relative" required onchange="show(this)">
-                                                    @*<a href="#" class="btn btn-white btn-sm paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated> Add Image<i class="fa fa-upl"></i></a>*@
+                                            @if (string.IsNullOrEmpty(Model.AvatarPath))
+                                            {
+                                                <img id="user_img" src="~/Content/images/place1-full.jpg" class="avatar" width="100" height="100" alt="Avatar">
+                                            }
+                                            else
+                                            {
+                                                <img id="user_img" src="@Url.Content("http://localhost:4659" + Model.AvatarPath)" height="100" width="100" alt="Avatar" />
+                                            }
+
+                                            <div class="media-body">
+                                                <input type="file" name="ImageFile" class="btn btn-white btn-sm paper-shadow relative" onchange="show(this)">
+                                                @*<a href="#" class="btn btn-white btn-sm paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated> Add Image<i class="fa fa-upl"></i></a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">Бүтэн нэр</label>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-control-material">
+                                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder = "Өөрийн нэр", @id = "exampleInputFirstName" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-control-material">
+                                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @PlaceHolder = "Овог нэр", @id = "exampleInputLastName" })
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-md-2 control-label">Бүтэн нэр</label>
-                                        <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-control-material">
-                                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder = "Өөрийн нэр", @id = "exampleInputFirstName" })
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-control-material">
-                                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @PlaceHolder = "Овог нэр", @id = "exampleInputLastName" })
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-md-2 control-label">Төрсөн он сар</label>
                                     <div class="col-md-6">
@@ -79,56 +79,57 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-md-2 control-label">E-мэйл</label>
-                                        <div class="col-md-6">
-                                            <div class="form-control-material">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @PlaceHolder = "Е-мэйл", @id = "inputEmail3" })
-                                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">E-мэйл</label>
+                                    <div class="col-md-6">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @PlaceHolder = "Е-мэйл", @id = "inputEmail3" })
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-md-2 control-label">Утас</label>
-                                        <div class="col-md-6">
-                                            <div class="form-control-material">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control used", @id = "website", @type = "number", @PlaceHolder = "Утасны дугаар" })
-                                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">Утас</label>
+                                    <div class="col-md-6">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control used", @id = "website", @type = "number", @PlaceHolder = "Утасны дугаар" })
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-md-2 control-label">Төрөл</label>
-                                        <div class="col-md-6">
-                                            <div class="form-control-material">
-                                                <div class="input-group">
-                                                    @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">Төрөл</label>
+                                    <div class="col-md-6">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
                                                                     {
                                                                        new SelectListItem{ Text="МУЗН-ийн ажилтан", Value = "1" },
                                                                        new SelectListItem{ Text="Сайн дурын идэвхтэн", Value = "2" },
                                                                        new SelectListItem{ Text="Хэрэглэгч", Value = "3" }
                                                                     }, "Та сонгоно уу.", htmlAttributes: new { @class = "form-control used", @PlaceHolder = "Төрөл" })
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @*<div class="form-group">
-                                        <label for="inputPassword3" class="col-md-2 control-label">Шинэ нууц үг</label>
-                                        <div class="col-md-6">
-                                            <div class="form-control-material">
-                                                @Html.PasswordFor(m => m.EditPassword, new { @class = "form-control", @PlaceHolder = "Password" })
-                                            </div>
-                                        </div>
-                                    </div>*@
-                                    <div class="form-group margin-none">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn btn-primary paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated>Хадгалах</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-md-2 control-label">Шинэ нууц үг</label>
+                                    <div class="col-md-6">
+                                        <div class="form-control-material">
+                                            <a href="@Url.Action("ChangePassword", "Account")" class="form-control">Нууц үг солих </a>
+                                            @*@Html.ActionLink("Нууц үг солих ", "ChangePassword", "Account", new { @class = "form-control" })*@
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group margin-none">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="submit" class="btn btn-primary paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated>Хадгалах</button>
+                                    </div>
+                                </div>
                                 @*</form>*@
                             </div>
                         }
@@ -138,35 +139,16 @@
         </div>
     </div>
 </div>
+
 <!-- /page content -->
-
-<script>
-    $('#myDatepicker').datetimepicker();
-
-    $('#myDatepicker2').datetimepicker({
-        format: 'DD.MM.YYYY'
-    });
-
-    $('#myDatepicker3').datetimepicker({
-        format: 'hh:mm A'
-    });
-
-    $('#myDatepicker4').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true
-    });
-
-    $('#datetimepicker6').datetimepicker();
-
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false
-    });
-
-    $("#datetimepicker6").on("dp.change", function (e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-
-    $("#datetimepicker7").on("dp.change", function (e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
-</script>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  

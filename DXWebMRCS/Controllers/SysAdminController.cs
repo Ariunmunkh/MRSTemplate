@@ -12,10 +12,11 @@ using WebMatrix.WebData;
 using System.Web.Security;
 using DXWebMRCS.Filters;
 using System.Net;
+using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,BranchUser")]
     [InitializeSimpleMembership]
     public class SysAdminController : Controller
     {
@@ -27,6 +28,7 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
+        #region Partial View
         public ActionResult HtmlEditorPartial()
         {
             return PartialView("_HtmlEditorPartial");
@@ -41,15 +43,20 @@ namespace DXWebMRCS.Controllers
             HtmlEditorExtension.SaveUploadedFile("HtmlEditor", SysAdminControllerHtmlEditorSettings.ImageUploadValidationSettings, SysAdminControllerHtmlEditorSettings.ImageUploadDirectory);
             return null;
         }
+        
+        #endregion
 
+        #region UserProfile
+        [AllowAnonymous]
         public ActionResult UserProfile()
         {
-            var model = db.Database.SqlQuery<EditRegisterModel>("SELECT TOP 1 UserId as Id, LastName, Name AS UserName, BirthOfDay, PhoneNumber, UserName AS Email, CONVERT(varchar(5), Type) AS TYPE FROM UserProfile WHERE UserId = " + WebSecurity.CurrentUserId).FirstOrDefault();
+            var model = db.Database.SqlQuery<EditRegisterModel>("SELECT TOP 1 UserId as Id, LastName, Name AS UserName, BirthOfDay, PhoneNumber, UserName AS Email, CONVERT(varchar(5), Type) AS TYPE, AvatarPath FROM UserProfile WHERE UserId = " + WebSecurity.CurrentUserId).FirstOrDefault();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult UserProfile(EditRegisterModel model)
+        [AllowAnonymous]
+        public ActionResult UserProfile(EditRegisterModel model, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -59,12 +66,23 @@ namespace DXWebMRCS.Controllers
                 _user.UserName = model.Email;
                 _user.PhoneNumber = model.PhoneNumber;
                 _user.Type = Convert.ToInt32(model.Type);
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
+                    model.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/UserAvatar/"), fileName);
+                    ImageFile.SaveAs(fileName);
+                }
 
                 db.Entry(_user).State = EntityState.Modified;
                 db.SaveChanges();
             }
             return View(model);
-        }
+        } 
+        #endregion
 
         #region Slider
         [HttpPost]
@@ -224,6 +242,48 @@ namespace DXWebMRCS.Controllers
             return RedirectToAction("index");
         } 
         #endregion
+
+        static void SendNotificationMessage()
+        {
+            var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
+
+            request.KeepAlive = true;
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+
+            request.Headers.Add("authorization", "Basic MTM0MDA4MTYtOGQyOS00NzU1LTliNjktNzQ1YWY3ZDQzNThj");
+
+            byte[] byteArray = Encoding.UTF8.GetBytes("{"
+                                                    + "\"app_id\": \"571b8baa-797b-41e3-ac8d-f4c1bb196d29\","
+                                                    + "\"contents\": {\"en\": \"English Message\"},"
+                                                    + "\"included_segments\": [\"All\"]}");
+
+            string responseContent = null;
+
+            try
+            {
+                using (var writer = request.GetRequestStream())
+                {
+                    writer.Write(byteArray, 0, byteArray.Length);
+                }
+
+                using (var response = request.GetResponse() as HttpWebResponse)
+                {
+                    using (var reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        responseContent = reader.ReadToEnd();
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                System.Diagnostics.Debug.WriteLine(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
+            }
+
+            System.Diagnostics.Debug.WriteLine(responseContent);
+            //return string.Empty;
+        }
 	}
 
     public class SysAdminControllerHtmlEditorSettings

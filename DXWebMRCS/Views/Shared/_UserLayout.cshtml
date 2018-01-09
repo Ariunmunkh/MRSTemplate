@@ -103,6 +103,21 @@
         @Html.Partial("_FooterPartial");
 
     </div>
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "571b8baa-797b-41e3-ac8d-f4c1bb196d29",
+                autoRegister: true,
+                notifyButton: {
+                    enable: false,
+                },
+            });
+        });
+    </script>
+
     <!-- end wrapper -->
     <!-- Footer Scripts -->
     <!-- JS | Custom script for all pages -->
@@ -119,7 +134,7 @@
     <script type="text/javascript" src="~/Content/js/revolution-slider/js/extensions/revolution.extension.navigation.min.js"></script>
     <script type="text/javascript" src="~/Content/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
     <script type="text/javascript" src="~/Content/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="~/Content/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
+    @*<script type="text/javascript" src="~/Content/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>*@
 </body>
 </html>
 

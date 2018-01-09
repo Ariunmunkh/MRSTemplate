@@ -13,6 +13,8 @@ using System.Net;
 using Microsoft.Owin.Security;
 using System.Net.Mail;
 using System.Text;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DXWebMRCS.Controllers {
     [Authorize]
@@ -21,6 +23,17 @@ namespace DXWebMRCS.Controllers {
 
         private UsersContext db = new UsersContext();
 
+        //public AccountController()
+        //    : this(new UserManager<UserProfile>(new UserStore<UserProfile>(new UsersContext())))
+        //{
+        //}
+
+        //public AccountController(UserManager<UserProfile> userManager)
+        //{
+        //    UserManager = userManager;
+        //}
+
+        //public UserManager<UserProfile> UserManager { get; private set; }
         
         //
         // GET: /Account/Login
@@ -36,8 +49,12 @@ namespace DXWebMRCS.Controllers {
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl) {
+        public async Task<ActionResult> Login(LoginModel model, string returnUrl) {
+
             if(ModelState.IsValid) {
+
+                //var user = await UserManager.FindAsync(model.Email, model.Password);
+
                 if(WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe)) {
                     //var role1 = Roles.GetRolesForUser();
                     //var role2 = Roles.IsUserInRole(model.Email, "BranchUser");

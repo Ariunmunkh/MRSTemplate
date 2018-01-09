@@ -6539,6 +6539,7 @@
     <Folder Include="Content\HtmlEditor\VideoFiles\" />
     <Folder Include="Content\Images\NewsImage\" />
     <Folder Include="Content\Images\SliderImage\" />
+    <Folder Include="Content\Images\UserAvatar\" />
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\UploadImages\" />
   </ItemGroup>

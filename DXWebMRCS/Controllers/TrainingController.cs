@@ -14,7 +14,7 @@ using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,BranchUser")]
     public class TrainingController : Controller
     {
 
