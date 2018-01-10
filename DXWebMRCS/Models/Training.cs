@@ -47,7 +47,7 @@ namespace DXWebMRCS.Models
          * 1 - Үйл ажилгаа
          * 2 - Явагдах сургалт
          */
-        public string Type { get; set; }
+        public decimal Type { get; set; }
 
         public string Image { get; set; }
 
