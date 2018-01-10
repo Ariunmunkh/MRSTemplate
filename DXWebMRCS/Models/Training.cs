@@ -43,6 +43,13 @@ namespace DXWebMRCS.Models
         
         [Display(Name = "Үргэлжлэх хугацаа")]
         public decimal Duration { get; set; }
+        /*
+         * 1 - Үйл ажилгаа
+         * 2 - Явагдах сургалт
+         */
+        public string Type { get; set; }
+
+        public string Image { get; set; }
 
         /*
          0-Бүртгэж байна
