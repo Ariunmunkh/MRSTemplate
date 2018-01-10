@@ -91,13 +91,19 @@
                         }
                     </p>
                 </div>
-                @*<div class="col-md-6">
-                    <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                    </blockquote>
-                </div>*@
+                
             </div>
+            <div class="row mt-20">
+                    @{
+                        string requestBtnText = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? "Бүртгүүлэх" : @Model.RequestStatus == 0 ? "Хүлээнэ үү" : "Хүлээн авсан";
+                        bool requestIsDisabled = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? false : true;
+                        bool cancelIsDisabled = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? true : false;
+                    }
+                    <button id="@Url.Content("request" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@requestIsDisabled userid=@Model.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
+                    <button id="@Url.Content("cancel" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@cancelIsDisabled userid=@Model.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>
+               
+            </div>
+
             <div class="row mt-40">
                 @{Html.RenderAction("TrainingDetailUserListPartial", "Home", new { trainingId = Model.TrainingID});}
             </div>
@@ -106,89 +112,8 @@
 
     <!-- Section: Registration Form -->
     <section class="divider parallax layer-overlay overlay-white-8" data-bg-img="http://placehold.it/1920x1280">
-        <div class="container-fluid">
-            <div class="section-title">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 text-center">
-                        <h3 class="title text-theme-colored">Registration Form</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <form id="booking-form" name="booking-form" action="includes/event-register.php" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Enter Name" name="register_name" required="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Enter Email" name="register_email" class="form-control" required="">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Enter Phone" name="register_phone" class="form-control" required="">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Ticket types</label>
-                                    <select name="ticket_type" class="form-control">
-                                        <option>One Person</option>
-                                        <option>Two Person</option>
-                                        <option>Family Pack</option>
-                                        <option>Premium</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Event types</label>
-                                    <select name="event_type" class="form-control">
-                                        <option>Event 1</option>
-                                        <option>Event 2</option>
-                                        <option>Event 3</option>
-                                        <option>All package</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group text-center">
-                                    <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                                    <button data-loading-text="Please wait..." class="btn btn-dark btn-theme-colored btn-sm btn-block mt-20 pt-10 pb-10" type="submit">Register now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Job Form Validation-->
-                    <script type="text/javascript">
-                        $("#booking-form").validate({
-                            submitHandler: function (form) {
-                                var form_btn = $(form).find('button[type="submit"]');
-                                var form_result_div = '#form-result';
-                                $(form_result_div).remove();
-                                form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                var form_btn_old_msg = form_btn.html();
-                                form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                $(form).ajaxSubmit({
-                                    dataType: 'json',
-                                    success: function (data) {
-                                        if (data.status == 'true') {
-                                            $(form).find('.form-control').val('');
-                                        }
-                                        form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                        $(form_result_div).html(data.message).fadeIn('slow');
-                                        setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
-                                    }
-                                });
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
+        <div class="container-fluid">            
+            
         </div>
     </section>
 
@@ -212,3 +137,80 @@
 </div>
 <!-- end main-content -->
 
+<script>
+
+    $(".ActionRegister").click(function (e) {
+        e.preventDefault();
+        console.log("---------Register = 1----------");
+        var tagId = $(this).attr('id');
+        var id = $(this).attr('trainingid');
+        var userid = $(this).attr('userid');
+
+        console.log("id = " + id);
+        console.log("userId = " + userid);
+
+        var baseurl = '@Url.Action("TrainingRegister", "Home")';
+        $.ajax({
+            url: baseurl,
+            type: 'POST',
+            data: { 'id': id},
+            datatype: 'json',
+            success: function (data) {
+
+                console.log(data);
+
+                console.log("id = " + id);
+                console.log("userId = " + userid);
+
+                if (data.success == true) {
+                    console.log(data.userId);
+                    $("#request" + id + "").html('Хүлээнэ үү');
+                    document.getElementById(tagId).disabled = true;
+                    document.getElementById("cancel" + id).disabled = false;
+                    document.getElementById("cancel" + id).setAttribute("userid", data.userId);
+                }
+            },
+        });
+    });
+
+    $(".ActionCancel").click(function (e) {
+        e.preventDefault();
+        console.log("---------Cancel = 1----------");
+        var tagId = $(this).attr('id');
+        var id = $(this).attr('trainingid');
+        var userid = $(this).attr('userid');
+
+        var baseurl = '@Url.Action("TrainingCancel", "Home")';
+        $.ajax({
+            url: baseurl,
+            type: 'POST',
+            data: { 'userid': userid, 'trainingid': id },
+            datatype: 'json',
+            success: function (data) {
+
+                console.log(data);
+                if (data.success == true) {
+                    document.getElementById("request" + id).disabled = false;
+                    document.getElementById(tagId).disabled = true;
+                    $("#request" + id + "").html('Бүртгүүлэх');
+                    //document.getElementById(trainingid).disabled = false;
+                    console.log(data.requestId);
+                }
+            },
+        });
+    });
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        /* Save JobPost */
+        $('#formId').submit(function (e) {
+            e.preventDefault();
+            return false;
+        });
+
+    });
+</script>

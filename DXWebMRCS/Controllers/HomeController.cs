@@ -14,6 +14,7 @@ using System.Data.Entity;
 using WebMatrix.WebData;
 using PagedList;
 using DXWebMRCS.Filters;
+using System.Collections;
 
 namespace DXWebMRCS.Controllers
 {
@@ -30,7 +31,7 @@ namespace DXWebMRCS.Controllers
         
         public ActionResult GridViewPartialView() 
         {
-            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
+            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
             return PartialView();
         }
                 
@@ -78,18 +79,26 @@ namespace DXWebMRCS.Controllers
         [HttpGet]
         public ActionResult TrainingEventPartial()
         {
-            IEnumerable<TrainingModel> traininglist;
+            IEnumerable<TrainingModel> traininglist1;
+            IEnumerable<TrainingModel> traininglist2;
             if (WebSecurity.CurrentUserId > 0)
             {
-                traininglist = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
-                                                                    "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).ToList();                
+                traininglist1 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                                                                    "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId + " WHERE Type = 2").ToList();
+
+                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                                                                    "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId + " WHERE Type = 1").ToList();     
             }
             else
             {
-                traininglist = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
-                                                                    "FROM Trainings t ").ToList();
+                traininglist1= db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                                                                    "FROM Trainings t WHERE Type = 2").ToList();
+
+                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                                                                    "FROM Trainings t WHERE Type = 1").ToList();
             }
-            return PartialView("_TrainingEventPartial", traininglist);
+            var model = new Tuple<IEnumerable<TrainingModel>, IEnumerable<TrainingModel>>(traininglist1, traininglist2);
+            return PartialView("_TrainingEventPartial", model);
         }
 
 
@@ -151,6 +160,7 @@ namespace DXWebMRCS.Controllers
         [Authorize]
         public ActionResult TrainingRegister(int id)
         {
+            
             var count = db.Database.SqlQuery<TrainingRequest>("SELECT TOP 1 * FROM TrainingRequests WHERE TrainingID = " + id + " AND UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
             if (count != null)
             {

@@ -7,7 +7,6 @@ using System.Data.Entity;
 using System.Web.Security;
 using DevExpress.Web.Mvc;
 using System.Globalization;
-using DXWebMRCS.Models;
 using WebMatrix.WebData;
 
 namespace DXWebMRCS.Constants
@@ -20,8 +19,9 @@ namespace DXWebMRCS.Constants
         {
             UsersContext db = new UsersContext();
             
-            var name = db.Database.SqlQuery<string>("SELECT TOP 1 Name FROM UserProfile WHERE UserName = '" + email + "'").FirstOrDefault();
-            return name;
+            var user = db.Database.SqlQuery<UserProfile>("SELECT TOP 1 * FROM UserProfile WHERE UserName = '" + email + "'").FirstOrDefault();
+            
+            return user.Name;
         }
     }
 

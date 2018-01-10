@@ -11,6 +11,7 @@ using DevExpress.Web.Mvc;
 using System.IO;
 using ImageResizer;
 using PagedList;
+using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
@@ -178,6 +179,7 @@ namespace DXWebMRCS.Controllers
                 news.Date = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();
+                SendNotificationMessage();
                 return RedirectToAction("Index");
             }
 
@@ -400,6 +402,50 @@ namespace DXWebMRCS.Controllers
             }
             return PartialView("_NewsViewPartial", model.ToList());
         }
+
+
+        static void SendNotificationMessage()
+        {
+            var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
+
+            request.KeepAlive = true;
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+
+            request.Headers.Add("authorization", "Basic MTM0MDA4MTYtOGQyOS00NzU1LTliNjktNzQ1YWY3ZDQzNThj");
+
+            byte[] byteArray = Encoding.UTF8.GetBytes("{"
+                                                    + "\"app_id\": \"571b8baa-797b-41e3-ac8d-f4c1bb196d29\","
+                                                    + "\"headings\": {\"en\": \"" + "Red Cross" + "\"},"
+                                                    + "\"contents\": {\"en\": \"Шинэ мэдээ орлоо\"},"
+                                                    + "\"included_segments\": [\"All\"]}");
+
+            string responseContent = null;
+
+            try
+            {
+                using (var writer = request.GetRequestStream())
+                {
+                    writer.Write(byteArray, 0, byteArray.Length);
+                }
+
+                using (var response = request.GetResponse() as HttpWebResponse)
+                {
+                    using (var reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        responseContent = reader.ReadToEnd();
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                System.Diagnostics.Debug.WriteLine(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
+            }
+
+            System.Diagnostics.Debug.WriteLine(responseContent);
+            //return string.Empty;
+        }
     }
     public class NewsControllerBodyEngSettings1
     {
@@ -430,6 +476,8 @@ namespace DXWebMRCS.Controllers
                 return imageSelectorSettings;
             }
         }
+
+
     }
 
     public class NewsControllerImageSettings

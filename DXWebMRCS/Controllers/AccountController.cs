@@ -59,6 +59,7 @@ namespace DXWebMRCS.Controllers {
                     //var role1 = Roles.GetRolesForUser();
                     //var role2 = Roles.IsUserInRole(model.Email, "BranchUser");
                     //var role3 = Roles.GetRolesForUser(model.Email);
+                    
                     if (Roles.IsUserInRole(model.Email, "BranchUser"))
                     {
                          return Redirect(returnUrl ?? "/SysAdmin");
