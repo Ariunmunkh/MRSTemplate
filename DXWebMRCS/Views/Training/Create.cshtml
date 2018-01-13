@@ -37,6 +37,14 @@
                         @Html.ValidationSummary(true)
 
                         <div class="form-group">
+                            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Type", new List<SelectListItem> { new SelectListItem { Text = "Үйл ажилгаа", Value = "1" }, new SelectListItem { Text = "Явагдах сургалт", Value = "2" } })
+                                @Html.ValidationMessageFor(model => model.Type)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.NameMon)
@@ -94,6 +102,14 @@
                         </div>
 
                         <div class="form-group">
+                            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="file" name="ImageFile" required onchange="show(this)">
+                                <img id="user_img" height="100" width="90" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Create" class="btn btn-default" />
                             </div>
@@ -110,3 +126,14 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  

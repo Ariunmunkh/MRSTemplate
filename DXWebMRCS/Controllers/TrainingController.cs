@@ -97,10 +97,28 @@ namespace DXWebMRCS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TrainingID,NameMon,NameEng,ContentMon,ContentEng,Where,When,Duration,Status")] Training Training)
+        public ActionResult Create([Bind(Include = "TrainingID,NameMon,NameEng,ContentMon,ContentEng,Where,When,Duration,Status,Type,Image")] Training Training, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Training.Image = "/Content/Images/NewsImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+
                 Training.Status = 0;
                 db.Trainings.Add(Training);
                 db.SaveChanges();
@@ -127,10 +145,28 @@ namespace DXWebMRCS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TrainingID,NameMon,NameEng,ContentMon,ContentEng,Where,When,Duration,Status")] Training Training)
+        public ActionResult Edit([Bind(Include = "TrainingID,NameMon,NameEng,ContentMon,ContentEng,Where,When,Duration,Status,Type,Image")] Training Training, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Training.Image = "/Content/Images/NewsImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+
                 db.Entry(Training).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
