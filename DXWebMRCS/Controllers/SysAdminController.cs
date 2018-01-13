@@ -28,6 +28,17 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
+        [ValidateInput(false)]
+        public ActionResult _UploadFile()
+        {
+            return View(UploadFileManagerSettings.Model);
+        }        
+
+        public FileStreamResult FileManagerPartialDownload()
+        {
+            return FileManagerExtension.DownloadFiles("FileManager", UploadFileManagerSettings.Model);
+        }
+
         #region Partial View
         public ActionResult HtmlEditorPartial()
         {

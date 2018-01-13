@@ -79,6 +79,8 @@ namespace DXWebMRCS.Controllers
         [HttpGet]
         public ActionResult TrainingEventPartial()
         {
+            var user = HttpContext.Session["UserProfile"] as UserProfile;
+            var user2 = HttpContext.Application["UserProfile"] as UserProfile;
             IEnumerable<TrainingModel> traininglist1;
             IEnumerable<TrainingModel> traininglist2;
             if (WebSecurity.CurrentUserId > 0)
@@ -160,7 +162,8 @@ namespace DXWebMRCS.Controllers
         [Authorize]
         public ActionResult TrainingRegister(int id)
         {
-            
+            var user = HttpContext.Session["UserProfile"] as UserProfile;
+            var user2 = HttpContext.Application["UserProfile"] as UserProfile;
             var count = db.Database.SqlQuery<TrainingRequest>("SELECT TOP 1 * FROM TrainingRequests WHERE TrainingID = " + id + " AND UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
             if (count != null)
             {

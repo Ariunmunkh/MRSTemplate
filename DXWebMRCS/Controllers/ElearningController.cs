@@ -207,7 +207,14 @@ namespace DXWebMRCS.Controllers
 
     public class ElearningControllerFileManagerSettings
     {
-        public const string RootFolder = @"~\Content\elearn\flash";
+        public const string RootFolder = @"~\Content\Uploadfile";
+
+        public static string Model { get { return RootFolder; } }
+    }
+
+    public class UploadFileManagerSettings
+    {
+        public const string RootFolder = @"~\Content\Uploadfile";
 
         public static string Model { get { return RootFolder; } }
     }

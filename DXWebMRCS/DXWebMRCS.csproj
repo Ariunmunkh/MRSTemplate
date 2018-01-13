@@ -6356,6 +6356,7 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
+    <None Include="Properties\PublishProfiles\MRCS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6467,6 +6468,7 @@
     <Content Include="Views\Home\TrainingEventDetail.cshtml" />
     <Content Include="Views\Home\_TrainingDetailUserListPartial.cshtml" />
     <Content Include="Views\SysAdmin\UserProfile.cshtml" />
+    <Content Include="Views\SysAdmin\_UploadFile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6541,6 +6543,7 @@
     <Folder Include="Content\Images\SliderImage\" />
     <Folder Include="Content\Images\UserAvatar\" />
     <Folder Include="Content\Thumb\" />
+    <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
   </ItemGroup>
   <ItemGroup>
