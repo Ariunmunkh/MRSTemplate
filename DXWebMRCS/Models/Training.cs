@@ -32,23 +32,25 @@ namespace DXWebMRCS.Models
         [Display(Name = "Агуулга (Англи)")]
         public string ContentEng { get; set; }
 
-        
+
         [Display(Name = "Хаана")]
         public string Where { get; set; }
 
-        
+
         [Display(Name = "Хэзээ")]
         public DateTime When { get; set; }
 
-        
+
         [Display(Name = "Үргэлжлэх хугацаа")]
         public decimal Duration { get; set; }
         /*
          * 1 - Үйл ажилгаа
          * 2 - Явагдах сургалт
          */
+        [Display(Name = "Төрөл")]
         public decimal Type { get; set; }
 
+        [Display(Name = "Зураг")]
         public string Image { get; set; }
 
         /*
@@ -60,7 +62,8 @@ namespace DXWebMRCS.Models
          5-Цуцалсан*/
         [Display(Name = "Төлөв")]
         public decimal Status { get; set; }
-       			
+
 
     }
+
 }

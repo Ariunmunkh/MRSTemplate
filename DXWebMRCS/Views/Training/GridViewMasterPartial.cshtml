@@ -51,6 +51,14 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "Type";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.Items.Add("Үйл ажилгаа", 1);
+            comboBoxProperties.Items.Add("Явагдах сургалт", 2);
+        });
         settings.Columns.Add("NameMon");
         settings.Columns.Add("NameEng");
         settings.Columns.Add("ContentMon");

@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="post-thumb thumb">
-                        @{string imageUrl = item.ImageMedium != null ? "http://localhost:4659" + item.ImageMedium : "http://placehold.it/360x240";}
+                        @{string imageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "http://placehold.it/360x240";}
                         <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
                     </div>
                 </div>
