@@ -59,7 +59,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @{string imageUrl = "http://localhost:4659" + @Model.Image;}
+                    @{string imageUrl = System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Image;}
                     <input type="file" name="ImageFile" onchange="show(this)">
                     <img id="user_img" src=@imageUrl height="100" width="90" />
                     @Html.HiddenFor(model => model.Image)

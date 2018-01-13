@@ -51,7 +51,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    @{string imageUrl = "http://localhost:4659" + @item.ImagePath;}
+                                    @{string imageUrl = System.Configuration.ConfigurationManager.AppSettings["webURL"] + @item.ImagePath;}
                                     <td class="a-center" style="vertical-align:middle;text-align:center"><img id="user_img" height="100" width="90" src=@imageUrl /></td>
                                     <td class="a-center" style="vertical-align:middle">@item.MonTitle</td>
                                     <td class="a-center" style="vertical-align:middle">@item.EngTitle</td>

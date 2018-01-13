@@ -51,27 +51,14 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
-        settings.Columns.Add("Type", MVCxGridViewColumnType.ComboBox);
-        //settings.Columns.Add(column =>
-        //{
-
-        //    column.FieldName = "Type";
-        //    //column.Caption = "Default Value";
-
-        //    column.ColumnType = MVCxGridViewColumnType.ComboBox;
-        //    var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
-        //    var x = string.Empty;
-
-        //    //column.SetDataItemTemplateContent(c =>
-        //    //{
-        //    // x = DataBinder.Eval(c.DataItem, "Id").ToString();
-        //    //});
-
-        //    comboBoxProperties.
-        //    comboBoxProperties.TextField = "Text";
-        //    comboBoxProperties.ValueField = "Value";
-        //    comboBoxProperties.ValueType = typeof(String);
-        //});
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "Type";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.Items.Add("Үйл ажилгаа", 1);
+            comboBoxProperties.Items.Add("Явагдах сургалт", 2);
+        });
         settings.Columns.Add("NameMon");
         settings.Columns.Add("NameEng");
         settings.Columns.Add("ContentMon");
