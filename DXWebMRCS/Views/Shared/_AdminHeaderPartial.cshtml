@@ -2,7 +2,10 @@
 @{
     ViewBag.Title = "_AdminHeaderPartial";
 }
-
+@{
+    var _user = @DXWebMRCS.Constants.Config.GetUser(User.Identity.Name);
+    string imageUrl = _user != null ? _user.AvatarPath : "~/Content/images/defaultImage.png";
+}
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
@@ -14,14 +17,14 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                @{string avatar = DXWebMRCS.Constants.Config.GetUserAvatar(User.Identity.Name);}
-                @if (string.IsNullOrEmpty(avatar))
+                @*@{string avatar = DXWebMRCS.Constants.Config.GetUserAvatar(User.Identity.Name);}*@
+                @if (string.IsNullOrEmpty(imageUrl))
                 {
-                    <img src="~/Content/Admin/images/img.jpg" alt="..." class="img-circle profile_img">
+                    <img src="~/Content/images/defaultImage.png" alt="..." class="img-circle profile_img">
                 }
                 else
                 {
-                    <img src="@Url.Content("http://localhost:4659" + avatar)" alt="..." class="img-circle profile_img">
+                    <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + imageUrl)" alt="..." class="img-circle profile_img">
                 }
                 
             </div>
@@ -42,7 +45,7 @@
                     @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
                     {                        
                         <li>
-                        <a href="@Url.Action("Index", "SysAdmin")"><i class="fa fa-home"></i> Хэрэглэгч </a>
+                            <a href="@Url.Action("Index", "SysAdmin")"><i class="fa fa-home"></i> Хэрэглэгч </a>
                         </li>
                         <li>
                             <a href="@Url.Action("Index", "Menu")"><i class="fa fa-edit"></i> Меню </a>
@@ -83,7 +86,24 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="~/Content/Admin/images/img.jpg" alt="">@DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name)
+                        @if (string.IsNullOrEmpty(imageUrl))
+                        {
+                            <img src="~/Content/images/defaultImage.png" alt="" >
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + imageUrl)" alt="">                       
+                        }
+                        
+                        
+                        @if (_user != null)
+                        {
+                            @_user.Name;
+                        }
+                        else
+                        {
+                            @DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name);
+                        }                        
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -97,7 +117,7 @@
                     </ul>
                 </li>
 
-                <li role="presentation" class="dropdown">
+                @*<li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
                         <span class="badge bg-green">6</span>
@@ -160,7 +180,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li>*@
             </ul>
         </nav>
     </div>

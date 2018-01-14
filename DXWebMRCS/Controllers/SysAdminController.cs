@@ -25,7 +25,11 @@ namespace DXWebMRCS.Controllers
         // GET: /SysAdmin/
         public ActionResult Index()
         {
-            return View();
+            if (Roles.IsUserInRole(User.Identity.Name, "Admin")){
+                return View();
+            }
+
+            return RedirectToAction("index", "News");
         }
 
         [ValidateInput(false)]
@@ -69,6 +73,18 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult UserProfile(EditRegisterModel model, HttpPostedFileBase ImageFile)
         {
+            string fileName = string.Empty;
+            if (ImageFile != null)
+            {
+                fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                string extension = Path.GetExtension(ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                
+                model.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Content/Images/UserAvatar/"), fileName);
+                ImageFile.SaveAs(fileName);
+            }
+
             if (ModelState.IsValid)
             {
                 var _user = db.UserProfiles.Find(model.Id);
@@ -77,16 +93,8 @@ namespace DXWebMRCS.Controllers
                 _user.UserName = model.Email;
                 _user.PhoneNumber = model.PhoneNumber;
                 _user.Type = Convert.ToInt32(model.Type);
-                if (ImageFile != null)
-                {
-                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
-                    string extension = Path.GetExtension(ImageFile.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
-                    model.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Content/Images/UserAvatar/"), fileName);
-                    ImageFile.SaveAs(fileName);
-                }
+
+                _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
 
                 db.Entry(_user).State = EntityState.Modified;
                 db.SaveChanges();
