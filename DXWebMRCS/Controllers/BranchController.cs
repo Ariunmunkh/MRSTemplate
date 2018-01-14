@@ -140,6 +140,7 @@ namespace DXWebMRCS.Controllers
 
                 db.Branchs.Add(Branch);
                 db.SaveChanges();
+                NorthwindDataProvider.InsertBranchMenu(Branch);
                 return RedirectToAction("Index");
             }
 

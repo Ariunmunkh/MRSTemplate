@@ -169,6 +169,9 @@ namespace DXWebMRCS.Models
                         BranchID = (int)reader["BranchID"],
                         NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
                         NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                        email = reader["email"] == DBNull.Value ? string.Empty : (string)reader["email"],
+                        phone = reader["phone"] == DBNull.Value ? string.Empty : (string)reader["phone"],
+                        address = reader["address"] == DBNull.Value ? string.Empty : (string)reader["address"],
                     });
                 }
 
@@ -186,6 +189,41 @@ namespace DXWebMRCS.Models
 
                 connection.Open();
                 deleteCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertBranchMenu(Branch Branch)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                int BranchID = -1;
+                SqlCommand selectCommand;
+                selectCommand = new SqlCommand(@"select * from branches where namemon = @namemon and nameeng = @nameeng and email = @email and phone = @phone and [address] = @address", connection);
+                selectCommand.Parameters.AddWithValue("@namemon", Branch.NameMon);
+                selectCommand.Parameters.AddWithValue("@nameeng", Branch.NameEng);
+                selectCommand.Parameters.AddWithValue("@email", Branch.email);
+                selectCommand.Parameters.AddWithValue("@phone", Branch.phone);
+                selectCommand.Parameters.AddWithValue("@address", Branch.address);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    BranchID = (int)reader["BranchID"];
+                }
+                if (BranchID == -1)
+                    return;
+                reader.Close();
+                if(connection.State == ConnectionState.Closed)
+                    connection.Open();
+                SqlCommand insertCommand = new SqlCommand(@"insert into menu (namemon, nameeng, branchid) 
+                                                                        values(N'Мэдээ мэдээлэл', 'News', @BranchID),
+                                                                              (N'Салбар танилцуулга', 'About us', @BranchID),
+                                                                              (N'Холбоо барих', 'Contact us', @BranchID)", connection);
+
+                insertCommand.Parameters.AddWithValue("@BranchID", BranchID);
+                insertCommand.ExecuteNonQuery();
             }
         }
 
