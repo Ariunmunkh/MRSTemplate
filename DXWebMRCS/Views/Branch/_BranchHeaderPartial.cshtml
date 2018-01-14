@@ -11,7 +11,7 @@
                     @foreach (var item in Model)
                     {
                         <li>
-                            <a href='@Url.Action("BranchView", "Branch", new { branchId = @item.BranchID, menuID = @item.MenuID })'>
+                            <a id=@item.NameEng href='@Url.Action("BranchView", "Branch", new { branchId = @item.BranchID, menuID = @item.MenuID })'>
                                 @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                                 {
                                     @item.NameEng

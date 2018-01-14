@@ -1,4 +1,6 @@
-﻿@model DXWebMRCS.Models.BranchViewModel
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model DXWebMRCS.Models.BranchViewModel
 @{
     Layout = "~/Views/Shared/_BranchLayout.cshtml";
 }
@@ -10,21 +12,52 @@
             <div class="col-md-9 blog-pull-right">
                 <div class="blog-posts">
                     <div class="col-md-12">
-                        @{ Html.RenderAction("BranchNewsListPartial", "Branch", new { branchId = Model.BranchID, menuID = Model.menuID }); }
+                        <div class="list-dashed">
+                            @foreach (var item in Model.newsList)
+                            {
+                                <article class="post clearfix mb-30 pb-30">
+                                    <div class="row entry-content">
+                                        <div class="col-sm-5">
+                                            <div class="entry-header">
+                                                @{string imageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "https://placehold.it/460x240";}
+                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src=@imageUrl alt=""> </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div class="pb-40 mt-0">
+                                                <a href='@Url.Action("BranchListDetail", "Branch", new { newsId = item.CID, branchId = item.BranchID })'>
+                                                    <h4 class="entry-title mt-0 pt-0">
+                                                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                                        {
+                                                            @item.TitleEng
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.TitleMon
+                                                        }
+                                                    
+                                                    </h4>
+                                                </a>
+                                                <ul class="list-inline font-12 mb-20 mt-10">
+                                                    @*<li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>*@
+                                                    <li><span class="text-theme-colored">@item.Date.ToString("MMM") @item.Date.ToString("dd"),@item.Date.ToString("yyyy")</span></li>
+                                                </ul>
+                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">...</a></p>
+                                                @*<ul class="list-inline like-comment pull-left font-12">
+                                                    <li><i class="pe-7s-comment"></i>36</li>
+                                                    <li><i class="pe-7s-like2"></i>125</li>
+                                                </ul>*@
+                                                <a class="pull-right text-gray font-13" href='@Url.Action("BranchListDetail", "Branch", new { newsId = item.CID, branchId = item.BranchID })'><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            }
+
+                        </div>
                     </div>
                     <div class="col-md-12">
-                        <nav>
-                            <ul class="pagination">
-                                <li> <a aria-label="Previous" href="#"> <span aria-hidden="true">«</span> </a> </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">...</a></li>
-                                <li> <a aria-label="Next" href="#"> <span aria-hidden="true">»</span> </a> </li>
-                            </ul>
-                        </nav>
+                        @Html.PagedListPager(Model.newsList, page => Url.Action("PageClick", new { page = page, branchId = Model.BranchID, menuID = Model.menuID }))
                     </div>
                 </div>
             </div>

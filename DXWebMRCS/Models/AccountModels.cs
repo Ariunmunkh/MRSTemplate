@@ -262,6 +262,7 @@ namespace DXWebMRCS.Models {
         public string address { get; set; }
         public int menuID { get; set; }
         public News news { get; set; }
+        public PagedList.IPagedList<DXWebMRCS.Models.News> newsList { get; set; }
     }
 
     #endregion

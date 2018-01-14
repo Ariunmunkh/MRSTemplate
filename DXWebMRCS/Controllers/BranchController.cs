@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
+using PagedList;
 
 namespace DXWebMRCS.Controllers
 {
@@ -24,11 +25,80 @@ namespace DXWebMRCS.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult BranchView(int branchId, int menuID)
+        public ActionResult PageClick(int? page, int branchId, int menuID)
         {
             var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
-            branch.menuID = menuID;
-            return View(branch);
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+            if (menuID > 0)
+            {
+                var newslist = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                if (newslist == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (newslist.Count == 1)
+                {
+                    branch.news = newslist.First();
+                    return View("BranchListDetail", branch);
+                }
+
+                branch.newsList = newslist;
+                return View("BranchView", branch);
+            }
+            else
+            {
+                var newslist = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                if (newslist == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (newslist.Count == 1)
+                {
+                    branch.news = newslist.First();
+                    return View("BranchListDetail", branch);
+                }
+
+                branch.newsList = newslist;
+                return View("BranchView", branch);
+            }
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchView(int branchId, int menuID)
+        {
+            var pageNumber = 1;
+            var pageSize = 4;
+
+            ViewBag.menuId = menuID;
+
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            branch.menuID = menuID;            
+
+            if (menuID > 0)
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                branch.newsList = newsList;
+                if (newsList.Count == 1)
+                {
+                    branch.news = newsList.First();
+                    return View("BranchListDetail", branch);
+                }                
+                return View(branch);
+            }
+            else
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                branch.newsList = newsList;
+                if (newsList.Count == 1)
+                {
+                    branch.news = newsList.First();
+                    return View("BranchListDetail", branch);
+                }                
+                return View(branch);
+            }             
         }
 
         [AllowAnonymous]
@@ -43,7 +113,7 @@ namespace DXWebMRCS.Controllers
         {
             if (menuID > 0)
             {
-                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID).ToList();
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToList();
                 if (newsList.Count == 1)
                 {
                     return PartialView("BranchViewDetail", newsList.FirstOrDefault());
@@ -52,7 +122,7 @@ namespace DXWebMRCS.Controllers
             }
             else
             {
-                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId).ToList();
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToList();
                 if (newsList.Count == 1)
                 {
                     return PartialView("BranchViewDetail", newsList.FirstOrDefault());
