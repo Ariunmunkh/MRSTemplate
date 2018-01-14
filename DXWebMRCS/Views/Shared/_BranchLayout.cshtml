@@ -1,4 +1,4 @@
-﻿@model DXWebMRCS.Models.Branch
+﻿@model Tuple<DXWebMRCS.Models.Branch, IEnumerable<DXWebMRCS.Models.News>>
 @{
     Layout = null;
 }
@@ -85,9 +85,9 @@
                         <div class="col-md-7 pt-10 pb-10">
                             <div class="widget no-border m-0">
                                 <ul class="list-inline">
-                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">123-456-789</a> </li>
-                                    <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i> Mon-Fri 8:00 to 2:00 </li>
-                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">contact@yourdomain.com</a> </li>
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">@Model.Item1.phone</a> </li>
+                                    <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>@Model.Item1.address </li>
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">@Model.Item1.email</a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -133,13 +133,13 @@
                             </a>
                             <ul class="menuzord-menu">
                                 <li class="active">
-                                    <a href="#home">Мэдээ мэдээлэл</a>
+                                    <a href="@Url.Action("BranchView", "Home")">Мэдээ мэдээлэл</a>
                                 </li>
                                 <li>
-                                    <a href="#">Салбар танилцуулга</a>
+                                    <a href="@Url.Action("BranchIntroduction", "Home")">Салбар танилцуулга</a>
                                 </li>
                                 <li>
-                                    <a href="#">Холбоо барих</a>
+                                    <a href="@Url.Action("BranchContact", "Home")">Холбоо барих</a>
                                 </li>
                             </ul>
                         </nav>
@@ -149,17 +149,34 @@
         </header>
         <!-- Start main-content -->
         <div class="main-content">
+            @{ string imageUrl = string.IsNullOrEmpty(Model.Item1.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Item1.Image; }
             <!-- Section: inner-header -->
-            <section class="inner-header divider parallax layer-overlay" data-bg-img="http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG">
+            <section class="inner-header divider parallax layer-overlay" data-bg-img=@imageUrl>
                 <div class="container pt-60 pb-60">
                     <!-- Section Content -->
                     <div class="section-content">
                         <div class="row">
                             <div class="col-md-9 text-left pull-left">
-                                <h2 class="font-28 text-white">Blog</h2>
+                                <h2 class="font-28 text-white">
+                                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                    {
+                                        @Model.Item1.NameEng
+                                    }
+                                    else
+                                    {
+                                        @Model.Item1.NameMon
+                                    }
+                                </h2>
                             </div>
                             <div class="col-md-3 text-right">
-                                <img class="img-responsive" src="http://www.arkhangai.redcross.mn/images/branch/279e0c43fab6c14e7b9e5aed1d30682b.png" alt="">
+                                @if (string.IsNullOrEmpty(Model.Item1.Logo))
+                                {
+                                    <img class="img-responsive" src="http://www.arkhangai.redcross.mn/images/branch/279e0c43fab6c14e7b9e5aed1d30682b.png" alt="" />
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Item1.Logo)" alt="" />
+                                }                                
                             </div>
                         </div>
                     </div>

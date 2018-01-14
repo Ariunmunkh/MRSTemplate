@@ -35,12 +35,25 @@ namespace DXWebMRCS.Controllers
             return PartialView();
         }
 
-        public ActionResult BranchView()
+        public ActionResult BranchView(int branchId)
         {
-            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
+            var branch = db.Database.SqlQuery<Branch>("SELECT TOP 1 * FROM Branchs WHERE BranchID = " + branchId).FirstOrDefault();
+            var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId).ToList();
+            var model = new Tuple<Branch, IEnumerable<News>>(branch, newsList);
+            return View(model);
+        }
+
+        public ActionResult BranchIntroduction()
+        {
+            // DXCOMMENT: Pass a data model for GridView            
             return View();
         }
-                
+        
+        public ActionResult BranchContact()
+        {
+            // DXCOMMENT: Pass a data model for GridView            
+            return View();
+        }
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
@@ -48,7 +61,7 @@ namespace DXWebMRCS.Controllers
             {
                  return PartialView("_HeaderPartial", menuList);
             }
-            menuList = db.Menus.ToList();
+            menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menus WHERE BranchID IS NULL");
             return PartialView("_HeaderPartial", menuList);
         }
 

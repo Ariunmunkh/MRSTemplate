@@ -6596,7 +6596,9 @@
     <Compile Include="Content\Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\BranchViewController.cs" />
     <Compile Include="Controllers\ElearningController.cs" />
+    <Compile Include="Controllers\ElearnServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -6619,10 +6621,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801140458281_test.cs" />
-    <Compile Include="Migrations\201801140458281_test.Designer.cs">
-      <DependentUpon>201801140458281_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6652,6 +6650,7 @@
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
+    <Folder Include="Views\BranchView\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Language\RGlobal.mn.resx">
@@ -6661,9 +6660,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801140458281_test.resx">
-      <DependentUpon>201801140458281_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

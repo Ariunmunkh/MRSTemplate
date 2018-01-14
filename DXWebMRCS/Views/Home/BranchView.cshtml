@@ -1,4 +1,4 @@
-﻿
+﻿@model Tuple<DXWebMRCS.Models.Branch, IEnumerable<DXWebMRCS.Models.News>>
 @{
     Layout = "~/Views/Shared/_BranchLayout.cshtml";
 }
@@ -11,162 +11,36 @@
                     <div class="blog-posts">
                         <div class="col-md-12">
                             <div class="list-dashed">
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
+                                @foreach (var item in Model.Item2)
+                                {
+                                    <article class="post clearfix mb-30 pb-30">
+                                        <div class="row entry-content">
+                                            <div class="col-sm-5">
+                                                <div class="entry-header">
+                                                    <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <div class="pb-40 mt-0">
+                                                    <a href="#">
+                                                        <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
+                                                    </a>
+                                                    <ul class="list-inline font-12 mb-20 mt-10">
+                                                        <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
+                                                        <li><span class="text-theme-colored">SEP 12,15</span></li>
+                                                    </ul>
+                                                    <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
+                                                    <ul class="list-inline like-comment pull-left font-12">
+                                                        <li><i class="pe-7s-comment"></i>36</li>
+                                                        <li><i class="pe-7s-like2"></i>125</li>
+                                                    </ul>
+                                                    <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post clearfix mb-30 pb-30">
-                                    <div class="row entry-content">
-                                        <div class="col-sm-5">
-                                            <div class="entry-header">
-                                                <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="pb-40 mt-0">
-                                                <a href="#">
-                                                    <h4 class="entry-title mt-0 pt-0">Different types of stroke</h4>
-                                                </a>
-                                                <ul class="list-inline font-12 mb-20 mt-10">
-                                                    <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
-                                                    <li><span class="text-theme-colored">SEP 12,15</span></li>
-                                                </ul>
-                                                <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
-                                                <ul class="list-inline like-comment pull-left font-12">
-                                                    <li><i class="pe-7s-comment"></i>36</li>
-                                                    <li><i class="pe-7s-like2"></i>125</li>
-                                                </ul>
-                                                <a class="pull-right text-gray font-13" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                }
+                                
                             </div>
                         </div>
                         <div class="col-md-12">
