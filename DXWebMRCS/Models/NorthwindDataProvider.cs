@@ -231,6 +231,28 @@ namespace DXWebMRCS.Models
             return Branch;
         }
 
+        public static int GetBranchID(int MenuID)
+        {
+            int BranchID = -1;
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("select * from menu where menuid = @MenuID", connection);
+                selectCommand.Parameters.AddWithValue("@MenuID", MenuID);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    BranchID = reader["BranchID"] == DBNull.Value ? -1 : (int)reader["BranchID"];
+                }
+
+                reader.Close();
+            }
+
+            return BranchID;
+        }
+
         public static void DeleteBranch(int BranchID)
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
