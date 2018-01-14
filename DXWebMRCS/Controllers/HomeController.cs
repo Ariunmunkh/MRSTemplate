@@ -37,7 +37,7 @@ namespace DXWebMRCS.Controllers
 
         public ActionResult BranchView(int branchId)
         {
-            var branch = db.Database.SqlQuery<Branch>("SELECT TOP 1 * FROM Branchs WHERE BranchID = " + branchId).FirstOrDefault();
+            var branch = db.Database.SqlQuery<Branch>("SELECT TOP 1 * FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
             var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId).ToList();
             var model = new Tuple<Branch, IEnumerable<News>>(branch, newsList);
             return View(model);
@@ -61,7 +61,7 @@ namespace DXWebMRCS.Controllers
             {
                  return PartialView("_HeaderPartial", menuList);
             }
-            menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menus WHERE BranchID IS NULL");
+            menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID IS NULL").ToList();
             return PartialView("_HeaderPartial", menuList);
         }
 
