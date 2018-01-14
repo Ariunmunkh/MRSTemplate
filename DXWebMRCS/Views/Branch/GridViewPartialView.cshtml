@@ -11,24 +11,49 @@
             settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Branch", Action = "EditModesAddNewPartial" };
             settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Branch", Action = "EditModesUpdatePartial" };
             settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Branch", Action = "EditModesDeletePartial" };
-            settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
+            settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
             settings.SettingsBehavior.ConfirmDelete = true;
-            settings.SettingsPopup.EditForm.Width = 600;
             settings.Width = Unit.Percentage(100);
 
             settings.Styles.Header.Wrap = DefaultBoolean.True;
             settings.SettingsPager.EnableAdaptivity = true;
-            //settings.SettingsPopup.EditForm.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.OnWindowInnerWidth;
-            //settings.SettingsPopup.EditForm.SettingsAdaptivity.SwitchAtWindowInnerWidth = 768;
             settings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
             settings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
 
+            settings.SettingsPager.Visible = true;
+            settings.SettingsSearchPanel.Visible = true;
+            settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+            settings.Settings.ShowGroupPanel = true;
+            settings.Settings.ShowFilterRow = true;
+            settings.SettingsBehavior.AllowSelectByRowClick = true;
 
-            settings.CommandColumn.Visible = true;
-            settings.CommandColumn.ShowNewButton = true;
-            settings.CommandColumn.ShowDeleteButton = true;
-            settings.CommandColumn.ShowEditButton = true;
-
+            settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+            settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+            settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+            settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+            settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+            
+            settings.Columns.Add(column =>
+            {
+                column.Caption = "#";
+                column.SetDataItemTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write(
+                        Html.ActionLink("Edit", "Edit", new { id = DataBinder.Eval(c.DataItem, "BranchID") }) + "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", new { id = DataBinder.Eval(c.DataItem, "BranchID") })
+                    );
+                });
+                column.SetHeaderTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write(
+                        Html.ActionLink("New", "Create").ToHtmlString()
+                    );
+                });
+                column.Settings.AllowDragDrop = DefaultBoolean.False;
+                column.Settings.AllowSort = DefaultBoolean.False;
+                column.Width = 70;
+            });
+            
             settings.Columns.Add("NameMon");
             settings.Columns.Add("NameEng");
 

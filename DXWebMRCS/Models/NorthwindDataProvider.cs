@@ -219,6 +219,48 @@ namespace DXWebMRCS.Models
             }
         }
 
+        public static IEnumerable GetNews(int UserID)
+        {
+            List<News> News = new List<News>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand;
+                if (UserID > 0)
+                    selectCommand = new SqlCommand(@"select * from news where 
+                exists (select null from userprofile join webpages_UsersInRoles on webpages_UsersInRoles.userid = userprofile.userid join webpages_Roles on webpages_Roles.RoleId = webpages_UsersInRoles.RoleId where userprofile.userid = '" + UserID + @"' and webpages_Roles.RoleName = 'Admin') 
+                or exists (select null from userprofile where userid = '" + UserID + "' and branchid = news.branchid)", connection);
+                else
+                    selectCommand = new SqlCommand("SELECT * FROM News ", connection);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    News.Add(new News()
+                    {
+                        CID = (int)reader["CID"],
+                        TitleMon = reader["TitleMon"] == DBNull.Value ? string.Empty : (string)reader["TitleMon"],
+                        TitleEng = reader["TitleEng"] == DBNull.Value ? string.Empty : (string)reader["TitleEng"],
+                        BodyMon = reader["BodyMon"] == DBNull.Value ? string.Empty : (string)reader["BodyMon"],
+                        BodyEng = reader["BodyEng"] == DBNull.Value ? string.Empty : (string)reader["BodyEng"],
+                        Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                        ImageMedium = reader["ImageMedium"] == DBNull.Value ? string.Empty : (string)reader["ImageMedium"],
+                        MenuID = reader["MenuID"] == DBNull.Value ? null : (int?)reader["MenuID"],
+                        BranchID = reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"],
+                        ContentType = reader["ContentType"] == DBNull.Value ? string.Empty : (string)reader["ContentType"],
+                        Date = reader["Date"] == DBNull.Value ? new DateTime() : (DateTime)reader["Date"],
+
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return News;
+        }
+
         public static IEnumerable GetTraining()
         {
             List<Training> Training = new List<Training>();

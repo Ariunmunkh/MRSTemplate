@@ -51,15 +51,28 @@
         settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
         settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
 
-        //settings.Columns.Add("CID");
         settings.Columns.Add("TitleMon","Гарчиг/Монгол/");
         settings.Columns.Add("TitleEng","Гарчиг/English/");
-        //settings.Columns.Add("BodyMon", "Агуулга/Монгол/");
-        //settings.Columns.Add("BodyEng", "Агуулга/English/");
         settings.Columns.Add("Image");
         settings.Columns.Add("ContentType");
         settings.Columns.Add("MenuID");
         settings.Columns.Add("Date");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "BranchID";
+            column.Caption = "Салбар";
+            column.EditFormSettings.Visible = DefaultBoolean.True;
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = DXWebMRCS.Models.NorthwindDataProvider.GetBranchs();
+            comboBoxProperties.ValueField = "BranchID";
+            comboBoxProperties.TextFormatString = "{0} - {1}";
+            comboBoxProperties.TextField = "NameMon";
+            comboBoxProperties.Columns.Add("NameMon", "Монгол");
+            comboBoxProperties.Columns.Add("NameEng", "English");
+            comboBoxProperties.ValueType = typeof(int);
+        });
     });
     if (ViewData["EditError"] != null)
     {

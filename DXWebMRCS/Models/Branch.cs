@@ -26,5 +26,20 @@ namespace DXWebMRCS.Models
         [Display(Name = "Нэр (Англи)")]
         public string NameEng { get; set; }
 
+        [Display(Name = "Лого")]
+        public string Logo { get; set; }
+
+        [Display(Name = "Зураг")]
+        public string Image { get; set; }
+
+        [Display(Name = "Имайл")]
+        public string email { get; set; }
+
+        [Display(Name = "Утас")]
+        public string phone { get; set; }
+
+        [Display(Name = "Хаяг")]
+        public string address { get; set; }
+
     }
 }

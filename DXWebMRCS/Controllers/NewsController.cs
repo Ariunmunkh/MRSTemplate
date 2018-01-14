@@ -121,16 +121,6 @@ namespace DXWebMRCS.Controllers
         } 
         #endregion
 
-        // GET: /News/NewsDetail/5
-        //public ActionResult NewsDetail(News news)
-        //{            
-        //    if (news == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(news);
-        //}
-
         #region News Create, Edit, Delete
         // GET: /News/Create
         public ActionResult Create()
@@ -283,10 +273,6 @@ namespace DXWebMRCS.Controllers
             base.Dispose(disposing);
         }
 
-        //public ActionResult BodyMonPartial()
-        //{
-        //    return PartialView("_BodyMonPartial");
-        //}
         public ActionResult EditBodyMonPartial(News objectValue)
         {
             return PartialView("_BodyMonPartial", objectValue);
@@ -308,10 +294,6 @@ namespace DXWebMRCS.Controllers
             return null;
         }
 
-        //public ActionResult BodyEngPartial()
-        //{
-        //    return PartialView("_BodyEngPartial");
-        //}
         public ActionResult EditBodyEngPartial(News objectValue)
         {
             return PartialView("_BodyEngPartial", objectValue);
@@ -335,7 +317,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult NewsViewPartial()
         {
             var model = db1.News;
-            return PartialView("_NewsViewPartial", model.ToList());
+            return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
 
         [HttpPost, ValidateInput(false)]
@@ -356,7 +338,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_NewsViewPartial", model.ToList());
+            return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult NewsViewPartialUpdate(DXWebMRCS.Models.News item)
@@ -380,7 +362,7 @@ namespace DXWebMRCS.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("_NewsViewPartial", model.ToList());
+            return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult NewsViewPartialDelete(System.Int32 CID)
@@ -400,7 +382,7 @@ namespace DXWebMRCS.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            return PartialView("_NewsViewPartial", model.ToList());
+            return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
 
 

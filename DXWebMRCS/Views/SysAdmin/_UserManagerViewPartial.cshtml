@@ -52,7 +52,22 @@
 
         settings.Columns.Add("UserName");
         settings.Columns.Add("Name");
-        settings.Columns.Add("BranchId");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "BranchId";
+            column.Caption = "Салбар";
+            column.EditFormSettings.Visible = DefaultBoolean.True;
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = DXWebMRCS.Models.NorthwindDataProvider.GetBranchs();
+            comboBoxProperties.ValueField = "BranchId";
+            comboBoxProperties.TextFormatString = "{0} - {1}";
+            comboBoxProperties.TextField = "NameMon";
+            comboBoxProperties.Columns.Add("NameMon", "Монгол");
+            comboBoxProperties.Columns.Add("NameEng", "English");
+            comboBoxProperties.ValueType = typeof(int);
+        });
     });
     if (ViewData["EditError"] != null)
     {
