@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DXWebMRCS.Models.News>
+
+<div class="list-dashed">
+    @foreach (var item in Model)
+    {
+        <article class="post clearfix mb-30 pb-30">
+            <div class="row entry-content">
+                <div class="col-sm-5">
+                    <div class="entry-header">
+                        <div class="post-thumb"> <img class="img-responsive img-fullwidth" src="https://placehold.it/460x240" alt=""> </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="pb-40 mt-0">
+                        <a href='@Url.Action("BranchListDetail", "Branch", new { newsId = item.CID, branchId = item.BranchID })'>
+                            <h4 class="entry-title mt-0 pt-0">@item.TitleMon</h4>
+                        </a>
+                        <ul class="list-inline font-12 mb-20 mt-10">
+                            @*<li>posted by <a href="#" class="text-theme-colored">Admin |</a></*@li>
+                            <li><span class="text-theme-colored">@item.Date.ToString("MMM") @item.Date.ToString("dd"),@item.Date.ToString("yyyy")</span></li>
+                        </ul>
+                        <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua <a href="#">[...]</a></p>
+                        <ul class="list-inline like-comment pull-left font-12">
+                            <li><i class="pe-7s-comment"></i>36</li>
+                            <li><i class="pe-7s-like2"></i>125</li>
+                        </ul>
+                        <a class="pull-right text-gray font-13" href='@Url.Action("BranchListDetail", "Branch", new { newsId = item.CID, branchId = item.BranchID })'><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    }
+
+</div>
+
+
+

@@ -1,4 +1,4 @@
-﻿@model Tuple<DXWebMRCS.Models.Branch, IEnumerable<DXWebMRCS.Models.News>>
+﻿@model DXWebMRCS.Models.BranchViewModel
 @{
     Layout = null;
 }
@@ -85,9 +85,9 @@
                         <div class="col-md-7 pt-10 pb-10">
                             <div class="widget no-border m-0">
                                 <ul class="list-inline">
-                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">@Model.Item1.phone</a> </li>
-                                    <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>@Model.Item1.address </li>
-                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">@Model.Item1.email</a> </li>
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">@Model.phone</a> </li>
+                                    <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>@Model.address </li>
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">@Model.email</a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                     </li>
                                     <li class="text-white">|</li>
                                     <li>
-                                        <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.Mongolia, "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>     
+                                        <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.Mongolia, "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
                                     </li>
                                 </ul>
                             </div>
@@ -112,7 +112,7 @@
                             <div class="widget no-border m-0">
                                 <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                                     <li class="mt-sm-10 mb-sm-10">
-                                        
+
                                         <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 ajaxload-popup" href="ajax-load/donation-form.html">Donate Now</a>
                                     </li>
                                     <li class="mt-sm-10 mb-sm-10">
@@ -124,32 +124,13 @@
                     </div>
                 </div>
             </div>
-            <div class="header-nav">
-                <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
-                    <div class="container">
-                        <nav id="menuzord-right" class="menuzord default">
-                            <a class="menuzord-brand pull-left flip" href="javascript:void(0)">
-                                <img src="images/logo-wide.png" alt="">
-                            </a>
-                            <ul class="menuzord-menu">
-                                <li class="active">
-                                    <a href="@Url.Action("BranchView", "Home")">Мэдээ мэдээлэл</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("BranchIntroduction", "Home")">Салбар танилцуулга</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("BranchContact", "Home")">Холбоо барих</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
+            @{ Html.RenderAction("BranchHeaderPartial", "Branch", new { branchId = Model.BranchID}); }
         </header>
+        
         <!-- Start main-content -->
         <div class="main-content">
-            @{ string imageUrl = string.IsNullOrEmpty(Model.Item1.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Item1.Image; }
+            @{ string imageUrl = string.IsNullOrEmpty(Model.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Image; }
             <!-- Section: inner-header -->
             <section class="inner-header divider parallax layer-overlay" data-bg-img=@imageUrl>
                 <div class="container pt-60 pb-60">
@@ -160,22 +141,22 @@
                                 <h2 class="font-28 text-white">
                                     @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                                     {
-                                        @Model.Item1.NameEng
+                                        @Model.NameEng
                                     }
                                     else
                                     {
-                                        @Model.Item1.NameMon
+                                        @Model.NameMon
                                     }
                                 </h2>
                             </div>
                             <div class="col-md-3 text-right">
-                                @if (string.IsNullOrEmpty(Model.Item1.Logo))
+                                @if (string.IsNullOrEmpty(Model.Logo))
                                 {
                                     <img class="img-responsive" src="http://www.arkhangai.redcross.mn/images/branch/279e0c43fab6c14e7b9e5aed1d30682b.png" alt="" />
                                 }
                                 else
                                 {
-                                    <img class="img-responsive" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Item1.Logo)" alt="" />
+                                    <img class="img-responsive" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Logo)" alt="" />
                                 }                                
                             </div>
                         </div>

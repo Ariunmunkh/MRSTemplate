@@ -6576,10 +6576,12 @@
     <Content Include="Views\Branch\Edit.cshtml" />
     <Content Include="Views\Branch\Delete.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
-    <Content Include="Views\Home\BranchView.cshtml" />
     <Content Include="Views\Shared\_BranchLayout.cshtml" />
-    <Content Include="Views\Home\BranchIntroduction.cshtml" />
-    <Content Include="Views\Home\BranchContact.cshtml" />
+    <Content Include="Views\Branch\BranchView.cshtml" />
+    <Content Include="Views\Branch\BranchViewDetail.cshtml" />
+    <Content Include="Views\Branch\BranchNewsListPartial.cshtml" />
+    <Content Include="Views\Branch\_BranchHeaderPartial.cshtml" />
+    <Content Include="Views\Branch\BranchListDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

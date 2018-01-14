@@ -23,6 +23,61 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult BranchView(int branchId, int menuID)
+        {
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            branch.menuID = menuID;
+            return View(branch);
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchHeaderPartial(int branchId)
+        {
+            var menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID = " + branchId).ToList();
+            return PartialView("_BranchHeaderPartial", menuList);
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchNewsListPartial(int branchId, int menuID)
+        {
+            if (menuID > 0)
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID).ToList();
+                if (newsList.Count == 1)
+                {
+                    return PartialView("BranchViewDetail", newsList.FirstOrDefault());
+                }
+                return PartialView("BranchNewsListPartial", newsList);
+            }
+            else
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId).ToList();
+                if (newsList.Count == 1)
+                {
+                    return PartialView("BranchViewDetail", newsList.FirstOrDefault());
+                }
+                return PartialView("BranchNewsListPartial", newsList);
+            }            
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchViewDetail(int newsId)
+        {
+            var news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + newsId).FirstOrDefault();
+            return PartialView("BranchViewDetail", news);
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchListDetail(int newsId, int branchId)
+        {
+            var news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + newsId).FirstOrDefault();
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            branch.news = news;
+            return View("BranchListDetail", branch);
+        }
+
+        #region Admin
         [ValidateInput(false)]
         public ActionResult GridViewPartialView()
         {
@@ -235,7 +290,8 @@ namespace DXWebMRCS.Controllers
             db.Branchs.Remove(Branch);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        } 
+        #endregion
 
 	}
 }
