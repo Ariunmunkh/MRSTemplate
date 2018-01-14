@@ -55,7 +55,22 @@
         settings.Columns.Add("TitleEng","Гарчиг/English/");
         settings.Columns.Add("Image");
         settings.Columns.Add("ContentType");
-        settings.Columns.Add("MenuID");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "MenuID";
+            column.Caption = "Цэс";
+            column.EditFormSettings.Visible = DefaultBoolean.True;
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = DXWebMRCS.Models.NorthwindDataProvider.GetMenus();
+            comboBoxProperties.ValueField = "MenuID";
+            comboBoxProperties.TextFormatString = "{0} - {1}";
+            comboBoxProperties.TextField = "NameMon";
+            comboBoxProperties.Columns.Add("NameMon", "Монгол");
+            comboBoxProperties.Columns.Add("NameEng", "English");
+            comboBoxProperties.ValueType = typeof(int);
+        });
         settings.Columns.Add("Date");
         settings.Columns.Add(column =>
         {

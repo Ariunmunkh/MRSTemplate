@@ -91,6 +91,7 @@ namespace DXWebMRCS.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -98,6 +99,7 @@ namespace DXWebMRCS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "BranchID, NameMon, NameEng, Logo, Image, email, phone, address")] Branch Branch, HttpPostedFileBase ImageFile, HttpPostedFileBase LogoFile)
         {
             if (ModelState.IsValid)
@@ -212,6 +214,7 @@ namespace DXWebMRCS.Controllers
         }
 
         // GET: /Branch/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -237,5 +240,5 @@ namespace DXWebMRCS.Controllers
             return RedirectToAction("Index");
         }
 
-	}
+    }
 }
