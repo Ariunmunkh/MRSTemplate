@@ -118,7 +118,7 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
             return View(news);
-        } 
+        }
         #endregion
 
         #region News Create, Edit, Delete
@@ -165,7 +165,12 @@ namespace DXWebMRCS.Controllers
                     };
                     ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);
                 }
-
+                if (news.MenuID.HasValue)
+                {
+                    news.BranchID = NorthwindDataProvider.GetBranchID((int)news.MenuID);
+                    if (news.BranchID == -1)
+                        news.BranchID = null;
+                }
                 news.Date = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();
@@ -261,7 +266,7 @@ namespace DXWebMRCS.Controllers
             db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
-        } 
+        }
         #endregion
 
         protected override void Dispose(bool disposing)
