@@ -1,0 +1,111 @@
+﻿@model DXWebMRCS.Models.Branch
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="right_col" role="main">
+    @using (Html.BeginForm("Edit", "Branch", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Branch</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.BranchID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NameMon)
+                    @Html.ValidationMessageFor(model => model.NameMon)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NameEng, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NameEng)
+                    @Html.ValidationMessageFor(model => model.NameEng)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email)
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone)
+                    @Html.ValidationMessageFor(model => model.phone)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address)
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Logo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{string LogoUrl = System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Logo;}
+                    <input type="file" name="LogoFile" onchange="showLogo(this)">
+                    <img id="user_imglogo" src=@LogoUrl height="100" width="90" />
+                    @Html.HiddenFor(model => model.Logo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{string imageUrl = System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Image;}
+                    <input type="file" name="ImageFile" onchange="show(this)">
+                    <img id="user_img" src=@imageUrl height="100" width="90" />
+                    @Html.HiddenFor(model => model.Image)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+    function showLogo(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_imglogo').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  
