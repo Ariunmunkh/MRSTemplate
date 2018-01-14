@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<DXWebMRCS.Models.SliderPhoto>
+
+@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 <!-- Section: home -->
 <section id="home">
 
@@ -119,7 +121,7 @@
         <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + @item.ImagePath)" alt="" data-bgposition="center 40%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
         <!-- LAYERS -->
         <!-- LAYER NR. 1 -->
-        <div class="tp-caption tp-resizeme text-uppercase  bg-theme-colored-transparent text-white font-raleway border-left-theme-color-2-6px border-right-theme-color-2-6px pl-30 pr-30"
+        @*<div class="tp-caption tp-resizeme text-uppercase  bg-theme-colored-transparent text-white font-raleway border-left-theme-color-2-6px border-right-theme-color-2-6px pl-30 pr-30"
              id="rs-2-layer-1"
              data-x="['center']"
              data-hoffset="['0']"
@@ -141,7 +143,7 @@
              data-responsive_offset="on"
              style="z-index: 7; white-space: nowrap; font-weight:400; border-radius: 30px;">
             For  Poor Children
-        </div>
+        </div>*@
 
         <!-- LAYER NR. 2 -->
         <div class="tp-caption tp-resizeme text-uppercase bg-theme-colored-transparent text-white font-raleway pl-30 pr-30"
@@ -165,11 +167,18 @@
              data-splitout="none"
              data-responsive_offset="on"
              style="z-index: 7; white-space: nowrap; font-weight:700; border-radius: 30px;">
-            Raise Your Helping Hand
+            @if (language == "en-US")
+            {
+                @item.EngTitle
+            }
+            else
+            {
+                @item.MonTitle
+            }
         </div>
 
         <!-- LAYER NR. 3 -->
-        <div class="tp-caption tp-resizeme text-white text-center"
+        @*<div class="tp-caption tp-resizeme text-white text-center"
              id="rs-2-layer-3"
              data-x="['center']"
              data-hoffset="['0']"
@@ -191,7 +200,7 @@
              data-responsive_offset="on"
              style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">
             Every day we bring hope to millions of children in the world's<br>  hardest places as a sign of God's unconditional love.
-        </div>
+        </div>*@
 
         <!-- LAYER NR. 4 -->
         <div class="tp-caption tp-resizeme"
@@ -213,7 +222,7 @@
              data-splitout="none"
              data-responsive_offset="on"
              style="z-index: 5; white-space: nowrap; letter-spacing:1px;">
-            <a class="btn btn-default btn-circled btn-transparent pl-20 pr-20" href="~/Content/#">Donate Now</a>
+            <a class="btn btn-default btn-circled btn-transparent pl-20 pr-20" href="https://www.redcross.mn/appeal/dzud">Donate Now</a>
         </div>
     </li>
 }

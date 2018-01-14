@@ -10,19 +10,9 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Form Elements</h3>
+                <h3>Мэдээ оруулах</h3>
             </div>
-
-            <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <div class="clearfix"></div>
         <div class="row">
@@ -80,7 +70,15 @@
                             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 <input type="file" name="ImageFile" required onchange="show(this)">   
-                                <img id="user_img" height="100" width="90" />                            
+                                @if (Model == null || string.IsNullOrEmpty(Model.Image))
+                                {
+                                    <img id="user_img" src="~/Content/images/defaultImage2.png" height="100" width="120" />
+                                }
+                                else
+                                {
+                                    <img id="user_img" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Image)" height="100" width="90" />
+                                }
+                                                         
                             </div>
                         </div>
 

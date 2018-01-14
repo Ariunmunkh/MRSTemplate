@@ -32,6 +32,15 @@ namespace DXWebMRCS.Constants
 
             return user.AvatarPath;
         }
+
+        public static UserProfile GetUser(string email)
+        {
+            UsersContext db = new UsersContext();
+
+            var user = db.Database.SqlQuery<UserProfile>("SELECT TOP 1 * FROM UserProfile WHERE UserName = '" + email + "'").FirstOrDefault();
+
+            return user;
+        }
     }
 
 }

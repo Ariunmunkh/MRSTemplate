@@ -4872,6 +4872,8 @@
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\c.png" />
     <Content Include="Content\Images\close.png" />
+    <Content Include="Content\Images\defaultImage.png" />
+    <Content Include="Content\Images\defaultImage2.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\flat-color-icons-svg\about.svg" />
     <Content Include="Content\Images\flat-color-icons-svg\accept_database.svg" />
@@ -6574,6 +6576,10 @@
     <Content Include="Views\Branch\Edit.cshtml" />
     <Content Include="Views\Branch\Delete.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
+    <Content Include="Views\Home\BranchView.cshtml" />
+    <Content Include="Views\Shared\_BranchLayout.cshtml" />
+    <Content Include="Views\Home\BranchIntroduction.cshtml" />
+    <Content Include="Views\Home\BranchContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
