@@ -1,13 +1,20 @@
-﻿@model IEnumerable<DXWebMRCS.Models.Elearn>
+﻿@model IEnumerable<DXWebMRCS.Models.eService>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ElearnLayout.cshtml";
-}
-@{
+    var usrid = DXWebMRCS.Constants.Config.GetUser(User.Identity.Name);
     var db = new DXWebMRCS.Models.UsersContext();
-    var elearnlist = db.Elearn.ToList();
-    var elearnlist2 = db.Elearn.ToList().OrderByDescending(o => o.Date).Take(8);
+    var _score = Model.Select(o => o.Score).Max();
+    var q = (from t in db.eService
+             join sc in db.Elearn on t.LessonId equals sc.ELID
+
+             join st in db.UserProfiles on t.UserId equals st.UserId
+
+             where t.UserId == usrid.UserId
+
+             select new { t.eServiceID, sc.LessonName, sc.LessonBody, sc.Image, t.Score, t.DateTime }).Distinct();
+
 }
 <div class="parallax bg-white page-section">
     <div class="container parallax-layer" data-opacity="true">
@@ -23,7 +30,7 @@
     <div class="page-section">
         <div class="row">
             <div class="col-md-9">
-                @foreach (var list in elearnlist)
+                @foreach (var list in q)
                 {
                     <div class="panel panel-default paper-shadow" data-z="0.5">
                         <div class="panel-body">
@@ -36,26 +43,34 @@
                                                 @Html.Raw("<img width=170," + list.Image)
                                             </span>
                                         </span>
-                                        <a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
+                                        <a href="@Url.Action("Details", "Elearning", new { id = list.eServiceID })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
                                             <span class="v-center">
-                                                
                                                 <i class="fa fa-graduation-cap" style="color:#eb001f"></i>
                                             </span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="text-headline margin-v-5-0"><a href="@Url.Action("Details", "Elearning", new { id = list.ELID })">@list.LessonName</a></h4>
+                                    @{
+                                        var usrName = DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name);
+                                    }
+
+
+                                    <h4 class="text-headline margin-v-5-0"><a href="@Url.Action("Details", "Elearnt", new { id = list.eServiceID })">@list.LessonName</a></h4>
+                                    <a href="@Url.Action("Details", "Elearnt", new { id = list.eServiceID +"?username="+ usrName + "/lessonname/" +@list.LessonName+ "/score/" +@list.Score+ "/date/"+@list.DateTime})" target="_blank"><button class="btn btn-primary btn-icon-stacked pull-right"><i class="fa fa-2x fa-print"></i> <span>Гэрчилгээ хэвлэх<br>certificate print</span></button></a>
+                                    
                                     <p class="small">
                                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                                         <span class="fa fa-fw fa-star text-yellow-800"></span>
-                                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
                                     </p>
-                                    <p>
-                                        @list.Description
-                                    </p>
+                                    <hr />
+                                    <h5>
+                                        <i class="fa fa-check-square" style="color:#eb001f;"> </i>  Таны авсан оноо: @list.Score &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-calendar" style="color:#eb001f"> </i> Шалгалт өгсөн өдөр: @list.DateTime
+                                    </h5>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +83,7 @@
                     <div class="panel-heading panel-collapse-trigger">
                         <h4 class="panel-title">Хичээл жагсаалт</h4>
                     </div>
-                    @foreach (var listname in elearnlist2)
+                    @*@foreach (var listname in elearnlist2)
                     {
                         <div class="panel-body list-group">
                             <ul class="list-group">
@@ -78,7 +93,7 @@
                                 </li>
                             </ul>
                         </div>
-                    }
+                    }*@
 
                 </div>
                 <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
@@ -88,7 +103,7 @@
                     <div class="panel-body list-group">
                         <ul class="list-group">
                             <li class="list-group-item active">
-                                <span class="badge pull-right">@elearnlist.Count()</span>
+                                @*<span class="badge pull-right">@elearnlist.Count()</span>*@
                                 <a class="list-group-link">Нэмэгдсэн хичээл</a>
                             </li>
                         </ul>

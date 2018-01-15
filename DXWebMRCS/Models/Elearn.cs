@@ -31,5 +31,7 @@ namespace DXWebMRCS.Models
 
         [Display(Name = "Oгноо")]
         public System.DateTime Date { get; set; }
+
+        public virtual ICollection<eService> eService { get; set; }
     }
 }

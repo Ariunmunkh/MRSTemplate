@@ -4,7 +4,9 @@
     ViewBag.Title = DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name);
     Layout = "~/Views/Shared/_ElearnLayout.cshtml";
     var usrName = DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name);
+    var usrid = DXWebMRCS.Constants.Config.GetUser(User.Identity.Name);
     var lessonName = Model.LessonName;
+    var lessonid = Model.ELID;
 }
 @{
     var db = new DXWebMRCS.Models.UsersContext();
@@ -58,7 +60,7 @@
                     </div>
                     <hr class="margin-none" />
                     <div class="panel-body text-center">
-                        @Html.ActionLink("ХИЧЭЭЛ ЭХЛҮҮЛЭХ", "Details", null, null, new { @href = Model.LessonBody + "?usrName="+ usrName+"&LessonName="+lessonName, @class = "btn btn-success btn-lg paper-shadow relative" })
+                        @Html.ActionLink("ХИЧЭЭЛ ЭХЛҮҮЛЭХ", "Details", null, null, new { @href = Model.LessonBody + "?username="+ usrName+"&lessonname="+lessonName+"&userid="+usrid.UserId+"&lessonid="+lessonid, @class = "btn btn-success btn-lg paper-shadow relative" })
                     </div>
                     @*<ul class="list-group">
                         <li class="list-group-item">

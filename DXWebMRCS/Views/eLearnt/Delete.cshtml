@@ -1,0 +1,57 @@
+﻿@model DXWebMRCS.Models.eService
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>eService</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfile.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserProfile.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
