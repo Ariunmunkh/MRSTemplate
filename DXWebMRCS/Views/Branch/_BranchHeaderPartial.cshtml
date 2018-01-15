@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Menu>
+
+<div class="header-nav">
+    <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+        <div class="container">
+            <nav id="menuzord-right" class="menuzord default">
+                <a class="menuzord-brand pull-left flip" href="javascript:void(0)">
+                    <img src="images/logo-wide.png" alt="">
+                </a>
+                <ul class="menuzord-menu">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <a id=@item.NameEng href='@Url.Action("BranchView", "Branch", new { branchId = @item.BranchID, menuID = @item.MenuID })'>
+                                @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                {
+                                    @item.NameEng
+                                }
+                                else
+                                {
+                                    @item.NameMon
+                                }
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

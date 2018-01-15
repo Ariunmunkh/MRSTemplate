@@ -34,13 +34,7 @@ namespace DXWebMRCS.Controllers
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
             return PartialView();
         }
-
-        public ActionResult BranchView()
-        {
-            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
-            return View();
-        }
-                
+       
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
@@ -48,7 +42,7 @@ namespace DXWebMRCS.Controllers
             {
                  return PartialView("_HeaderPartial", menuList);
             }
-            menuList = db.Menus.ToList();
+            menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID IS NULL").ToList();
             return PartialView("_HeaderPartial", menuList);
         }
 

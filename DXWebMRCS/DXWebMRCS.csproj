@@ -6655,10 +6655,12 @@
     <Content Include="Views\Branch\Edit.cshtml" />
     <Content Include="Views\Branch\Delete.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
-    <Content Include="Views\Home\BranchView.cshtml" />
     <Content Include="Views\Shared\_BranchLayout.cshtml" />
-    <Content Include="Views\Home\BranchIntroduction.cshtml" />
-    <Content Include="Views\Home\BranchContact.cshtml" />
+    <Content Include="Views\Branch\BranchView.cshtml" />
+    <Content Include="Views\Branch\BranchViewDetail.cshtml" />
+    <Content Include="Views\Branch\BranchNewsListPartial.cshtml" />
+    <Content Include="Views\Branch\_BranchHeaderPartial.cshtml" />
+    <Content Include="Views\Branch\BranchListDetail.cshtml" />
     <Content Include="Views\eLearnt\Create.cshtml" />
     <Content Include="Views\eLearnt\Delete.cshtml" />
     <Content Include="Views\eLearnt\Details.cshtml" />
@@ -6680,7 +6682,9 @@
     <Compile Include="Content\Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\BranchViewController.cs" />
     <Compile Include="Controllers\ElearningController.cs" />
+    <Compile Include="Controllers\ElearnServiceController.cs" />
     <Compile Include="Controllers\eLearntController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -6738,6 +6742,7 @@
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
+    <Folder Include="Views\BranchView\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Language\RGlobal.mn.resx">

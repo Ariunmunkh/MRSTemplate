@@ -119,12 +119,13 @@
                             settings.Properties.TextField = "NAMEMON";
                             settings.Properties.Columns.Add("NAMEMON", "Монгол");
                             settings.Properties.Columns.Add("NameEng", "English");
-                            settings.Properties.ValueField = "MenuID";
+                            settings.Properties.Columns.Add("BranchNameMon", "Салбар");
+                            settings.Properties.ValueField = "MENUID";
                             settings.ShowModelErrors = true;
                             settings.Properties.ValueType = typeof(int);
                             settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
                             settings.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetMenus()).GetHtml()
+                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetMenusJoinTable()).GetHtml()
 
                                 @Html.ValidationMessageFor(model => model.MenuID)
                             </div>

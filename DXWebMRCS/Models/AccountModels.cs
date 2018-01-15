@@ -252,6 +252,21 @@ namespace DXWebMRCS.Models {
         public int? type { get; set; }
     }
 
+    public class BranchViewModel
+    {
+        public int BranchID { get; set; }
+        public string NameMon { get; set; }
+        public string NameEng { get; set; }
+        public string Logo { get; set; }
+        public string Image { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
+        public int menuID { get; set; }
+        public News news { get; set; }
+        public PagedList.IPagedList<DXWebMRCS.Models.News> newsList { get; set; }
+    }
+
     #endregion
 
     public class EnumValue {

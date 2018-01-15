@@ -32,28 +32,34 @@
             settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
             settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
             settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
-            
+
             settings.Columns.Add(column =>
             {
                 column.Caption = "#";
                 column.SetDataItemTemplateContent(c =>
                 {
                     ViewContext.Writer.Write(
-                        Html.ActionLink("Edit", "Edit", new { id = DataBinder.Eval(c.DataItem, "BranchID") }) + "&nbsp;" +
-                        Html.ActionLink("Delete", "Delete", new { id = DataBinder.Eval(c.DataItem, "BranchID") })
+                        Html.ActionLink("Edit", "Edit", new { id = DataBinder.Eval(c.DataItem, "BranchID") })
+                        + (!Roles.IsUserInRole(WebMatrix.WebData.WebSecurity.CurrentUserName, "BranchUser") ? "&nbsp;" +
+                        Html.ActionLink("Delete", "Delete", new { id = DataBinder.Eval(c.DataItem, "BranchID") }) : "")
                     );
                 });
-                column.SetHeaderTemplateContent(c =>
+
+
+                if (!Roles.IsUserInRole(WebMatrix.WebData.WebSecurity.CurrentUserName, "BranchUser"))
                 {
-                    ViewContext.Writer.Write(
-                        Html.ActionLink("New", "Create").ToHtmlString()
-                    );
-                });
+                    column.SetHeaderTemplateContent(c =>
+                    {
+                        ViewContext.Writer.Write(
+                            Html.ActionLink("New", "Create").ToHtmlString()
+                        );
+                    });
+                }
                 column.Settings.AllowDragDrop = DefaultBoolean.False;
                 column.Settings.AllowSort = DefaultBoolean.False;
                 column.Width = 70;
             });
-            
+
             settings.Columns.Add("NameMon");
             settings.Columns.Add("NameEng");
             settings.Columns.Add("email");
