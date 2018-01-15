@@ -28,6 +28,13 @@ namespace DXWebMRCS.Controllers
             // DXCOMMENT: Pass a data model for GridView            
             return View();    
         }
+
+        [HttpGet]
+        public ActionResult GalleryViewPartial()
+        {
+            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
+            return PartialView("_GalleryViewPartial");
+        }
         
         public ActionResult GridViewPartialView() 
         {

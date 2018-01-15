@@ -6666,6 +6666,7 @@
     <Content Include="Views\eLearnt\Details.cshtml" />
     <Content Include="Views\eLearnt\Edit.cshtml" />
     <Content Include="Views\eLearnt\Index.cshtml" />
+    <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6709,10 +6710,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801141115593_initial-eService.cs" />
-    <Compile Include="Migrations\201801141115593_initial-eService.Designer.cs">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6752,9 +6749,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801141115593_initial-eService.resx">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
