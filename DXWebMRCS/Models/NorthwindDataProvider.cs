@@ -329,6 +329,78 @@ namespace DXWebMRCS.Models
             }
         }
 
+        #region Tag
+
+        public static IEnumerable GetTag()
+        {
+            List<Tag> Tag = new List<Tag>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Tags ", connection);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Tag.Add(new Tag()
+                    {
+                        TagID = (int)reader["TagID"],
+                        NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
+                        NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Tag;
+        }
+
+        public static void DeleteTag(int TagID)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Tags WHERE TagID = " + TagID, connection);
+
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertTag(Tag Tag)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Tags (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
+
+                insertCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
+                insertCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
+
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateTag(Tag Tag)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Tags] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [TagID] = @TagID", connection);
+
+                updateCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
+                updateCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
+
+                updateCommand.Parameters.AddWithValue("@TagID", Tag.TagID);
+
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+            }
+        }
+
+        #endregion
+
         public static IEnumerable GetNews(int UserID)
         {
             List<News> News = new List<News>();

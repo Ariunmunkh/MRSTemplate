@@ -6666,6 +6666,10 @@
     <Content Include="Views\eLearnt\Details.cshtml" />
     <Content Include="Views\eLearnt\Edit.cshtml" />
     <Content Include="Views\eLearnt\Index.cshtml" />
+    <Content Include="Views\News\Tag.cshtml" />
+    <Content Include="Views\News\TagPartialView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

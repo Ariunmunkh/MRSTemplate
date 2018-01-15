@@ -37,4 +37,16 @@ namespace DXWebMRCS.Models
         [Display(Name = "Өөрчилсөн огноо")]
         public System.DateTime Date { get; set; }
     }
+
+    public class Tag
+    {
+        [Key]
+        public int TagID { get; set; }
+
+        [Display(Name = "Гарчиг Монгол")]
+        public string NameMon { get; set; }
+
+        [Display(Name = "Гарчиг Англи")]
+        public string NameEng { get; set; }
+    }
 }
