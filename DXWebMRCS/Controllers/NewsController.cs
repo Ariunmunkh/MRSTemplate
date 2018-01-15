@@ -12,6 +12,7 @@ using System.IO;
 using ImageResizer;
 using PagedList;
 using System.Text;
+using DevExpress.Web;
 
 namespace DXWebMRCS.Controllers
 {
@@ -267,6 +268,75 @@ namespace DXWebMRCS.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        #endregion
+
+        #region tag
+        public ActionResult Tag()
+        {
+            return View();
+        }
+
+        public ActionResult TagPartialView()
+        {
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesAddNewPartial(Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.InsertTag(Tag);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesUpdatePartial(Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.UpdateTag(Tag);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesDeletePartial(int TagID = -1)
+        {
+            if (TagID >= 0)
+            {
+                try
+                {
+                    NorthwindDataProvider.DeleteTag(TagID);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
         #endregion
 
         protected override void Dispose(bool disposing)
