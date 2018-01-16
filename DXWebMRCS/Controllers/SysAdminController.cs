@@ -25,7 +25,8 @@ namespace DXWebMRCS.Controllers
         // GET: /SysAdmin/
         public ActionResult Index()
         {
-            if (Roles.IsUserInRole(User.Identity.Name, "Admin")){
+            if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+            {
                 return View();
             }
 
@@ -36,7 +37,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult _UploadFile()
         {
             return View(UploadFileManagerSettings.Model);
-        }        
+        }
 
         public FileStreamResult FileManagerPartialDownload()
         {
@@ -58,7 +59,7 @@ namespace DXWebMRCS.Controllers
             HtmlEditorExtension.SaveUploadedFile("HtmlEditor", SysAdminControllerHtmlEditorSettings.ImageUploadValidationSettings, SysAdminControllerHtmlEditorSettings.ImageUploadDirectory);
             return null;
         }
-        
+
         #endregion
 
         #region UserProfile
@@ -79,7 +80,7 @@ namespace DXWebMRCS.Controllers
                 fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                 string extension = Path.GetExtension(ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                
+
                 model.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Content/Images/UserAvatar/"), fileName);
                 ImageFile.SaveAs(fileName);
@@ -100,7 +101,7 @@ namespace DXWebMRCS.Controllers
                 db.SaveChanges();
             }
             return View(model);
-        } 
+        }
         #endregion
 
         #region Slider
@@ -259,7 +260,136 @@ namespace DXWebMRCS.Controllers
                 }
             }
             return RedirectToAction("index");
-        } 
+        }
+        #endregion
+
+        #region Gallery
+
+        public ActionResult Gallery()
+        {
+            return View();
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult GalleryPartialView()
+        {
+            return PartialView("GalleryPartialView", NorthwindDataProvider.GetGalleries());
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult GalleryCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult GalleryCreate([Bind(Include = "GalleryID, TitleMon, TitleEng, Image")] Gallery Gallery, HttpPostedFileBase ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Gallery.Image = "/Content/Images/NewsImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+
+                db.Galleries.Add(Gallery);
+                db.SaveChanges();
+                return RedirectToAction("Gallery");
+            }
+
+            return View(Gallery);
+        }
+
+        // GET: /Gallery/Edit/5
+        public ActionResult GalleryEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gallery Gallery = db.Galleries.Find(id);
+            if (Gallery == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Gallery);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GalleryEdit([Bind(Include = "GalleryID, TitleMon, TitleEng, Image")] Gallery Gallery, HttpPostedFileBase ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Gallery.Image = "/Content/Images/NewsImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/NewsImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+
+
+                db.Entry(Gallery).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Gallery");
+            }
+            return View(Gallery);
+        }
+
+        // GET: /Gallery/Delete/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult GalleryDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gallery Gallery = db.Galleries.Find(id);
+            if (Gallery == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Gallery);
+        }
+
+        // POST: /Gallery/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Gallery Gallery = db.Galleries.Find(id);
+            db.Galleries.Remove(Gallery);
+            db.SaveChanges();
+            return RedirectToAction("Gallery");
+        }
+
         #endregion
 
         static void SendNotificationMessage()
@@ -303,7 +433,7 @@ namespace DXWebMRCS.Controllers
             System.Diagnostics.Debug.WriteLine(responseContent);
             //return string.Empty;
         }
-	}
+    }
 
     public class SysAdminControllerHtmlEditorSettings
     {
@@ -334,7 +464,7 @@ namespace DXWebMRCS.Controllers
                 return imageSelectorSettings;
             }
         }
-        
+
     }
 
 }

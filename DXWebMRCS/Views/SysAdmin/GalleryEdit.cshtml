@@ -1,0 +1,68 @@
+﻿@model DXWebMRCS.Models.Gallery
+
+@{
+    ViewBag.Title = "GalleryEdit";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="right_col" role="main">
+    @using (Html.BeginForm("GalleryEdit", "SysAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Gallery</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.GalleryID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TitleMon, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TitleMon)
+                    @Html.ValidationMessageFor(model => model.TitleMon)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TitleEng, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TitleEng)
+                    @Html.ValidationMessageFor(model => model.TitleEng)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{string imageUrl = System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Image;}
+                    <input type="file" name="ImageFile" onchange="show(this)">
+                    <img id="user_img" src=@imageUrl height="100" width="90" />
+                    @Html.HiddenFor(model => model.Image)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="GalleryEdit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Gallery")
+    </div>
+</div>
+
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  

@@ -6670,6 +6670,11 @@
     <Content Include="Views\News\TagPartialView.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\SysAdmin\Gallery.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryPartialView.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryEdit.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryDelete.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryCreate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6713,9 +6718,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801141115593_initial-eService.cs" />
-    <Compile Include="Migrations\201801141115593_initial-eService.Designer.cs">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
+    <Compile Include="Migrations\201801151832515_test.cs" />
+    <Compile Include="Migrations\201801151832515_test.Designer.cs">
+      <DependentUpon>201801151832515_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151841355_test1.cs" />
+    <Compile Include="Migrations\201801151841355_test1.Designer.cs">
+      <DependentUpon>201801151841355_test1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6723,6 +6732,7 @@
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Elearn.cs" />
     <Compile Include="Models\eService.cs" />
+    <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
@@ -6757,8 +6767,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801141115593_initial-eService.resx">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801151832515_test.resx">
+      <DependentUpon>201801151832515_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151841355_test1.resx">
+      <DependentUpon>201801151841355_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
