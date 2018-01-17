@@ -1,4 +1,4 @@
-﻿@model DXWebMRCS.Models.News
+﻿@model Tuple<DXWebMRCS.Models.News, IEnumerable<DXWebMRCS.Models.News>>
 @{
     ViewBag.Title = "NewsDetail";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -6,41 +6,41 @@
 @{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 <!-- Start main-content -->
 <div class="main-content">
-    @{string imageUrl = @Model.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Image : "http://placehold.it/1920x1280";}
+    @{string imageUrl = @Model.Item1.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Item1.Image : "http://placehold.it/1920x1280";}
     <!-- Section: inner-header -->
-    <section class="inner-header divider layer-overlay overlay-white-8" data-bg-img=@imageUrl>
+    <section class="inner-header divider layer-overlay overlay-8" data-bg-img=@imageUrl>
         <div class="container pt-60 pb-60">
             <!-- Section Content -->
             <div class="section-content">
                 <div class="row">
-                    <div class="col-sm-8 text-left flip xs-text-center">
+                    <div class="col-sm-8 text-left flip xs-text-center text-white" >
                         <h2 class="title">
-                        @if (language == "en-US")
-                        {
-                            @Model.TitleEng
-                        }
-                        else
-                        {
-                            @Model.TitleMon
-                        }
+                            @if (language == "en-US")
+                            {
+                                @Model.Item1.TitleEng
+                            }
+                            else
+                            {
+                                @Model.Item1.TitleMon
+                            }
                         </h2>
                     </div>
-                    <div class="col-sm-4">
+                    @*<div class="col-sm-4">
                         <ol class="breadcrumb text-right sm-text-center text-black mt-10">
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Detail</a></li>
                             <li class="active text-gray-silver">
                                 @if (language == "en-US")
                                 {
-                                    @Model.TitleEng
+                                    @Model.Item1.TitleEng
                                 }
                                 else
                                 {
-                                    @Model.TitleMon
+                                    @Model.Item1.TitleMon
                                 }
                             </li>
                         </ol>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -51,79 +51,64 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    @if (language == "en-US")
-                    {
-                        @Html.Raw(Model.BodyEng)
-                    }
-                    else
-                    {
-                        @Html.Raw(Model.BodyMon)
-                    }
-                    
+                    <div class="blog-posts single-post">
+                        @if (language == "en-US")
+                        {
+                            @Html.Raw(Model.Item1.BodyEng)
+                        }
+                        else
+                        {
+                            @Html.Raw(Model.Item1.BodyMon)
+                        }
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="sidebar sidebar-left mt-sm-30">
                         <div class="widget">
-                            <h5 class="widget-title line-bottom">Search box</h5>
-                            <div class="search-form">
-                                <form>
-                                    <div class="input-group">
-                                        <input type="text" placeholder="Click to Search" class="form-control search-input">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <h5 class="widget-title line-bottom">Categories</h5>
-                            <div class="categories">
-                                <ul class="list list-border angle-double-right">
-                                    <li><a href="#">Creative<span>(19)</span></a></li>
-                                    <li><a href="#">Portfolio<span>(21)</span></a></li>
-                                    <li><a href="#">Fitness<span>(15)</span></a></li>
-                                    <li><a href="#">Gym<span>(35)</span></a></li>
-                                    <li><a href="#">Personal<span>(16)</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget">
                             <h5 class="widget-title line-bottom">Latest News</h5>
                             <div class="latest-posts">
-                                <article class="post media-post clearfix pb-0 mb-10">
-                                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
-                                    <div class="post-right">
-                                        <h5 class="post-title mt-0"><a href="#">Sustainable Construction</a></h5>
-                                        <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
-                                    </div>
-                                </article>
-                                <article class="post media-post clearfix pb-0 mb-10">
-                                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
-                                    <div class="post-right">
-                                        <h5 class="post-title mt-0"><a href="#">Industrial Coatings</a></h5>
-                                        <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
-                                    </div>
-                                </article>
-                                <article class="post media-post clearfix pb-0 mb-10">
-                                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
-                                    <div class="post-right">
-                                        <h5 class="post-title mt-0"><a href="#">Storefront Installations</a></h5>
-                                        <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <h5 class="widget-title line-bottom">Photos from Flickr</h5>
-                            <div id="flickr-feed" class="clearfix">
-                                <!-- Flickr Link -->
-                                <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
-                                </script>
-                            </div>
-                        </div>
-                    </div>
+                                @foreach (var item in Model.Item2)
+                                {
+                                    <article class="post media-post clearfix pb-0 mb-10">
+                                        <a class="post-thumb" href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                            @{string itemImageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "https://placehold.it/75x75";}
+                                            <img src=@itemImageUrl alt="">
 
+                                        </a>
+                                        <div class="post-right">
+                                            <h5 class="post-title mt-0">
+                                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                                    @if (language == "en-US")
+                                                    {
+                                                        if (@item.TitleEng.Count() > 50)
+                                                        {
+                                                            @item.TitleEng.Substring(0, 50)
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.TitleEng
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (@item.TitleMon.Count() > 50)
+                                                        {
+                                                            @item.TitleMon.Substring(0, 50)
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.TitleMon
+                                                        }
+                                                    }
+                                                </a>
+                                            </h5>
+                                            <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
+                                        </div>
+                                    </article>
+                                }
+                            </div>
+                        </div>
+                        @{Html.RenderAction("TagPartial", "News");}
                 </div>
             </div>
         </div>

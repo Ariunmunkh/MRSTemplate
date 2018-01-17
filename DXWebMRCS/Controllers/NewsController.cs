@@ -105,7 +105,10 @@ namespace DXWebMRCS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(news);
+
+            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " AND (CID = 33 OR CID = 34 OR CID =35) ORDER BY Date ASC").ToList();
+            var detail = new Tuple<News, IEnumerable<News>>(news, newslist);
+            return View(detail);
         }
 
         [AllowAnonymous]
@@ -271,6 +274,12 @@ namespace DXWebMRCS.Controllers
         #endregion
 
         #region tag
+        [AllowAnonymous]
+        public ActionResult TagPartial()
+        {
+            var taglist = db.Database.SqlQuery<Tag>("SELECT * FROM Tags").ToList();
+            return PartialView("_TagPartial", taglist);
+        }
         public ActionResult Tag()
         {
             return View();

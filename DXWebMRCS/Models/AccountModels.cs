@@ -30,6 +30,7 @@ namespace DXWebMRCS.Models {
         public DbSet<Elearn> Elearn { get; set; }
         public DbSet<eService> eService { get; set; }
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<FileContent> FileContents { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {

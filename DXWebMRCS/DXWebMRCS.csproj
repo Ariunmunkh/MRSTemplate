@@ -6671,6 +6671,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
+    <Content Include="Views\Shared\_TagPartial.cshtml" />
+    <Content Include="Views\SysAdmin\_FileManagerContentPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6720,6 +6722,7 @@
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Elearn.cs" />
     <Compile Include="Models\eService.cs" />
+    <Compile Include="Models\FileContent.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />

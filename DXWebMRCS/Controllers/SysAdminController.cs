@@ -16,7 +16,7 @@ using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize(Roles = "Admin,BranchUser")]
+    //[Authorize(Roles = "Admin,BranchUser")]
     [InitializeSimpleMembership]
     public class SysAdminController : Controller
     {
@@ -32,15 +32,39 @@ namespace DXWebMRCS.Controllers
             return RedirectToAction("index", "News");
         }
 
-        [ValidateInput(false)]
+        //[AllowAnonymous]
         public ActionResult _UploadFile()
         {
-            return View(UploadFileManagerSettings.Model);
-        }        
+            FileContent file = new FileContent();
+            return View(file);
+        }
 
+        [HttpPost]
+        //[AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult _UploadFile([Bind(Include = "Id,TitleEng,TitleMon,DescriptionEng,DescriptionMon,Image,FilePath")]FileContent content)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View();
+        }
+
+        //[AllowAnonymous]
+        [ValidateInput(false)]
+        public ActionResult FileManagerContentPartial(FileContent file)
+        {
+            file.FilePath = @"~\Content\Uploadfile";
+            return PartialView("_FileManagerContentPartial", @"~\Content\Uploadfile");
+        }
+
+        //[AllowAnonymous]
         public FileStreamResult FileManagerPartialDownload()
         {
-            return FileManagerExtension.DownloadFiles("FileManager", UploadFileManagerSettings.Model);
+            //file.FilePath = @"~\Content\Uploadfile";
+            return FileManagerExtension.DownloadFiles("FileManager", @"~\Content\Uploadfile");
         }
 
         #region Partial View
