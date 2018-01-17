@@ -329,6 +329,37 @@ namespace DXWebMRCS.Models
             }
         }
 
+        #region Gallery
+
+        public static IEnumerable GetGalleries()
+        {
+            List<Gallery> Gallery = new List<Gallery>();
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Galleries", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Gallery.Add(new Gallery()
+                    {
+                        GalleryID = (int)reader["GalleryID"],
+                        TitleMon = reader["TitleMon"] == DBNull.Value ? string.Empty : (string)reader["TitleMon"],
+                        TitleEng = reader["TitleEng"] == DBNull.Value ? string.Empty : (string)reader["TitleEng"],
+                        Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Gallery;
+        }
+        #endregion
+
         #region Tag
 
         public static IEnumerable GetTag()

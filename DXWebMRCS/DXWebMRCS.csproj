@@ -6671,6 +6671,13 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
+
+
+    <Content Include="Views\SysAdmin\Gallery.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryPartialView.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryEdit.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryDelete.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryCreate.cshtml" />
     <Content Include="Views\Shared\_TagPartial.cshtml" />
     <Content Include="Views\SysAdmin\_FileManagerContentPartial.cshtml" />
     <None Include="Web.Debug.config">
@@ -6716,12 +6723,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801151832515_test.cs" />
+    <Compile Include="Migrations\201801151832515_test.Designer.cs">
+      <DependentUpon>201801151832515_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151841355_test1.cs" />
+    <Compile Include="Migrations\201801151841355_test1.Designer.cs">
+      <DependentUpon>201801151841355_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Elearn.cs" />
     <Compile Include="Models\eService.cs" />
+    <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\FileContent.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
@@ -6756,6 +6772,12 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151832515_test.resx">
+      <DependentUpon>201801151832515_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151841355_test1.resx">
+      <DependentUpon>201801151841355_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

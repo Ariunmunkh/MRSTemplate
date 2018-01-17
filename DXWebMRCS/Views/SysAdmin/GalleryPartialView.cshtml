@@ -1,0 +1,66 @@
+@{    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "gvEditing";
+            settings.KeyFieldName = "GalleryID";
+            settings.CallbackRouteValues = new { Controller = "SysAdmin", Action = "GalleryPartialView" };
+            settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+            settings.SettingsBehavior.ConfirmDelete = true;
+            settings.Width = Unit.Percentage(100);
+
+            settings.Styles.Header.Wrap = DefaultBoolean.True;
+            settings.SettingsPager.EnableAdaptivity = true;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
+
+            settings.SettingsPager.Visible = true;
+            settings.SettingsSearchPanel.Visible = true;
+            settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+            settings.Settings.ShowGroupPanel = true;
+            settings.Settings.ShowFilterRow = true;
+            settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+            settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+            settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+            settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+            settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+            settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+            settings.Columns.Add(column =>
+            {
+                column.Caption = "#";
+                column.SetDataItemTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write(
+                        Html.ActionLink("Edit", "GalleryEdit", new { id = DataBinder.Eval(c.DataItem, "GalleryID") })
+                        + "&nbsp;" +
+                        Html.ActionLink("Delete", "GalleryDelete", new { id = DataBinder.Eval(c.DataItem, "GalleryID") })
+                    );
+                });
+
+                column.SetHeaderTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write(
+                        Html.ActionLink("New", "GalleryCreate").ToHtmlString()
+                    );
+                });
+
+                column.Settings.AllowDragDrop = DefaultBoolean.False;
+                column.Settings.AllowSort = DefaultBoolean.False;
+                column.Width = 70;
+            });
+
+            settings.Columns.Add("TitleMon");
+            settings.Columns.Add("TitleEng");
+
+        });
+
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

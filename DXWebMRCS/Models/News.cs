@@ -31,7 +31,7 @@ namespace DXWebMRCS.Models
 
         [Display(Name = "Салбар")]
         public int? BranchID { get; set; }
-        
+
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }
         [Display(Name = "Өөрчилсөн огноо")]
@@ -48,5 +48,18 @@ namespace DXWebMRCS.Models
 
         [Display(Name = "Гарчиг Англи")]
         public string NameEng { get; set; }
+    }
+
+    public class TagDetail
+    {
+        [Key]
+        public int TagDetailID { get; set; }
+
+        public string Source { get; set; }
+
+        public int SourceID { get; set; }
+
+        public int TagID { get; set; }
+
     }
 }
