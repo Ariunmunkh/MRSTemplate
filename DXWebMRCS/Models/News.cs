@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,6 +37,9 @@ namespace DXWebMRCS.Models
         public string ContentType { get; set; }
         [Display(Name = "Өөрчилсөн огноо")]
         public System.DateTime Date { get; set; }
+
+        [NotMapped]
+        public string tags { get; set; }
     }
 
     public class Tag

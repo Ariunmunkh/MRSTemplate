@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_SysLayout.cshtml";
 }
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chosen/1.1.0/chosen.css"/>
+<script src="//cdn.jsdelivr.net/chosen/1.1.0/chosen.jquery.js"></script>
+
 <h2>Create</h2>
 <div class="right_col" role="main">
     <div class="">
@@ -131,6 +134,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="control-label col-md-2"> Таг сонгох </label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.ContentType, new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Меню", Value = "Menu" },
+                                   new SelectListItem{ Text="Мэдээ", Value = "News" }
+                                }, htmlAttributes: new { @class = "form-control chosen-select", multiple = "multiple" })
+                                
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
@@ -151,6 +165,9 @@
 </div>
 
 <script type="text/javascript">
+
+    $('.chosen-select').chosen();
+
     function show(input) {
         if (input.files && input.files[0]) {
             var filerdr = new FileReader();

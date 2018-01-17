@@ -39,14 +39,16 @@ namespace DXWebMRCS.Controllers
             return View(file);
         }
 
+        
         [HttpPost]
         //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult _UploadFile([Bind(Include = "Id,TitleEng,TitleMon,DescriptionEng,DescriptionMon,Image,FilePath")]FileContent content)
         {
+            var name = DXWebMRCS.Constants.Config.FileNamePath;
             if (ModelState.IsValid)
             {
-
+                
             }
 
             return View();
@@ -57,7 +59,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult FileManagerContentPartial(FileContent file)
         {
             file.FilePath = @"~\Content\Uploadfile";
-            return PartialView("_FileManagerContentPartial", @"~\Content\Uploadfile");
+            return PartialView("_FileManagerContentPartial", file);
         }
 
         //[AllowAnonymous]

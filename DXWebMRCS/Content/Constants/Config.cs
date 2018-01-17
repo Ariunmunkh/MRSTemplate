@@ -14,6 +14,7 @@ namespace DXWebMRCS.Constants
     public class Config
     {
         public static string Lang = "en";
+        public static string FileNamePath;
 
         public static string GetUserName(string email)
         {

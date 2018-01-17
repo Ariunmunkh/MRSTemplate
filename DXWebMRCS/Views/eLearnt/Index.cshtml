@@ -1,20 +1,9 @@
-﻿@model IEnumerable<DXWebMRCS.Models.eService>
+﻿@model IEnumerable<DXWebMRCS.Models.eServiceModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ElearnLayout.cshtml";
-    var usrid = DXWebMRCS.Constants.Config.GetUser(User.Identity.Name);
-    var db = new DXWebMRCS.Models.UsersContext();
-    var _score = Model.Select(o => o.Score).Max();
-    var q = (from t in db.eService
-             join sc in db.Elearn on t.LessonId equals sc.ELID
-
-             join st in db.UserProfiles on t.UserId equals st.UserId
-
-             where t.UserId == usrid.UserId
-
-             select new { t.eServiceID, sc.LessonName, sc.LessonBody, sc.Image, t.Score, t.DateTime }).Distinct();
-
+    
 }
 <div class="parallax bg-white page-section">
     <div class="container parallax-layer" data-opacity="true">
@@ -30,7 +19,7 @@
     <div class="page-section">
         <div class="row">
             <div class="col-md-9">
-                @foreach (var list in q)
+                @foreach (var list in Model)
                 {
                     <div class="panel panel-default paper-shadow" data-z="0.5">
                         <div class="panel-body">
@@ -43,11 +32,11 @@
                                                 @Html.Raw("<img width=170," + list.Image)
                                             </span>
                                         </span>
-                                        <a href="@Url.Action("Details", "Elearning", new { id = list.eServiceID })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
+                                        @*<a href="@Url.Action("Details", "Elearning", new { id = list. })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
                                             <span class="v-center">
                                                 <i class="fa fa-graduation-cap" style="color:#eb001f"></i>
                                             </span>
-                                        </a>
+                                        </a>*@
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -56,8 +45,8 @@
                                     }
 
 
-                                    <h4 class="text-headline margin-v-5-0"><a href="@Url.Action("Details", "Elearnt", new { id = list.eServiceID })">@list.LessonName</a></h4>
-                                    <a href="@Url.Action("Details", "Elearnt", new { id = list.eServiceID +"?username="+ usrName + "/lessonname/" +@list.LessonName+ "/score/" +@list.Score+ "/date/"+@list.DateTime})" target="_blank"><button class="btn btn-primary btn-icon-stacked pull-right"><i class="fa fa-2x fa-print"></i> <span>Гэрчилгээ хэвлэх<br>certificate print</span></button></a>
+                                    <h4 class="text-headline margin-v-5-0"><a href="">@list.LessonName</a></h4>
+                                    @*<a href="@Url.Action("Details", "Elearnt", new { id = list.eServiceID +"?username="+ usrName + "/lessonname/" +@list.Elearn.LessonName+ "/score/" +@list.Score+ "/date/"+@list.DateTime})" target="_blank"><button class="btn btn-primary btn-icon-stacked pull-right"><i class="fa fa-2x fa-print"></i> <span>Гэрчилгээ хэвлэх<br>certificate print</span></button></a>*@
                                     
                                     <p class="small">
                                         <span class="fa fa-fw fa-star text-yellow-800"></span>
@@ -68,8 +57,8 @@
                                     </p>
                                     <hr />
                                     <h5>
-                                        <i class="fa fa-check-square" style="color:#eb001f;"> </i>  Таны авсан оноо: @list.Score &nbsp;&nbsp;&nbsp;
-                                        <i class="fa fa-calendar" style="color:#eb001f"> </i> Шалгалт өгсөн өдөр: @list.DateTime
+                                        <i class="fa fa-check-square" style="color:#eb001f;"> </i>  Таны авсан оноо: @list.totalscore &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-calendar" style="color:#eb001f"> </i> Шалгалт өгсөн өдөр: @list.nowDate
                                     </h5>
                                 </div>
                             </div>

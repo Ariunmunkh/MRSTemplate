@@ -6671,8 +6671,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
-
-
     <Content Include="Views\SysAdmin\Gallery.cshtml" />
     <Content Include="Views\SysAdmin\GalleryPartialView.cshtml" />
     <Content Include="Views\SysAdmin\GalleryEdit.cshtml" />
@@ -6723,14 +6721,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801151832515_test.cs" />
-    <Compile Include="Migrations\201801151832515_test.Designer.cs">
-      <DependentUpon>201801151832515_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801151841355_test1.cs" />
-    <Compile Include="Migrations\201801151841355_test1.Designer.cs">
-      <DependentUpon>201801151841355_test1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6772,12 +6762,6 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801151832515_test.resx">
-      <DependentUpon>201801151832515_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801151841355_test1.resx">
-      <DependentUpon>201801151841355_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
