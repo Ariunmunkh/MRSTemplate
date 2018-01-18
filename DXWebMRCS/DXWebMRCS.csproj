@@ -6729,6 +6729,10 @@
     <Compile Include="Migrations\201801181337324_test123.Designer.cs">
       <DependentUpon>201801181337324_test123.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801181348306_test12.cs" />
+    <Compile Include="Migrations\201801181348306_test12.Designer.cs">
+      <DependentUpon>201801181348306_test12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6776,6 +6780,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801181337324_test123.resx">
       <DependentUpon>201801181337324_test123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181348306_test12.resx">
+      <DependentUpon>201801181348306_test12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
