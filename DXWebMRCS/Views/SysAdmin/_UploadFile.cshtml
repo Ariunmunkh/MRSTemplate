@@ -59,34 +59,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FilePath, new { @class = "control-label col-md-2" })
                                 <div class="col-md-9">
-                                    
-                                       @Html.DevExpress().FileManager(settings =>
-                                        {
-                                            settings.Name = "FileManager";
-                                            settings.CallbackRouteValues = new { Controller = "SysAdmin", Action = "FileManagerContentPartial" };
-
-                                            settings.DownloadRouteValues = new { Controller = "SysAdmin", Action = "FileManagerPartialDownload" };
-                                            settings.SettingsEditing.AllowDownload = true;
-
-                                            settings.Settings.ThumbnailFolder = Url.Content("~/Content/FileManager/Thumbnails");
-
-                                            settings.SettingsEditing.AllowCreate = true;
-                                            settings.SettingsEditing.AllowRename = true;
-                                            settings.SettingsEditing.AllowMove = true;
-                                            settings.SettingsEditing.AllowDelete = true;
-                                            settings.SettingsUpload.Enabled = true;
-                                            settings.SettingsUpload.UseAdvancedUploadMode = true;
-                                            settings.SettingsUpload.AdvancedModeSettings.EnableMultiSelect = true;
-
-                                            settings.SettingsFileList.View = DevExpress.Web.FileListView.Thumbnails;
-    
-                                            settings.FileUploading = (s, e) => {
-
-                                                DXWebMRCS.Constants.Config.FileNamePath = e.FileName;
-        
-                                            };
-                                        }).BindToFolder(@"~\Content\Uploadfile").GetHtml()
-                                    
+                                    @Html.TextBoxFor(model => model.File, "", new { @type = "file", @multiple = "multiple" })
+                                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })                                                                       
                                 </div>
                             </div>
                             
@@ -99,9 +73,10 @@
                     }
                 </div>
             </div>
-            </div>
         </div>
-
     </div>
 </div>
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
