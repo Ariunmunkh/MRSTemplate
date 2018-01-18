@@ -43,9 +43,23 @@ namespace DXWebMRCS.Controllers
         [HttpPost]
         //[AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult _UploadFile(FileContent content)
+        public ActionResult _UploadFile(FileContent content, HttpPostedFileBase file)
         {
-            
+            String FileExt = Path.GetExtension(file.FileName).ToUpper();
+
+            if (FileExt == ".PDF" && FileExt == ".DOC")
+            {
+
+
+                return View();
+            }
+            else
+            {
+
+                ViewBag.FileStatus = "Invalid file format.";
+                return View();
+
+            }
             return View();
         }
         
