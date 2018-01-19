@@ -32,6 +32,7 @@ namespace DXWebMRCS.Controllers
             return RedirectToAction("index", "News");
         }
 
+        #region Upload FIle
         [HttpGet]
         public ActionResult _UploadFile(int id)
         {
@@ -64,7 +65,17 @@ namespace DXWebMRCS.Controllers
             db.Database.ExecuteSqlCommand("DELETE FROM FileContents WHERE id = " + id);
             return Json("Success");
         }
-        
+
+        public FileResult DownLoad(int id)
+        {
+            var file = db.Database.SqlQuery<FileContent>("SELECT TOP 1 * FROM FileContents WHERE id = " + id).FirstOrDefault();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\FileContents\\";
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
+            string fileName = file.FileName + file.FileExtension;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
         [HttpPost]
         //[AllowAnonymous]
         public ActionResult _UploadFile(FileContent model, HttpPostedFileBase ImageFile)
@@ -84,7 +95,7 @@ namespace DXWebMRCS.Controllers
                         imageName = imageName + DateTime.Now.ToString("yymmssfff") + extension;
                         model.Image = "/Content/FileContents/" + imageName;
                         imageName = Path.Combine(Server.MapPath("~/Content/FileContents/"), imageName);
-                        ImageFile.SaveAs(imageName); 
+                        ImageFile.SaveAs(imageName);
                     }
 
                     if (model.File != null)
@@ -98,7 +109,7 @@ namespace DXWebMRCS.Controllers
 
                         model.FilePath = "/Content/FileContents/" + fileName;
                         fileName = Path.Combine(Server.MapPath("~/Content/FileContents/"), fileName);
-                        model.File.SaveAs(fileName); 
+                        model.File.SaveAs(fileName);
                     }
 
                     if (model != null && model.Id > 0)
@@ -111,17 +122,18 @@ namespace DXWebMRCS.Controllers
                         db.FileContents.Add(model);
                         db.SaveChanges();
                     }
-                   
+
                     return View("FileContentList", db.FileContents.ToList());
                 }
                 else
                 {
                     ViewBag.FileStatus = "Invalid file format.";
                     return View(model);
-                } 
+                }
             }
             return View(model);
-        }
+        } 
+        #endregion
         
         #region Partial View
         public ActionResult HtmlEditorPartial()

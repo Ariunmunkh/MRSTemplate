@@ -29,6 +29,7 @@ namespace DXWebMRCS.Controllers
             return View();    
         }
 
+        #region File content
         public ActionResult FileContentView()
         {
             var files = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents").ToList();
@@ -43,8 +44,9 @@ namespace DXWebMRCS.Controllers
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\FileContents\\";
             byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
             string fileName = file.FileName + file.FileExtension;
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);          
-        }
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        } 
+        #endregion
 
         [HttpGet]
         public ActionResult GalleryViewPartial()
