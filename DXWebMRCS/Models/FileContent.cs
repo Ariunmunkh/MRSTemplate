@@ -26,11 +26,11 @@ namespace DXWebMRCS.Models
         [Display(Name = "Зураг")]
         public string Image { get; set; }
         public string FilePath { get; set; }
+        public string FileName { get; set; }
+        public string FileExtension { get; set; }
         [NotMapped]
-        [Required]
-        [DataType(DataType.Upload)]
-        [Display(Name = "Файл оруулна уу.")]
         public HttpPostedFileBase File { get; set; }
 
     }
+
 }

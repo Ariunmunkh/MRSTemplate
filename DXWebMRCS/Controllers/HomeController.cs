@@ -29,6 +29,23 @@ namespace DXWebMRCS.Controllers
             return View();    
         }
 
+        public ActionResult FileContentView()
+        {
+            var files = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents").ToList();
+
+            return View(files);
+        }
+
+        public FileResult DownLoad(int id)
+        {
+            var file = db.Database.SqlQuery<FileContent>("SELECT TOP 1 * FROM FileContents WHERE id = " + id).FirstOrDefault();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\FileContents\\";
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
+            string fileName = file.FileName + file.FileExtension;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);          
+        }
+
         [HttpGet]
         public ActionResult GalleryViewPartial()
         {

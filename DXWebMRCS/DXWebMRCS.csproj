@@ -6678,6 +6678,8 @@
     <Content Include="Views\SysAdmin\GalleryCreate.cshtml" />
     <Content Include="Views\Shared\_TagPartial.cshtml" />
     <Content Include="Views\SysAdmin\_FileManagerContentPartial.cshtml" />
+    <Content Include="Views\Home\FileContentView.cshtml" />
+    <Content Include="Views\SysAdmin\FileContentList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6733,6 +6735,14 @@
     <Compile Include="Migrations\201801181348306_test12.Designer.cs">
       <DependentUpon>201801181348306_test12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801191522506_test.cs" />
+    <Compile Include="Migrations\201801191522506_test.Designer.cs">
+      <DependentUpon>201801191522506_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801191615455_test1.cs" />
+    <Compile Include="Migrations\201801191615455_test1.Designer.cs">
+      <DependentUpon>201801191615455_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -6754,6 +6764,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\FileContents\" />
     <Folder Include="Content\HtmlEditor\AudioFiles\" />
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
     <Folder Include="Content\HtmlEditor\Images\" />
@@ -6783,6 +6794,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801181348306_test12.resx">
       <DependentUpon>201801181348306_test12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801191522506_test.resx">
+      <DependentUpon>201801191522506_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801191615455_test1.resx">
+      <DependentUpon>201801191615455_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

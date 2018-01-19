@@ -32,34 +32,95 @@ namespace DXWebMRCS.Controllers
             return RedirectToAction("index", "News");
         }
 
-        //[AllowAnonymous]
-        public ActionResult _UploadFile()
+        [HttpGet]
+        public ActionResult _UploadFile(int id)
         {
-            FileContent file = new FileContent();
-            return View(file);
+            if (id > 0)
+            {
+                FileContent file = new FileContent();
+                file = db.FileContents.FirstOrDefault(x => x.Id == id);
+                return View(file);
+            }
+            else
+            {
+                FileContent file = new FileContent();
+                return View(file);
+            }
         }
 
+        [HttpGet]
+        public ActionResult FileContentList()
+        {
+            // DXCOMMENT: Pass a data model for GridView      
+            var list = db.FileContents.OrderByDescending(x => x.Id).ToList();
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult FileDelete(int id)
+        {
+            //var file = db.FileContents.FirstOrDefault(x => x.Id == id);
+            //System.IO.File.Delete(file.FilePath);
+            db.Database.ExecuteSqlCommand("DELETE FROM FileContents WHERE id = " + id);
+            return Json("Success");
+        }
         
         [HttpPost]
         //[AllowAnonymous]
-        public ActionResult _UploadFile(FileContent content)
+        public ActionResult _UploadFile(FileContent model, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
-                String FileExt = Path.GetExtension(content.File.FileName).ToUpper();
+                string imageName = string.Empty;
+                string fileName = string.Empty;
+                String FileExt = Path.GetExtension(model.File.FileName).ToUpper();
 
-                if (FileExt == ".PDF" && FileExt == ".DOC")
+                if (FileExt == ".PDF" || FileExt == ".DOC")
                 {
+                    if (ImageFile != null)
+                    {
+                        imageName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                        string extension = Path.GetExtension(ImageFile.FileName);
+                        imageName = imageName + DateTime.Now.ToString("yymmssfff") + extension;
+                        model.Image = "/Content/FileContents/" + imageName;
+                        imageName = Path.Combine(Server.MapPath("~/Content/FileContents/"), imageName);
+                        ImageFile.SaveAs(imageName); 
+                    }
 
-                    return View();
+                    if (model.File != null)
+                    {
+                        fileName = Path.GetFileNameWithoutExtension(model.File.FileName);
+                        string extension2 = Path.GetExtension(model.File.FileName);
+
+                        model.FileName = fileName + DateTime.Now.ToString("yymmssfff");
+                        model.FileExtension = extension2;
+                        fileName = model.FileName + extension2;
+
+                        model.FilePath = "/Content/FileContents/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/FileContents/"), fileName);
+                        model.File.SaveAs(fileName); 
+                    }
+
+                    if (model != null && model.Id > 0)
+                    {
+                        db.Entry(model).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        db.FileContents.Add(model);
+                        db.SaveChanges();
+                    }
+                   
+                    return View("FileContentList", db.FileContents.ToList());
                 }
                 else
                 {
                     ViewBag.FileStatus = "Invalid file format.";
-                    return View();
+                    return View(model);
                 } 
             }
-            return View();
+            return View(model);
         }
         
         #region Partial View
