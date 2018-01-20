@@ -28,29 +28,69 @@ namespace DXWebMRCS.Controllers
             // DXCOMMENT: Pass a data model for GridView            
             return View();    
         }
-        
-        public ActionResult GridViewPartialView() 
+
+        #region File content
+        public ActionResult FileContentView()
+        {
+            var pageNumber = 1;
+            var pageSize = 8;
+            var files = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (files == null)
+            {
+                return HttpNotFound();
+            }
+            return View(files);
+        }
+
+        [AllowAnonymous]
+        public ActionResult FilePageClick(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 8;
+            var filelist = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (filelist == null)
+            {
+                return HttpNotFound();
+            }
+            return View("FileContentView", filelist);
+        }
+
+        public FileResult DownLoad(int id)
+        {
+            var file = db.Database.SqlQuery<FileContent>("SELECT TOP 1 * FROM FileContents WHERE id = " + id).FirstOrDefault();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\FileContents\\";
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
+            string fileName = file.FileName + file.FileExtension;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        } 
+        #endregion
+
+        #region Partial Page
+        [HttpGet]
+        public ActionResult GalleryViewPartial()
+        {
+            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
+            return PartialView("_GalleryViewPartial");
+        }
+
+        public ActionResult GridViewPartialView()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
             return PartialView();
         }
 
-        public ActionResult BranchView()
-        {
-            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
-            return View();
-        }
-                
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             if (menuList != null && menuList.Count() > 0)
             {
-                 return PartialView("_HeaderPartial", menuList);
+                return PartialView("_HeaderPartial", menuList);
             }
-            menuList = db.Menus.ToList();
+            menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID IS NULL").ToList();
             return PartialView("_HeaderPartial", menuList);
-        }
+        } 
+        #endregion
 
         public ActionResult Change(String lan)
         {

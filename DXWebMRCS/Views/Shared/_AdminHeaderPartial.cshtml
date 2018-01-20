@@ -58,7 +58,10 @@
                         </li>
                         <li>
                             <a href="@Url.Action("Index", "Training")"><i class="fa fa-clone"></i> Явагдах сургалт </a>
-                        </li>    
+                        </li>  
+                         <li>
+                            <a href="@Url.Action("FileContentList", "SysAdmin")"><i class="fa fa-clone"></i> Файл оруулах </a>
+                        </li>   
                     }
                     else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
                     {

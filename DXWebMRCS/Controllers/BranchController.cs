@@ -11,6 +11,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
+using PagedList;
+using System.Threading;
+using System.Globalization;
 
 namespace DXWebMRCS.Controllers
 {
@@ -23,6 +26,146 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
+        public ActionResult Change(String lan)
+        {
+            if (lan != null)
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lan);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lan);
+            }
+
+            HttpCookie cookie = new HttpCookie("Language");
+            cookie.Value = lan;
+            Response.Cookies.Add(cookie);
+
+            return RedirectToAction("BranchView");
+        }
+
+        [AllowAnonymous]
+        public ActionResult PageClick(int? page, int branchId, int menuID)
+        {
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+            if (menuID > 0)
+            {
+                var newslist = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                if (newslist == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (newslist.Count == 1)
+                {
+                    branch.news = newslist.First();
+                    return View("BranchListDetail", branch);
+                }
+
+                branch.newsList = newslist;
+                return View("BranchView", branch);
+            }
+            else
+            {
+                var newslist = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                if (newslist == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (newslist.Count == 1)
+                {
+                    branch.news = newslist.First();
+                    return View("BranchListDetail", branch);
+                }
+
+                branch.newsList = newslist;
+                return View("BranchView", branch);
+            }
+        }
+
+        
+        [AllowAnonymous]
+        public ActionResult BranchView(int branchId, int menuID)
+        {
+            var pageNumber = 1;
+            var pageSize = 4;
+
+            ViewBag.menuId = menuID;
+
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            branch.menuID = menuID;            
+
+            if (menuID > 0)
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                branch.newsList = newsList;
+                if (newsList.Count == 1)
+                {
+                    branch.news = newsList.First();
+                    return View("BranchListDetail", branch);
+                }                
+                return View(branch);
+            }
+            else
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                branch.newsList = newsList;
+                if (newsList.Count == 1)
+                {
+                    branch.news = newsList.First();
+                    return View("BranchListDetail", branch);
+                }                
+                return View(branch);
+            }             
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchHeaderPartial(int branchId)
+        {
+            var menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID = " + branchId).ToList();
+            return PartialView("_BranchHeaderPartial", menuList);
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchNewsListPartial(int branchId, int menuID)
+        {
+            if (menuID > 0)
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToList();
+                if (newsList.Count == 1)
+                {
+                    return PartialView("BranchViewDetail", newsList.FirstOrDefault());
+                }
+                return PartialView("BranchNewsListPartial", newsList);
+            }
+            else
+            {
+                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToList();
+                if (newsList.Count == 1)
+                {
+                    return PartialView("BranchViewDetail", newsList.FirstOrDefault());
+                }
+                return PartialView("BranchNewsListPartial", newsList);
+            }            
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchViewDetail(int newsId)
+        {
+            var news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + newsId).FirstOrDefault();
+            return PartialView("BranchViewDetail", news);
+        }
+
+        [AllowAnonymous]
+        public ActionResult BranchListDetail(int newsId, int branchId)
+        {
+            var news = db.Database.SqlQuery<News>("SELECT TOP 1 * FROM News WHERE CID = " + newsId).FirstOrDefault();
+            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+            branch.news = news;
+            return View("BranchListDetail", branch);
+        }
+
+        #region Admin
         [ValidateInput(false)]
         public ActionResult GridViewPartialView()
         {
@@ -91,6 +234,7 @@ namespace DXWebMRCS.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -98,6 +242,7 @@ namespace DXWebMRCS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "BranchID, NameMon, NameEng, Logo, Image, email, phone, address")] Branch Branch, HttpPostedFileBase ImageFile, HttpPostedFileBase LogoFile)
         {
             if (ModelState.IsValid)
@@ -212,6 +357,7 @@ namespace DXWebMRCS.Controllers
         }
 
         // GET: /Branch/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -235,7 +381,8 @@ namespace DXWebMRCS.Controllers
             db.Branchs.Remove(Branch);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        } 
+        #endregion
 
-	}
+    }
 }

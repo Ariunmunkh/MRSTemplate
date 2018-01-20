@@ -45,6 +45,48 @@ namespace DXWebMRCS.Models
             return Menu;
         }
 
+        public static IEnumerable GetMenusJoinTable()
+        {
+            List<MenuJoinTable> MenuJoinTable = new List<MenuJoinTable>();
+            int UserID = -1;
+            if (WebMatrix.WebData.WebSecurity.CurrentUserId > 0)
+                UserID = WebMatrix.WebData.WebSecurity.CurrentUserId;
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand;
+                if (UserID > 0)
+                    selectCommand = new SqlCommand(@"SELECT Menu.* ,branches.namemon branchnamemon,branches.nameeng branchnameeng FROM Menu left join branches on branches.branchid = Menu.branchid where 
+                exists (select null from userprofile join webpages_UsersInRoles on webpages_UsersInRoles.userid = userprofile.userid join webpages_Roles on webpages_Roles.RoleId = webpages_UsersInRoles.RoleId where userprofile.userid = '" + UserID + @"' and webpages_Roles.RoleName = 'Admin') 
+                or exists (select null from userprofile where userid = '" + UserID + "' and branchid = Menu.branchid)", connection);
+                else
+                    selectCommand = new SqlCommand("SELECT Menu.* ,branches.namemon branchnamemon,branches.nameeng branchnameeng FROM Menu left join branches on branches.branchid = Menu.branchid", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    MenuJoinTable.Add(new MenuJoinTable()
+                    {
+                        MenuID = (int)reader["MenuID"],
+                        NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
+                        NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                        NavigateUrl = reader["NavigateUrl"] == DBNull.Value ? string.Empty : (string)reader["NavigateUrl"],
+                        MenuType = reader["MenuType"] == DBNull.Value ? string.Empty : (string)reader["MenuType"],
+                        Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                        ParentId = (reader["ParentId"] == DBNull.Value ? null : (int?)reader["ParentId"]),
+                        BranchID = (reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"]),
+                        BranchNameMon = (reader["BranchNameMon"] == DBNull.Value ? string.Empty : (string)reader["BranchNameMon"]),
+                        BranchNameEng = (reader["BranchNameEng"] == DBNull.Value ? string.Empty : (string)reader["BranchNameEng"]),
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return MenuJoinTable;
+        }
         public static void InsertMenu(Menu Menu)
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -153,10 +195,18 @@ namespace DXWebMRCS.Models
         public static IEnumerable GetBranchs()
         {
             List<Branch> Branch = new List<Branch>();
-
+            int UserID = -1;
+            if (WebMatrix.WebData.WebSecurity.CurrentUserId > 0)
+                UserID = WebMatrix.WebData.WebSecurity.CurrentUserId;
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Branches", connection);
+                SqlCommand selectCommand;
+                if (UserID > 0)
+                    selectCommand = new SqlCommand(@"SELECT * FROM Branches where 
+                exists (select null from userprofile join webpages_UsersInRoles on webpages_UsersInRoles.userid = userprofile.userid join webpages_Roles on webpages_Roles.RoleId = webpages_UsersInRoles.RoleId where userprofile.userid = '" + UserID + @"' and webpages_Roles.RoleName = 'Admin') 
+                or exists (select null from userprofile where userid = '" + UserID + "' and branchid = Branches.branchid)", connection);
+                else
+                    selectCommand = new SqlCommand("SELECT * FROM Branches", connection);
 
                 connection.Open();
 
@@ -179,6 +229,28 @@ namespace DXWebMRCS.Models
             }
 
             return Branch;
+        }
+
+        public static int GetBranchID(int MenuID)
+        {
+            int BranchID = -1;
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("select * from menu where menuid = @MenuID", connection);
+                selectCommand.Parameters.AddWithValue("@MenuID", MenuID);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    BranchID = reader["BranchID"] == DBNull.Value ? -1 : (int)reader["BranchID"];
+                }
+
+                reader.Close();
+            }
+
+            return BranchID;
         }
 
         public static void DeleteBranch(int BranchID)
@@ -215,7 +287,7 @@ namespace DXWebMRCS.Models
                 if (BranchID == -1)
                     return;
                 reader.Close();
-                if(connection.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                     connection.Open();
                 SqlCommand insertCommand = new SqlCommand(@"insert into menu (namemon, nameeng, branchid) 
                                                                         values(N'Мэдээ мэдээлэл', 'News', @BranchID),
@@ -256,6 +328,109 @@ namespace DXWebMRCS.Models
                 updateCommand.ExecuteNonQuery();
             }
         }
+
+        #region Gallery
+
+        public static IEnumerable GetGalleries()
+        {
+            List<Gallery> Gallery = new List<Gallery>();
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Galleries", connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Gallery.Add(new Gallery()
+                    {
+                        GalleryID = (int)reader["GalleryID"],
+                        TitleMon = reader["TitleMon"] == DBNull.Value ? string.Empty : (string)reader["TitleMon"],
+                        TitleEng = reader["TitleEng"] == DBNull.Value ? string.Empty : (string)reader["TitleEng"],
+                        Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Gallery;
+        }
+        #endregion
+
+        #region Tag
+
+        public static IEnumerable GetTag()
+        {
+            List<Tag> Tag = new List<Tag>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Tags ", connection);
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    Tag.Add(new Tag()
+                    {
+                        TagID = (int)reader["TagID"],
+                        NameMon = reader["NameMon"] == DBNull.Value ? string.Empty : (string)reader["NameMon"],
+                        NameEng = reader["NameEng"] == DBNull.Value ? string.Empty : (string)reader["NameEng"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return Tag;
+        }
+
+        public static void DeleteTag(int TagID)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Tags WHERE TagID = " + TagID, connection);
+
+                connection.Open();
+                deleteCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertTag(Tag Tag)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Tags (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
+
+                insertCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
+                insertCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
+
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateTag(Tag Tag)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Tags] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [TagID] = @TagID", connection);
+
+                updateCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
+                updateCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
+
+                updateCommand.Parameters.AddWithValue("@TagID", Tag.TagID);
+
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+            }
+        }
+
+        #endregion
 
         public static IEnumerable GetNews(int UserID)
         {

@@ -1,0 +1,87 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DXWebMRCS.Models.FileContent>
+@{
+    ViewBag.Title = "FileContentView";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title text-white">Event List without Sidebar</h2>
+                        <ol class="breadcrumb text-center text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li class="active text-gray-silver">Page Title</li>
+                            <li class="active text-theme-colored">Event List without Sidebar</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: event calendar -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var item in Model)
+                    {
+                        <div class="upcoming-events bg-white-f3 mb-20">
+                            <div class="row">
+                                <div class="col-sm-4 pr-0 pr-sm-15">
+                                    <div class="thumb p-15">
+                                        @{  string imageUrl = item.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.Image : "https://placehold.it/220x160";   }
+                                        <img class="img-fullwidth" src=@imageUrl alt="...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 pl-0 pl-sm-15">
+                                    <div class="event-details p-15 mt-20">
+                                        <h4 class="mt-0 text-uppercase font-weight-500">
+                                            @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                            {
+                                                @item.TitleEng
+                                            }
+                                            else
+                                            {
+                                                @item.TitleEng
+                                            }
+                                        </h4>
+                                        <p>
+                                            @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                            {
+                                                @item.DescriptionEng
+                                            }
+                                            else
+                                            {
+                                                @item.DescriptionMon
+                                            }
+                                        </p>
+                                        @*<a href='@Url.Action("DownLoadFile", "Home", new { id = @item.Id })' class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10">Download</a>*@
+                                        @Html.ActionLink("Click here to download", "Download", new { id = @item.Id }, new { @class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.PagedListPager(Model, page => Url.Action("FilePageClick", new { page = page }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end main-content -->

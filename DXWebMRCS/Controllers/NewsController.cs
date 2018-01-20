@@ -12,6 +12,7 @@ using System.IO;
 using ImageResizer;
 using PagedList;
 using System.Text;
+using DevExpress.Web;
 
 namespace DXWebMRCS.Controllers
 {
@@ -104,7 +105,10 @@ namespace DXWebMRCS.Controllers
             {
                 return HttpNotFound();
             }
-            return View(news);
+
+            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " AND (CID = 33 OR CID = 34 OR CID =35) ORDER BY Date ASC").ToList();
+            var detail = new Tuple<News, IEnumerable<News>>(news, newslist);
+            return View(detail);
         }
 
         [AllowAnonymous]
@@ -118,7 +122,7 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
             return View(news);
-        } 
+        }
         #endregion
 
         #region News Create, Edit, Delete
@@ -165,7 +169,12 @@ namespace DXWebMRCS.Controllers
                     };
                     ImageBuilder.Current.Build(fileNameMedium, fileNameMedium, resizeSetting2);
                 }
-
+                if (news.MenuID.HasValue)
+                {
+                    news.BranchID = NorthwindDataProvider.GetBranchID((int)news.MenuID);
+                    if (news.BranchID == -1)
+                        news.BranchID = null;
+                }
                 news.Date = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();
@@ -261,7 +270,82 @@ namespace DXWebMRCS.Controllers
             db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
-        } 
+        }
+        #endregion
+
+        #region tag
+        [AllowAnonymous]
+        public ActionResult TagPartial()
+        {
+            var taglist = db.Database.SqlQuery<Tag>("SELECT * FROM Tags").ToList();
+            return PartialView("_TagPartial", taglist);
+        }
+        public ActionResult Tag()
+        {
+            return View();
+        }
+
+        public ActionResult TagPartialView()
+        {
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesAddNewPartial(Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.InsertTag(Tag);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesUpdatePartial(Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    NorthwindDataProvider.UpdateTag(Tag);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesDeletePartial(int TagID = -1)
+        {
+            if (TagID >= 0)
+            {
+                try
+                {
+                    NorthwindDataProvider.DeleteTag(TagID);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
+        }
+
         #endregion
 
         protected override void Dispose(bool disposing)

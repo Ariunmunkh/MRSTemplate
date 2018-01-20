@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,10 +32,38 @@ namespace DXWebMRCS.Models
 
         [Display(Name = "Салбар")]
         public int? BranchID { get; set; }
-        
+
         [Display(Name = "Төрөл")]
         public string ContentType { get; set; }
         [Display(Name = "Өөрчилсөн огноо")]
         public System.DateTime Date { get; set; }
+
+        [NotMapped]
+        public string tags { get; set; }
+    }
+
+    public class Tag
+    {
+        [Key]
+        public int TagID { get; set; }
+
+        [Display(Name = "Гарчиг Монгол")]
+        public string NameMon { get; set; }
+
+        [Display(Name = "Гарчиг Англи")]
+        public string NameEng { get; set; }
+    }
+
+    public class TagDetail
+    {
+        [Key]
+        public int TagDetailID { get; set; }
+
+        public string Source { get; set; }
+
+        public int SourceID { get; set; }
+
+        public int TagID { get; set; }
+
     }
 }

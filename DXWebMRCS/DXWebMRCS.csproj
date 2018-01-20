@@ -6537,6 +6537,57 @@
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\elearncss\fonts\FontAwesome.otf" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
     <None Include="Properties\PublishProfiles\is11d.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MRCS.pubxml" />
     <None Include="Properties\PublishProfiles\MRCSDeV.pubxml" />
@@ -6657,10 +6708,31 @@
     <Content Include="Views\Branch\Edit.cshtml" />
     <Content Include="Views\Branch\Delete.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
-    <Content Include="Views\Home\BranchView.cshtml" />
     <Content Include="Views\Shared\_BranchLayout.cshtml" />
-    <Content Include="Views\Home\BranchIntroduction.cshtml" />
-    <Content Include="Views\Home\BranchContact.cshtml" />
+    <Content Include="Views\Branch\BranchView.cshtml" />
+    <Content Include="Views\Branch\BranchViewDetail.cshtml" />
+    <Content Include="Views\Branch\BranchNewsListPartial.cshtml" />
+    <Content Include="Views\Branch\_BranchHeaderPartial.cshtml" />
+    <Content Include="Views\Branch\BranchListDetail.cshtml" />
+    <Content Include="Views\eLearnt\Create.cshtml" />
+    <Content Include="Views\eLearnt\Delete.cshtml" />
+    <Content Include="Views\eLearnt\Details.cshtml" />
+    <Content Include="Views\eLearnt\Edit.cshtml" />
+    <Content Include="Views\eLearnt\Index.cshtml" />
+    <Content Include="Views\News\Tag.cshtml" />
+    <Content Include="Views\News\TagPartialView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
+    <Content Include="Views\SysAdmin\Gallery.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryPartialView.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryEdit.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryDelete.cshtml" />
+    <Content Include="Views\SysAdmin\GalleryCreate.cshtml" />
+    <Content Include="Views\Shared\_TagPartial.cshtml" />
+    <Content Include="Views\SysAdmin\_FileManagerContentPartial.cshtml" />
+    <Content Include="Views\Home\FileContentView.cshtml" />
+    <Content Include="Views\SysAdmin\FileContentList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6677,7 +6749,10 @@
     <Compile Include="Content\Constants\Config.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\BranchViewController.cs" />
     <Compile Include="Controllers\ElearningController.cs" />
+    <Compile Include="Controllers\ElearnServiceController.cs" />
+    <Compile Include="Controllers\eLearntController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -6704,6 +6779,25 @@
     <Compile Include="Migrations\201801141115593_initial-eService.cs" />
     <Compile Include="Migrations\201801141115593_initial-eService.Designer.cs">
       <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
+    <Compile Include="Migrations\201801181320235_testing.cs" />
+    <Compile Include="Migrations\201801181320235_testing.Designer.cs">
+      <DependentUpon>201801181320235_testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181337324_test123.cs" />
+    <Compile Include="Migrations\201801181337324_test123.Designer.cs">
+      <DependentUpon>201801181337324_test123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181348306_test12.cs" />
+    <Compile Include="Migrations\201801181348306_test12.Designer.cs">
+      <DependentUpon>201801181348306_test12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801191522506_test.cs" />
+    <Compile Include="Migrations\201801191522506_test.Designer.cs">
+      <DependentUpon>201801191522506_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801191615455_test1.cs" />
+    <Compile Include="Migrations\201801191615455_test1.Designer.cs">
+      <DependentUpon>201801191615455_test1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6711,6 +6805,8 @@
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Elearn.cs" />
     <Compile Include="Models\eService.cs" />
+    <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\FileContent.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
@@ -6724,6 +6820,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\FileContents\" />
     <Folder Include="Content\HtmlEditor\AudioFiles\" />
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
     <Folder Include="Content\HtmlEditor\Images\" />
@@ -6734,6 +6831,7 @@
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
+    <Folder Include="Views\BranchView\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Language\RGlobal.mn.resx">
@@ -6746,6 +6844,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801141115593_initial-eService.resx">
       <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801181320235_testing.resx">
+      <DependentUpon>201801181320235_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181337324_test123.resx">
+      <DependentUpon>201801181337324_test123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181348306_test12.resx">
+      <DependentUpon>201801181348306_test12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801191522506_test.resx">
+      <DependentUpon>201801191522506_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801191615455_test1.resx">
+      <DependentUpon>201801191615455_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

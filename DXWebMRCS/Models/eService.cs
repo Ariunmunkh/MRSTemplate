@@ -29,4 +29,15 @@ namespace DXWebMRCS.Models
         public virtual UserProfile UserProfile { get; set; }
         public virtual Elearn Elearn { get; set; }
     }
+
+    public class eServiceModel
+    {
+        public int eServiceid { get; set; }
+        public int UserId { get; set; }
+        public string LessonName { get; set; }
+        public string LessonBody { get; set; }
+        public string Image { get; set; }
+        public int totalscore { get; set; }
+        public string nowDate { get; set; }
+    }
 }
