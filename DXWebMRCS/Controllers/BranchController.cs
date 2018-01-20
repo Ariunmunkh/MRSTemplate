@@ -12,6 +12,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
 using PagedList;
+using System.Threading;
+using System.Globalization;
 
 namespace DXWebMRCS.Controllers
 {
@@ -22,6 +24,21 @@ namespace DXWebMRCS.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Change(String lan)
+        {
+            if (lan != null)
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lan);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lan);
+            }
+
+            HttpCookie cookie = new HttpCookie("Language");
+            cookie.Value = lan;
+            Response.Cookies.Add(cookie);
+
+            return RedirectToAction("BranchView");
         }
 
         [AllowAnonymous]
@@ -66,6 +83,7 @@ namespace DXWebMRCS.Controllers
             }
         }
 
+        
         [AllowAnonymous]
         public ActionResult BranchView(int branchId, int menuID)
         {
