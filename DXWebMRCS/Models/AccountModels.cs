@@ -47,7 +47,7 @@ namespace DXWebMRCS.Models {
         public string UserName { get; set; }
         public int Type { get; set; }
         public string AvatarPath { get; set; }
-        public int BranchId { get; set; }
+        public int? BranchId { get; set; }
         public virtual ICollection<eService> eService { get; set; }
     }
 

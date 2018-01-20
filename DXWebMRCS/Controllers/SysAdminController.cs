@@ -25,7 +25,8 @@ namespace DXWebMRCS.Controllers
         // GET: /SysAdmin/
         public ActionResult Index()
         {
-            if (Roles.IsUserInRole(User.Identity.Name, "Admin")){
+            if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+            {
                 return View();
             }
 
@@ -132,9 +133,9 @@ namespace DXWebMRCS.Controllers
                 }
             }
             return View(model);
-        } 
+        }
         #endregion
-        
+
         #region Partial View
         public ActionResult HtmlEditorPartial()
         {
@@ -150,7 +151,7 @@ namespace DXWebMRCS.Controllers
             HtmlEditorExtension.SaveUploadedFile("HtmlEditor", SysAdminControllerHtmlEditorSettings.ImageUploadValidationSettings, SysAdminControllerHtmlEditorSettings.ImageUploadDirectory);
             return null;
         }
-        
+
         #endregion
 
         #region UserProfile
@@ -171,7 +172,7 @@ namespace DXWebMRCS.Controllers
                 fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                 string extension = Path.GetExtension(ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                
+
                 model.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Content/Images/UserAvatar/"), fileName);
                 ImageFile.SaveAs(fileName);
@@ -192,7 +193,7 @@ namespace DXWebMRCS.Controllers
                 db.SaveChanges();
             }
             return View(model);
-        } 
+        }
         #endregion
 
         #region Slider
@@ -351,7 +352,7 @@ namespace DXWebMRCS.Controllers
                 }
             }
             return RedirectToAction("index");
-        } 
+        }
         #endregion
 
         #region Galley
@@ -417,6 +418,11 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
             return View(Gallery);
+        }
+
+        public ActionResult DropDownEdit()
+        {
+            return View("DropDownEdit");
         }
 
         // POST: /Gallery/Edit/5
@@ -510,7 +516,7 @@ namespace DXWebMRCS.Controllers
             System.Diagnostics.Debug.WriteLine(responseContent);
             //return string.Empty;
         }
-	}
+    }
 
     public class SysAdminControllerHtmlEditorSettings
     {
@@ -541,7 +547,7 @@ namespace DXWebMRCS.Controllers
                 return imageSelectorSettings;
             }
         }
-        
+
     }
 
 }

@@ -63,20 +63,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Tags, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DevExpress().GridLookup(
-                        settings =>
-                        {
-                            settings.Name = "Tags";
-                            settings.KeyFieldName = "TagID";
-                            settings.CommandColumn.Visible = true;
-                            settings.CommandColumn.ShowSelectCheckbox = true;
-                            settings.Columns.Add("NameMon");
-                            settings.Columns.Add("NameEng");
-                            settings.Properties.SelectionMode = DevExpress.Web.GridLookupSelectionMode.Multiple;
-                            settings.Properties.TextFormatString = "{0}";
-                            settings.Properties.MultiTextSeparator = ", ";
-                            settings.Properties.Width = 250;
-                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetTag()).GetHtml()
+                                @Html.Partial("DropDownEdit")
                                 @Html.ValidationMessageFor(model => model.Tags)
                             </div>
                         </div>
@@ -108,5 +95,10 @@
             }
             filerdr.readAsDataURL(input.files[0]);
         }
+    }
+
+    function CloseGridLookup() {
+        Tags.ConfirmCurrentSelection();
+        Tags.HideDropDown();
     }
 </script>  
