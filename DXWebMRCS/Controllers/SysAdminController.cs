@@ -354,6 +354,121 @@ namespace DXWebMRCS.Controllers
         } 
         #endregion
 
+        #region Galley
+        public ActionResult Gallery()
+        {
+            return View();
+        }
+
+        public ActionResult GalleryPartialView()
+        {
+            return PartialView("GalleryPartialView", NorthwindDataProvider.GetGalleries());
+        }
+        public ActionResult GalleryCreate()
+        {
+            return View();
+        }
+
+        // POST: /Gallery/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GalleryCreate([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Gallery.Image = "/Content/Images/GalleryImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/GalleryImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+                db.Galleries.Add(Gallery);
+                db.SaveChanges();
+                SendNotificationMessage();
+                return RedirectToAction("Index");
+            }
+
+            return View(Gallery);
+        }
+
+        // GET: /Gallery/Edit/5
+        public ActionResult GalleryEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gallery Gallery = db.Galleries.Find(id);
+            if (Gallery == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Gallery);
+        }
+
+        // POST: /Gallery/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GalleryEdit([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    Gallery.Image = "/Content/Images/GalleryImage/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Images/GalleryImage/"), fileName);
+                    ImageFile.SaveAs(fileName);
+
+                    ResizeSettings resizeSetting = new ResizeSettings
+                    {
+                        Width = 1920,
+                        Height = 1280,
+                        Format = "png"
+                    };
+                    ImageBuilder.Current.Build(fileName, fileName, resizeSetting);
+                }
+
+                db.Entry(Gallery).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Gallery);
+        }
+
+        // GET: /Gallery/Delete/5
+        public ActionResult GalleryDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gallery Gallery = db.Galleries.Find(id);
+            if (Gallery == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Gallery);
+        }
+
+        #endregion
         static void SendNotificationMessage()
         {
             var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;

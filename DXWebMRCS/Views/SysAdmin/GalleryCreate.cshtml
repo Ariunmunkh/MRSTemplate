@@ -61,6 +61,28 @@
                         </div>
 
                         <div class="form-group">
+                            @Html.LabelFor(model => model.Tags, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DevExpress().GridLookup(
+                        settings =>
+                        {
+                            settings.Name = "Tags";
+                            settings.KeyFieldName = "TagID";
+                            settings.CommandColumn.Visible = true;
+                            settings.CommandColumn.ShowSelectCheckbox = true;
+                            settings.Columns.Add("NameMon");
+                            settings.Columns.Add("NameEng");
+                            settings.Properties.SelectionMode = DevExpress.Web.GridLookupSelectionMode.Multiple;
+                            settings.Properties.TextFormatString = "{0}";
+                            settings.Properties.MultiTextSeparator = ", ";
+                            settings.Properties.Width = 250;
+                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetTag()).GetHtml()
+                                @Html.ValidationMessageFor(model => model.Tags)
+                            </div>
+                        </div>
+                      
+
+                        <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="GalleryCreate" class="btn btn-default" />
                             </div>

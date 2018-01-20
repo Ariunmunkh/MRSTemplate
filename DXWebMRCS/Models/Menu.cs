@@ -71,5 +71,8 @@ namespace DXWebMRCS.Models
         [Display(Name = "Салбар нэр")]
         public string BranchNameEng { get; set; }
 
+        [Display(Name = "Таг")]
+        public string Tags { get; set; }
+
     }
 }

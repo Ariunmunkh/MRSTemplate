@@ -6723,25 +6723,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801181320235_testing.cs" />
-    <Compile Include="Migrations\201801181320235_testing.Designer.cs">
-      <DependentUpon>201801181320235_testing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801181337324_test123.cs" />
-    <Compile Include="Migrations\201801181337324_test123.Designer.cs">
-      <DependentUpon>201801181337324_test123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801181348306_test12.cs" />
-    <Compile Include="Migrations\201801181348306_test12.Designer.cs">
-      <DependentUpon>201801181348306_test12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801191522506_test.cs" />
-    <Compile Include="Migrations\201801191522506_test.Designer.cs">
-      <DependentUpon>201801191522506_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801191615455_test1.cs" />
-    <Compile Include="Migrations\201801191615455_test1.Designer.cs">
-      <DependentUpon>201801191615455_test1.cs</DependentUpon>
+    <Compile Include="Migrations\201801200927479_test.cs" />
+    <Compile Include="Migrations\201801200927479_test.Designer.cs">
+      <DependentUpon>201801200927479_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6786,20 +6770,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181320235_testing.resx">
-      <DependentUpon>201801181320235_testing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181337324_test123.resx">
-      <DependentUpon>201801181337324_test123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181348306_test12.resx">
-      <DependentUpon>201801181348306_test12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801191522506_test.resx">
-      <DependentUpon>201801191522506_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801191615455_test1.resx">
-      <DependentUpon>201801191615455_test1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801200927479_test.resx">
+      <DependentUpon>201801200927479_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
