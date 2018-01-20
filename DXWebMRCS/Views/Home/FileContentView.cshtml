@@ -1,4 +1,7 @@
-﻿@model IEnumerable<DXWebMRCS.Models.FileContent>
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DXWebMRCS.Models.FileContent>
 @{
     ViewBag.Title = "FileContentView";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -73,18 +76,7 @@
                     }
                     <div class="row">
                         <div class="col-sm-12">
-                            <nav>
-                                <ul class="pagination pull-right xs-pull-center mb-xs-40">
-                                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
-                                </ul>
-                            </nav>
+                            @Html.PagedListPager(Model, page => Url.Action("FilePageClick", new { page = page }))
                         </div>
                     </div>
                 </div>

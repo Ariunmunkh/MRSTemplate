@@ -32,9 +32,27 @@ namespace DXWebMRCS.Controllers
         #region File content
         public ActionResult FileContentView()
         {
-            var files = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents").ToList();
-
+            var pageNumber = 1;
+            var pageSize = 8;
+            var files = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (files == null)
+            {
+                return HttpNotFound();
+            }
             return View(files);
+        }
+
+        [AllowAnonymous]
+        public ActionResult FilePageClick(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 8;
+            var filelist = db.Database.SqlQuery<FileContent>("SELECT * FROM FileContents ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (filelist == null)
+            {
+                return HttpNotFound();
+            }
+            return View("FileContentView", filelist);
         }
 
         public FileResult DownLoad(int id)
@@ -48,29 +66,31 @@ namespace DXWebMRCS.Controllers
         } 
         #endregion
 
+        #region Partial Page
         [HttpGet]
         public ActionResult GalleryViewPartial()
         {
             var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
             return PartialView("_GalleryViewPartial");
         }
-        
-        public ActionResult GridViewPartialView() 
+
+        public ActionResult GridViewPartialView()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            
             return PartialView();
         }
-       
+
         public ActionResult _HeaderPartial()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             if (menuList != null && menuList.Count() > 0)
             {
-                 return PartialView("_HeaderPartial", menuList);
+                return PartialView("_HeaderPartial", menuList);
             }
             menuList = db.Database.SqlQuery<Menu>("SELECT * FROM Menu WHERE BranchID IS NULL").ToList();
             return PartialView("_HeaderPartial", menuList);
-        }
+        } 
+        #endregion
 
         public ActionResult Change(String lan)
         {
