@@ -278,4 +278,14 @@ namespace DXWebMRCS.Models {
         public int ValueId { get; set; }
     }
 
+
+    public class GalleryModel
+    {
+        public int GalleryID { get; set; }
+        public string TitleMon { get; set; }
+        public string TitleEng { get; set; }
+        public string Image { get; set; }
+        public int TagID { get; set; }
+    }
+
 }
