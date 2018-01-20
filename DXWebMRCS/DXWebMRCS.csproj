@@ -94,6 +94,12 @@
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -157,6 +163,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData">
       <Private>True</Private>
     </Reference>
@@ -182,6 +191,9 @@
     <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.0.0\lib\net45\System.Web.Http.OData.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -4844,6 +4856,22 @@
     <Content Include="Content\css\ytplayer\raster_dot.png" />
     <Content Include="Content\elearncss\all\all.css" />
     <Content Include="Content\elearncss\app\app.css" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.svg" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.svg" />
     <Content Include="Content\elearn\elicon.png" />
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\flaticon-set-charity.html" />
@@ -6458,7 +6486,60 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\elearncss\fonts\FontAwesome.otf" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
+    <None Include="Properties\PublishProfiles\is11d.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MRCS.pubxml" />
+    <None Include="Properties\PublishProfiles\MRCSDeV.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6620,15 +6701,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801140458281_test.cs" />
-    <Compile Include="Migrations\201801140458281_test.Designer.cs">
-      <DependentUpon>201801140458281_test.cs</DependentUpon>
+    <Compile Include="Migrations\201801141115593_initial-eService.cs" />
+    <Compile Include="Migrations\201801141115593_initial-eService.Designer.cs">
+      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Elearn.cs" />
+    <Compile Include="Models\eService.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
@@ -6662,8 +6744,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801140458281_test.resx">
-      <DependentUpon>201801140458281_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801141115593_initial-eService.resx">
+      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

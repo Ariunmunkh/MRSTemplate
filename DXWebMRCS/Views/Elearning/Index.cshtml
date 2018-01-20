@@ -33,12 +33,13 @@
                                         <span class="img icon-block height-130 bg-default"></span>
                                         <span class="overlay overlay-full padding-none icon-block bg-default">
                                             <span class="v-center">
-                                                <i class="fa fa-github"></i>
+                                                @Html.Raw("<img width=170," + list.Image)
                                             </span>
                                         </span>
                                         <a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
                                             <span class="v-center">
-                                                @Html.Raw("<img width=170," + list.Image)
+                                                
+                                                <i class="fa fa-graduation-cap" style="color:#eb001f"></i>
                                             </span>
                                         </a>
                                     </div>
