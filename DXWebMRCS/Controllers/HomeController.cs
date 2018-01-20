@@ -29,13 +29,14 @@ namespace DXWebMRCS.Controllers
             return View();    
         }
 
+        //Branch uudiin list user haragdah
         public ActionResult BranchList()
         {
             var branchlist = db.Database.SqlQuery<Branch>("SELECT * FROM Branches").ToList();
             return View(branchlist);
         }
 
-        #region File content
+        #region File content Hadgalsan Pdf bolon Docx haruulah heseg
         public ActionResult FileContentView()
         {
             var pageNumber = 1;
@@ -132,6 +133,7 @@ namespace DXWebMRCS.Controllers
             return PartialView("_RecentNewsPartial", newslist);
         }
 
+        //Surgalt bolon Uil ajillagaa
         [HttpGet]
         public ActionResult TrainingEventPartial()
         {

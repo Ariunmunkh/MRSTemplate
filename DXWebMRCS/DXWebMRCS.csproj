@@ -6776,9 +6776,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801200927479_test.cs" />
-    <Compile Include="Migrations\201801200927479_test.Designer.cs">
-      <DependentUpon>201801200927479_test.cs</DependentUpon>
+    <Compile Include="Migrations\201801201746008_test.cs" />
+    <Compile Include="Migrations\201801201746008_test.Designer.cs">
+      <DependentUpon>201801201746008_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6823,8 +6823,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801200927479_test.resx">
-      <DependentUpon>201801200927479_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801201746008_test.resx">
+      <DependentUpon>201801201746008_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
