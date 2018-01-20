@@ -6588,9 +6588,7 @@
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
-    <None Include="Properties\PublishProfiles\is11d.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MRCS.pubxml" />
-    <None Include="Properties\PublishProfiles\MRCSDeV.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -6776,9 +6774,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801141115593_initial-eService.cs" />
-    <Compile Include="Migrations\201801141115593_initial-eService.Designer.cs">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
     <Compile Include="Migrations\201801181320235_testing.cs" />
     <Compile Include="Migrations\201801181320235_testing.Designer.cs">
       <DependentUpon>201801181320235_testing.cs</DependentUpon>
@@ -6842,8 +6837,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801141115593_initial-eService.resx">
-      <DependentUpon>201801141115593_initial-eService.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\201801181320235_testing.resx">
       <DependentUpon>201801181320235_testing.cs</DependentUpon>
     </EmbeddedResource>
