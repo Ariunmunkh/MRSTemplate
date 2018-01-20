@@ -28,6 +28,9 @@ namespace DXWebMRCS.Models
         [Display(Name = "Зураг")]
         public string Image { get; set; }
 
+        [Display(Name = "Таг")]
+        public string Tags { get; set; }
+
     }
 
 }

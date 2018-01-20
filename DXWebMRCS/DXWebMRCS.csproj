@@ -6537,6 +6537,57 @@
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
     <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\elearncss\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\elearncss\fonts\FontAwesome.otf" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\elearncss\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\elearncss\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-arrows.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-clothing.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-emotions.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-food.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-general.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-household.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-medical-science.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-multimedia.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-nature.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-shopping-finance.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-sports.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-vehicle-navigation.woff" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.eot" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.ttf" />
+    <Content Include="Content\elearncss\fonts\picto-foundry-weather.woff" />
     <None Include="Properties\PublishProfiles\MRCS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -6725,25 +6776,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801181320235_testing.cs" />
-    <Compile Include="Migrations\201801181320235_testing.Designer.cs">
-      <DependentUpon>201801181320235_testing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801181337324_test123.cs" />
-    <Compile Include="Migrations\201801181337324_test123.Designer.cs">
-      <DependentUpon>201801181337324_test123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801181348306_test12.cs" />
-    <Compile Include="Migrations\201801181348306_test12.Designer.cs">
-      <DependentUpon>201801181348306_test12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801191522506_test.cs" />
-    <Compile Include="Migrations\201801191522506_test.Designer.cs">
-      <DependentUpon>201801191522506_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801191615455_test1.cs" />
-    <Compile Include="Migrations\201801191615455_test1.Designer.cs">
-      <DependentUpon>201801191615455_test1.cs</DependentUpon>
+    <Compile Include="Migrations\201801200927479_test.cs" />
+    <Compile Include="Migrations\201801200927479_test.Designer.cs">
+      <DependentUpon>201801200927479_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6788,20 +6823,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181320235_testing.resx">
-      <DependentUpon>201801181320235_testing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181337324_test123.resx">
-      <DependentUpon>201801181337324_test123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181348306_test12.resx">
-      <DependentUpon>201801181348306_test12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801191522506_test.resx">
-      <DependentUpon>201801191522506_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801191615455_test1.resx">
-      <DependentUpon>201801191615455_test1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801200927479_test.resx">
+      <DependentUpon>201801200927479_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
