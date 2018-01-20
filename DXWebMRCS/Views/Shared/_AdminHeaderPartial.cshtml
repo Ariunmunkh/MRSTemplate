@@ -61,7 +61,10 @@
                         </li>  
                          <li>
                             <a href="@Url.Action("FileContentList", "SysAdmin")"><i class="fa fa-clone"></i> Файл оруулах </a>
-                        </li>   
+                        </li>  
+                         <li>
+                            <a href="@Url.Action("Index", "Branch")"><i class="fa fa-clone"></i> Салбар </a>
+                        </li> 
                     }
                     else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
                     {

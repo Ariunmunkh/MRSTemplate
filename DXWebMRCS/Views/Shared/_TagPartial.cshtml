@@ -8,7 +8,7 @@
     <div class="tags">
         @foreach (var item in Model)
         {
-            <a href="#">
+            <a href='@Url.Action("TagNewsList", "News", new { tagID = @item.TagID })'>
                 @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                 {
                     @item.NameEng

@@ -29,6 +29,12 @@ namespace DXWebMRCS.Controllers
             return View();    
         }
 
+        public ActionResult BranchList()
+        {
+            var branchlist = db.Database.SqlQuery<Branch>("SELECT * FROM Branches").ToList();
+            return View(branchlist);
+        }
+
         #region File content
         public ActionResult FileContentView()
         {
@@ -70,8 +76,12 @@ namespace DXWebMRCS.Controllers
         [HttpGet]
         public ActionResult GalleryViewPartial()
         {
-            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
-            return PartialView("_GalleryViewPartial");
+            var taglist = db.Database.SqlQuery<Tag>("SELECT * FROM Tags").ToList();
+            var galleryList = db.Database.SqlQuery<GalleryModel>("SELECT g.GalleryID, g.TitleMon, g.TitleEng, g.Image, d.TagID FROM Galleries g INNER JOIN TagDetails d ON g.GalleryID = d.SourceID WHERE d.Source = 'Galleries'").ToList();
+
+            var model = new Tuple<IEnumerable<Tag>, IEnumerable<GalleryModel>>(taglist, galleryList);
+
+            return PartialView("_GalleryViewPartial", model);
         }
 
         public ActionResult GridViewPartialView()

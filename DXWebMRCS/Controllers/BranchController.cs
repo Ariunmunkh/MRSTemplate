@@ -38,7 +38,7 @@ namespace DXWebMRCS.Controllers
             cookie.Value = lan;
             Response.Cookies.Add(cookie);
 
-            return RedirectToAction("BranchView");
+            return RedirectToAction("BranchView", new { branchId = ViewBag.branchId });
         }
 
         [AllowAnonymous]
@@ -87,36 +87,45 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult BranchView(int branchId, int menuID)
         {
-            var pageNumber = 1;
-            var pageSize = 4;
-
-            ViewBag.menuId = menuID;
-
-            var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
-            branch.menuID = menuID;            
-
-            if (menuID > 0)
+            try
             {
-                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
-                branch.newsList = newsList;
-                if (newsList.Count == 1)
+                var pageNumber = 1;
+                var pageSize = 4;
+
+                ViewBag.menuId = menuID;
+                ViewBag.branchId = branchId;
+
+                var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
+                branch.menuID = menuID;
+
+                if (menuID > 0)
                 {
-                    branch.news = newsList.First();
-                    return View("BranchListDetail", branch);
-                }                
-                return View(branch);
+                    var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " AND MenuID =" + menuID + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                    branch.newsList = newsList;
+                    if (newsList.Count == 1)
+                    {
+                        branch.news = newsList.First();
+                        return View("BranchListDetail", branch);
+                    }
+                    return View(branch);
+                }
+                else
+                {
+                    var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+                    branch.newsList = newsList;
+                    if (newsList.Count == 1)
+                    {
+                        branch.news = newsList.First();
+                        return View("BranchListDetail", branch);
+                    }
+                    return View(branch);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var newsList = db.Database.SqlQuery<News>("SELECT * FROM News WHERE BranchID = " + branchId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
-                branch.newsList = newsList;
-                if (newsList.Count == 1)
-                {
-                    branch.news = newsList.First();
-                    return View("BranchListDetail", branch);
-                }                
-                return View(branch);
-            }             
+                var msg = ex.Message;
+                return View(new BranchViewModel());
+            }        
         }
 
         [AllowAnonymous]

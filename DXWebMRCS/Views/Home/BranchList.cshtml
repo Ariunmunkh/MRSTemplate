@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Branch>
+@{
+    ViewBag.Title = "BranchList";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+@*<!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title text-white">Event Grid 4column</h2>
+                        <ol class="breadcrumb text-center text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li class="active text-gray-silver">Page Title</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+    <!-- Section: Upcoming Events -->
+    <section id="upcoming-events" class="divider parallax layer-overlay overlay-white-8" data-bg-img="http://placehold.it/1920x1280">
+        <div class="container pb-50 pt-80">
+            <div class="section-content">
+                <div class="row">
+                   @foreach (var item in Model)
+                   {
+                        <div class="col-sm-6 col-md-3 col-lg-3">
+                        <div class="schedule-box maxwidth500 bg-light mb-30">
+                            <div class="thumb">
+                                <div class="thumb p-15">
+                                    @{string imageUrl = item.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.Image : "https://placehold.it/220x160";}
+                                </div>
+                                <img class="img-fullwidth" height="85" alt="" src=@imageUrl>
+                                <div class="overlay">
+                                    <a href='@Url.Action("BranchView", "Branch", new { branchId = @item.BranchID, menuID = 0 })'><i class="fa fa-check-circle mr-5"></i></a>
+                                </div>
+                            </div>
+                            <div class="schedule-details clearfix p-15 pt-10">
+                                <h5 class="font-16 title">
+                                    <a href='@Url.Action("BranchView", "Branch", new { branchId = @item.BranchID, menuID = 0 })'>
+                                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                        {
+                                            @item.NameEng
+                                        }
+                                        else
+                                        {
+                                            @item.NameMon
+                                        }
+                                    </a>
+                                </h5>                                
+                            </div>
+                        </div>
+                    </div>
+                   }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- end main-content -->
+

@@ -123,6 +123,34 @@ namespace DXWebMRCS.Controllers
             }
             return View(news);
         }
+
+        [AllowAnonymous]
+        public ActionResult TagNewsList(int tagID)
+        {
+            var pageNumber = 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News n INNER JOIN TagDetails t ON n.CID = t.SourceID WHERE t.Source = 'News' AND t.TagID = " + tagID + " ORDER BY n.Date DESC").ToPagedList(pageNumber, pageSize);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new Tuple<IPagedList<News>, int>(news, tagID);
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult TagNewsPageClick(int? page, int tagID)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 4;
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News n INNER JOIN TagDetails t ON n.CID = t.SourceID WHERE t.Source = 'News' AND t.TagID = " + tagID + " ORDER BY n.Date DESC").ToPagedList(pageNumber, pageSize);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new Tuple<IPagedList<News>, int>(news, tagID);
+            return View("TagNewsList", model);
+        }
         #endregion
 
         #region News Create, Edit, Delete
@@ -178,7 +206,7 @@ namespace DXWebMRCS.Controllers
                 news.Date = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();
-                SendNotificationMessage();
+                SendNotificationMessage(news.TitleMon);
                 return RedirectToAction("Index");
             }
 
@@ -470,7 +498,7 @@ namespace DXWebMRCS.Controllers
         }
 
 
-        static void SendNotificationMessage()
+        static void SendNotificationMessage(string title)
         {
             var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
 
@@ -483,7 +511,7 @@ namespace DXWebMRCS.Controllers
             byte[] byteArray = Encoding.UTF8.GetBytes("{"
                                                     + "\"app_id\": \"571b8baa-797b-41e3-ac8d-f4c1bb196d29\","
                                                     + "\"headings\": {\"en\": \"" + "Red Cross" + "\"},"
-                                                    + "\"contents\": {\"en\": \"Шинэ мэдээ орлоо\"},"
+                                                    + "\"contents\": {\"en\": \"'" + title + "'\"},"
                                                     + "\"included_segments\": [\"All\"]}");
 
             string responseContent = null;
