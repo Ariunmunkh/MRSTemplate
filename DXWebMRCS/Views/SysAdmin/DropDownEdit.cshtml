@@ -1,0 +1,97 @@
+﻿
+<script type="text/javascript">
+    var textSeparator = ";";
+    function OnListBoxSelectionChanged(listBox, args) {
+        if (args.index == 0)
+            args.isSelected ? listBox.SelectAll() : listBox.UnselectAll();
+        UpdateSelectAllItemState();
+        UpdateText();
+    }
+    function UpdateSelectAllItemState() {
+        IsAllSelected() ? checkListBox.SelectIndices([0]) : checkListBox.UnselectIndices([0]);
+    }
+    function IsAllSelected() {
+        for (var i = 1; i < checkListBox.GetItemCount() ; i++)
+            if (!checkListBox.GetItem(i).selected)
+                return false;
+        return true;
+    }
+    function UpdateText() {
+        var selectedItems = checkListBox.GetSelectedItems();
+        Tags.SetText(GetSelectedItemsText(selectedItems));
+    }
+    function SynchronizeListBoxValues(dropDown, args) {
+        checkListBox.UnselectAll();
+        var texts = dropDown.GetText().split(textSeparator);
+        var values = GetValuesByTexts(texts);
+        checkListBox.SelectValues(values);
+        UpdateSelectAllItemState();
+        UpdateText();  // for remove non-existing texts
+    }
+    function GetSelectedItemsText(items) {
+        var texts = [];
+        for (var i = 0; i < items.length; i++)
+            if (items[i].index != 0)
+                texts.push(items[i].text);
+        return texts.join(textSeparator);
+    }
+    function GetValuesByTexts(texts) {
+        var actualValues = [];
+        var item;
+        for (var i = 0; i < texts.length; i++) {
+            item = checkListBox.FindItemByText(texts[i]);
+            if (item != null)
+                actualValues.push(item.value);
+        }
+        return actualValues;
+    }
+</script>
+@Html.DevExpress().DropDownEdit(
+    settings =>
+    {
+        settings.Name = "Tags";
+        settings.Width = 240;
+        settings.Properties.DropDownWindowStyle.BackColor = System.Drawing.Color.FromArgb(0xEDEDED);
+
+        settings.SetDropDownWindowTemplateContent(c =>
+        {
+            @Html.DevExpress().ListBox(
+                listBoxSettings =>
+                {
+                    listBoxSettings.Name = "checkListBox";
+                    listBoxSettings.ControlStyle.Border.BorderWidth = 0;
+                    listBoxSettings.ControlStyle.BorderBottom.BorderWidth = 1;
+                    listBoxSettings.ControlStyle.BorderBottom.BorderColor = System.Drawing.Color.FromArgb(0xDCDCDC);
+                    listBoxSettings.Height = Unit.Pixel(170);
+                    listBoxSettings.Width = Unit.Percentage(100);
+
+                    listBoxSettings.Properties.SelectionMode = ListEditSelectionMode.CheckColumn;
+                    listBoxSettings.Properties.Items.Add("(Select all)");
+                    foreach (DXWebMRCS.Models.Tag tag in (List<DXWebMRCS.Models.Tag>)DXWebMRCS.Models.NorthwindDataProvider.GetTag())
+                    {
+                        listBoxSettings.Properties.Items.Add(tag.NameEng,tag.TagID);
+                    }
+
+                    listBoxSettings.Properties.ClientSideEvents.SelectedIndexChanged = "OnListBoxSelectionChanged";
+                }
+            )
+            .Render();
+            ViewContext.Writer.Write("<div style=\"margin: 6px; overflow: hidden;\">");
+            @Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "buttonClose";
+                    buttonSettings.Text = "Close";
+                    buttonSettings.Style.Add("float", "right");
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ Tags.HideDropDown(); }";
+                    buttonSettings.Height = 26;
+                }
+            )
+            .Render();
+            ViewContext.Writer.Write("</div>");
+        });
+        settings.Properties.AnimationType = AnimationType.None;
+        settings.Properties.ClientSideEvents.TextChanged = "SynchronizeListBoxValues";
+        settings.Properties.ClientSideEvents.DropDown = "SynchronizeListBoxValues";
+    }
+).GetHtml()

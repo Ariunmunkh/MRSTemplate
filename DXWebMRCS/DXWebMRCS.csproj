@@ -6733,6 +6733,7 @@
     <Content Include="Views\SysAdmin\FileContentList.cshtml" />
     <Content Include="Views\Home\BranchList.cshtml" />
     <Content Include="Views\News\TagNewsList.cshtml" />
+    <Content Include="Views\SysAdmin\DropDownEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
