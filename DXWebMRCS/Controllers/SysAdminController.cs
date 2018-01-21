@@ -87,7 +87,7 @@ namespace DXWebMRCS.Controllers
                 string fileName = string.Empty;
                 String FileExt = Path.GetExtension(model.File.FileName).ToUpper();
 
-                if (FileExt == ".PDF" || FileExt == ".DOC")
+                if (FileExt == ".PDF" || FileExt == ".DOCX")
                 {
                     if (ImageFile != null)
                     {
