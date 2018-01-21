@@ -370,9 +370,6 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
-        // POST: /Gallery/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GalleryCreate([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)
@@ -398,6 +395,7 @@ namespace DXWebMRCS.Controllers
                 }
                 db.Galleries.Add(Gallery);
                 db.SaveChanges();
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags);
                 SendNotificationMessage();
                 return RedirectToAction("Index");
             }
@@ -425,9 +423,6 @@ namespace DXWebMRCS.Controllers
             return View("DropDownEdit");
         }
 
-        // POST: /Gallery/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GalleryEdit([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)

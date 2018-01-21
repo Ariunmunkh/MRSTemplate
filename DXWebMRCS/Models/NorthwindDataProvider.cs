@@ -430,6 +430,23 @@ namespace DXWebMRCS.Models
             }
         }
 
+        public static void InsertTagDetail(int GalleryID, string Tags)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from tags where namemon = @TagName))", connection);
+
+                connection.Open();
+                foreach (string tagname in Tags.Split(';'))
+                {
+                    insertCommand.Parameters.Clear();
+                    insertCommand.Parameters.AddWithValue("@Source", "Galleries");
+                    insertCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                    insertCommand.Parameters.AddWithValue("@TagName", tagname.Trim());
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
         #endregion
 
         public static IEnumerable GetNews(int UserID)
