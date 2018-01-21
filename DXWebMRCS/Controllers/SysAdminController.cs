@@ -360,7 +360,6 @@ namespace DXWebMRCS.Controllers
         {
             return View();
         }
-
         public ActionResult GalleryPartialView()
         {
             return PartialView("GalleryPartialView", NorthwindDataProvider.GetGalleries());
@@ -397,13 +396,12 @@ namespace DXWebMRCS.Controllers
                 db.SaveChanges();
                 NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags);
                 SendNotificationMessage();
-                return RedirectToAction("Index");
+                return RedirectToAction("Gallery");
             }
 
             return View(Gallery);
         }
 
-        // GET: /Gallery/Edit/5
         public ActionResult GalleryEdit(int? id)
         {
             if (id == null)
@@ -416,11 +414,6 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
             return View(Gallery);
-        }
-
-        public ActionResult DropDownEdit()
-        {
-            return View("DropDownEdit");
         }
 
         [HttpPost]
@@ -449,12 +442,12 @@ namespace DXWebMRCS.Controllers
 
                 db.Entry(Gallery).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags);
+                return RedirectToAction("Gallery");
             }
             return View(Gallery);
         }
 
-        // GET: /Gallery/Delete/5
         public ActionResult GalleryDelete(int? id)
         {
             if (id == null)
@@ -469,6 +462,21 @@ namespace DXWebMRCS.Controllers
             return View(Gallery);
         }
 
+        [HttpPost, ActionName("GalleryDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult GalleryDeleteConfirmed(int id)
+        {
+            News news = db.News.Find(id);
+            db.News.Remove(news);
+            db.SaveChanges();
+            NorthwindDataProvider.DeleteTagDetail(id);
+            return RedirectToAction("Gallery");
+        }
+
+        public ActionResult DropDownEdit()
+        {
+            return View("DropDownEdit");
+        }
         #endregion
         static void SendNotificationMessage()
         {

@@ -434,16 +434,39 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from tags where namemon = @TagName))", connection);
-
                 connection.Open();
-                foreach (string tagname in Tags.Split(';'))
+                using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
                 {
-                    insertCommand.Parameters.Clear();
-                    insertCommand.Parameters.AddWithValue("@Source", "Galleries");
-                    insertCommand.Parameters.AddWithValue("@SourceID", GalleryID);
-                    insertCommand.Parameters.AddWithValue("@TagName", tagname.Trim());
-                    insertCommand.ExecuteNonQuery();
+                    deleteCommand.Parameters.Clear();
+                    deleteCommand.Parameters.AddWithValue("@Source", "Galleries");
+                    deleteCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                    deleteCommand.ExecuteNonQuery();
+                }
+                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from tags where namemon = @TagName))", connection))
+                {
+                    foreach (string tagname in Tags.Split(';'))
+                    {
+                        insertCommand.Parameters.Clear();
+                        insertCommand.Parameters.AddWithValue("@Source", "Galleries");
+                        insertCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                        insertCommand.Parameters.AddWithValue("@TagName", tagname.Trim());
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        public static void DeleteTagDetail(int GalleryID)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
+                {
+                    deleteCommand.Parameters.Clear();
+                    deleteCommand.Parameters.AddWithValue("@Source", "Galleries");
+                    deleteCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                    deleteCommand.ExecuteNonQuery();
                 }
             }
         }
