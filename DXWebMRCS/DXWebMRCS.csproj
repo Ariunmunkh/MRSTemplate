@@ -6734,6 +6734,7 @@
     <Content Include="Views\Home\BranchList.cshtml" />
     <Content Include="Views\News\TagNewsList.cshtml" />
     <Content Include="Views\SysAdmin\DropDownEdit.cshtml" />
+    <Content Include="Views\News\DropDownEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6777,9 +6778,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801201746008_test.cs" />
-    <Compile Include="Migrations\201801201746008_test.Designer.cs">
-      <DependentUpon>201801201746008_test.cs</DependentUpon>
+    <Compile Include="Migrations\201801270526005_test.cs" />
+    <Compile Include="Migrations\201801270526005_test.Designer.cs">
+      <DependentUpon>201801270526005_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -6824,8 +6825,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801201746008_test.resx">
-      <DependentUpon>201801201746008_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801270526005_test.resx">
+      <DependentUpon>201801270526005_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

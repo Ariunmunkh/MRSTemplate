@@ -114,6 +114,15 @@
                     @Html.ValidationMessageFor(model => model.MenuID)
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tags, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Partial("DropDownEdit")
+                    @Html.ValidationMessageFor(model => model.Tags)
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
@@ -135,6 +144,10 @@
             }
             filerdr.readAsDataURL(input.files[0]);
         }
+    }
+    function CloseGridLookup() {
+        Tags.ConfirmCurrentSelection();
+        Tags.HideDropDown();
     }
 </script>
 

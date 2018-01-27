@@ -38,8 +38,8 @@ namespace DXWebMRCS.Models
         [Display(Name = "Өөрчилсөн огноо")]
         public System.DateTime Date { get; set; }
 
-        [NotMapped]
-        public string tags { get; set; }
+        [Display(Name = "Таг")]
+        public string Tags { get; set; }
     }
 
     public class Tag

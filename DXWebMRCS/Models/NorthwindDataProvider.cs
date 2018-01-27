@@ -350,6 +350,7 @@ namespace DXWebMRCS.Models
                         TitleMon = reader["TitleMon"] == DBNull.Value ? string.Empty : (string)reader["TitleMon"],
                         TitleEng = reader["TitleEng"] == DBNull.Value ? string.Empty : (string)reader["TitleEng"],
                         Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                        Tags = reader["Tags"] == DBNull.Value ? string.Empty : (string)reader["Tags"],
                     });
                 }
 
@@ -430,7 +431,7 @@ namespace DXWebMRCS.Models
             }
         }
 
-        public static void InsertTagDetail(int GalleryID, string Tags)
+        public static void InsertTagDetail(int SourceID, string Tags, string Source)
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
@@ -438,17 +439,17 @@ namespace DXWebMRCS.Models
                 using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
                 {
                     deleteCommand.Parameters.Clear();
-                    deleteCommand.Parameters.AddWithValue("@Source", "Galleries");
-                    deleteCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                    deleteCommand.Parameters.AddWithValue("@Source", Source);
+                    deleteCommand.Parameters.AddWithValue("@SourceID", SourceID);
                     deleteCommand.ExecuteNonQuery();
                 }
-                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from tags where namemon = @TagName))", connection))
+                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from Tags where namemon = @TagName))", connection))
                 {
                     foreach (string tagname in Tags.Split(';'))
                     {
                         insertCommand.Parameters.Clear();
-                        insertCommand.Parameters.AddWithValue("@Source", "Galleries");
-                        insertCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                        insertCommand.Parameters.AddWithValue("@Source", Source);
+                        insertCommand.Parameters.AddWithValue("@SourceID", SourceID);
                         insertCommand.Parameters.AddWithValue("@TagName", tagname.Trim());
                         insertCommand.ExecuteNonQuery();
                     }
@@ -456,7 +457,7 @@ namespace DXWebMRCS.Models
             }
         }
 
-        public static void DeleteTagDetail(int GalleryID)
+        public static void DeleteTagDetail(int GalleryID, string Source)
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
@@ -464,7 +465,7 @@ namespace DXWebMRCS.Models
                 using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
                 {
                     deleteCommand.Parameters.Clear();
-                    deleteCommand.Parameters.AddWithValue("@Source", "Galleries");
+                    deleteCommand.Parameters.AddWithValue("@Source", Source);
                     deleteCommand.Parameters.AddWithValue("@SourceID", GalleryID);
                     deleteCommand.ExecuteNonQuery();
                 }
@@ -504,6 +505,7 @@ namespace DXWebMRCS.Models
                         BranchID = reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"],
                         ContentType = reader["ContentType"] == DBNull.Value ? string.Empty : (string)reader["ContentType"],
                         Date = reader["Date"] == DBNull.Value ? new DateTime() : (DateTime)reader["Date"],
+                        Tags = reader["Tags"] == DBNull.Value ? string.Empty : (string)reader["Tags"],
 
                     });
                 }

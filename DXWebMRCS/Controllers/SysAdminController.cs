@@ -394,7 +394,7 @@ namespace DXWebMRCS.Controllers
                 }
                 db.Galleries.Add(Gallery);
                 db.SaveChanges();
-                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags);
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags, "Galleries");
                 SendNotificationMessage();
                 return RedirectToAction("Gallery");
             }
@@ -442,7 +442,7 @@ namespace DXWebMRCS.Controllers
 
                 db.Entry(Gallery).State = EntityState.Modified;
                 db.SaveChanges();
-                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags);
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags, "Galleries");
                 return RedirectToAction("Gallery");
             }
             return View(Gallery);
@@ -469,7 +469,7 @@ namespace DXWebMRCS.Controllers
             News news = db.News.Find(id);
             db.News.Remove(news);
             db.SaveChanges();
-            NorthwindDataProvider.DeleteTagDetail(id);
+            NorthwindDataProvider.DeleteTagDetail(id, "Galleries");
             return RedirectToAction("Gallery");
         }
 
