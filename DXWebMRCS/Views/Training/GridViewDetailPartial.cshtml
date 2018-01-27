@@ -23,6 +23,12 @@
         settings.Columns.Add("UserID");
         settings.Columns.Add("Status");
 
+        settings.Columns.Add("LastName");
+        settings.Columns.Add("FirstName");
+        settings.Columns.Add("Gender");
+        settings.Columns.Add("Phone");
+        settings.Columns.Add("Email");
+
         settings.DataBinding = (sender, e) =>
         {
             ((MVCxGridView)sender).ForceDataRowType(typeof(DXWebMRCS.Models.TrainingRequest));

@@ -613,11 +613,11 @@ namespace DXWebMRCS.Models
 
         public static IEnumerable GetTrainingRequestUsers(int TrainingID)
         {
-            List<UserProfile> UserProfile = new List<UserProfile>();
+            List<TrainingRequest> TrainingRequest = new List<TrainingRequest>();
 
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand selectCommand = new SqlCommand("SELECT UserProfile.* FROM TrainingRequests left join UserProfile on UserProfile.UserId = TrainingRequests.UserId  where TrainingRequests.TrainingID = " + TrainingID, connection);
+                SqlCommand selectCommand = new SqlCommand("SELECT TrainingRequests.*, UserProfile.Lastname, UserProfile.name firstname, case when UserProfile.gender =0 then N'Эр' else N'Эм' end gender,UserProfile.phonenumber ,UserProfile.username email FROM TrainingRequests left join UserProfile on UserProfile.UserId = TrainingRequests.UserId where TrainingRequests.TrainingID = " + TrainingID, connection);
 
                 connection.Open();
 
@@ -625,25 +625,24 @@ namespace DXWebMRCS.Models
 
                 while (reader.Read())
                 {
-                    UserProfile.Add(new UserProfile()
+                    TrainingRequest.Add(new TrainingRequest()
                     {
-                        UserId = reader["UserId"] == DBNull.Value ? 0 : (int)reader["UserId"],
+                        ID = (int)reader["ID"],
+                        UserID = (int)reader["UserID"],
+                        TrainingID = (int)reader["TrainingID"],
+                        Status = (int)reader["Status"],
                         LastName = reader["LastName"] == DBNull.Value ? string.Empty : (string)reader["LastName"],
-                        Name = reader["Name"] == DBNull.Value ? string.Empty : (string)reader["Name"],
-                        BirthOfDay = reader["BirthOfDay"] == DBNull.Value ? new DateTime() : (DateTime)reader["BirthOfDay"],
-                        Gender = reader["Gender"] == DBNull.Value ? 0 : (int)reader["Gender"],
-                        PhoneNumber = reader["PhoneNumber"] == DBNull.Value ? string.Empty : (string)reader["PhoneNumber"],
-                        UserName = reader["UserName"] == DBNull.Value ? string.Empty : (string)reader["UserName"],
-                        Type = reader["Type"] == DBNull.Value ? 0 : (int)reader["Type"],
-                        AvatarPath = reader["AvatarPath"] == DBNull.Value ? string.Empty : (string)reader["AvatarPath"],
-                        BranchId = reader["BranchId"] == DBNull.Value ? null : (int?)reader["BranchId"],
+                        FirstName = reader["FirstName"] == DBNull.Value ? string.Empty : (string)reader["FirstName"],
+                        Gender = reader["Gender"] == DBNull.Value ? string.Empty : (string)reader["Gender"],
+                        Phone = reader["phonenumber"] == DBNull.Value ? string.Empty : (string)reader["phonenumber"],
+                        Email = reader["Email"] == DBNull.Value ? string.Empty : (string)reader["Email"],
                     });
                 }
 
                 reader.Close();
             }
 
-            return UserProfile;
+            return TrainingRequest;
         }
 
         public static void RemoveUserByID(int UserID)
