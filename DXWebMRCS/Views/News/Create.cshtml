@@ -48,6 +48,22 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.BodyMon, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
+                                @Html.Partial("EditBodyMonPartial")
+                                @Html.ValidationMessageFor(model => model.BodyMon)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BodyEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.Partial("EditBodyEngPartial")
+                                @Html.ValidationMessageFor(model => model.BodyEng)
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.BodyMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
                                 @using (Html.BeginForm())
                                 {
                                     @Html.Action("EditBodyMonPartial", Model)
@@ -67,7 +83,7 @@
                                 }
 
                             </div>
-                        </div>
+                        </div>*@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })

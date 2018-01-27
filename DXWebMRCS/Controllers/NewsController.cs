@@ -270,7 +270,7 @@ namespace DXWebMRCS.Controllers
                 news.Date = DateTime.Now;
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
-                NorthwindDataProvider.InsertTagDetail(news.CID, news.Tags,"News");
+                NorthwindDataProvider.InsertTagDetail(news.CID, news.Tags, "News");
                 return RedirectToAction("Index");
             }
             return View(news);
@@ -393,9 +393,9 @@ namespace DXWebMRCS.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult EditBodyMonPartial(News objectValue)
+        public ActionResult EditBodyMonPartial()
         {
-            return PartialView("_BodyMonPartial", objectValue);
+            return PartialView("EditBodyMonPartial");
         }
         public ActionResult BodyMonPartialImageSelectorUpload()
         {
@@ -414,9 +414,9 @@ namespace DXWebMRCS.Controllers
             return null;
         }
 
-        public ActionResult EditBodyEngPartial(News objectValue)
+        public ActionResult EditBodyEngPartial()
         {
-            return PartialView("_BodyEngPartial", objectValue);
+            return PartialView("EditBodyEngPartial");
         }
         public ActionResult BodyEngPartialImageSelectorUpload()
         {

@@ -433,6 +433,10 @@ namespace DXWebMRCS.Models
 
         public static void InsertTagDetail(int SourceID, string Tags, string Source)
         {
+            if (Tags == null || string.IsNullOrEmpty(Tags))
+            {
+                return;
+            }
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 connection.Open();
@@ -605,6 +609,41 @@ namespace DXWebMRCS.Models
             }
 
             return TrainingRequest;
+        }
+
+        public static IEnumerable GetTrainingRequestUsers(int TrainingID)
+        {
+            List<UserProfile> UserProfile = new List<UserProfile>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT UserProfile.* FROM TrainingRequests left join UserProfile on UserProfile.UserId = TrainingRequests.UserId  where TrainingRequests.TrainingID = " + TrainingID, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    UserProfile.Add(new UserProfile()
+                    {
+                        UserId = reader["UserId"] == DBNull.Value ? 0 : (int)reader["UserId"],
+                        LastName = reader["LastName"] == DBNull.Value ? string.Empty : (string)reader["LastName"],
+                        Name = reader["Name"] == DBNull.Value ? string.Empty : (string)reader["Name"],
+                        BirthOfDay = reader["BirthOfDay"] == DBNull.Value ? new DateTime() : (DateTime)reader["BirthOfDay"],
+                        Gender = reader["Gender"] == DBNull.Value ? 0 : (int)reader["Gender"],
+                        PhoneNumber = reader["PhoneNumber"] == DBNull.Value ? string.Empty : (string)reader["PhoneNumber"],
+                        UserName = reader["UserName"] == DBNull.Value ? string.Empty : (string)reader["UserName"],
+                        Type = reader["Type"] == DBNull.Value ? 0 : (int)reader["Type"],
+                        AvatarPath = reader["AvatarPath"] == DBNull.Value ? string.Empty : (string)reader["AvatarPath"],
+                        BranchId = reader["BranchId"] == DBNull.Value ? null : (int?)reader["BranchId"],
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return UserProfile;
         }
 
         public static void RemoveUserByID(int UserID)
