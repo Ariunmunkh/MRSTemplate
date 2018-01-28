@@ -40,9 +40,9 @@ namespace DXWebMRCS.Controllers {
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
-        }
-
+        } 
         //
         // POST: /Account/Login
 
