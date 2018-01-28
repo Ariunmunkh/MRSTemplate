@@ -44,7 +44,9 @@ namespace DXWebMRCS.Controllers
 
             if (news.Count == 1)
             {
-                return View("NewsDetail", news.First());
+                IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.First().CID + " ORDER BY Date ASC").ToList();
+                return View("NewsDetail", new Tuple<News, IEnumerable<News>>(news.First(), newslist));
+                //return View("NewsDetail", news.First());
             }
             return View("MenuNewsList", news);
         }
@@ -106,7 +108,7 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
 
-            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " AND (CID = 33 OR CID = 34 OR CID =35) ORDER BY Date ASC").ToList();
+            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " ORDER BY Date ASC").ToList();
             var detail = new Tuple<News, IEnumerable<News>>(news, newslist);
             return View(detail);
         }
