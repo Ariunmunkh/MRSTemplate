@@ -285,7 +285,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult GridViewDetailPartial(string TrainingID)
         {
             ViewData["TrainingID"] = TrainingID;
-            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequests(Convert.ToInt32( TrainingID)));
+            return PartialView("GridViewDetailPartial", NorthwindDataProvider.GetTrainingRequestUsers(Convert.ToInt32( TrainingID)));
         }
 
         [HttpPost, ValidateInput(false)]

@@ -350,6 +350,7 @@ namespace DXWebMRCS.Models
                         TitleMon = reader["TitleMon"] == DBNull.Value ? string.Empty : (string)reader["TitleMon"],
                         TitleEng = reader["TitleEng"] == DBNull.Value ? string.Empty : (string)reader["TitleEng"],
                         Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
+                        Tags = reader["Tags"] == DBNull.Value ? string.Empty : (string)reader["Tags"],
                     });
                 }
 
@@ -430,6 +431,50 @@ namespace DXWebMRCS.Models
             }
         }
 
+        public static void InsertTagDetail(int SourceID, string Tags, string Source)
+        {
+            if (Tags == null || string.IsNullOrEmpty(Tags))
+            {
+                return;
+            }
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
+                {
+                    deleteCommand.Parameters.Clear();
+                    deleteCommand.Parameters.AddWithValue("@Source", Source);
+                    deleteCommand.Parameters.AddWithValue("@SourceID", SourceID);
+                    deleteCommand.ExecuteNonQuery();
+                }
+                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from Tags where namemon = @TagName))", connection))
+                {
+                    foreach (string tagname in Tags.Split(';'))
+                    {
+                        insertCommand.Parameters.Clear();
+                        insertCommand.Parameters.AddWithValue("@Source", Source);
+                        insertCommand.Parameters.AddWithValue("@SourceID", SourceID);
+                        insertCommand.Parameters.AddWithValue("@TagName", tagname.Trim());
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        public static void DeleteTagDetail(int GalleryID, string Source)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand deleteCommand = new SqlCommand("delete from TagDetails where Source = @Source and SourceID = @SourceID", connection))
+                {
+                    deleteCommand.Parameters.Clear();
+                    deleteCommand.Parameters.AddWithValue("@Source", Source);
+                    deleteCommand.Parameters.AddWithValue("@SourceID", GalleryID);
+                    deleteCommand.ExecuteNonQuery();
+                }
+            }
+        }
         #endregion
 
         public static IEnumerable GetNews(int UserID)
@@ -464,6 +509,7 @@ namespace DXWebMRCS.Models
                         BranchID = reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"],
                         ContentType = reader["ContentType"] == DBNull.Value ? string.Empty : (string)reader["ContentType"],
                         Date = reader["Date"] == DBNull.Value ? new DateTime() : (DateTime)reader["Date"],
+                        Tags = reader["Tags"] == DBNull.Value ? string.Empty : (string)reader["Tags"],
 
                     });
                 }
@@ -556,6 +602,40 @@ namespace DXWebMRCS.Models
                         UserID = (int)reader["UserID"],
                         TrainingID = (int)reader["TrainingID"],
                         Status = (int)reader["Status"]
+                    });
+                }
+
+                reader.Close();
+            }
+
+            return TrainingRequest;
+        }
+
+        public static IEnumerable GetTrainingRequestUsers(int TrainingID)
+        {
+            List<TrainingRequest> TrainingRequest = new List<TrainingRequest>();
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT TrainingRequests.*, UserProfile.Lastname, UserProfile.name firstname, case when UserProfile.gender =0 then N'Эр' else N'Эм' end gender,UserProfile.phonenumber ,UserProfile.username email FROM TrainingRequests left join UserProfile on UserProfile.UserId = TrainingRequests.UserId where TrainingRequests.TrainingID = " + TrainingID, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (reader.Read())
+                {
+                    TrainingRequest.Add(new TrainingRequest()
+                    {
+                        ID = (int)reader["ID"],
+                        UserID = (int)reader["UserID"],
+                        TrainingID = (int)reader["TrainingID"],
+                        Status = (int)reader["Status"],
+                        LastName = reader["LastName"] == DBNull.Value ? string.Empty : (string)reader["LastName"],
+                        FirstName = reader["FirstName"] == DBNull.Value ? string.Empty : (string)reader["FirstName"],
+                        Gender = reader["Gender"] == DBNull.Value ? string.Empty : (string)reader["Gender"],
+                        Phone = reader["phonenumber"] == DBNull.Value ? string.Empty : (string)reader["phonenumber"],
+                        Email = reader["Email"] == DBNull.Value ? string.Empty : (string)reader["Email"],
                     });
                 }
 

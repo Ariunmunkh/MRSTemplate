@@ -44,7 +44,9 @@ namespace DXWebMRCS.Controllers
 
             if (news.Count == 1)
             {
-                return View("NewsDetail", news.First());
+                IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.First().CID + " ORDER BY Date ASC").ToList();
+                return View("NewsDetail", new Tuple<News, IEnumerable<News>>(news.First(), newslist));
+                //return View("NewsDetail", news.First());
             }
             return View("MenuNewsList", news);
         }
@@ -106,7 +108,7 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
 
-            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " AND (CID = 33 OR CID = 34 OR CID =35) ORDER BY Date ASC").ToList();
+            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " ORDER BY Date ASC").ToList();
             var detail = new Tuple<News, IEnumerable<News>>(news, newslist);
             return View(detail);
         }
@@ -165,7 +167,7 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID")] News news, HttpPostedFileBase ImageFile)
+        public ActionResult Create([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID,Tags")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -207,6 +209,7 @@ namespace DXWebMRCS.Controllers
                 db.News.Add(news);
                 db.SaveChanges();
                 SendNotificationMessage(news.TitleMon);
+                NorthwindDataProvider.InsertTagDetail(news.CID, news.Tags, "News");
                 return RedirectToAction("Index");
             }
 
@@ -233,7 +236,7 @@ namespace DXWebMRCS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID")] News news, HttpPostedFileBase ImageFile)
+        public ActionResult Edit([Bind(Include = "CID,TitleMon,TitleEng,BodyMon,BodyEng,Image,ContentType,MenuID,Tags")] News news, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -269,6 +272,7 @@ namespace DXWebMRCS.Controllers
                 news.Date = DateTime.Now;
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
+                NorthwindDataProvider.InsertTagDetail(news.CID, news.Tags, "News");
                 return RedirectToAction("Index");
             }
             return View(news);
@@ -297,6 +301,7 @@ namespace DXWebMRCS.Controllers
             News news = db.News.Find(id);
             db.News.Remove(news);
             db.SaveChanges();
+            NorthwindDataProvider.DeleteTagDetail(id, "News");
             return RedirectToAction("Index");
         }
         #endregion
@@ -374,6 +379,11 @@ namespace DXWebMRCS.Controllers
             return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
         }
 
+        public ActionResult DropDownEdit()
+        {
+            return View("DropDownEdit");
+        }
+
         #endregion
 
         protected override void Dispose(bool disposing)
@@ -385,9 +395,9 @@ namespace DXWebMRCS.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult EditBodyMonPartial(News objectValue)
+        public ActionResult EditBodyMonPartial()
         {
-            return PartialView("_BodyMonPartial", objectValue);
+            return PartialView("EditBodyMonPartial");
         }
         public ActionResult BodyMonPartialImageSelectorUpload()
         {
@@ -406,9 +416,9 @@ namespace DXWebMRCS.Controllers
             return null;
         }
 
-        public ActionResult EditBodyEngPartial(News objectValue)
+        public ActionResult EditBodyEngPartial()
         {
-            return PartialView("_BodyEngPartial", objectValue);
+            return PartialView("EditBodyEngPartial");
         }
         public ActionResult BodyEngPartialImageSelectorUpload()
         {

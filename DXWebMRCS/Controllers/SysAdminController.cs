@@ -360,7 +360,6 @@ namespace DXWebMRCS.Controllers
         {
             return View();
         }
-
         public ActionResult GalleryPartialView()
         {
             return PartialView("GalleryPartialView", NorthwindDataProvider.GetGalleries());
@@ -370,9 +369,6 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
-        // POST: /Gallery/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GalleryCreate([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)
@@ -398,14 +394,14 @@ namespace DXWebMRCS.Controllers
                 }
                 db.Galleries.Add(Gallery);
                 db.SaveChanges();
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags, "Galleries");
                 SendNotificationMessage();
-                return RedirectToAction("Index");
+                return RedirectToAction("Gallery");
             }
 
             return View(Gallery);
         }
 
-        // GET: /Gallery/Edit/5
         public ActionResult GalleryEdit(int? id)
         {
             if (id == null)
@@ -420,14 +416,6 @@ namespace DXWebMRCS.Controllers
             return View(Gallery);
         }
 
-        public ActionResult DropDownEdit()
-        {
-            return View("DropDownEdit");
-        }
-
-        // POST: /Gallery/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GalleryEdit([Bind(Include = "GalleryID,TitleMon,TitleEng,Image,Tags")] Gallery Gallery, HttpPostedFileBase ImageFile)
@@ -454,12 +442,12 @@ namespace DXWebMRCS.Controllers
 
                 db.Entry(Gallery).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                NorthwindDataProvider.InsertTagDetail(Gallery.GalleryID, Gallery.Tags, "Galleries");
+                return RedirectToAction("Gallery");
             }
             return View(Gallery);
         }
 
-        // GET: /Gallery/Delete/5
         public ActionResult GalleryDelete(int? id)
         {
             if (id == null)
@@ -474,6 +462,21 @@ namespace DXWebMRCS.Controllers
             return View(Gallery);
         }
 
+        [HttpPost, ActionName("GalleryDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult GalleryDeleteConfirmed(int id)
+        {
+            News news = db.News.Find(id);
+            db.News.Remove(news);
+            db.SaveChanges();
+            NorthwindDataProvider.DeleteTagDetail(id, "Galleries");
+            return RedirectToAction("Gallery");
+        }
+
+        public ActionResult DropDownEdit()
+        {
+            return View("DropDownEdit");
+        }
         #endregion
         static void SendNotificationMessage()
         {
