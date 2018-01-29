@@ -22,9 +22,9 @@ namespace DXWebMRCS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AuthConfig.RegisterAuth();
             
-            ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
+            //ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
-            DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
+            //DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
         }
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
