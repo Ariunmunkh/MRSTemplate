@@ -27,9 +27,10 @@
     <!-- Page Title -->
     <title>Red Cross</title>
     @*Language js*@
-    @Scripts.Render("~/bundles/Language")
 
-    @Styles.Render("~/Content/css")
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
     <!-- Favicon and Touch Icons -->
     <link href="~/Content/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -39,19 +40,34 @@
     <link href="~/Content/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
 
     <!-- Stylesheet -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/css-plugin-collections.css" rel="stylesheet" />
     <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="~/Content/css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet" />
     <!-- CSS | Main style file -->
+    <link href="~/Content/css/style-main.css" rel="stylesheet" type="text/css">
     <!-- CSS | Preloader Styles -->
+    <link href="~/Content/css/preloader.css" rel="stylesheet" type="text/css">
     <!-- CSS | Custom Margin Padding Collection -->
+    <link href="~/Content/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
     <!-- CSS | Responsive media queries -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css">
     <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
     <!-- <link href="~/Content/css/style.css" rel="stylesheet" type="text/css"> -->
     <!-- Revolution Slider 5.x CSS settings -->
+    <link href="~/Content/js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/js/revolution-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+
     <!-- CSS | Theme Color -->
+    <link href="~/Content/css/colors/theme-skin-color-set-1.css" rel="stylesheet" type="text/css">
+
     <!-- external javascripts -->
     @Scripts.Render("~/bundles/jquery")
-    <!-- JS | jquery plugin collection for this theme -->
-    <!-- Revolution Slider 5.x SCRIPTS -->
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,7 +78,14 @@
 <body class="">
     <div id="wrapper" class="clearfix">
         <!-- preloader -->
+        @*<div id="preloader">
+                <div id="spinner">
+                    <img alt="" src="~/Content/images/preloaders/5.gif">
+                </div>
+                <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+            </div>*@
         @{Html.RenderAction("_HeaderPartial", "Home");}
+        @*@Html.Partial("_HeaderPartial");*@
         @RenderBody();
         @Html.Partial("_FooterPartial");
 
@@ -82,6 +105,13 @@
         });
     </script>
 
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
+    <!-- JS | Custom script for all pages -->
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+          (Load Extensions only on Local File Systems !
+           The following part can be removed on Server for On Demand Loading) -->
     @Scripts.Render("~/bundles/revolutionslider")
 </body>
 </html>

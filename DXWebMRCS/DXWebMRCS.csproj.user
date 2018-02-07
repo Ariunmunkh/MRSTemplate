@@ -11,7 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>DXWebMRCS.Models.UsersContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <ProjectView>ShowAllFiles</ProjectView>
-    <NameOfLastUsedPublishProfile>IS11DTest</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>WEB</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

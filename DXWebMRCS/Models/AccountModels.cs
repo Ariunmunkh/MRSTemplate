@@ -27,8 +27,6 @@ namespace DXWebMRCS.Models {
         public DbSet<Branch> Branchs { get; set; }
         public DbSet<Training> Trainings { get; set; }
         public DbSet<TrainingRequest> TrainingRequests { get; set; }
-        public DbSet<Elearn> Elearn { get; set; }
-        public DbSet<eService> eService { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<TagDetail> TagDetails { get; set; }
@@ -48,7 +46,6 @@ namespace DXWebMRCS.Models {
         public int Type { get; set; }
         public string AvatarPath { get; set; }
         public int? BranchId { get; set; }
-        public virtual ICollection<eService> eService { get; set; }
     }
 
     #region Change password ViewModel

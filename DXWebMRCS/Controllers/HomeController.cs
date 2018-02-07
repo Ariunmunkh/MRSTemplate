@@ -174,7 +174,7 @@ namespace DXWebMRCS.Controllers
 
         public ActionResult TrainingEventDetail(int id)
         {
-            if (id == null)
+            if (id <=0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
