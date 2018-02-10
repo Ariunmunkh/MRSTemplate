@@ -1373,7 +1373,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -1475,10 +1477,6 @@
     <Content Include="Views\Branch\BranchNewsListPartial.cshtml" />
     <Content Include="Views\Branch\_BranchHeaderPartial.cshtml" />
     <Content Include="Views\Branch\BranchListDetail.cshtml" />
-    <Content Include="Views\News\Tag.cshtml" />
-    <Content Include="Views\News\TagPartialView.cshtml">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="Views\Home\_GalleryViewPartial.cshtml" />
     <Content Include="Views\SysAdmin\Gallery.cshtml" />
     <Content Include="Views\SysAdmin\GalleryPartialView.cshtml" />
@@ -1493,6 +1491,11 @@
     <Content Include="Views\News\TagNewsList.cshtml" />
     <Content Include="Views\SysAdmin\DropDownEdit.cshtml" />
     <Content Include="Views\News\DropDownEdit.cshtml" />
+    <Content Include="Views\News\Tag.cshtml" />
+    <Content Include="Views\News\TagPartialView.cshtml" />
+    <Content Include="Views\News\TagCreate.cshtml" />
+    <Content Include="Views\News\TagDelete.cshtml" />
+    <Content Include="Views\News\TagEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1535,14 +1538,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802041236359_test.cs" />
-    <Compile Include="Migrations\201802041236359_test.Designer.cs">
-      <DependentUpon>201802041236359_test.cs</DependentUpon>
+    <Compile Include="Migrations\201802100545081_test.cs" />
+    <Compile Include="Migrations\201802100545081_test.Designer.cs">
+      <DependentUpon>201802100545081_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Elearn.cs" />
+    <Compile Include="Models\eService.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\FileContent.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -1586,8 +1591,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041236359_test.resx">
-      <DependentUpon>201802041236359_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802100545081_test.resx">
+      <DependentUpon>201802100545081_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,6 +31,9 @@ namespace DXWebMRCS.Models {
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<TagDetail> TagDetails { get; set; }
         public DbSet<FileContent> FileContents { get; set; }
+
+        public DbSet<Elearn> Elearn { get; set; }
+        public DbSet<eService> eService { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {

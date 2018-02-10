@@ -1,36 +1,55 @@
-@{    Html.EnableClientValidation();
-    Html.EnableUnobtrusiveJavaScript();
+@{ var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "NewsView";
+        settings.CallbackRouteValues = new { Controller = "News", Action = "TagPartialView" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
 
-    var grid = Html.DevExpress().GridView(
-        settings =>
+        settings.Width = Unit.Percentage(100);
+
+        settings.Styles.Header.Wrap = DefaultBoolean.True;
+        settings.SettingsPager.EnableAdaptivity = true;
+
+        settings.Columns.Add(column =>
         {
-            settings.Name = "gvEditing";
-            settings.KeyFieldName = "TagID";
-            settings.CallbackRouteValues = new { Controller = "News", Action = "TagPartialView" };
-            settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "News", Action = "EditModesAddNewPartial" };
-            settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "News", Action = "EditModesUpdatePartial" };
-            settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "News", Action = "EditModesDeletePartial" };
-  
-            settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
-            settings.SettingsBehavior.ConfirmDelete = true;
-            settings.SettingsPopup.EditForm.Width = 600;
-            settings.Width = Unit.Percentage(100);
-
-            settings.Styles.Header.Wrap = DefaultBoolean.True;
-            settings.SettingsPager.EnableAdaptivity = true;
-            settings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
-            settings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
-
-
-            settings.CommandColumn.Visible = true;
-            settings.CommandColumn.ShowNewButton = true;
-            settings.CommandColumn.ShowDeleteButton = true;
-            settings.CommandColumn.ShowEditButton = true;
-
-            settings.Columns.Add("NameMon");
-            settings.Columns.Add("NameEng");
+            column.Caption = "#";
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("Edit", "TagEdit", new { id = DataBinder.Eval(c.DataItem, "TagID") }) + "&nbsp;" +
+                    Html.ActionLink("Delete", "TagDelete", new { id = DataBinder.Eval(c.DataItem, "TagID") })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    Html.ActionLink("New", "TagCreate").ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.Width = 70;
         });
 
+        settings.KeyFieldName = "TagID";
+
+        settings.SettingsPager.Visible = true;
+        settings.SettingsSearchPanel.Visible = true;
+        settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+        settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+        settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+        settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+        settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        settings.Columns.Add("NameMon");
+        settings.Columns.Add("NameEng");
+   
+    });
     if (ViewData["EditError"] != null)
     {
         grid.SetEditErrorText((string)ViewData["EditError"]);

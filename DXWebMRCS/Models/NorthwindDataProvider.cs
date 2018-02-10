@@ -93,22 +93,22 @@ namespace DXWebMRCS.Models
             {
                 SqlCommand insertCommand = new SqlCommand("INSERT INTO Menu (NameMon, NameEng, NavigateUrl, MenuType, Image, ParentId, BranchID) VALUES (@NameMon, @NameEng, @NavigateUrl, @MenuType, @Image, @ParentId, @BranchID)", connection);
 
-                insertCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon);
-                insertCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng);
+                insertCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon.Replace("\"", string.Empty));
+                insertCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng.Replace("\"", string.Empty));
                 if (Menu.NavigateUrl == null)
                     insertCommand.Parameters.AddWithValue("@NavigateUrl", DBNull.Value);
                 else
-                    insertCommand.Parameters.AddWithValue("@NavigateUrl", Menu.NavigateUrl);
+                    insertCommand.Parameters.AddWithValue("@NavigateUrl", Menu.NavigateUrl.Replace("\"", string.Empty));
 
                 if (Menu.MenuType == null)
                     insertCommand.Parameters.AddWithValue("@MenuType", DBNull.Value);
                 else
-                    insertCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType);
+                    insertCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType.Replace("\"", string.Empty));
 
                 if (Menu.Image == null)
                     insertCommand.Parameters.AddWithValue("@Image", DBNull.Value);
                 else
-                    insertCommand.Parameters.AddWithValue("@Image", Menu.Image);
+                    insertCommand.Parameters.AddWithValue("@Image", Menu.Image.Replace("\"", string.Empty));
 
                 if (Menu.ParentId.HasValue)
                     insertCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
@@ -131,21 +131,21 @@ namespace DXWebMRCS.Models
             {
                 SqlCommand updateCommand = new SqlCommand("UPDATE [Menu] SET [NameMon] = @NameMon, [NameEng] = @NameEng, [NavigateUrl] = @NavigateUrl, [MenuType] = @MenuType, Image = @Image, [ParentId] = @ParentId, BranchID = @BranchID WHERE [MenuID] = @MenuID", connection);
 
-                updateCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon);
-                updateCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng);
+                updateCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon.Replace("\"", string.Empty));
+                updateCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng.Replace("\"", string.Empty));
                 if (Menu.NavigateUrl == null)
                     updateCommand.Parameters.AddWithValue("@NavigateUrl", DBNull.Value);
                 else
-                    updateCommand.Parameters.AddWithValue("@NavigateUrl", Menu.NavigateUrl);
+                    updateCommand.Parameters.AddWithValue("@NavigateUrl", Menu.NavigateUrl.Replace("\"", string.Empty));
                 if (Menu.MenuType == null)
                     updateCommand.Parameters.AddWithValue("@MenuType", DBNull.Value);
                 else
-                    updateCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType);
+                    updateCommand.Parameters.AddWithValue("@MenuType", Menu.MenuType.Replace("\"", string.Empty));
 
                 if (Menu.Image == null)
                     updateCommand.Parameters.AddWithValue("@Image", DBNull.Value);
                 else
-                    updateCommand.Parameters.AddWithValue("@Image", Menu.Image);
+                    updateCommand.Parameters.AddWithValue("@Image", Menu.Image.Replace("\"", string.Empty));
 
                 if (Menu.ParentId.HasValue)
                     updateCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
@@ -268,33 +268,13 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                int BranchID = -1;
-                SqlCommand selectCommand;
-                selectCommand = new SqlCommand(@"select * from branches where namemon = @namemon and nameeng = @nameeng and email = @email and phone = @phone and [address] = @address", connection);
-                selectCommand.Parameters.AddWithValue("@namemon", Branch.NameMon);
-                selectCommand.Parameters.AddWithValue("@nameeng", Branch.NameEng);
-                selectCommand.Parameters.AddWithValue("@email", Branch.email);
-                selectCommand.Parameters.AddWithValue("@phone", Branch.phone);
-                selectCommand.Parameters.AddWithValue("@address", Branch.address);
-                connection.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
-
-                while (reader.Read())
-                {
-                    BranchID = (int)reader["BranchID"];
-                }
-                if (BranchID == -1)
-                    return;
-                reader.Close();
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
                 SqlCommand insertCommand = new SqlCommand(@"insert into menu (namemon, nameeng, branchid) 
                                                                         values(N'Мэдээ мэдээлэл', 'News', @BranchID),
                                                                               (N'Салбар танилцуулга', 'About us', @BranchID),
                                                                               (N'Холбоо барих', 'Contact us', @BranchID)", connection);
 
-                insertCommand.Parameters.AddWithValue("@BranchID", BranchID);
+                insertCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
+                connection.Open();
                 insertCommand.ExecuteNonQuery();
             }
         }
@@ -305,8 +285,8 @@ namespace DXWebMRCS.Models
             {
                 SqlCommand insertCommand = new SqlCommand("INSERT INTO Branches (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
 
-                insertCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
-                insertCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);
+                insertCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon.Replace("\"", string.Empty));
+                insertCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng.Replace("\"", string.Empty));
 
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
@@ -319,8 +299,8 @@ namespace DXWebMRCS.Models
             {
                 SqlCommand updateCommand = new SqlCommand("UPDATE [Branches] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [BranchID] = @BranchID", connection);
 
-                updateCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon);
-                updateCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng);
+                updateCommand.Parameters.AddWithValue("@NameMon", Branch.NameMon.Replace("\"", string.Empty));
+                updateCommand.Parameters.AddWithValue("@NameEng", Branch.NameEng.Replace("\"", string.Empty));
 
                 updateCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
 
@@ -388,47 +368,6 @@ namespace DXWebMRCS.Models
             }
 
             return Tag;
-        }
-
-        public static void DeleteTag(int TagID)
-        {
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Tags WHERE TagID = " + TagID, connection);
-
-                connection.Open();
-                deleteCommand.ExecuteNonQuery();
-            }
-        }
-
-        public static void InsertTag(Tag Tag)
-        {
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO Tags (NameMon, NameEng) VALUES (@NameMon, @NameEng)", connection);
-
-                insertCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
-                insertCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
-
-                connection.Open();
-                insertCommand.ExecuteNonQuery();
-            }
-        }
-
-        public static void UpdateTag(Tag Tag)
-        {
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            {
-                SqlCommand updateCommand = new SqlCommand("UPDATE [Tags] SET [NameMon] = @NameMon, [NameEng] = @NameEng WHERE [TagID] = @TagID", connection);
-
-                updateCommand.Parameters.AddWithValue("@NameMon", Tag.NameMon);
-                updateCommand.Parameters.AddWithValue("@NameEng", Tag.NameEng);
-
-                updateCommand.Parameters.AddWithValue("@TagID", Tag.TagID);
-
-                connection.Open();
-                updateCommand.ExecuteNonQuery();
-            }
         }
 
         public static void InsertTagDetail(int SourceID, string Tags, string Source)

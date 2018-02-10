@@ -318,64 +318,9 @@ namespace DXWebMRCS.Controllers
             return View();
         }
 
+        [ValidateInput(false)]
         public ActionResult TagPartialView()
         {
-            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
-        }
-
-        [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesAddNewPartial(Tag Tag)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    NorthwindDataProvider.InsertTag(Tag);
-                }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
-            }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
-        }
-
-        [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesUpdatePartial(Tag Tag)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    NorthwindDataProvider.UpdateTag(Tag);
-                }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
-            }
-            else
-                ViewData["EditError"] = "Please, correct all errors.";
-
-            return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
-        }
-
-        [HttpPost, ValidateInput(false)]
-        public ActionResult EditModesDeletePartial(int TagID = -1)
-        {
-            if (TagID >= 0)
-            {
-                try
-                {
-                    NorthwindDataProvider.DeleteTag(TagID);
-                }
-                catch (Exception e)
-                {
-                    ViewData["EditError"] = e.Message;
-                }
-            }
             return PartialView("TagPartialView", NorthwindDataProvider.GetTag());
         }
 
@@ -384,6 +329,88 @@ namespace DXWebMRCS.Controllers
             return View("DropDownEdit");
         }
 
+        #region Tag Create, Edit, Delete
+        // GET: /Tag/Create
+        public ActionResult TagCreate()
+        {
+            return View();
+        }
+
+        // POST: /Tag/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TagCreate([Bind(Include = "TagID,NameMon,NameEng")] Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+              
+                db.Tag.Add(Tag);
+                db.SaveChanges();
+                return RedirectToAction("Tag");
+            }
+
+            return View(Tag);
+        }
+
+        // GET: /Tag/Edit/5
+        public ActionResult TagEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tag Tag = db.Tag.Find(id);
+            if (Tag == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Tag);
+        }
+
+        // POST: /Tag/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TagEdit([Bind(Include = "TagID,NameMon,NameEng")] Tag Tag)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(Tag).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Tag");
+            }
+            return View(Tag);
+        }
+
+        // GET: /Tag/Delete/5
+        public ActionResult TagDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tag Tag = db.Tag.Find(id);
+            if (Tag == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Tag);
+        }
+
+        // POST: /Tag/Delete/5
+        [HttpPost, ActionName("TagDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult TagDeleteConfirmed(int id)
+        {
+            Tag Tag = db.Tag.Find(id);
+            db.Tag.Remove(Tag);
+            db.SaveChanges();
+            return RedirectToAction("Tag");
+        }
+        #endregion
         #endregion
 
         protected override void Dispose(bool disposing)
