@@ -1,0 +1,65 @@
+﻿@model DXWebMRCS.Models.Tag
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chosen/1.1.0/chosen.css"/>
+<script src="//cdn.jsdelivr.net/chosen/1.1.0/chosen.jquery.js"></script>
+
+<h2>Create</h2>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Tag</h3>
+            </div>
+           
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @using (Html.BeginForm("TagCreate", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Tag</h4>
+                        <hr />
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NameMon)
+                                @Html.ValidationMessageFor(model => model.NameMon)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NameEng)
+                                @Html.ValidationMessageFor(model => model.NameEng)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Tag")
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model DXWebMRCS.Models.Tag
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3></h3>
+<div class="right_col" role="main">
+
+    <h4>Tag</h4>
+    <hr>Are you sure you want to delete this? </hr>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameEng)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Tag")
+        </div>
+    }
+</div>
