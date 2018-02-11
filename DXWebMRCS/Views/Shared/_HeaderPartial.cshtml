@@ -11,19 +11,22 @@
                 <div class="col-md-7 pt-10 pb-10">
                     <div class="widget no-border m-0">
                         <ul class="list-inline">
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="~/Content/#">123-456-789</a> </li>
-                            <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i> Mon-Fri 8:00 to 2:00 </li>
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="~/Content/#">contact@yourdomain.com</a> </li>
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white">976-11323334</a> </li>
+                            <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i> Mon-Fri 9:00 to 18:00 </li>
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white">info@redcross.mn</a> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3 pt-10 pb-10">
                     <div class="widget no-border m-0">
                         <ul class="list-inline text-right sm-text-center">
-                            <li>
-                                <a href="~/SysAdmin" class="text-white">FAQ</a>
-                            </li>
-                            <li class="text-white">|</li>
+                            @if (Roles.IsUserInRole("Admin"))
+                            {
+                                <li>
+                                    <a href="~/SysAdmin" class="text-white">Admin panel</a>
+                                </li>
+                                <li class="text-white">|</li>
+                            }
                             <li>
                                 <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.English, "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
                             </li>
@@ -73,57 +76,57 @@
                                             {
                                                 @item.NameMon
                                             }
-                                    </a>
-                                    <ul class="dropdown">
-                                        @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
-                                        {
-                                            <li>
-                                                @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
-                                                {
-                                                    <a>
-                                                        @if (language == "en-US")
-                                                        {
-                                                            @item2.NameEng
-                                                        }
-                                                        else
-                                                        {
-                                                            @item2.NameMon
-                                                        }
-                                                </a>
-                                                    <ul class="dropdown">
-                                                        @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
-                                                        {
-                                                            <li>
-                                                                <a href='@Url.Action("MenuClick", "News", new { id = item3.MenuID })'>
-                                                                    @if (language == "en-US")
-                                                                    {
-                                                                        @item3.NameEng
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @item3.NameMon
-                                                                    }
-                                                                </a>
-                                                            </li>
-                                                        }
-                                                    </ul>
-                                                }
-                                                else
-                                                {
-                                                    <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
-                                                        @if (language == "en-US")
-                                                        {
-                                                            @item2.NameEng
-                                                        }
-                                                        else
-                                                        {
-                                                            @item2.NameMon
-                                                        }
-                                                    </a>
-                                                }
-                                            </li>
-                                        }
-                                    </ul>
+                                        </a>
+                                        <ul class="dropdown">
+                                            @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
+                                            {
+                                                <li>
+                                                    @if (Model.Where(x => x.ParentId == item2.MenuID).Count() > 0)
+                                                    {
+                                                        <a>
+                                                            @if (language == "en-US")
+                                                            {
+                                                                @item2.NameEng
+                                                            }
+                                                            else
+                                                            {
+                                                                @item2.NameMon
+                                                            }
+                                                        </a>
+                                                        <ul class="dropdown">
+                                                            @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
+                                                            {
+                                                                <li>
+                                                                    <a href='@Url.Action("MenuClick", "News", new { id = item3.MenuID })'>
+                                                                        @if (language == "en-US")
+                                                                        {
+                                                                            @item3.NameEng
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @item3.NameMon
+                                                                        }
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
+                                                            @if (language == "en-US")
+                                                            {
+                                                                @item2.NameEng
+                                                            }
+                                                            else
+                                                            {
+                                                                @item2.NameMon
+                                                            }
+                                                        </a>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
                                     }
                                     else
                                     {

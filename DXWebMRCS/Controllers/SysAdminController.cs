@@ -18,6 +18,7 @@ namespace DXWebMRCS.Controllers
 {
     //[Authorize(Roles = "Admin,BranchUser")]
     [InitializeSimpleMembership]
+    [RequireHttps]
     public class SysAdminController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -89,6 +90,14 @@ namespace DXWebMRCS.Controllers
 
                 if (FileExt == ".PDF" || FileExt == ".DOCX")
                 {
+
+                    string subPath = "/Content/FileContents"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                     if (ImageFile != null)
                     {
                         imageName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
@@ -169,6 +178,14 @@ namespace DXWebMRCS.Controllers
             string fileName = string.Empty;
             if (ImageFile != null)
             {
+
+                string subPath = "/Content/Images/UserAvatar"; // your code goes here
+
+                bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                 fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                 string extension = Path.GetExtension(ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -202,6 +219,14 @@ namespace DXWebMRCS.Controllers
         {
             if (ImageFile != null)
             {
+
+                string subPath = "/Content/Images/SliderImage"; // your code goes here
+
+                bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                 string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                 string extension = Path.GetExtension(ImageFile.FileName);
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -377,6 +402,13 @@ namespace DXWebMRCS.Controllers
             {
                 if (ImageFile != null)
                 {
+                    string subPath = "/Content/Images/GalleryImage"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -424,6 +456,14 @@ namespace DXWebMRCS.Controllers
             {
                 if (ImageFile != null)
                 {
+
+                    string subPath = "/Content/Images/GalleryImage"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;

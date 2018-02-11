@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace DXWebMRCS.Controllers
 {
+    [RequireHttps]
     public class SafeController : Controller
     {
         private UsersContext db = new UsersContext();

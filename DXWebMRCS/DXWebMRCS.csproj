@@ -19,7 +19,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
@@ -425,7 +425,10 @@
     <Content Include="Content\Admin\vendors\Flot\jquery.flot.stack.js" />
     <Content Include="Content\Admin\vendors\Flot\jquery.flot.time.js" />
     <Content Include="Content\Admin\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Admin\vendors\font-awesome\css\font-awesome.css.map" />
     <Content Include="Content\Admin\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Admin\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Admin\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Admin\vendors\gauge.js\dist\gauge.js" />
     <Content Include="Content\Admin\vendors\gauge.js\dist\gauge.min.js" />
     <Content Include="Content\Admin\vendors\iCheck\icheck.js" />
@@ -963,6 +966,7 @@
     <Content Include="Content\Images\preloaders\7.gif" />
     <Content Include="Content\Images\preloaders\8.gif" />
     <Content Include="Content\Images\preloaders\9.gif" />
+    <Content Include="Content\Images\redcrosslog.png" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Images\shadow-overlay.png" />
     <Content Include="Content\Images\signature.png" />
@@ -1337,7 +1341,6 @@
     <Content Include="Content\Admin\vendors\flot.curvedlines\bower.json" />
     <Content Include="Content\Admin\vendors\flot.orderbars\.bower.json" />
     <Content Include="Content\Admin\vendors\flot.orderbars\README.md" />
-    <Content Include="Content\Admin\vendors\font-awesome\css\font-awesome.css.map" />
     <Content Include="Content\Admin\vendors\gauge.js\dist\gauge.coffee" />
     <Content Include="Content\Admin\vendors\iCheck\.bower.json" />
     <Content Include="Content\Admin\vendors\iCheck\bower.json" />
@@ -1345,8 +1348,6 @@
     <Content Include="Content\Admin\vendors\jquery\dist\jquery.min.map" />
     <Content Include="Content\Admin\vendors\skycons\.bower.json" />
     <Content Include="Content\Admin\vendors\skycons\README.md" />
-    <Content Include="Content\Admin\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\Admin\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Admin\vendors\bootstrap-daterangepicker\daterangepicker.scss" />
     <Content Include="Content\Admin\vendors\bootstrap-daterangepicker\package.json" />
     <Content Include="Content\Admin\vendors\bootstrap-daterangepicker\README.md" />
@@ -1508,6 +1509,7 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RequreSecureConnectionFilter.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -1537,10 +1539,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802100545081_test.cs" />
-    <Compile Include="Migrations\201802100545081_test.Designer.cs">
-      <DependentUpon>201802100545081_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -1591,9 +1589,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802100545081_test.resx">
-      <DependentUpon>201802100545081_test.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1619,7 +1614,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4659</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4659/</IISUrl>
+          <IISUrl>https://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

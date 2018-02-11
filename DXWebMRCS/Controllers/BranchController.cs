@@ -18,6 +18,7 @@ using System.Globalization;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin,BranchUser")]
+    [RequireHttps]
     public class BranchController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -256,6 +257,14 @@ namespace DXWebMRCS.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                string subPath = "/Content/Images/NewsImage"; // your code goes here
+
+                bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                 if (ImageFile != null)
                 {
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
@@ -322,6 +331,14 @@ namespace DXWebMRCS.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                string subPath = "/Content/Images/NewsImage"; // your code goes here
+
+                bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                 if (ImageFile != null)
                 {
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);

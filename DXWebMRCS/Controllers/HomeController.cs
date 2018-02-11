@@ -19,6 +19,7 @@ using System.Collections;
 namespace DXWebMRCS.Controllers
 {
     [InitializeSimpleMembership]
+    [RequireHttps]
     public class HomeController : Controller
     {
         private UsersContext db = new UsersContext();

@@ -1,37 +1,66 @@
-﻿
-@model System.Collections.IEnumerable
+﻿@model System.Collections.IEnumerable
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Index</h2>
 <div class="right_col" role="main">
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_SysLayout.cshtml";
-    }
-    @Html.DevExpress().Button(settings =>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Меню</h3>
+            </div>
+
+        </div>
+        <div class="clearfix">
+
+
+        </div>
+        <div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                @Html.DevExpress().Button(settings =>
 {
     settings.Name = "Button1";
-    settings.Text = "Add";
+    settings.Text = "Нэмэх";
     settings.ClientSideEvents.Click = "function(s, e) { TreeList.StartEditNewNode(); }";
 }).GetHtml()
 
-    @Html.DevExpress().Button(settings =>
+                @Html.DevExpress().Button(settings =>
 {
     settings.Name = "Button2";
-    settings.Text = "Modify";
+    settings.Text = "Засах";
     settings.ClientSideEvents.Click = "function(s, e) { TreeList.StartEdit(TreeList.GetFocusedNodeKey()); }";
 }).GetHtml()
 
-    @Html.DevExpress().Button(settings =>
+                @Html.DevExpress().Button(settings =>
 {
     settings.Name = "Button3";
-    settings.Text = "Apply";
+    settings.Text = "Хадгалах";
     settings.ClientSideEvents.Click = "function(s, e) { TreeList.UpdateEdit(); }";
 }).GetHtml()
 
-    @Html.DevExpress().Button(settings =>
+                @Html.DevExpress().Button(settings =>
 {
     settings.Name = "Button4";
-    settings.Text = "Cancel";
+    settings.Text = "Болих";
     settings.ClientSideEvents.Click = "function(s, e) { TreeList.CancelEdit(); }";
 }).GetHtml()
 
-    @Html.Action("TreeListPartial")
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                @Html.Action("TreeListPartial")
+
+
+            </div>
+        </div>
+
+    </div>
 </div>

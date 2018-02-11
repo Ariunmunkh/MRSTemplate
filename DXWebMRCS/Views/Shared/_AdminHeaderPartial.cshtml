@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "_AdminHeaderPartial";
 }
 @{
@@ -9,7 +8,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            <a href="SysAdmin" class="site_title"><img src="~/Content/Images/redcrosslog.png" width="45" /> <span>Admin Panel</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -24,9 +23,9 @@
                 }
                 else
                 {
-                    <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + imageUrl)" alt="..." class="img-circle profile_img">
+                    <img src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + imageUrl)" alt="..." class="img-circle profile_img">
                 }
-                
+
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -43,7 +42,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
-                    {                        
+                    {
                         <li>
                             <a href="@Url.Action("Index", "SysAdmin")"><i class="fa fa-home"></i> Хэрэглэгч </a>
                         </li>
@@ -64,24 +63,24 @@
                         </li>
                         <li>
                             <a href="@Url.Action("Index", "Training")"><i class="fa fa-clone"></i> Явагдах сургалт </a>
-                        </li>  
-                         <li>
+                        </li>
+                        <li>
                             <a href="@Url.Action("FileContentList", "SysAdmin")"><i class="fa fa-clone"></i> Файл оруулах </a>
-                        </li>  
-                         <li>
+                        </li>
+                        <li>
                             <a href="@Url.Action("Index", "Branch")"><i class="fa fa-clone"></i> Салбар </a>
-                        </li> 
+                        </li>
                     }
                     else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
                     {
-                         <li>
+                        <li>
                             <a href="@Url.Action("Index", "News")"><i class="fa fa-desktop"></i> Мэдээ мэдээлэл</a>
                         </li>
                     }
-                                   
+
                 </ul>
             </div>
-            
+
         </div>
         <!-- /sidebar menu -->
     </div>
@@ -100,14 +99,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         @if (string.IsNullOrEmpty(imageUrl))
                         {
-                            <img src="~/Content/images/defaultImage.png" alt="" >
+                            <img src="~/Content/images/defaultImage.png" alt="">
                         }
                         else
                         {
-                            <img src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + imageUrl)" alt="">                       
+                            <img src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + imageUrl)" alt="">
                         }
-                        
-                        
+
+
                         @if (_user != null)
                         {
                             @_user.Name;
@@ -115,7 +114,7 @@
                         else
                         {
                             @DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name);
-                        }                        
+                        }
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -130,69 +129,69 @@
                 </li>
 
                 @*<li role="presentation" class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">6</span>
-                    </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                        <li>
-                            <a>
-                                <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                </span>
-                                <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                </span>
-                                <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                </span>
-                                <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
-                                <span>
-                                    <span>John Smith</span>
-                                    <span class="time">3 mins ago</span>
-                                </span>
-                                <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="text-center">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">6</span>
+                        </a>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <li>
                                 <a>
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
+                                    <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
                                 </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>*@
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image"><img src="~/Content/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="text-center">
+                                    <a>
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>*@
             </ul>
         </nav>
     </div>

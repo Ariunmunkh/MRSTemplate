@@ -386,7 +386,7 @@ namespace DXWebMRCS.Models
                     deleteCommand.Parameters.AddWithValue("@SourceID", SourceID);
                     deleteCommand.ExecuteNonQuery();
                 }
-                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from Tags where namemon = @TagName))", connection))
+                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO TagDetails (Source, SourceID, TagID) VALUES (@Source, @SourceID, (select max(tagid) from Tags where namemon = @TagName or nameeng = @TagName))", connection))
                 {
                     foreach (string tagname in Tags.Split(';'))
                     {

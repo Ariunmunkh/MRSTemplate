@@ -15,6 +15,7 @@ using PagedList;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin,BranchUser")]
+    [RequireHttps]
     public class TrainingController : Controller
     {
 
@@ -103,6 +104,13 @@ namespace DXWebMRCS.Controllers
             {
                 if (ImageFile != null)
                 {
+                    string subPath = "/Content/Images/NewsImage"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -151,6 +159,14 @@ namespace DXWebMRCS.Controllers
             {
                 if (ImageFile != null)
                 {
+
+                    string subPath = "/Content/Images/NewsImage"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
                     string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
                     string extension = Path.GetExtension(ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;

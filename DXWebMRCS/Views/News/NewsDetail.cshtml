@@ -6,7 +6,7 @@
 @{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 <!-- Start main-content -->
 <div class="main-content">
-    @{string imageUrl = @Model.Item1.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + @Model.Item1.Image : "http://placehold.it/1920x1280";}
+    @{string imageUrl = @Model.Item1.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @Model.Item1.Image : "http://placehold.it/1920x1280";}
     <!-- Section: inner-header -->
     <section class="inner-header divider layer-overlay overlay-8" data-bg-img=@imageUrl>
         <div class="container pt-60 pb-60">
@@ -71,7 +71,7 @@
                                 {
                                     <article class="post media-post clearfix pb-0 mb-10">
                                         <a class="post-thumb" href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
-                                            @{string itemImageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "https://placehold.it/75x75";}
+                                            @{string itemImageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "https://placehold.it/75x75";}
                                             <img src=@itemImageUrl alt="">
 
                                         </a>

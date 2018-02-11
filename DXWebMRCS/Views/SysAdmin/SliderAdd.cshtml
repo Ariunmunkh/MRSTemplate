@@ -41,7 +41,7 @@
                                 }
                                 else
                                 {
-                                    <img id="user_img" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.ImagePath)" height="100" width="90" />
+                                    <img id="user_img" src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.ImagePath)" height="100" width="90" />
                                 }
 
                             </div>

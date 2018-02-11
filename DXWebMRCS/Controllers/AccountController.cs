@@ -16,10 +16,13 @@ using System.Text;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace DXWebMRCS.Controllers {
+namespace DXWebMRCS.Controllers
+{
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller {
+    [RequireHttps]
+    public class AccountController : Controller
+    {
 
         private UsersContext db = new UsersContext();
 
@@ -34,28 +37,49 @@ namespace DXWebMRCS.Controllers {
         //}
 
         //public UserManager<UserProfile> UserManager { get; private set; }
-        
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (!Roles.RoleExists("Admin"))
+                AddUserAndRoles();
             ViewBag.ReturnUrl = returnUrl;
             return View();
-        } 
+        }
+
+        private void AddUserAndRoles()
+        {
+            Roles.CreateRole("Admin");
+            WebSecurity.CreateUserAndAccount("admin@admin.mn", "Pa$$word123", propertyValues: new
+            {
+                Name = "Admin",
+                LastName = "Admin",
+                BirthOfDay = DateTime.Now,
+                Gender = 1,
+                PhoneNumber = 0,
+                Type = 0
+            });
+            Roles.AddUserToRole("admin@admin.mn", "Admin");
+        }
+
         //
         // POST: /Account/Login
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model, string returnUrl) {
+        public async Task<ActionResult> Login(LoginModel model, string returnUrl)
+        {
 
-            if(ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
 
                 //var user = await UserManager.FindAsync(model.Email, model.Password);
 
-                if(WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe)) {
+                if (WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe))
+                {
                     //var role1 = Roles.GetRolesForUser();
                     //var role2 = Roles.IsUserInRole(model.Email, "BranchUser");
                     //var role3 = Roles.GetRolesForUser(model.Email);
@@ -64,7 +88,7 @@ namespace DXWebMRCS.Controllers {
                     //HttpContext.Application["UserProfile"] = user;
                     if (Roles.IsUserInRole(model.Email, "BranchUser"))
                     {
-                         return Redirect(returnUrl ?? "/SysAdmin");
+                        return Redirect(returnUrl ?? "/SysAdmin");
                     }
                     if (Roles.IsUserInRole(model.Email, "Admin"))
                     {
@@ -82,7 +106,8 @@ namespace DXWebMRCS.Controllers {
         //
         // GET: /Account/LogOff
 
-        public ActionResult LogOff() {
+        public ActionResult LogOff()
+        {
             WebSecurity.Logout();
             return Redirect("/");
         }
@@ -91,9 +116,10 @@ namespace DXWebMRCS.Controllers {
         // GET: /Account/Register
 
         [AllowAnonymous]
-        public ActionResult Register() {
-            
-            return View();   
+        public ActionResult Register()
+        {
+
+            return View();
         }
 
         //
@@ -104,9 +130,11 @@ namespace DXWebMRCS.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
-            if(ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 // Attempt to register the user
-                try {
+                try
+                {
                     WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
                     {
                         Name = model.UserName,
@@ -125,7 +153,8 @@ namespace DXWebMRCS.Controllers {
                     WebSecurity.Login(model.Email, model.Password);
                     return Redirect("/");
                 }
-                catch(MembershipCreateUserException e) {
+                catch (MembershipCreateUserException e)
+                {
                     ViewBag.ErrorMessage = ErrorCodeToString(e.StatusCode);
                 }
             }
@@ -180,12 +209,12 @@ namespace DXWebMRCS.Controllers {
                     mailMessage.IsBodyHtml = true;
                     mailMessage.BodyEncoding = UTF8Encoding.UTF8;
                     client.Send(mailMessage);
-                    return RedirectToAction("ChangePasswordSuccess");  
+                    return RedirectToAction("ChangePasswordSuccess");
                 }
                 else
                 {
                     ViewBag.ErrorMessage = "Not Send";
-                    return View();  
+                    return View();
                 }
             }
 
@@ -197,24 +226,30 @@ namespace DXWebMRCS.Controllers {
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(ChangePasswordModel model) {
-            if(ModelState.IsValid) {
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
                 bool changePasswordSucceeded;
-                try {
+                try
+                {
                     //changePasswordSucceeded = WebSecurity.ChangePassword(model.email, model.OldPassword, model.NewPassword);
                     var token = WebSecurity.GeneratePasswordResetToken(model.email);
                     changePasswordSucceeded = WebSecurity.ResetPassword(token, model.NewPassword);
                 }
-                catch(Exception) {
+                catch (Exception)
+                {
                     changePasswordSucceeded = false;
                 }
-                if(changePasswordSucceeded) {
+                if (changePasswordSucceeded)
+                {
                     return RedirectToAction("ChangePasswordSuccess");
                 }
-                else {
+                else
+                {
                     ViewBag.ErrorMessage = "The current password is incorrect or the new password is invalid.";
                 }
-                
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -258,7 +293,7 @@ namespace DXWebMRCS.Controllers {
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
             }
         }
-        
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -282,16 +317,19 @@ namespace DXWebMRCS.Controllers {
         //
         // GET: /Account/ChangePasswordSuccess
         [AllowAnonymous]
-        public ActionResult ChangePasswordSuccess() {
+        public ActionResult ChangePasswordSuccess()
+        {
             return View();
         }
 
- 
+
         #region Status Codes
-        private static string ErrorCodeToString(MembershipCreateStatus createStatus) {
+        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
             // a full list of status codes.
-            switch(createStatus) {
+            switch (createStatus)
+            {
                 case MembershipCreateStatus.DuplicateUserName:
                     return "User name already exists. Please enter a different user name.";
 

@@ -12,6 +12,7 @@ using DevExpress.Web.Mvc;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin,BranchUser")]
+    [RequireHttps]
     public class MenuController : Controller
     {
         private UsersContext db = new UsersContext();

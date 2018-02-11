@@ -38,7 +38,7 @@
                         <article class="post clearfix mb-30 bg-lighter">
                             <div class="entry-header">
                                 <div class="post-thumb thumb">
-                                    @{string imageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "http://placehold.it/360x240";}
+                                    @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "http://placehold.it/360x240";}
                                     <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
                                 </div>
                             </div>

@@ -6,9 +6,12 @@
 
 <!-- Start main-content -->
 <div class="main-content">
-    
-    @{Html.RenderAction("SliderViewPartial", "Home");}
 
+    @{Html.RenderAction("SliderViewPartial", "Home");}
+    @if (WebSecurity.CurrentUserName == "")
+    {
+        <p>ADMIN</p>
+    }
     <section>
         <div class="container-fluid p-0 p-sm-15">
             <div class="section-content">
@@ -16,9 +19,17 @@
                     <div class="col-sm-12 col-md-3 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay1">
                         <div class="sm-height-auto bg-theme-colored">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Become a Volunteer</h3>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Quos dolo rem consequ untur, natus laudantium commodi.</p>
-                                <a href="~/Content/page-become-a-volunteer.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Join us Now</a>
+                                <h3 class="text-uppercase text-white mt-0">Сайн дурын идэвхтэнээр элсэх</h3>
+                                <p class="text-white text-justify">
+                                    МУЗН-ийн Сайн дурын идэвхтэн нь Хөдөлгөөний
+                                    үндсэн зарчмыг хүлээн зөвшөөрч, оршин
+                                    суугаа нутаг дэвсгэрийнхээ МУЗН-ийн аль нэг
+                                    шатны хороонд бүртгүүлж, Улаан загалмайн
+                                    үйл ажиллагаанд тогтмол идэвхтэй оролцож,
+                                    нийгэм, хүний сайн сайхны төлөө сайн дураараа
+                                    ажилладаг иргэн байна.
+                                </p>
+                                <a href="~/Content/page-become-a-volunteer.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
                             </div>
                             <i class="flaticon-charity-shaking-hands-inside-a-heart bg-icon"></i>
                         </div>
@@ -26,9 +37,12 @@
                     <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay2">
                         <div class="sm-height-auto bg-theme-colored-darker2">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Adopt a Child</h3>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Quos dolo rem consequ untur, natus laudantium commodi.</p>
-                                <a href="~/Content/#" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Contact us</a>
+                                <h3 class="text-uppercase text-white mt-0">Гишүүнээр элсэх</h3>
+                                <p class="text-white text-justify">
+                                    Монголын улаан загалмай нийгэмлэгийн гишүүнчлэл нь Татвар төлөгч гишүүн, Ивээн тэтгэгч гишүүн
+                                    (онцгой), Гишүүн хүмүүнлэгийн байгууллага гэсэн төрлүүдтэй байна.
+                                </p>
+                                <a href="~/Content/#" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
                             </div>
                             <i class="flaticon-charity-home-insurance bg-icon"></i>
                         </div>
@@ -36,9 +50,13 @@
                     <div class="col-sm-12 col-md-3 pl-0 pr-0 pl-sm-15 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay3">
                         <div class="sm-height-auto bg-theme-colored-darker3">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Get Involved</h3>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Quos dolo rem consequ untur, natus laudantium commodi.</p>
-                                <a href="~/Content/page-donate.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Donate Us</a>
+                                <h3 class="text-uppercase text-white mt-0">Хэрхэн цусны донор болох</h3>
+                                <p class="text-white text-justify">
+                                    Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул
+                                    донорын цусны хэрэгцээ, ач холбогдлын талаар нийгэм, олон нийтэд сурталчлан таниулах,
+                                    шинээр цусны донорын эгнээг өргөжүүлэхэд дэмжлэг үзүүлэн ажиллах;
+                                </p>
+                                <a href="~/Content/page-donate.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
                             </div>
                             <i class="flaticon-charity-make-an-online-donation bg-icon"></i>
                         </div>
@@ -46,9 +64,9 @@
                     <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay4">
                         <div class="sm-height-auto bg-theme-colored-darker4">
                             <div class="p-30">
-                                <h3 class="text-white mt-0 mb-5">Call +(012) 345 6789</h3>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Quos dolo rem consequ untur, natus laudantium commodi.</p>
-                                <a href="~/Content/page-contact1.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Contact Now</a>
+                                <h3 class="text-white mt-0 mb-5">Холбоо барих</h3>
+                                <p class="text-white text-justify">Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, Энхтайвны гудамж, МУЗН-ийн төв байр <br /><span class="fa fa-envelope-o"></span> info@redcross.mn<br /><span class="fa fa-phone"></span> (+976)-11-323334</p>
+                                <a href="~/Content/page-contact1.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
                             </div>
                             <i class="fa fa-mobile bg-icon"></i>
                         </div>
@@ -63,9 +81,25 @@
             <div class="section-content">
                 <div class="row mt-10">
                     <div class="col-xs-12 col-sm-6 col-md-4 mb-sm-20 p-20 pt-0 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h3 class="text-uppercase line-bottom mt-0">Welcome To <span class="text-theme-colored"> FundPress</span></h3>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Quos dolo rem consequ untur, natus laudantium commodi. natus laudantium commodi.</p>
-                        <p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sunt ut dolorem laboriosam culpa exc epturi sed distinctio eius! Ut magnam numquam libero quia vero blanditiis fugit corporis quisquam, debitis.quia vero blanditiis fugit corporis quisquam, debitis.Fugit corporis quisquam, debitis  fugit corporis quis bland itiis vero.</p>
+                        <h3 class="text-uppercase line-bottom mt-0">МУЗН-ийн<span class="text-theme-colored"> танилцуулга</span></h3>
+                        <p class="mb-15">
+                            Монголын улаан загалмай
+                            нийгэмлэгийн Эрх зүйн
+                            байдлын тухай хуулиар Улаан
+                            загалмай нийгэмлэгийг Монгол
+                            Улсын нутаг дэвсгэр дээр
+                            хүмүүнлэгийн салбарт төрдөө
+                            нэмэлт хүч болж ажиллах
+                            цорын ганц үндэсний нийгэмлэг
+                            мөн болохыг баталгаажуулсан
+                            билээ. Манай нийгэмлэг нь төр,
+                            захиргааны байгууллагатай
+                            харилцахдаа бие даасан
+                            байдлаа хадгалж, төрийн
+                            хүмүүнлэгийн үйл ажиллагааг
+                            хэрэгжүүлэхэд төрдөө нэмэлт хүч
+                            болон ажиллаж байна.
+                        </p>
                         <div class="row">
                             <div class="col-xs-6">
                                 <ul class="mt-10">
@@ -87,7 +121,7 @@
                         <a class="btn btn-colored btn-theme-colored btn-lg text-uppercase font-13 mt-10" href="~/Content/#">View Details</a>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-0">Featured <span class="text-theme-colored"> Project</span></h3>
+                        <h3 class="text-uppercase line-bottom mt-0">Хэрэгжиж буй <span class="text-theme-colored"> төслүүд</span></h3>
                         <div class="owl-carousel-1col">
                             <div class="item">
                                 <div class="causes">
@@ -100,7 +134,7 @@
                                         </div>
                                     </div>
                                     <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Hospital For Poor</a></h4>
+                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
                                         <ul class="list-inline clearfix font-16 pt-0 pb-10">
                                             <li class="pull-left pr-0">Raised: $1890</li>
                                             <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
@@ -124,7 +158,7 @@
                                         </div>
                                     </div>
                                     <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Hospital For Poor</a></h4>
+                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
                                         <ul class="list-inline clearfix font-16 pt-0 pb-10">
                                             <li class="pull-left pr-0">Raised: $1890</li>
                                             <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
@@ -148,7 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Hospital For Poor</a></h4>
+                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
                                         <ul class="list-inline clearfix font-16 pt-0 pb-10">
                                             <li class="pull-left pr-0">Raised: $1890</li>
                                             <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
@@ -164,14 +198,14 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Get <span class="text-theme-colored"> Involved</span></h3>
+                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
                         <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
                             <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
                                 <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Become a Donar</strong></h4>
-                                <p class="text-gray">Lorem ipsum dolor sit ametcon elit sectetu radipisicing. Mollitia quasi.<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> read more...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
+                                <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
                             </div>
                         </div>
                         <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
@@ -179,8 +213,8 @@
                                 <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Become a Volunteer</strong></h4>
-                                <p class="text-gray">Lorem ipsum dolor sit ametcon elit sectetu radipisicing. Mollitia quasi.<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> read more...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
+                                <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
                             </div>
                         </div>
                         <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
@@ -188,8 +222,8 @@
                                 <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Create Fund</strong></h4>
-                                <p class="text-gray">Lorem ipsum dolor sit ametcon elit sectetu radipisicing. Mollitia quasi.<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> read more...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
+                                <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
                             </div>
                         </div>
                     </div>
@@ -204,8 +238,8 @@
             <div class="section-title text-center mt-0">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1">What Can <span class="text-theme-colored"> We Do?</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+                        <h2 class="mt-0 line-height-1">Бидний <span class="text-theme-colored"> үнэт зүйл</span></h2>
+                        @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>*@
                     </div>
                 </div>
             </div>
@@ -215,8 +249,11 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-make-an-online-donation text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Give Donation</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">ХҮМҮҮС </h4>
+                                <p class="text-justify">
+                                    Эмзэг байдлаас гарах арга замаа олоход нь хүмүүст тусалж,
+                                    тогтвортой үйл ажиллагааны чадавхи бий болгоно.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -224,8 +261,8 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-shaking-hands-inside-a-heart text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Become Volenteer</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">ШУДАРГА БАЙДАЛ</h4>
+                                <p class="text-justify">Бид өөрсдийн үндсэн зарчмын дагуу ил тод, ашиг сонирхлын зөрчилгүй үйл ажиллагаагаа явуулна. </p>
                             </div>
                         </div>
                     </div>
@@ -233,8 +270,11 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-hand-holding-a-gift text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Give Scholarship</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">ХАМТЫН АЖИЛЛАГАА</h4>
+                                <p class="text-justify">
+                                    Олон Улсын Улаан загалмай, Улаан хавирган сар хөдөлгөөний дүрэм, журам, үндсэн зарчмын хүрээнд МУЗН-
+                                    ийн эрх зүйн байдлын тухай Монгол Улсын хуулийн дагуу төр ба бусад хуулийн этгээдтэй хамтран ажиллана.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -242,8 +282,11 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-dove-of-peace-1 text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Adopt a Child</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">ОЛОН ТАЛТ БАЙДАЛ</h4>
+                                <p class="text-justify">
+                                    Бид хамтран ажиллаж байгаа нийгмийн бүлгүүдийн олон талт байдлыг хүндэтгэн үзэж, Улаан загалмайн гишүүн,
+                                    сайн дурын идэвхтэн, ажилтантай ялгаварлан гадуурхахгүй, шударга, нэгдмэл зарчмыг баримтлан ажиллана.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -251,8 +294,11 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-shelter text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Build House</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">МАНЛАЙЛАЛ</h4>
+                                <p class="text-justify">
+                                    Бид манлайлагч болохоо харуулж, Улаан загалмайн үйл ажиллагааг явуулахдаа олон нийтийн эрх, хэрэгцээ,
+                                    эмзэг байдал болон түүний үр дагаварт анхаарал хандуулан ажиллана.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -260,8 +306,11 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-food-donation-1 text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">Give Food</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
+                                <h4 class="media-heading heading text-uppercase">САНААЧИЛГА</h4>
+                                <p class="text-justify">
+                                    Бид өөрчлөгдөн шинэчлэгдэж байгаа дэлхий дээрх хүмүүний сайн сайхан байдалд заналхийлж буй асуудалд
+                                    тогтвортой шийдэл олохын төлөө бүтээлч, нэгдмэл, тэгш эрхтэй ажиллана.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -818,83 +867,15 @@
     </section>
 
     <!-- Section: Volunteers -->
-    <section id="volunteers">
-        <div class="container pt-70 pb-70">
-            <div class="section-title text-center">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-center text-uppercase mb-10 text-black-333">Our <span class="text-theme-colored"> Volunteers</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="maxwidth500 mb-sm-30 border-2px">
-                            <div class="team-upper-block  text-center">
-                                <img class="img-fullwidth" src="http://placehold.it/360x230" alt="">
-                                <h4 class="mt-20 pb-0 p-10">Jacobe Martin</h4>
-                                <p class="p-20 pt-0">Lorem ipsum dolor sit ametcon secte adipisicing elita dipi sicing elit.</p>
-                            </div>
-                            <div class="team-lower-block bg-theme-colored text-center p-0">
-                                <ul class="styled-icons icon-circled icon-sm icon-dark  icon-theme-colored pt-10 pb-10">
-                                    <li><a href="~/Content/#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-skype"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="maxwidth500 mb-sm-30 border-2px">
-                            <div class="team-upper-block  text-center">
-                                <img class="img-fullwidth" src="http://placehold.it/360x230" alt="">
-                                <h4 class="mt-20 pb-0 p-10">Jacobe Martin</h4>
-                                <p class="p-20 pt-0">Lorem ipsum dolor sit ametcon secte adipisicing elita dipi sicing elit.</p>
-                            </div>
-                            <div class="team-lower-block bg-theme-colored text-center p-0">
-                                <ul class="styled-icons icon-circled icon-sm icon-dark  icon-theme-colored pt-10 pb-10">
-                                    <li><a href="~/Content/#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-skype"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="maxwidth500 mb-sm-30 border-2px">
-                            <div class="team-upper-block  text-center">
-                                <img class="img-fullwidth" src="http://placehold.it/360x230" alt="">
-                                <h4 class="mt-20 pb-0 p-10">Jacobe Martin</h4>
-                                <p class="p-20 pt-0">Lorem ipsum dolor sit ametcon secte adipisicing elita dipi sicing elit.</p>
-                            </div>
-                            <div class="team-lower-block bg-theme-colored text-center p-0">
-                                <ul class="styled-icons icon-circled icon-sm icon-dark  icon-theme-colored pt-10 pb-10">
-                                    <li><a href="~/Content/#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-skype"></i></a></li>
-                                    <li><a href="~/Content/#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- divider: Became a Volunteers 1 -->
     <section class="divider parallax layer-overlay overlay-deeper" data-bg-img="http://placehold.it/1920x1280">
         <div class="container pt-70 pb-70">
             <div class="section-content">
                 <div class="row">
                     <div class="col-md-7">
-                        <h3 class="text-white text-uppercase font-30 font-weight-600 mt-0 mb-20">Become a Volunteer</h3>
-                        <p class="mb-20 text-white lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, et placeat ipsam, officiis fugiat doloremque ducimus tempore aliquid nihil soluta, quia similique veritatis! Quidem, repellendus exit placeat ipsam, officiis fugiat doloremque ducimus tempore aliquid nihil soluta, quia similique veritatis.aliquid nihil soluta, quia similique veritatis soluta, quia.</p>
-                        <a class="btn btn-default btn-circled btn-lg pull-left pl-30 pr-30" href="~/Content/#">Join Us</a>
+                        <h3 class="text-white text-uppercase font-30 font-weight-600 mt-0 mb-20">Сайн дурын идэвхтэн болсоноор</h3>
+                        <p class="mb-20 text-white lead">МУЗН-ийн Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ МУЗН-ийн аль нэг шатны хороонд бүртгүүлж, Улаан загалмайн үйл ажиллагаанд тогтмол идэвхтэй оролцож, нийгэм, хүний сайн сайхны төлөө сайн дураараа ажилладаг иргэн байна.</p>
+                        <a class="btn btn-default btn-circled btn-lg pull-left pl-30 pr-30" href="~/Content/#">Нэгдэх</a>
                     </div>
                     <div class="col-md-5">
                         <div class="fluid-video-wrapper">
@@ -912,15 +893,15 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase">Our <span class="text-theme-colored"> Gallery</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase">Зургийн <span class="text-theme-colored"> цомог</span></h2>
+                        <p>Бидний үйл ажиллагааны зургийг харж болно !</p>
                     </div>
                 </div>
             </div>
             <div class="section-content">
                 <div class="row">
                     @{Html.RenderAction("GalleryViewPartial", "Home");}
-                    
+
                 </div>
             </div>
         </div>
@@ -975,8 +956,8 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-uppercase">Recent  <span class="text-theme-colored"> News</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+                        <h2 class="mt-0 line-height-1 text-uppercase">Мэдээ,  <span class="text-theme-colored"> Мэдээлэл</span></h2>
+                        <p>МУЗН-ийн үйл ажиллагаатай холбоотой мэдээ мэдээллийг харж болно!</p>
                     </div>
                 </div>
             </div>
@@ -988,27 +969,26 @@
 
     <!-- Divider: Clients -->
     @*<section class="clients bg-theme-colored">
-        <div class="container pt-10 pb-10 pb-sm-0 pt-sm-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Section: Clients -->
-                    <div class="owl-carousel-6col transparent text-center owl-nav-top">
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
-                        <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+            <div class="container pt-10 pb-10 pb-sm-0 pt-sm-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Section: Clients -->
+                        <div class="owl-carousel-6col transparent text-center owl-nav-top">
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                            <div class="item"> <a href="~/Content/#"><img src="http://placehold.it/200x120" alt=""></a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section*@>
+        </section*@>
 
 </div>
 <!-- end main-content -->
-

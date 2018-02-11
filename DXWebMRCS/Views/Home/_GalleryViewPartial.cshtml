@@ -30,7 +30,7 @@
             <!-- Portfolio Item Start -->
             <div class="@Url.Content("gallery-item tags" + item.TagID)">
                 <div class="thumb">
-                    @{  string imageUrl = item.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.Image : "http://placehold.it/360x240";}
+                    @{  string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "http://placehold.it/360x240";}
                     <img alt="project" src=@imageUrl class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">

@@ -15,13 +15,19 @@
 
     settings.CommandColumn.Visible = true;
     settings.CommandColumn.EditButton.Visible = true;
-    settings.CommandColumn.NewButton.Visible = true;
+    settings.CommandColumn.EditButton.Text = "Засах";
     settings.CommandColumn.DeleteButton.Visible = true;
-    settings.Columns.Add("NameMon");
-    settings.Columns.Add("NameEng");
-    settings.Columns.Add("MenuType", MVCxTreeListColumnType.ComboBox);
-    settings.Columns.Add("NavigateUrl");
-    settings.Columns.Add("Image", MVCxTreeListColumnType.ComboBox);
+    settings.CommandColumn.DeleteButton.Text = "Устгах";
+    settings.CommandColumn.NewButton.Visible = true;
+    settings.CommandColumn.NewButton.Text = "Дэд";
+    settings.CommandColumn.UpdateButton.Text = "Хадгалах";
+    settings.CommandColumn.CancelButton.Text = "Болих";
+    
+    settings.Columns.Add("NameMon", "Нэр (Монгол)");
+    settings.Columns.Add("NameEng", "Нэр (Англи)");
+    settings.Columns.Add("MenuType", "Төрөл", MVCxTreeListColumnType.ComboBox);
+    settings.Columns.Add("NavigateUrl","Линк");
+    //settings.Columns.Add("Image","", MVCxTreeListColumnType.ComboBox);
     settings.Columns.Add(column =>
     {
         column.FieldName = "BranchID";

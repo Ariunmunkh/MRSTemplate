@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace DXWebMRCS.Controllers
 {
+    [RequireHttps]
     public class UserController : Controller
     {
         //

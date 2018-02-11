@@ -72,7 +72,7 @@
         <!-- preloader -->
         <div id="preloader">
             <div id="spinner">
-                <img alt="" src="images/preloaders/5.gif">
+                <img alt="" src="Content/images/preloaders/5.gif">
             </div>
             <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
         </div>
@@ -130,7 +130,7 @@
         
         <!-- Start main-content -->
         <div class="main-content">
-            @{ string imageUrl = string.IsNullOrEmpty(Model.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Image; }
+            @{ string imageUrl = string.IsNullOrEmpty(Model.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Image; }
             <!-- Section: inner-header -->
             <section class="inner-header divider parallax layer-overlay" data-bg-img=@imageUrl>
                 <div class="container pt-60 pb-60">
@@ -156,7 +156,7 @@
                                 }
                                 else
                                 {
-                                    <img class="img-responsive" src="@Url.Content(System.Configuration.ConfigurationManager.AppSettings["webURL"] + Model.Logo)" alt="" />
+                                    <img class="img-responsive" src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Logo)" alt="" />
                                 }                                
                             </div>
                         </div>

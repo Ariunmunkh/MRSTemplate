@@ -1,18 +1,32 @@
-﻿
-
-@if (Request.IsAuthenticated)
+﻿@if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
         <a>@Html.ActionLink(DXWebMRCS.Constants.Config.GetUserName(User.Identity.Name) + "!", "UserProfile", "SysAdmin", routeValues: null, htmlAttributes: new { email = User.Identity.Name, @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })</a>
-        <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+        {
+            <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+        else
+        {
+            <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" href="javascript:document.getElementById('logoutForm').submit()">Гарах</a>
+        }
     }
 }
 else
 {
-    <a>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink",  @class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10"})</a>
-    <a>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" , @class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10"})    </a>
+    if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+    {
+        <a>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })</a>
+        <a>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })    </a>
+    }
+    else
+    {
+        <a>@Html.ActionLink("Бүртгүүлэх", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })</a>
+        <a>@Html.ActionLink("Нэвтрэх", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10" })    </a>
+    }
+
 }
 
 

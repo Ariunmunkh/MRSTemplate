@@ -19,7 +19,7 @@
                                     <div class="row entry-content">
                                         <div class="col-sm-5">
                                             <div class="entry-header">
-                                                @{string imageUrl = item.ImageMedium != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.ImageMedium : "https://placehold.it/460x240";}
+                                                @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "https://placehold.it/460x240";}
                                                 <div class="post-thumb"> <img class="img-responsive img-fullwidth" src=@imageUrl alt=""> </div>
                                             </div>
                                         </div>

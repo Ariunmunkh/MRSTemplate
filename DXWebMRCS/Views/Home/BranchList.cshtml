@@ -37,7 +37,7 @@
                         <div class="schedule-box maxwidth500 bg-light mb-30">
                             <div class="thumb">
                                 <div class="thumb p-15">
-                                    @{string imageUrl = item.Image != null ? System.Configuration.ConfigurationManager.AppSettings["webURL"] + item.Image : "https://placehold.it/220x160";}
+                                    @{string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "https://placehold.it/220x160";}
                                 </div>
                                 <img class="img-fullwidth" height="85" alt="" src=@imageUrl>
                                 <div class="overlay">
