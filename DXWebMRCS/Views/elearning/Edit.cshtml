@@ -1,0 +1,122 @@
+﻿@model DXWebMRCS.Models.Elearn
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<div class="parallax overflow-hidden bg-blue-400 page-section third">
+    <div class="container parallax-layer" data-opacity="true">
+        <div class="media v-middle">
+            <div class="media-body">
+                <h1 class="text-display-2 margin-none text-white">Онлайн сургалтын засах</h1>
+                <p class="text-light lead text-white">Онлайн сургалтын хичээл засах</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Edit", "elearning", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Elearn</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ELID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LessonName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LessonName, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн нэр оруулна уу" })
+                @Html.ValidationMessageFor(model => model.LessonName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн дэлгэрэнгүй тайлбар оруулна уу" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                    
+                       
+                       @Html.Partial("ImageHtmlEditPartial")
+                       
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LessonBody, new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body buttons-spacing-vertical">
+                        <p><b class="text-primary">САНАМЖ</b><br />Та оруулсан хичээлийнхээ *.html5 файлыг сонгож оруулна. Тэгэхдээ оруулчихаад <b>unlink</b> товчыг дарах ёстой.</p>
+                    </div>
+                </div>
+                @Html.TextAreaFor(model => model.LessonBody, new { @class = "ckeditor", @placeholder = "Lesson Body", id = "LessonBody" })
+                @Html.ValidationMessageFor(model => model.LessonBody)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Time, new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Time, new { @type = "number", @class = "form-control", placeholder = "Хичээлийн үргэлжлэх хугацааг оруулна уу", @style = "background-color:white" })
+                @Html.ValidationMessageFor(model => model.Time)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+            var editor = CKEDITOR.instances['LessonBody'];
+            if(editor) { editor.destroy(true);}
+            CKEDITOR.replace('LessonBody', {
+                toolbarGroups: [
+ 		{ name: 'links' }
+                ],
+            enterMode:CKEDITOR.ENTER_BR,
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder/")');
+</script>
+<script type="text/javascript">
+    function fileCheck(obj) {
+        var fileExtension = ['html', 'rar', 'zip'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.html' formats are allowed.");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    CKEDITOR.replace('LessonBody',
+{
+    toolbar: 'LessonBody',
+    filebrowserBrowseUrl: '~/Content/LMS/ckfinder.html',
+    filebrowserImageBrowseUrl: 'ckeditor/ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl: '~/Content/LMS/ckfinder.html?type=Flash',
+    filebrowserUploadUrl:
+           'ckeditor/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files&currentFolder=/archive/',
+    filebrowserImageUploadUrl:
+           'ckeditor/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images&currentFolder=/cars/',
+    filebrowserFlashUploadUrl: 'ckeditor/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+});
+</script>

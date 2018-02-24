@@ -8,11 +8,14 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace DXWebMRCS.Models {
-    
-        public class UsersContext : DbContext {
+namespace DXWebMRCS.Models
+{
+
+    public class UsersContext : DbContext
+    {
         public UsersContext()
-            : base("DefaultConnection") {
+            : base("DefaultConnection")
+        {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,19 +37,48 @@ namespace DXWebMRCS.Models {
 
         public DbSet<Elearn> Elearn { get; set; }
         public DbSet<eService> eService { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
     [Table("UserProfile")]
-    public class UserProfile {
+    public class UserProfile
+    {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string LastName { get; set; }
-        public string Name { get; set; }        
+        public string Name { get; set; }
+
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string CityTown { get; set; }
+        public string StateProvince { get; set; }
+        public string Country { get; set; }
+        public string Email { get; set; }
+
+        //what is your preferred way of contact?
+        public string orderField1 { get; set; }//phone;email;sms;
+
+        //would you like to join our mailing list and receive news and updates from red cross?
+        public string orderField2 { get; set; }//yes;no
+
+        //have you worked or volunteered with Red Cross before?
+        public string orderField3 { get; set; }//no;volunteered;worked
+
+        //which areas do you have interest in volunteering?
+        public bool orderField41 { get; set; }//disaster managerment/preparedness
+        public bool orderField42 { get; set; }//social care and inclusion
+        public bool orderField43 { get; set; }//health promotion
+        public bool orderField44 { get; set; }//youth movement
+        public bool orderField45 { get; set; }//other (please specify)
+        public string orderField451 { get; set; }//other (please specify) -> note field
+
+        //Tell us a bit about yourself (your study, experience, what you'd like to do as a volunteer)
+        public string orderField5 { get; set; }//note field
+
         public DateTime BirthOfDay { get; set; }
         public int Gender { get; set; }
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
-        public int Type { get; set; }
         public string AvatarPath { get; set; }
         public int? BranchId { get; set; }
     }
@@ -76,7 +108,7 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Confirm new password")]
         [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    } 
+    }
     #endregion
 
     #region Login and register ViewModel
@@ -124,7 +156,7 @@ namespace DXWebMRCS.Models {
 
         [Required(ErrorMessage = "Та өөрийн нэрээ оруулна уу.")]
         [Display(Name = "User name")]
-        public string UserName { get; set; }
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Та төрсөн он сар өдөрөө оруулна уу.")]
         [Display(Name = "Birth Of Day")]
@@ -144,10 +176,6 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
-        [Display(Name = "Type")]
-        public string Type { get; set; }
-
         [Required(ErrorMessage = "Та нууц үгээ оруулна уу.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -160,6 +188,30 @@ namespace DXWebMRCS.Models {
         public string ConfirmPassword { get; set; }
 
         public string EditPassword { get; set; }
+
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string CityTown { get; set; }
+        public string StateProvince { get; set; }
+        public string Country { get; set; }
+        public string orderField1 { get; set; }//phone;email;sms;
+
+        //would you like to join our mailing list and receive news and updates from red cross?
+        public string orderField2 { get; set; }//yes;no
+
+        //have you worked or volunteered with Red Cross before?
+        public string orderField3 { get; set; }//no;volunteered;worked
+
+        //which areas do you have interest in volunteering?
+        public bool orderField41 { get; set; }//disaster managerment/preparedness
+        public bool orderField42 { get; set; }//social care and inclusion
+        public bool orderField43 { get; set; }//health promotion
+        public bool orderField44 { get; set; }//youth movement
+        public bool orderField45 { get; set; }//other (please specify)
+        public string orderField451 { get; set; }//other (please specify) -> note field
+
+        //Tell us a bit about yourself (your study, experience, what you'd like to do as a volunteer)
+        public string orderField5 { get; set; }//note field
     }
 
     public class EditRegisterModel
@@ -190,12 +242,9 @@ namespace DXWebMRCS.Models {
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Та төрөл сонгоно уу.")]
-        [Display(Name = "Type")]
-        public string Type { get; set; }
         public string AvatarPath { get; set; }
         public string EditPassword { get; set; }
-    } 
+    }
     #endregion
 
     #region Branch and Training ViewModel
@@ -273,7 +322,8 @@ namespace DXWebMRCS.Models {
 
     #endregion
 
-    public class EnumValue {
+    public class EnumValue
+    {
         public string Text { get; set; }
         public int ValueId { get; set; }
     }

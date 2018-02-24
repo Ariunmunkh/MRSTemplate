@@ -202,7 +202,6 @@ namespace DXWebMRCS.Controllers
                 _user.Name = model.UserName;
                 _user.UserName = model.Email;
                 _user.PhoneNumber = model.PhoneNumber;
-                _user.Type = Convert.ToInt32(model.Type);
 
                 _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
 

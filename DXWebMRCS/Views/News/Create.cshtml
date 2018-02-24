@@ -32,7 +32,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.TitleMon, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.TitleMon)
+                                @Html.TextBoxFor(model => model.TitleMon, new { @class = "form-control", @style = "background-color:white", placeholder = "Монгол гарчиг оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.TitleMon)
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.TitleEng, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.TitleEng)
+                                @Html.TextBoxFor(model => model.TitleEng, new { @class = "form-control", @style = "background-color:white", placeholder = "Англи гарчиг оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.TitleEng)
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.ContentType, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownList("ContentType", new List<SelectListItem>
+                                @Html.DropDownList("ContentType" , new List<SelectListItem>
 
                             {
                                new SelectListItem{ Text="Меню", Value = "Menu" },

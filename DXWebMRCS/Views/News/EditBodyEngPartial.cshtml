@@ -3,7 +3,7 @@
 {
     settings.Name = "BodyEng";
     settings.CallbackRouteValues = new { Controller = "News", Action = "EditBodyEngPartial" };
-    settings.Width = 500;
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
     if (Model != null)
         settings.Html = Model.BodyEng;
     settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;

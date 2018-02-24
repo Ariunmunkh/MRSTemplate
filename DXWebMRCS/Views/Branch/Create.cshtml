@@ -4,25 +4,11 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_SysLayout.cshtml";
 }
+<div class="panel panel-default" role="main">
 
-<h2>Create</h2>
-<div class="right_col" role="main">
     <div class="">
         <div class="page-title">
-            <div class="title_left">
-                <h3>Form Elements</h3>
-            </div>
-
-            <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <h2>Салбар нэмэх</h2>
         </div>
         <div class="clearfix"></div>
         <div class="row">
@@ -39,7 +25,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.NameMon)
+                                @Html.TextBoxFor(model => model.NameMon, new { @class = "form-control", @style = "background-color:white", placeholder = "Монгол нэр оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.NameMon)
                             </div>
                         </div>
@@ -47,7 +33,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.NameEng, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.NameEng)
+                                @Html.TextBoxFor(model => model.NameEng, new { @class = "form-control", @style = "background-color:white", placeholder = "Англи нэр оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.NameEng)
                             </div>
                         </div>
@@ -55,7 +41,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.email)
+                                @Html.TextBoxFor(model => model.email, new { @type = "email", @class = "form-control", @style = "background-color:white", placeholder = "Емэйл хаяг оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.email)
                             </div>
                         </div>
@@ -63,7 +49,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.phone, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.phone)
+                                @Html.TextBoxFor(model => model.phone, new { @type = "number", @class = "form-control", @style = "background-color:white", placeholder = "Нэр оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.phone)
                             </div>
                         </div>
@@ -71,7 +57,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.address, new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.address)
+                                @Html.TextBoxFor(model => model.address, new { @class = "form-control", @style = "background-color:white", placeholder = "Нэр оруулна уу" })
                                 @Html.ValidationMessageFor(model => model.address)
                             </div>
                         </div>

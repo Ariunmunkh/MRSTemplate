@@ -7,45 +7,27 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-3">
-                <h4 class="text-headline text-light">Corporate</h4>
+                <h4 class="text-headline text-light">Цэс</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#">About the company</a></li>
-                    <li><a href="#">Company offices</a></li>
-                    <li><a href="#">Partners</a></li>
-                    <li><a href="#">Terms of use</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Contact us</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <h4 class="text-headline text-light">Explore</h4>
-                <ul class="list-unstyled">
-                    <li><a href="">Courses</a></li>
-                    <li><a href="">Tutors</a></li>
-                    <li><a href="">Pricing</a></li>
-                    <li><a href="">Become Tutor</a></li>
-                    <li><a href="">Sign Up</a></li>
+                    <li><a href="@Url.Action("Index", "Elearning")">Нүүр</a></li>
+                    <li><a href="@Url.Action("List", "Elearning")">Хичээл жагсаалт</a></li>
+                    <li><a href="@Url.Action("Index", "eLearnt")">Дуусгасан хичээл</a></li>
+                    <li><a href="@Url.Action("FAQ", "Elearning")">Зөвлөмж</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-md-6">
-                <h4 class="text-headline text-light">Newsletter</h4>
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter email here...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-grey-800" type="button">Subscribe</button>
-                        </span>
-                    </div>
-                </div>
+                <div class="fb-page" data-href="https://www.facebook.com/MongolianRedCrossSociety/" data-tabs="timeline" data-width="580" data-height="194" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/MongolianRedCrossSociety/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MongolianRedCrossSociety/">Mongolian Red Cross Society</a></blockquote></div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <h4 class="text-headline text-light">Бидэнтэй холбогдох</h4>
                 <br />
                 <p>
-                    <a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="btn btn-pink-500 btn-circle"><i class="fa fa-dribbble"></i></a>
-                    <a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a>
+                    <a href="https://www.facebook.com/MongolianRedCrossSociety/" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/MRCS_MN" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/user/RedCrossmn" class="btn btn-pink-500 btn-circle"><i class="fa fa-youtube"></i></a>
                 </p>
                 <p class="text-subhead">
-                    &copy; 2015 Learning App by mosaicpro.
+                    &copy; 2015 Learning Platform
                 </p>
             </div>
         </div>
@@ -53,6 +35,15 @@
 </section>
 <!-- Footer -->
 <footer class="footer">
-    <strong>Learning</strong> v1.1.0 &copy; Copyright 2015
+    <strong>Монголын улаан загалмай нийгэмлэг</strong> Learning Platform &copy; Copyright 2015
 </footer>
 
+<div id="fb-root"></div>
+<script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

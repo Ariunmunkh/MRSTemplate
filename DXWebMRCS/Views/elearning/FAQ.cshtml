@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+    var db = new DXWebMRCS.Models.UsersContext();
+    var elearnlist = db.Elearn.ToList();
+    var elearnlist2 = db.Elearn.ToList().OrderByDescending(o => o.Date).Take(8);
+}
+<div class="parallax overflow-hidden bg-blue-400 page-section third">
+    <div class="container parallax-layer" data-opacity="true">
+        <div class="media v-middle">
+            <div class="media-body">
+                <h1 class="text-display-2 margin-none text-white">Онлайн сургалтын хичээл</h1>
+                <p class="text-light lead text-white">Зөвлөмж</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-section">
+        <div class="row">
+            <div class="col-md-8 col-lg-9">
+                <div class="media s-container">
+                    <div class="media-left">
+                        <div class="width-70 text-center">
+                            <p>
+                                    <img src="~/Content/images/guy-3.jpg" alt="people" />
+                            </p>
+                            <span class="icon-block s25 img-circle bg-purple-300"><i class="fa fa-star text-white"></i></span>
+                            <span class="icon-block s25 img-circle bg-indigo-300"><i class="fa fa-trophy text-white"></i></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="text-subhead-2">Andrew B. <span class="text-caption text-light">- 2 цагийн өмнө</span></div>
+                                <p>
+                                    Онлайн сургалтын хичээлийг хэрхэн хийх вэ?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-thread-reply">
+                    <div class="media s-container">
+                        <div class="media-left">
+                            <div class="width-70 text-center">
+                                    <img src="~/Content/images/woman-10.jpg" alt="people" />
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-subhead-2">Jane D. <span class="text-caption text-light">- 1 цагийн өмнө</span></div>
+                                    <p>
+                                        Та өөрийн үзэх гэж буй хичээл дээрээ дарж хичээл эхлүүлэх товчлуур дээр дарж хичээлээ эхлүүлнэ. Мөн та нүүр хуудас дээр дарж хичээлээ хайж үзэх боломжтой.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media s-container">
+                    <div class="media-left">
+                        <div class="width-70 text-center">
+                            <p>
+                                <img src="~/Content/images/woman-4.jpg" alt="people" />
+                            </p>
+                            <span class="icon-block s25 img-circle bg-purple-300"><i class="fa fa-star text-white"></i></span>
+                            <span class="icon-block s25 img-circle bg-indigo-300"><i class="fa fa-trophy text-white"></i></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="text-subhead-2">Tim A. <span class="text-caption text-light">- 5 цагийн өмнө</span></div>
+                                <p>
+                                    Хэрхэн сертификат авах бэ?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-thread-reply">
+                    <div class="media s-container">
+                        <div class="media-left">
+                            <div class="width-70 text-center">
+                                <img src="~/Content/images/guy-5.jpg" alt="people" />
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-subhead-2">Joe C. <span class="text-caption text-light">- 6 цагийн өмнө</span></div>
+                                    <p>
+                                        Үзэж буй хичээлээ дуусгасны дараа таниас асуулт асууж та 80%-с дээш зөв хариулж чадвал танд сертификатийн хэсэг гарч ирэх болно. Тэгэхдээ та <b>ХАДГАЛАХ</b> товчийг дарахаа мартуузай! 
+                                        Хэрвээ та хадгалах товчыг дараагүй гарсан бол буцаж хичээл рүүгээ орж хадгалах товчыг дарснаар та дараа нь дахин сертификатаа хэвлэх болон файлаар авах боломжтой болох юм.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media s-container">
+                    <div class="media-left">
+                        <div class="width-70 text-center">
+                            <p>
+                                <img src="~/Content/images/guy-6.jpg" alt="people" />
+                            </p>
+                            <span class="icon-block s25 img-circle bg-purple-300"><i class="fa fa-star text-white"></i></span>
+                            <span class="icon-block s25 img-circle bg-indigo-300"><i class="fa fa-trophy text-white"></i></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="text-subhead-2">George G. <span class="text-caption text-light">- 7 цагийн өмнө</span></div>
+                                <p>
+                                    Хэдэн хичээл дуусгасан ямар хичээлийг амжилттай дуусгасан талаар мэдэх боломжтой байдаг уу?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-thread-reply">
+                    <div class="media s-container">
+                        <div class="media-left">
+                            <div class="width-70 text-center">
+                                <img src="~/Content/images/woman-6.jpg" alt="people" />
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-subhead-2">Andry B. <span class="text-caption text-light">- 12 цагийн өмнө</span></div>
+                                    <p>
+                                        Та өмнө нь хичээл дуусгаж хадгалах товчыг дарсан бол танд хэдэн хичээл амжилттай дуусгасныг харах боломжтой. Та нүүр хуудас дээр дарж танд хэдэн хичээл дуусгасан, хэдэн цагийн хичээлийг амжилттай дуусгасныг харах боломжтой байгаа.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media s-container">
+                    <div class="media-left">
+                        <div class="width-70 text-center">
+                            <p>
+                                <img src="~/Content/images/guy-3.jpg" alt="people" />
+                            </p>
+                            <span class="icon-block s25 img-circle bg-purple-300"><i class="fa fa-star text-white"></i></span>
+                            <span class="icon-block s25 img-circle bg-indigo-300"><i class="fa fa-trophy text-white"></i></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="text-subhead-2">Andrew B. <span class="text-caption text-light">- 2 цагийн өмнө</span></div>
+                                <p>
+                                    Онлайн сургалтын хичээлийг хэрхэн хийх вэ?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-thread-reply">
+                    <div class="media s-container">
+                        <div class="media-left">
+                            <div class="width-70 text-center">
+                                <img src="~/Content/images/woman-10.jpg" alt="people" />
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="text-subhead-2">Jane D. <span class="text-caption text-light">- 1 цагийн өмнө</span></div>
+                                    <p>
+                                        Та өөрийн үзэх гэж буй хичээл дээрээ дарж хичээл эхлүүлэх товчлуур дээр дарж хичээлээ эхлүүлнэ. Мөн та нүүр хуудас дээр дарж хичээлээ хайж үзэх боломжтой.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Хичээл жагсаалт</h4>
+                    </div>
+                    @foreach (var listname in elearnlist2)
+                    {
+                        <div class="panel-body list-group">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="badge pull-right">@listname.Time цаг</span>
+                                    <a class="list-group-link" target="_blank" href="@Url.Action("Details", "Elearning", new { id = listname.ELID })">@listname.LessonName</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Нэмэгдсэн хичээл</h4>
+                    </div>
+                    <div class="panel-body list-group">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <span class="badge pull-right">@elearnlist.Count()</span>
+                                <a class="list-group-link">Нийт хичээл</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

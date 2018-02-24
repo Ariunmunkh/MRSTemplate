@@ -1,0 +1,122 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Elearn>
+
+@{
+    var db = new DXWebMRCS.Models.UsersContext();
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+    var elearnlist = db.Elearn.ToList();
+    var elearnlist2 = db.Elearn.ToList().OrderByDescending(o => o.Date).Take(8);
+}
+
+<div class="parallax overflow-hidden bg-grey-300 page-section third">
+    <div class="container parallax-layer" data-opacity="true">
+        <div class="row">
+            <div class="col-md-7">
+
+                <form action="/Elearning/Search" method="post">
+                    <div class="media v-middle">
+                        <div class="media-left">
+                            <span class="icon-block s60 bg-lightred"><i class="fa fa-search"></i></span>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="margin-none">Хайлт</h3>
+                            <div class="input-group media-padding">
+                                @Html.TextBox("lessonname", "", new { @class = "form-control", @placeholder = "Үзэх хичээлийнхээ нэрийг бичнэ үү" })
+                                <span class="input-group-btn">
+                                    @*<input id="btnIOS" type="submit" value="lessonname" />*@
+                                    <button class="btn btn-success" type="submit">Хайх!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-section">
+        <div class="row">
+            <div class="col-md-9">
+                @foreach (var list in Model)
+                {
+                    <div class="panel panel-default paper-shadow" data-z="0.5">
+                        <div class="panel-body">
+                            <div class="media media-clearfix-xs">
+                                <div class="media-left text-center">
+                                    <div class="cover width-150 width-100pc-xs overlay cover-image-full hover margin-v-0-10">
+                                        <span class="img icon-block height-130 bg-default"></span>
+                                        <span class="overlay overlay-full padding-none icon-block bg-default">
+                                            <span class="v-center">
+                                                @Html.Raw("<img height=110," + list.Image)
+                                            </span>
+                                        </span>
+                                        <a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" target="_blank" class="overlay overlay-full overlay-hover overlay-bg-white">
+                                            <span class="v-center">
+
+                                                <i class="fa fa-graduation-cap" style="color:#eb001f"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="text-headline margin-v-5-0"><a href="@Url.Action("Details", "Elearning", new { id = list.ELID })" target="_blank">@list.LessonName</a></h4>
+                                    <p class="small">
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    </p>
+                                    <p>
+                                        @if (@list.Description.Length > 250)
+                                        {
+                                        <p>@list.Description.Substring(0, 250)...</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@list.Description...</p>
+                                        }
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                }
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Хичээл жагсаалт</h4>
+                    </div>
+                    @foreach (var listname in elearnlist2)
+                    {
+                        <div class="panel-body list-group">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="badge pull-right">@listname.Time цаг</span>
+                                    <a class="list-group-link" target="_blank" href="@Url.Action("Details", "Elearning", new { id = listname.ELID })">@listname.LessonName</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
+                    <div class="panel-heading panel-collapse-trigger">
+                        <h4 class="panel-title">Нэмэгдсэн хичээл</h4>
+                    </div>
+                    <div class="panel-body list-group">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <span class="badge pull-right">@elearnlist.Count()</span>
+                                <a class="list-group-link">Нийт хичээл</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

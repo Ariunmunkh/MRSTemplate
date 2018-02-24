@@ -50,6 +50,15 @@ namespace DXWebMRCS
                "~/Content/js/revolution-slider/css/navigation.css" ,
                "~/Content/css/colors/theme-skin-color-set-1.css" ));
 
+             bundles.Add(new ScriptBundle("~/bundles/jqueryel").Include(
+                        "~/Scripts/all.js",
+                         "~/Scripts/jquery-{version}.js",
+                         "~/Scripts/jquery-ui-{version}.js",
+                         "~/Scripts/app.js").IncludeDirectory("~/Scripts", ".js"));
+
+             bundles.Add(new StyleBundle("~/Content/cssel").Include(
+                       "~/Content/all.css",
+                       "~/Content/app.css"));
 
             BundleTable.EnableOptimizations = true;
         }

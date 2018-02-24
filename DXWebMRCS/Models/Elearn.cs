@@ -33,5 +33,7 @@ namespace DXWebMRCS.Models
         public System.DateTime Date { get; set; }
 
         public virtual ICollection<eService> eService { get; set; }
+
+        
     }
 }

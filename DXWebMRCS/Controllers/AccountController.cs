@@ -135,14 +135,32 @@ namespace DXWebMRCS.Controllers
                 // Attempt to register the user
                 try
                 {
+                    if (!model.orderField45)
+                    {
+                        model.orderField451 = string.Empty;
+                    }
                     WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
                     {
-                        Name = model.UserName,
+                        Name = model.FirstName,
                         LastName = model.LastName,
                         BirthOfDay = model.BirthOfDay,
                         Gender = Convert.ToInt32(model.Gender),
+                        Email = model.Email,
                         PhoneNumber = model.PhoneNumber,
-                        Type = Convert.ToInt32(model.Type)
+                        Address1 = model.Address1,
+                        Address2 = model.Address2,
+                        CityTown = model.CityTown,
+                        StateProvince = model.StateProvince,
+                        orderField1 = model.orderField1,
+                        orderField2 = model.orderField2,
+                        orderField3 = model.orderField3,
+                        orderField41 = model.orderField41,
+                        orderField42 = model.orderField42,
+                        orderField43 = model.orderField43,
+                        orderField44 = model.orderField44,
+                        orderField45 = model.orderField45,
+                        orderField451 = model.orderField451,
+                        orderField5 = model.orderField5
                     });
                     var isRole = Roles.RoleExists("User");
                     if (!isRole)

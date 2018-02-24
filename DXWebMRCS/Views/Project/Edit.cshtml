@@ -1,4 +1,4 @@
-﻿@model DXWebMRCS.Models.News
+﻿@model DXWebMRCS.Models.Project
 
 @{
     ViewBag.Title = "Edit";
@@ -7,15 +7,15 @@
 
 <h2>Edit</h2>
 <div class="right_col" role="main">
-    @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>News</h4>
+            <h4>Project</h4>
             <hr />
             @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.CID)
+            @Html.HiddenFor(model => model.ProjectID)
 
             <div class="form-group">
                 @Html.LabelFor(model => model.TitleMon, new { @class = "control-label col-md-2" })
@@ -57,62 +57,6 @@
                     <img id="user_img" src=@imageUrl height="100" width="90" />
                     @Html.HiddenFor(model => model.Image)
                     @Html.HiddenFor(model => model.ImageMedium)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ContentType, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ContentType", new List<SelectListItem>
-
-                            {
-                               new SelectListItem{ Text="Меню", Value = "Menu" },
-                               new SelectListItem{ Text="Мэдээ", Value = "News" }
-                            }, "Төрөл сонгоно уу!", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ContentType)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.MenuID, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-
-                    @Html.DevExpress().ComboBox(
-                        settings =>
-                        {
-                            settings.Name = "MenuID";
-                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-                            settings.Height = 25;
-                            settings.PreRender = (s, e) =>
-                            {
-                                if (Model.MenuID != null)
-                                {
-                                    MVCxComboBox c = s as MVCxComboBox;
-                                    c.SelectedItem = c.Items.FindByValue(Model.MenuID);
-                                }
-                            };
-                            settings.SelectedIndex = 0;
-                            settings.Properties.NullDisplayText = "No data available...";
-                            settings.Properties.TextFormatString = "{0} - {1}";
-                            settings.Properties.TextField = "NAMEMON";
-                            settings.Properties.Columns.Add("NAMEMON", "Монгол");
-                            settings.Properties.Columns.Add("NameEng", "English");
-                            settings.Properties.Columns.Add("BranchNameMon", "Салбар");
-                            settings.Properties.ValueField = "MENUID";
-                            settings.ShowModelErrors = true;
-                            settings.Properties.ValueType = typeof(int);
-                            settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
-                            settings.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-                        }).BindList(DXWebMRCS.Models.NorthwindDataProvider.GetMenusJoinTable()).GetHtml()
-
-                    @Html.ValidationMessageFor(model => model.MenuID)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Tags, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.Partial("DropDownEdit")
-                    @Html.ValidationMessageFor(model => model.Tags)
                 </div>
             </div>
 

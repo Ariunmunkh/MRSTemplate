@@ -4,31 +4,14 @@
 <!-- Start main-content -->
 <div class="main-content">
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
-        <div class="container pt-70 pb-20">
-            <!-- Section Content -->
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2 class="font-28 text-white">My Account</h2>
-                        <ol class="breadcrumb text-center text-black mt-10">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li class="active text-gray-silver">Page Title</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-push-3">
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, null))
-                    { 
-                        @Html.AntiForgeryToken()  
+                    {
+                        @Html.AntiForgeryToken()
                         <div class="icon-box mb-0 p-0">
                             <a href="#" class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
                                 <i class="pe-7s-users"></i>
@@ -39,56 +22,158 @@
                         <hr>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>Овог нэр</label>
+                                <label>Last Name</label>
                                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Өөрийн нэр</label>
-                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                <label>First Name</label>
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>Төрсөн он сар өдөр</label>
-                                @Html.TextBoxFor(model => model.BirthOfDay, new { @class = "form-control datepicker", placeholder = "1900-11-24" })
+                                <label>Address</label>
+                                @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Address1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Address 2</label>
+                                @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Address2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>City/Town</label>
+                                @Html.TextBoxFor(m => m.CityTown, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CityTown, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>State/Province</label>
+                                @Html.TextBoxFor(m => m.StateProvince, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.StateProvince, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Birthday</label>
+                                @Html.TextBoxFor(model => model.BirthOfDay, new { @class = "form-control datepicker" })
                                 @Html.ValidationMessageFor(m => m.BirthOfDay, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Хүйс</label>
+                                <label>Gender</label>
                                 @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
                                                                 {
-                                                                   new SelectListItem{ Text="Эрэгтэй", Value = "1" },
-                                                                   new SelectListItem{ Text="Эмэгтэй", Value = "2" }
-                                                                }, "Та сонгоно уу.",htmlAttributes: new { @class = "form-control" })
+                                                                   new SelectListItem{ Text="Male", Value = "1" },
+                                                                   new SelectListItem{ Text="Female", Value = "2" }
+                                                                }, "Choose", htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>Утасны дугаар</label>
-                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @type = "number" })
-                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Е-мэйл</label>
+                                <label>Email Address</label>
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="form-group col-md-6">
-                                <label>Төрөл</label>
-                                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
-                                                                {
-                                                                   new SelectListItem{ Text="МУЗН-ийн ажилтан", Value = "1" },
-                                                                   new SelectListItem{ Text="Сайн дурын идэвхтэн", Value = "2" },
-                                                                   new SelectListItem{ Text="Хэрэглэгч", Value = "3" }
-                                                                }, "Та сонгоно уу.", htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                                <label>Phone Number</label>
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @type = "number" })
+                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>What is your preferred way of contact?</label>
+
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField1", "phone")   Phone</label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField1", "email") Email</label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField1", "sms")   SMS</label>
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.orderField1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Would you like to join our mailing list and receive news and updates from Red Cross?</label>
+
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField2", "yes") Yes</label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField2", "no")   No thanks</label>
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.orderField2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Have you worked or volunteered with Red Cross before?</label>
+
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField3", "no")   No </label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField3", "volunteered") Yes, volunteered </label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton("orderField3", "worked") Yes, worked </label>
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.orderField3, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Which areas do you have interest in volunteering?</label>
+
+                                <div class="checkbox">
+                                    <label>@Html.CheckBox("orderField41") Disaster Managerment/Preparedness </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>@Html.CheckBox("orderField42") Social care and inclusion </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>@Html.CheckBox("orderField43") Health Promotion </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>@Html.CheckBox("orderField44") Youth Movement </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>@Html.CheckBox("orderField45") Other (please specify) </label>
+                                </div>
+                                <div class="checkbox" id="div_orderField451" style="display: none;">
+                                    @Html.TextBox("orderField451")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Tell us a bit about yourself (your study, experience, what you'd like to do as a volunteer)</label>
+                                @Html.TextArea("orderField5", new { @class = "form-control", @rows = 3 })
+                                @Html.ValidationMessageFor(m => m.orderField5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="form_choose_password">Choose Password</label>
@@ -102,9 +187,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Бүртгүүлэх</button>
+                            <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Register</button>
                         </div>
-                    
+
                     }
                 </div>
             </div>
@@ -115,9 +200,15 @@
 
 <script src="~/Scripts/jquery.validate.js"></script>
 
-
 <script type="text/javascript">
-    $(function () { // will trigger when the document is ready
-        $('.datepicker').datepicker(); //Initialise any date pickers
+    $(document).ready(function () {
+        $('#orderField45').change(function () {
+            if ($('#orderField45').prop('checked')) {
+                $('#div_orderField451').show();
+            }
+            else {
+                $('#div_orderField451').hide();
+            }
+        });
     });
 </script>

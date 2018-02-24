@@ -1,0 +1,42 @@
+﻿@model DXWebMRCS.Models.Elearn
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<div class="parallax overflow-hidden bg-blue-400 page-section third">
+    <div class="container parallax-layer" data-opacity="true">
+        <div class="media v-middle">
+            <div class="media-body">
+                <h1 class="text-display-2 margin-none text-white">Хичээл устгах</h1>
+                <p class="text-light lead text-white">Та энэ хичээлийг утсгахад итгэлтэй байна уу?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-md-8">
+            <div class="page-section">
+                @Html.Raw("<img width=150," + Model.Image)
+                @Html.DisplayFor(model => model.LessonName)
+                <p>
+                    @Html.DisplayFor(model => model.Description)
+                </p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions">
+                        @Html.ActionLink("Буцах", "Index") |
+                        <button class="btn btn-danger" type="submit"><i class="fa fa-2x fa-times"></i> <span>УСТГАХ</span></button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

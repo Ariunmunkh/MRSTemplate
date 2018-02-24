@@ -644,7 +644,6 @@ namespace DXWebMRCS.Controllers
         }
     }
 
-
     public class NewsControllerBodyMonSettings
     {
         public const string ImageUploadDirectory = "~/Content/UploadImages/";

@@ -116,7 +116,7 @@ namespace DXWebMRCS.Controllers
             cookie.Value = lan;
             Response.Cookies.Add(cookie);
 
-            return View("Index");
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         #region Home Partial Page

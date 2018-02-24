@@ -37,7 +37,10 @@ namespace DXWebMRCS.Models
         public string LessonName { get; set; }
         public string LessonBody { get; set; }
         public string Image { get; set; }
+        public string Name { get; set; }
         public int totalscore { get; set; }
         public string nowDate { get; set; }
+        public int totaltime { get; set; }
+
     }
 }

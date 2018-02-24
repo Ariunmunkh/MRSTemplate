@@ -11,8 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Learning</title>
-    <link href="~/Content/elearncss/all/all.css" rel="stylesheet">    
-    <link href="~/Content/elearncss/app/app.css" rel="stylesheet">
+    <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
+    @Styles.Render("~/Content/cssel")
+
     @Html.DevExpress().GetScripts(
         new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
         new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
@@ -24,29 +25,27 @@
         new Script { ExtensionSuite = ExtensionSuite.Scheduler },
         new Script { ExtensionSuite = ExtensionSuite.TreeList },
         new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
-        new Script { ExtensionSuite = ExtensionSuite.RichEdit },
-        new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
     )
 @Html.DevExpress().GetStyleSheets(
-        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
         new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
         new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+            new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
         new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
         new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
-        new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
     )
 </head>
 <body>
     
-    @Html.Partial("_ElearnHeader");
-    @RenderBody();
-    @Html.Partial("ElearnFooter");
+    @Html.Partial("_ElearnHeader")
+    @RenderBody()
+    @Html.Partial("ElearnFooter")
     <!-- // Footer -->
     <!-- Inline Script for colors and config objects; used by various external scripts; -->
     <script>
@@ -72,8 +71,9 @@
             }
         };
     </script>
-    <script src="~/Scripts/elearnjs/all/all.js"></script>
-    <script src="~/Scripts/elearnjs/app/app.js"></script>
+    @*<script src="~/Scripts/all.js"></script>
+    <script src="~/Scripts/app.js"></script>*@
+    @Scripts.Render("~/bundles/jqueryel")
 </body>
 </html>
 
