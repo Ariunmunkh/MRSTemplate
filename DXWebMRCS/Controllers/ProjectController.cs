@@ -22,6 +22,16 @@ namespace DXWebMRCS.Controllers
     public class ProjectController : Controller
     {
         private UsersContext db = new UsersContext();
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
         //
         // GET: /Project/
         public ActionResult Index()
