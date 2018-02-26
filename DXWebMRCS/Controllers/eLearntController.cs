@@ -10,6 +10,9 @@ using DXWebMRCS.Models;
 using DXWebMRCS.Filters;
 using System.Web.UI;
 using WebMatrix.WebData;
+using DevExpress.XtraReports.UI;
+using DevExpress.Web.Mvc;
+
 
 namespace DXWebMRCS.Controllers
 {
@@ -20,7 +23,7 @@ namespace DXWebMRCS.Controllers
 
         // GET: /eLearnt/
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
 
@@ -50,37 +53,27 @@ namespace DXWebMRCS.Controllers
             return View(list);
         }
 
-        [InitializeSimpleMembership]
+        //[InitializeSimpleMembership]
         // GET: /eLearnt/Details/5
 
-        public ActionResult CreatePdf(int? id)
+        public ActionResult PDF(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var eservice = db.eService.Include(x => x.Elearn).FirstOrDefault(x => x.eServiceID == id);
-
             if (eservice == null)
             {
                 return HttpNotFound();
             }
+            //Certificate cert = new Certificate();
+            HttpContext.Session.Add("eservice", eservice);
             return View(eservice);
-           //return new ActionAsPdf("CreatePdf",eservice, new { id = id }) { FileName = "Certificate.pdf" };
+            //return new ActionAsPdf("CreatePdf",eservice, new { id = id }) { FileName = "Certificate.pdf" };
         }
-        //[InitializeSimpleMembership]
-        //public ActionResult ViewPdf(int id, string lessonname)
-        //{
-        //    return new Rotativa.MVC.ActionAsPdf("CreatePdf", new { id = id, lessonname = lessonname }) 
-        //    {
-        //        RotativaOptions = new Rotativa.Core.DriverOptions()
-        //        {
-        //            PageSize = Rotativa.Core.Options.Size.A4,
-        //            PageOrientation = Rotativa.Core.Options.Orientation.Landscape
-        //        }
-        //    };
-        //}
-        
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -88,6 +81,18 @@ namespace DXWebMRCS.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        getCertificate report = new getCertificate();
+
+        public ActionResult getCertificatePartial()
+        {
+            return PartialView("_getCertificatePartial", report);
+        }
+
+        public ActionResult getCertificatePartialExport()
+        {
+            return DocumentViewerExtension.ExportTo(report, Request);
         }
     }
 }

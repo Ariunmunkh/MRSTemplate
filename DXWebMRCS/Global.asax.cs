@@ -23,7 +23,7 @@ namespace DXWebMRCS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AuthConfig.RegisterAuth();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
+            ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             //DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
         }

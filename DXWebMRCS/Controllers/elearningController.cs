@@ -15,13 +15,14 @@ using System.Web.UI;
 namespace DXWebMRCS.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class elearningController : Controller
     {
         private UsersContext db = new UsersContext();
 
         // GET: /elearning/
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var eservice = db.Database.SqlQuery<eServiceModel>(@"select  t.UserId, 
@@ -52,19 +53,10 @@ namespace DXWebMRCS.Controllers
             return View(list);
         }
 
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
         public ActionResult List()
         {
             return View(db.Elearn.ToList());
-        }
-        [Authorize(Roles = "Admin")]
-        public ActionResult lists()
-        {
-            return View(db.Elearn.ToList());
-        }
-        public ActionResult Test()
-        {
-            return View();
         }
         public ActionResult FAQ()
         {
@@ -113,6 +105,7 @@ namespace DXWebMRCS.Controllers
             return certcount.ToList();
 
         }
+        [InitializeSimpleMembership]
         // GET: /elearning/Details/5
         [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
         public ActionResult Details(int? id)
@@ -128,17 +121,16 @@ namespace DXWebMRCS.Controllers
             }
             return View(elearn);
         }
-        // GET: /sysAdmin/Create
+        // GET: /elearning/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /sysAdmin/Create
+        // POST: /elearning/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ELID,LessonName,Description,Image,LessonBody,Time")] Elearn elearn)
         {
@@ -147,13 +139,13 @@ namespace DXWebMRCS.Controllers
                 elearn.Date = DateTime.Now;
                 db.Elearn.Add(elearn);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View(elearn);
         }
 
-        // GET: /sysAdmin/Edit/5
+        // GET: /elearning/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -168,12 +160,11 @@ namespace DXWebMRCS.Controllers
             return View(elearn);
         }
 
-        // POST: /sysAdmin/Edit/5
+        // POST: /elearning/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ELID,LessonName,Description,Image,LessonBody,Time")] Elearn elearn)
         {
             if (ModelState.IsValid)
@@ -181,7 +172,7 @@ namespace DXWebMRCS.Controllers
                 elearn.Date = DateTime.Now;
                 db.Entry(elearn).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             return View(elearn);
         }
@@ -201,9 +192,8 @@ namespace DXWebMRCS.Controllers
             return View(elearn);
         }
 
-        // POST: /sysAdmin/Delete/5
+        // POST: /elearning/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -212,7 +202,6 @@ namespace DXWebMRCS.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -222,27 +211,30 @@ namespace DXWebMRCS.Controllers
             base.Dispose(disposing);
         }
 
-
-
         public ActionResult ImageHtmlEditPartial()
         {
-            return PartialView("_ImageHtmlEditPartial");
+            return PartialView("ImageHtmlEditPartial");
         }
         public ActionResult ImageHtmlEditPartialImageSelectorUpload()
         {
-            HtmlEditorExtension.SaveUploadedImage("Image", elearningControllerImageSettings1.ImageSelectorSettings);
+            HtmlEditorExtension.SaveUploadedImage("Image", elearningControllerImageSettings.ImageSelectorSettings);
             return null;
         }
         public ActionResult ImageHtmlEditPartialImageUpload()
         {
-            HtmlEditorExtension.SaveUploadedFile("Image", elearningControllerImageSettings1.ImageUploadValidationSettings, elearningControllerImageSettings1.ImageUploadDirectory);
+            HtmlEditorExtension.SaveUploadedFile("Image", elearningControllerImageSettings.ImageUploadValidationSettings, elearningControllerImageSettings.ImageUploadDirectory);
             return null;
         }
     }
-    public class elearningControllerImageSettings1
+    public class elearningControllerImageSettings
     {
-        public const string ImageUploadDirectory = "~/Content/UploadImages/";
-        public const string ImageSelectorThumbnailDirectory = "~/Content/Thumb/";
+        public const string ImageUploadDirectory = "~/Content/UploadImages";
+        public const string ImageSelectorThumbnailDirectory = "~/Content/Thumb";
+
+        public static string GetHtmlContentByFileName(string fileName)
+        {
+            return System.IO.File.ReadAllText(System.Web.HttpContext.Current.Request.MapPath(string.Format("{0}{1}", ImageUploadDirectory, fileName)));
+        }
 
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
@@ -268,6 +260,7 @@ namespace DXWebMRCS.Controllers
                 return imageSelectorSettings;
             }
         }
+
     }
 
 }

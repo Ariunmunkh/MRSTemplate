@@ -35,7 +35,7 @@
                                             Гэрчилгээ хэвлэх
                                         </div>
 
-                                        <form action="@Url.Action("ViewPdf", "eLearnt", new { id = @list.eServiceid, lessonname=@list.LessonName })" method="post" class="media-right" target="_blank">
+                                        <form action="@Url.Action("PDF", "eLearnt", new { id = @list.eServiceid})" method="post" class="media-right" target="_blank">
                                             <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-print"></i></button>
                                         </form>
                                     </div>

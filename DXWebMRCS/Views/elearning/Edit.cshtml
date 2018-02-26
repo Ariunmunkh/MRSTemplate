@@ -19,8 +19,8 @@
 @using (Html.BeginForm("Edit", "elearning", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
+    
+ <div class="form-horizontal">
         <h4>Elearn</h4>
         <hr />
         @Html.ValidationSummary(true)
@@ -80,7 +80,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "List")
 </div>
 <script src="~/Content/ckfinder/ckfinder.js"></script>
 <script src="~/Content/ckeditor/ckeditor.js"></script>

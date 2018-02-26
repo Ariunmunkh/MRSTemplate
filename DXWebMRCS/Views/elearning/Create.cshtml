@@ -5,78 +5,72 @@
     Layout = "~/Views/Shared/_SysLayout.cshtml";
 }
 
-<div class="panel panel-default" >
-        <div class="media v-middle">
-                <h4 class="text-headline margin-bottom-none">Хичээл нэмэх</h4>
+<h4>Онлайн сургалтын хичээл үүсгэх</h4>
+
+@using (Html.BeginForm("Create", "elearning", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+       <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LessonName, new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.LessonName, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн нэр оруулна уу" })
+                @Html.ValidationMessageFor(model => model.LessonName)
+            </div>
         </div>
-    @using (Html.BeginForm("Create", "elearning", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.LessonName, new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextBoxFor(model => model.LessonName, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн нэр оруулна уу" })
-                    @Html.ValidationMessageFor(model => model.LessonName)
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн дэлгэрэнгүй тайлбар оруулна уу" })
+                @Html.ValidationMessageFor(model => model.Description)
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-                <div class="col-md-5">
-                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн дэлгэрэнгүй тайлбар оруулна уу" })
-                    @Html.ValidationMessageFor(model => model.Description)
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @using (Html.BeginForm())
+                {
+                    @Html.Action("ImageHtmlEditPartial")
+                }
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.Action("ImageHtmlEditPartial")
-                    }
-
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.LessonBody, new { @class = "control-label col-md-2" })
-                <div class="col-md-7">
-                    <div class="panel panel-default">
-                        <div class="panel-body buttons-spacing-vertical">
-                            <p><b class="text-primary">САНАМЖ</b><br />Та оруулсан хичээлийнхээ *.html5 файлыг сонгож оруулна. Тэгэхдээ оруулчихаад <b>unlink</b> товчыг дарах ёстой.</p>
-                        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LessonBody, new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body buttons-spacing-vertical">
+                        <p><b class="text-primary">САНАМЖ</b><br />Та оруулсан хичээлийнхээ *.html5 файлыг сонгож оруулна. Тэгэхдээ оруулчихаад <b>unlink</b> товчыг дарах ёстой.</p>
                     </div>
-                    @Html.TextAreaFor(model => model.LessonBody, new { @class = "ckeditor", @placeholder = "Lesson Body", id = "LessonBody" })
-                    @Html.ValidationMessageFor(model => model.LessonBody)
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Time, new { @class = "control-label col-md-2" })
-                <div class="col-md-7">
-                    @Html.TextBoxFor(model => model.Time, new { @type = "number", @class = "form-control", placeholder = "Хичээлийн үргэлжлэх хугацааг оруулна уу", @style = "background-color:white" })
-                    @Html.ValidationMessageFor(model => model.Time)
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+                @Html.TextAreaFor(model => model.LessonBody, new { @class = "ckeditor", @placeholder = "Lesson Body", id = "LessonBody" })
+                @Html.ValidationMessageFor(model => model.LessonBody)
             </div>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            @Html.LabelFor(model => model.Time, new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Time, new { @type = "number", @class = "form-control", placeholder = "Хичээлийн үргэлжлэх хугацааг оруулна уу", @style = "background-color:white" })
+                @Html.ValidationMessageFor(model => model.Time)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
     </div>
-</div>
+}
 
+<div>
+    @Html.ActionLink("Back to List", "List")
+</div>
 
 <script src="~/Content/ckfinder/ckfinder.js"></script>
 <script src="~/Content/ckeditor/ckeditor.js"></script>

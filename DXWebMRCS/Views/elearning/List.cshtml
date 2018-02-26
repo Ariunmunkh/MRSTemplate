@@ -2,27 +2,16 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_ElearnLayout.cshtml";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
     var db = new DXWebMRCS.Models.UsersContext();
     var elearnlist = db.Elearn.ToList();
     var elearnlist2 = db.Elearn.ToList().OrderByDescending(o => o.Date).Take(8);
 }
-<div class="parallax overflow-hidden bg-blue-400 page-section third">
-    <div class="container parallax-layer" data-opacity="true">
-        <div class="media v-middle">
-            <div class="media-body">
-                <h1 class="text-display-2 margin-none text-white">Онлайн сургалтын хичээл</h1>
-                <p class="text-light lead text-white">Та хичээлээ сонгож үзнэ үү</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<h4>Онлайн сургалтын хичээл</h4>
 <div class="container">
     <div class="page-section">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-10">
 
                 @foreach (var list in Model)
                 {
@@ -64,44 +53,19 @@
                                             <p>@list.Description...</p>
                                         }
 
+                                        </p>
+                                    </div>
+                                    <div class="media-right text-center">
+                                        <div class="cover width-100 ">
+                                            <a href="@Url.Action("Edit", "elearning", new { id = list.ELID })" class="btn btn-warning" target="_blank"><i class="fa fa-pencil"></i> ЗАСАХ</a>
+                                            <a href="@Url.Action("Delete", "elearning", new { id = list.ELID })" class="btn btn-danger" target="_blank"><i class="fa fa-times"></i> УСТГАХ</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 }
 
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
-                    <div class="panel-heading panel-collapse-trigger">
-                        <h4 class="panel-title">Хичээл жагсаалт</h4>
-                    </div>
-                    @foreach (var listname in elearnlist2)
-                    {
-                        <div class="panel-body list-group">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge pull-right">@listname.Time цаг</span>
-                                    <a class="list-group-link" target="_blank" href="@Url.Action("Details", "Elearning", new { id = listname.ELID })">@listname.LessonName</a>
-                                </li>
-                            </ul>
-                        </div>
-                    }
-
-                </div>
-                <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
-                    <div class="panel-heading panel-collapse-trigger">
-                        <h4 class="panel-title">Нэмэгдсэн хичээл</h4>
-                    </div>
-                    <div class="panel-body list-group">
-                        <ul class="list-group">
-                            <li class="list-group-item active">
-                                <span class="badge pull-right">@elearnlist.Count()</span>
-                                <a class="list-group-link">Нийт хичээл</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

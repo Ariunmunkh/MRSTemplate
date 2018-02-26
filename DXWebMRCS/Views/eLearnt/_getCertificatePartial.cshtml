@@ -1,0 +1,7 @@
+@Html.DevExpress().DocumentViewer(settings => {
+    settings.Name = "getCertificate";
+    settings.CallbackRouteValues = new { Controller = "eLearnt", Action = "getCertificatePartial" };
+    settings.ExportRouteValues = new { Controller = "eLearnt", Action = "getCertificatePartialExport" };
+	settings.Report = (XtraReport)Model;
+	settings.ToolbarMode = DocumentViewerToolbarMode.StandardToolbar;
+}).GetHtml()

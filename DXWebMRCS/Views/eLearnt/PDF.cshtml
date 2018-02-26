@@ -1,0 +1,9 @@
+﻿@model DXWebMRCS.Models.eService
+
+    @{
+        ViewBag.Title = "CreatePdf";
+        //Layout = "~/Views/Shared/_rootLayout.cshtml";
+        Layout = "~/Views/Shared/_PdfLayout.cshtml";
+    }
+
+@Html.Action("getCertificatePartial")

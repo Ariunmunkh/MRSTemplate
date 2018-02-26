@@ -147,7 +147,7 @@
                                 {
                                     foreach (var l in certcount.Take(7))
                                     {
-                                        <a href="@Url.Action("ViewPdf", "eLearnt", new { id = l.eServiceid, lessonname = l.LessonName})" target="_blank" class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="@l.LessonName хичээл">
+                                        <a href="@Url.Action("PDF", "eLearnt", new { id = l.eServiceid})" target="_blank" class="btn btn-default text-grey-400 btn-lg btn-circle paper-shadow relative" data-hover-z="0.5" data-animated data-toggle="tooltip" data-title="@l.LessonName хичээл">
                                             <i class="fa fa-file-text"></i>
                                         </a>
                                     }
