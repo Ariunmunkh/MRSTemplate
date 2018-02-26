@@ -4,11 +4,11 @@
     settings.Name = "BodyMon";
     settings.CallbackRouteValues = new { Controller = "Project", Action = "EditBodyMonPartial" };
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-    //if (Model != null)
-    //    settings.Html = Model.BodyMon;
+    if (Model != null)
+        settings.Html = Model.BodyMon;
     settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;    
     settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "Project", Action = "BodyMonPartialImageUpload" };
     settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = DXWebMRCS.Controllers.ProjectControllerBodyMonSettings.ImageUploadDirectory;
     settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(DXWebMRCS.Controllers.ProjectControllerBodyMonSettings.ImageUploadValidationSettings);
     settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(DXWebMRCS.Controllers.ProjectControllerBodyMonSettings.ImageSelectorSettings);
-}).Bind(Model.BodyMon).GetHtml()
+}).GetHtml()
