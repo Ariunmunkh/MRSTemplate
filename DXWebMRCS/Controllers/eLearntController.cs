@@ -68,18 +68,18 @@ namespace DXWebMRCS.Controllers
             return View(eservice);
            //return new ActionAsPdf("CreatePdf",eservice, new { id = id }) { FileName = "Certificate.pdf" };
         }
-        [InitializeSimpleMembership]
-        public ActionResult ViewPdf(int id, string lessonname)
-        {
-            return new Rotativa.MVC.ActionAsPdf("CreatePdf", new { id = id, lessonname = lessonname }) 
-            {
-                RotativaOptions = new Rotativa.Core.DriverOptions()
-                {
-                    PageSize = Rotativa.Core.Options.Size.A4,
-                    PageOrientation = Rotativa.Core.Options.Orientation.Landscape
-                }
-            };
-        }
+        //[InitializeSimpleMembership]
+        //public ActionResult ViewPdf(int id, string lessonname)
+        //{
+        //    return new Rotativa.MVC.ActionAsPdf("CreatePdf", new { id = id, lessonname = lessonname }) 
+        //    {
+        //        RotativaOptions = new Rotativa.Core.DriverOptions()
+        //        {
+        //            PageSize = Rotativa.Core.Options.Size.A4,
+        //            PageOrientation = Rotativa.Core.Options.Orientation.Landscape
+        //        }
+        //    };
+        //}
         
         protected override void Dispose(bool disposing)
         {
