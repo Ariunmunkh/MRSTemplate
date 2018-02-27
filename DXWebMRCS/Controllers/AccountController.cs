@@ -58,8 +58,7 @@ namespace DXWebMRCS.Controllers
                 LastName = "Admin",
                 BirthOfDay = DateTime.Now,
                 Gender = 1,
-                PhoneNumber = 0,
-                Type = 0
+                PhoneNumber = 0
             });
             Roles.AddUserToRole("admin@admin.mn", "Admin");
         }

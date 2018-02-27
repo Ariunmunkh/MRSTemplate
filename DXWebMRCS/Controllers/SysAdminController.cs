@@ -167,7 +167,7 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult UserProfile()
         {
-            var model = db.Database.SqlQuery<EditRegisterModel>("SELECT TOP 1 UserId as Id, LastName, Name AS UserName, BirthOfDay, PhoneNumber, UserName AS Email, CONVERT(varchar(5), Type) AS TYPE, AvatarPath FROM UserProfile WHERE UserId = " + WebSecurity.CurrentUserId).FirstOrDefault();
+            var model = db.Database.SqlQuery<EditRegisterModel>("SELECT TOP 1 UserId as Id, LastName, Name AS UserName, BirthOfDay, PhoneNumber, UserName AS Email, AvatarPath FROM UserProfile WHERE UserId = " + WebSecurity.CurrentUserId).FirstOrDefault();
             return View(model);
         }
 
@@ -201,12 +201,16 @@ namespace DXWebMRCS.Controllers
                 _user.LastName = model.LastName;
                 _user.Name = model.UserName;
                 _user.UserName = model.Email;
+                _user.Email = model.Email;
                 _user.PhoneNumber = model.PhoneNumber;
 
                 _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
 
                 db.Entry(_user).State = EntityState.Modified;
                 db.SaveChanges();
+
+                var token = WebSecurity.GeneratePasswordResetToken(model.Email);
+                  WebSecurity.ResetPassword(token, model.EditPassword);
             }
             return View(model);
         }
