@@ -103,6 +103,8 @@
                                                             @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
                                                             {
                                                                 <li>
+                                                                    if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                                    {
                                                                     <a href='@Url.Action("MenuClick", "News", new { id = item3.MenuID })'>
                                                                         @if (language == "en-US")
                                                                         {
@@ -113,22 +115,53 @@
                                                                             @item3.NameMon
                                                                         }
                                                                     </a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                    <a href='@item.NavigateUrl'>
+                                                                        @if (language == "en-US")
+                                                                        {
+                                                                            @item.NameEng
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @item.NameMon
+                                                                        }
+                                                                    </a>
+                                                                    }
                                                                 </li>
                                                             }
                                                         </ul>
                                                     }
                                                     else
                                                     {
-                                                        <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
-                                                            @if (language == "en-US")
-                                                            {
-                                                                @item2.NameEng
-                                                            }
-                                                            else
-                                                            {
-                                                                @item2.NameMon
-                                                            }
-                                                        </a>
+                                                        if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                        {
+                                                            <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
+                                                                @if (language == "en-US")
+                                                                {
+                                                                    @item2.NameEng
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item2.NameMon
+                                                                }
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href='@item.NavigateUrl'>
+                                                                @if (language == "en-US")
+                                                                {
+                                                                    @item.NameEng
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.NameMon
+                                                                }
+                                                            </a>
+                                                        }
+
                                                     }
                                                 </li>
                                             }
@@ -136,16 +169,32 @@
                                     }
                                     else
                                     {
-                                        <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>
-                                            @if (language == "en-US")
-                                            {
-                                                @item.NameEng
-                                            }
-                                            else
-                                            {
-                                                @item.NameMon
-                                            }
-                                        </a>
+                                        if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                        {
+                                            <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>
+                                                @if (language == "en-US")
+                                                {
+                                                    @item.NameEng
+                                                }
+                                                else
+                                                {
+                                                    @item.NameMon
+                                                }
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href='@item.NavigateUrl'>
+                                                @if (language == "en-US")
+                                                {
+                                                    @item.NameEng
+                                                }
+                                                else
+                                                {
+                                                    @item.NameMon
+                                                }
+                                            </a>
+                                        }
                                     }
                                 }
                                 else if (@item.MenuType == "Multi")
@@ -170,17 +219,33 @@
                                                         @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
                                                         {
                                                             <li>
-                                                                <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
-                                                                    <i class="fa fa-list-ul"></i>
-                                                                    @if (language == "en-US")
-                                                                    {
-                                                                        @item2.NameEng
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @item2.NameMon
-                                                                    }
-                                                                </a>
+                                                                @if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                                {
+                                                                    <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
+                                                                        <i class="fa fa-list-ul"></i>
+                                                                        @if (language == "en-US")
+                                                                        {
+                                                                            @item2.NameEng
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @item2.NameMon
+                                                                        }
+                                                                    </a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href='@item.NavigateUrl'>
+                                                                        @if (language == "en-US")
+                                                                        {
+                                                                            @item.NameEng
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @item.NameMon
+                                                                        }
+                                                                    </a>
+                                                                }
                                                             </li>
                                                         }
                                                     </ul>
@@ -191,16 +256,32 @@
                                     }
                                     else
                                     {
-                                        <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>
-                                            @if (language == "en-US")
-                                            {
-                                                @item.NameEng
-                                            }
-                                            else
-                                            {
-                                                @item.NameMon
-                                            }
-                                        </a>
+                                        if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                        {
+                                            <a href='@Url.Action("MenuClick", "News", new { id = @item.MenuID })'>
+                                                @if (language == "en-US")
+                                                {
+                                                    @item.NameEng
+                                                }
+                                                else
+                                                {
+                                                    @item.NameMon
+                                                }
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href='@item.NavigateUrl'>
+                                                @if (language == "en-US")
+                                                {
+                                                    @item.NameEng
+                                                }
+                                                else
+                                                {
+                                                    @item.NameMon
+                                                }
+                                            </a>
+                                        }
                                     }
                                 }
                             </li>
