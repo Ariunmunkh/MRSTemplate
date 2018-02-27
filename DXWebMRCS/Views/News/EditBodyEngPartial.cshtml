@@ -4,6 +4,11 @@
     settings.Name = "BodyEng";
     settings.CallbackRouteValues = new { Controller = "News", Action = "EditBodyEngPartial" };
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Init = (s, e) =>
+    {
+        ((MVCxHtmlEditor)s).StylesDocument.Font.Size = FontUnit.Large;
+        ((MVCxHtmlEditor)s).StylesDocument.Font.Name = "Arial";
+    };
     if (Model != null)
         settings.Html = Model.BodyEng;
     settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;

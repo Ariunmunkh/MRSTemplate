@@ -1442,6 +1442,7 @@
     <Content Include="Content\css\ytplayer\raster.png" />
     <Content Include="Content\css\ytplayer\raster_dot%402x.png" />
     <Content Include="Content\css\ytplayer\raster_dot.png" />
+    <Content Include="Content\eng.png" />
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\flaticon-set-charity.html" />
     <Content Include="Content\fonts\flaticons\flaticon-set-charity.html" />
@@ -2105,6 +2106,7 @@
     <Content Include="Content\js\vertical-timeline\js\modernizr.js" />
     <Content Include="Content\logo.PNG" />
     <Content Include="Content\logo\logo.png" />
+    <Content Include="Content\mon.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -2428,6 +2430,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802270920281_initial-branch.cs" />
+    <Compile Include="Migrations\201802270920281_initial-branch.Designer.cs">
+      <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -2481,6 +2487,9 @@
     <EmbeddedResource Include="Language\RGlobal.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802270920281_initial-branch.resx">
+      <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>

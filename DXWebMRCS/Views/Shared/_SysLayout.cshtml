@@ -62,7 +62,7 @@
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav">
                         <li class="dropdown active">
-                            <a href="@Url.Action("Create", "Menu")"><span class="fa fa-plus-circle"></span> Меню нэмэх</a>
+                            <a href="@Url.Action("Index", "Menu")"><span class="fa fa-plus-circle"></span> Меню нэмэх</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
@@ -85,6 +85,7 @@
                             <a href="@Url.Action("Create", "elearning")"><span class="fa fa-file-code-o"></span> Онлайн сургалт нэмэх</a>
                         </li>
                     </ul>
+                   
                     <ul class="nav navbar-nav navbar-nav-bordered">
                         <!-- User -->
                         <li class="dropdown">
@@ -121,7 +122,7 @@
                             <a href="#forum-menu"><i class="fa fa-file-text-o"></i><span>Цэс /Menu/</span></a>
                             <ul id="forum-menu">
                                 <li class="active"><a href="@Url.Action("Index", "Menu")"><span>Цэсний жагсаалт</span></a></li>
-                                <li class="active"><a href="@Url.Action("Create", "Menu")"><span>Цэс нэмэх</span></a></li>
+                                <li class="active"><a href="@Url.Action("Index", "Menu")"><span>Цэс нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
@@ -135,6 +136,7 @@
                             <a href="#forum-tag"><i class="fa fa-file-text-o"></i><span>Таг /Tag/</span></a>
                             <ul id="forum-tag">
                                 <li class="active"><a href="@Url.Action("Tag", "News")"><span>Таг /Tag/ жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("TagCreate", "News")"><span>Таг /Tag/ нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
@@ -148,7 +150,7 @@
                             <a href="#forum-slider"><i class="fa fa-file-text-o"></i><span>Слайд зураг /Slider/</span></a>
                             <ul id="forum-slider">
                                 <li class="active"><a href="@Url.Action("SliderList", "SysAdmin")"><span>Слайд зураг /Slider/ жагсаалт</span></a></li>
-                                <li class="active"><a href="@Url.Action("SliderCreate", "SysAdmin")"><span>Слайд зураг /Slider/ нэмэх</span></a></li>
+                                <li class="active"><a href="@Url.Action("SliderAdd/0", "SysAdmin")"><span>Слайд зураг /Slider/ нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
@@ -179,13 +181,18 @@
                                 <li class="active"><a href="@Url.Action("Create", "elearning")"><span>Сургалт нэмэх</span></a></li>
                             </ul>
                         </li>
+                        <li class="hasSubmenu active">
+                            <a href="#forum-project"><i class="fa fa-file-text-o"></i><span>Хэрэгжиж буй төслүүд</span></a>
+                            <ul id="forum-project">
+                                <li class="active"><a href="@Url.Action("Index", "Project")"><span>Төслийн жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("Create", "Project")"><span>Төсөл нэмэх</span></a></li>
+                            </ul>
+                        </li>
                         }
-                        else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
-                        {
+                    else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
+                    {
                             <li class="active"><a href="@Url.Action("Index", "News")"><i class="fa fa-bar-chart-o"></i><span>Мэдээ мэдээлэл</span></a></li>
                         }
-                    <li><a href="app-student-messages.html"><i class="fa fa-comments"></i><span>Messages</span></a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
                 </ul>
             </div>
         </div>

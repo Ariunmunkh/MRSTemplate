@@ -31,13 +31,13 @@
                             @if (language == "mn-MN")
                             {
                                 <li>
-                                    <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.English, "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    <img src="~/Content/eng.png" width="25"/> <a>@Html.ActionLink("English", "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
                                 </li>
                             }
                             else
                             {
                                 <li>
-                                    <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.Mongolia, "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    <img src="~/Content/mon.png" width="25"/> <a>@Html.ActionLink("Монгол", "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
                                 </li>
                             }
                         </ul>
