@@ -2482,7 +2482,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>
     </EmbeddedResource>

@@ -108,28 +108,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-md-2 control-label">Төрөл</label>
-                                    <div class="col-md-6">
-                                        <div class="form-control-material">
-                                            <div class="input-group">
-                                                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
-                                                                    {
-                                                                       new SelectListItem{ Text="МУЗН-ийн ажилтан", Value = "1" },
-                                                                       new SelectListItem{ Text="Сайн дурын идэвхтэн", Value = "2" },
-                                                                       new SelectListItem{ Text="Хэрэглэгч", Value = "3" }
-                                                                    }, "Та сонгоно уу.", htmlAttributes: new { @class = "form-control used", @PlaceHolder = "Төрөл" })
-                                                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-md-2 control-label">Шинэ нууц үг</label>
                                     <div class="col-md-6">
                                         <div class="form-control-material">
-                                            <a href="@Url.Action("ChangePassword", "Account")" class="form-control">Нууц үг солих </a>
-                                            @*@Html.ActionLink("Нууц үг солих ", "ChangePassword", "Account", new { @class = "form-control" })*@
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(m => m.EditPassword, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.EditPassword, "", new { @class = "text-danger" })
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

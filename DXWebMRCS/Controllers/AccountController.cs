@@ -58,8 +58,7 @@ namespace DXWebMRCS.Controllers
                 LastName = "Admin",
                 BirthOfDay = DateTime.Now,
                 Gender = 1,
-                PhoneNumber = 0,
-                Type = 0
+                PhoneNumber = 0
             });
             Roles.AddUserToRole("admin@admin.mn", "Admin");
         }
@@ -208,26 +207,44 @@ namespace DXWebMRCS.Controllers
 
                 if (_user != null)
                 {
-                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-                    client.EnableSsl = true;
-                    client.Timeout = 100000;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("gmunkhuu1124@gmail.com", "Uuriin1234");
+                    try
+                    {
 
-                    var callbackUrl = "http://localhost:4659/Account/ChangePassword?email=" + mail.Email;
+                        string systemEmailAddress = System.Configuration.ConfigurationManager.AppSettings["SystemEmailAddress"];
+                        string systemEmailPassword = System.Configuration.ConfigurationManager.AppSettings["SystemEmailPassword"];
+                        string systemEmailHost = System.Configuration.ConfigurationManager.AppSettings["SystemEmailHost"];
+                        string systemEmailPort = System.Configuration.ConfigurationManager.AppSettings["SystemEmailPort"];
+                        string password = Membership.GeneratePassword(8, 1);
 
-                    var body = string.Format("Dear {0} <BR/>" +
-                                "Thank you for registering our site!!! Please click link below in resert your password."
-                                + "Please reset your password by clicking <a href=\"{1}\" >{1} here. </a>" +
-                                " If you get any difficulties please contact our support. <br/><br/>From Red cross.<br/>Mongolia 2017</p>",
-                                _user.UserName, callbackUrl);
 
-                    MailMessage mailMessage = new MailMessage("gmunkhuu1124@gmail.com", mail.Email, "Reset Password Red Cross", body);
-                    mailMessage.IsBodyHtml = true;
-                    mailMessage.BodyEncoding = UTF8Encoding.UTF8;
-                    client.Send(mailMessage);
-                    return RedirectToAction("ChangePasswordSuccess");
+                        SmtpClient client = new SmtpClient(systemEmailHost, Convert.ToInt32(systemEmailPort));
+                        client.EnableSsl = true;
+                        client.Timeout = 100000;
+                        client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        client.UseDefaultCredentials = false;
+                        client.Credentials = new NetworkCredential(systemEmailAddress, systemEmailPassword);
+
+                        var body = string.Format("Dear {0} <BR/>" +
+                                    "Thank you for registering our site!!!  <br/>"
+                                    + "Your password is:{1} <br/>" +
+                                    " <br/>From Red cross.<br/>Mongolia {2}</p>",
+                                    _user.Name, password, DateTime.Now.Year);
+
+                        MailMessage mailMessage = new MailMessage(systemEmailAddress, mail.Email, "Reset Password Red Cross", body);
+                        mailMessage.IsBodyHtml = true;
+                        mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+                        client.Send(mailMessage);
+
+                        string token = WebSecurity.GeneratePasswordResetToken(mail.Email);
+                        WebSecurity.ResetPassword(token, password);
+
+                        return RedirectToAction("ChangePasswordSuccess");
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.ErrorMessage = "Not Send";
+                        return View();
+                    }
                 }
                 else
                 {
@@ -248,6 +265,7 @@ namespace DXWebMRCS.Controllers
         {
             if (ModelState.IsValid)
             {
+                return View(model);//ашиглахгүй болсон
                 bool changePasswordSucceeded;
                 try
                 {
