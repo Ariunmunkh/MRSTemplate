@@ -15,6 +15,7 @@ using WebMatrix.WebData;
 using PagedList;
 using DXWebMRCS.Filters;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace DXWebMRCS.Controllers
 {
@@ -118,7 +119,38 @@ namespace DXWebMRCS.Controllers
 
             return Redirect(Request.UrlReferrer.ToString());
         }
+        //public  async Task<ActionResult> Contact(ContactViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+        //        var message = new MailMessage();
+        //        message.To.Add(new MailAddress("nyamsambuu.d@redcross.mn"));  // replace with valid value 
+        //        message.Subject = "Таны санал хүсэлтийг хүлээн авлаа";
+        //        message.Body = string.Format(body, model.Name, model.Email, model.Message);
+        //        message.IsBodyHtml = true;
 
+        //        using (var smtp = new SmtpClient())
+        //        {
+        //            var credential = new NetworkCredential
+        //            {
+        //                UserName = "nyamsambuu.d@redcross.mn",  // replace with valid value
+        //                Password = "Pa$$word123"  // replace with valid value
+        //            };
+        //            smtp.Credentials = credential;
+        //            smtp.Host = "smtp.office365.com";
+        //            smtp.Port = 587;
+        //            smtp.EnableSsl = true;
+        //            await smtp.SendMailAsync(message);
+        //            return RedirectToAction("Sent");
+        //        }
+        //    }
+        //    return View(model);
+        //}
+        public ActionResult Contact()
+        {
+            return View();
+        }
         #region Home Partial Page
         [HttpGet]
         public ActionResult SliderViewPartial()

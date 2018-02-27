@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-content">
+    <!-- Divider: Contact -->
+    <section class="divider">
+        <div class="container">
+            <div class="row pt-30">
+                <div class="col-md-9">
+                    <h3 class="line-bottom mt-0 mb-30">Байршил</h3>
+                    <section>
+                        <div class="container-fluid pt-0 pb-0">
+                            <div class="row">
+
+                                <!-- Google Map HTML Codes -->
+                                <div id="map-canvas-multipointer"
+                                     data-mapstyle="default"
+                                     data-height="500"
+                                     data-zoom="6"
+                                     data-marker="~/Content/Images/map-marker.png">
+                                </div>
+                                <!-- Google Map Javascript Codes -->
+                                <script src="http://maps.google.com/maps/api/js?key=AIzaSyAYWE4mHmR9GyPsHSOVZrSCOOljk8DU9B4"></script>
+                                <script src="~/Content/js/google-map-init-multilocation.js"></script>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="line-bottom mt-0">Бидэнтэй холбогдох</h3>
+                    <p>Та Монголын улаан загалмай нийгэмлэгийн утас, и-мэйл хаяг болон фэйсбүүк хуудсаар холбогдох боломжтой.</p>
+                    <ul class="styled-icons icon-dark icon-sm icon-circled mb-20">
+                        <li><a href="https://www.facebook.com/MongolianRedCrossSociety/" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/MRCS_MN" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.youtube.com/user/RedCrossmn" data-bg-color="#D71619"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+
+                    <div class="icon-box media mb-0 pb-0">
+                        <a class="media-left pull-left flip mr-20" href="#"> <i class="pe-7s-map-2 text-theme-colored"></i></a>
+                        <div class="media-body">
+                            <h5 class="mt-0">Хаяг</h5>
+                            <p>Улаанбаатар хот, Сүхбаатар дүүрэг 1-р хороо, 1 дүгээр эмнэлэгийн урд, Монголын улаан загалмай нийгэмлэгийн байр.</p>
+                        </div>
+                    </div>
+                    <div class="icon-box media mb-0 pb-0 pt-0 mt-0">
+                        <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
+                        <div class="media-body">
+                            <h5 class="mt-0">Утас</h5>
+                            <p><a href="tel:+325-12345-65478">+976-11-323334</a></p>
+                        </div>
+                    </div>
+                    <div class="icon-box media mb-0 pb-0 pt-0 mt-0">
+                        <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
+                        <div class="media-body">
+                            <h5 class="mt-0">И-мэйл хаяг</h5>
+                            <p><a href="mailto:info@redcross.mn">info@redcross.mn</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider: Google Map -->
+
+</div>
