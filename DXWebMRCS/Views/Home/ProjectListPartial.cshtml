@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Project>
+
+@foreach (var item in Model) {
+    @foreach(var item in Model)
+{
+
+        <div class="item">
+            <div class="causes">
+                <div class="thumb">
+                    @{  string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "https://placehold.it/220x160";   }
+                    <img class="img-fullwidth mb-sm-0" src="@imageUrl" alt="@item.TitleMon">
+                </div>
+                @*<div class="progress-item mt-0">
+                        <div class="progress mb-0">
+                            <div class="progress-bar" data-percent="84"></div>
+                        </div>
+                    </div>*@
+                <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                        <h4><a href="~/Content/#">@item.TitleEng</a></h4>
+                    }
+                    else
+                    {
+                        <h4><a href="~/Content/#">@item.TitleMon</a></h4>
+                    }
+                    <ul class="list-inline clearfix font-16 pt-0 pb-10">
+                        <li class="pull-left pr-0">@item.BeginDate - @item.EndDate</li>
+                        <li class="text-theme-colored pull-right pr-0">@item.Type</li>
+                    </ul>
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                         if (@item.BodyEng.Length > 100)
+                         {
+                            <p class="font-15">@Html.Raw(item.BodyEng.Substring(0,100))</p>
+                                                }
+                                                else
+                                                {
+                            <p class="font-15">@Html.Raw(item.BodyMon)</p>
+                         }
+                        <div class="mt-10">
+                            <a class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" href="~/Content/#">Дэлгэрэнгүй</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleMon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleEng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyMon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyEng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageMedium)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BeginDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
+        </td>
+    </tr>
+}
+
+</table>

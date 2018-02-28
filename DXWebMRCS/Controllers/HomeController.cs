@@ -119,6 +119,13 @@ namespace DXWebMRCS.Controllers
 
             return Redirect(Request.UrlReferrer.ToString());
         }
+
+        public ActionResult ProjectListPartial()
+        {
+            
+            return PartialView("_ProjectListPartial");
+        }
+
         //public  async Task<ActionResult> Contact(ContactViewModel model)
         //{
         //    if (ModelState.IsValid)

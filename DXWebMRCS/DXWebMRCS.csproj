@@ -2383,6 +2383,8 @@
     <Content Include="Views\elearning\Edit.cshtml" />
     <Content Include="Views\elearning\ImageHtmlEditPartial.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\_ProjectListPartial.cshtml" />
+    <Content Include="Views\Home\ProjectListPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

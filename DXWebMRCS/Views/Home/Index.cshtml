@@ -12,7 +12,6 @@
     {
         <p>ADMIN</p>
     }*@
-    <a href="#blog" class="scrollable-fix">A</a>
     <section>
         <div class="container-fluid p-0 p-sm-15">
             <div class="section-content">
@@ -121,116 +120,45 @@
                         </div>
                         <a class="btn btn-colored btn-theme-colored btn-lg text-uppercase font-13 mt-10" href="~/Content/#">View Details</a>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                    <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="9s" data-wow-delay="0.3s">
                         <h3 class="text-uppercase line-bottom mt-0">Хэрэгжиж буй <span class="text-theme-colored"> төслүүд</span></h3>
                         <div class="owl-carousel-1col">
-                            <div class="item">
-                                <div class="causes">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="http://placehold.it/360x240" alt="">
-                                    </div>
-                                    <div class="progress-item mt-0">
-                                        <div class="progress mb-0">
-                                            <div class="progress-bar" data-percent="84"></div>
-                                        </div>
-                                    </div>
-                                    <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
-                                        <ul class="list-inline clearfix font-16 pt-0 pb-10">
-                                            <li class="pull-left pr-0">Raised: $1890</li>
-                                            <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
-                                        </ul>
-                                        <p class="font-15">Lorem ipsum dolor sit amet, consect adipi sicing elit. Praesent quos sit. sicing elit Praesent quos sit.</p>
-                                        <div class="mt-10">
-                                            <a class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" href="~/Content/#">Donate</a>
-                                            <div class="pull-right mt-15 font-16  text-theme-colored"><i class="fa fa-heart-o"></i> 89 Donors</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="causes">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="http://placehold.it/360x240" alt="">
-                                    </div>
-                                    <div class="progress-item mt-0">
-                                        <div class="progress mb-0">
-                                            <div class="progress-bar" data-percent="84"></div>
-                                        </div>
-                                    </div>
-                                    <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
-                                        <ul class="list-inline clearfix font-16 pt-0 pb-10">
-                                            <li class="pull-left pr-0">Raised: $1890</li>
-                                            <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
-                                        </ul>
-                                        <p class="font-15">Lorem ipsum dolor sit amet, consect adipi sicing elit. Praesent quos sit. sicing elit Praesent quos sit.</p>
-                                        <div class="mt-10">
-                                            <a class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" href="~/Content/#">Donate</a>
-                                            <div class="pull-right mt-15 font-16  text-theme-colored"><i class="fa fa-heart-o"></i> 89 Donors</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="causes">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="http://placehold.it/360x240" alt="">
-                                    </div>
-                                    <div class="progress-item mt-0">
-                                        <div class="progress mb-0">
-                                            <div class="progress-bar" data-percent="84"></div>
-                                        </div>
-                                    </div>
-                                    <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
-                                        <h4><a href="~/Content/#">Хүүхэд, залуучууд эмэгтэйчүүдийг, хүчирхүүлээс урьдчилан сэргийлэх</a></h4>
-                                        <ul class="list-inline clearfix font-16 pt-0 pb-10">
-                                            <li class="pull-left pr-0">Raised: $1890</li>
-                                            <li class="text-theme-colored pull-right pr-0">Goal: $2500</li>
-                                        </ul>
-                                        <p class="font-15">Lorem ipsum dolor sit amet, consect adipi sicing elit. Praesent quos sit. sicing elit Praesent quos sit.</p>
-                                        <div class="mt-10">
-                                            <a class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" href="~/Content/#">Donate</a>
-                                            <div class="pull-right mt-15 font-16  text-theme-colored"><i class="fa fa-heart-o"></i> 89 Donors</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @{Html.RenderAction("ProjectListPartial", "Home");}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
-                        <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
-                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
-                            </a>
-                            <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
-                                <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
-                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
-                            </a>
-                            <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
-                                <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
-                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
-                            </a>
-                            <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
-                                <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                            <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
+                                <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
+                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                        <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
+                                    </a>
+                                    <div class="ml-80">
+                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
+                                        <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
+                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                        <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
+                                    </a>
+                                    <div class="ml-80">
+                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
+                                        <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                    </div>
+                                </div>
+                                <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
+                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                        <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
+                                    </a>
+                                    <div class="ml-80">
+                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
+                                        <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- Section: Features  -->

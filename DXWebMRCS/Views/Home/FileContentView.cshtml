@@ -6,77 +6,76 @@
     ViewBag.Title = "FileContentView";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-
+<section>
+</section>
 <!-- Start main-content -->
-<div class="main-content">
+<div>
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
-        <div class="container pt-70 pb-20">
-            <!-- Section Content -->
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2 class="title text-white">Event List without Sidebar</h2>
-                        <ol class="breadcrumb text-center text-black mt-10">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li class="active text-gray-silver">Page Title</li>
-                            <li class="active text-theme-colored">Event List without Sidebar</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Section: event calendar -->
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    @foreach (var item in Model)
-                    {
-                        <div class="upcoming-events bg-white-f3 mb-20">
-                            <div class="row">
-                                <div class="col-sm-4 pr-0 pr-sm-15">
-                                    <div class="thumb p-15">
+                <div class="col-md-9">
+                    <div class="upcoming-events bg-white-f3 mb-20">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-sm-3 pr-0 pr-sm-15">
+                                    <div class="thumb p-10">
                                         @{  string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "https://placehold.it/220x160";   }
-                                        <img class="img-fullwidth" src=@imageUrl alt="...">
+                                        <img class="img-fullwidth" src="@imageUrl" alt="@item.TitleMon">
                                     </div>
                                 </div>
-                                <div class="col-sm-4 pl-0 pl-sm-15">
+                                <div class="col-sm-9 pl-0 pl-sm-15">
                                     <div class="event-details p-15 mt-20">
-                                        <h4 class="mt-0 text-uppercase font-weight-500">
-                                            @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                                             {
-                                                @item.TitleEng
+                                    <a href="@item.FilePath" target="_blank"><h4 class="media-heading text-uppercase font-weight-900">@item.TitleEng</h4></a>
                                             }
-                                            else
+                                        else
+                                        {
+                                            <a href="@item.FilePath" target="_blank"><h4 class="media-heading text-uppercase font-weight-900">@item.TitleMon</h4></a>
+                                        }
+                                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                                             {
-                                                @item.TitleEng
+                                                if (@item.DescriptionEng.Length > 300)
+                                                { 
+                                                     <p style="text-align:justify">@item.DescriptionEng.Substring(0,300) ...</p>
+                                                }
+                                                else
+                                                {
+                                                     <p style="text-align:justify">@item.DescriptionEng</p>
+                                                }
                                             }
-                                        </h4>
-                                        <p>
-                                            @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
-                                            {
-                                                @item.DescriptionEng
-                                            }
-                                            else
-                                            {
-                                                @item.DescriptionMon
-                                            }
-                                        </p>
-                                        @*<a href='@Url.Action("DownLoadFile", "Home", new { id = @item.Id })' class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10">Download</a>*@
-                                        @Html.ActionLink("Click here to download", "Download", new { id = @item.Id }, new { @class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10"})
+                                        else
+                                        {
+                                            if (@item.DescriptionEng.Length > 300)
+                                                { 
+                                                     <p style="text-align:justify">@item.DescriptionMon.Substring(0, 300) ...</p>
+                                                }
+                                                else
+                                                {
+                                                     <p style="text-align:justify">@item.DescriptionMon</p>
+                                                }
+                                        }
+                                        @Html.ActionLink("DOWNLOAD", "Download", new { id = @item.Id }, new { @class = "btn btn-flat btn-dark btn-theme-colored btn-sm" })
                                     </div>
                                 </div>
-                            </div>
+                            }
+
                         </div>
-                    }
-                    <div class="row">
-                        <div class="col-sm-12">
-                            @Html.PagedListPager(Model, page => Url.Action("FilePageClick", new { page = page }))
+                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("FilePageClick", new { page = page }))
+                </div>
+                <div class="col-md-3">
+                    <div class="sidebar sidebar-right mt-sm-30">
+                        <div class="widget">
+                            <div class="fb-page" data-href="https://www.facebook.com/MongolianRedCrossSociety/" data-tabs="timeline" data-width="292" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/MongolianRedCrossSociety/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MongolianRedCrossSociety/">Mongolian Red Cross Society</a></blockquote></div>
+                        </div>
+                        <div class="widget">
+                            <a class="twitter-timeline" href="https://twitter.com/MRCS_MN?ref_src=twsrc%5Etfw" data-tabs="timeline" data-width="292" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">Tweets by MRCS_MN</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         </div>
                     </div>
                 </div>
@@ -85,3 +84,11 @@
     </section>
 </div>
 <!-- end main-content -->
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

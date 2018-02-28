@@ -241,6 +241,7 @@ namespace DXWebMRCS.Controllers
         #endregion
     }
 
+
     public class ProjectControllerBodyEngSettings1
     {
         public const string ImageUploadDirectory = "~/Content/UploadImages/";

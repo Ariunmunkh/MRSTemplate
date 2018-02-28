@@ -19,7 +19,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-11 col-sm-11 col-xs-11">
                 @using (Html.BeginForm("Create", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
@@ -84,9 +84,9 @@
                                 @Html.DropDownList("Type", new List<SelectListItem>
 
                             {
-                               new SelectListItem{ Text="Гамшигийн менежмент", Value = "DM" },
+                               new SelectListItem{ Text="Гамшгийн менежментийн хөтөлбөр", Value = "DM" },
                                new SelectListItem{ Text="Нийгмийн оролцоог дэмжих", Value = "SSP" },
-                               new SelectListItem{ Text="Эрүүл мэндийн хөтөлбөр", Value = "HP" },
+                               new SelectListItem{ Text="Нийтийн эрүүл мэндийг дэмжих хөтөлбөр", Value = "HP" },
                                new SelectListItem{ Text="Хүүхэд, залуучуудын хөтөлбөр", Value = "CAYP" },
                             }, "Төрөл сонгоно уу!", htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Type)

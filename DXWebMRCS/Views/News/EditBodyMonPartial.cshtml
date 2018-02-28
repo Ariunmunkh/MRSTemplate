@@ -4,6 +4,12 @@
     settings.Name = "BodyMon";
     settings.CallbackRouteValues = new { Controller = "News", Action = "EditBodyMonPartial" };
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Init = (s, e) =>
+    {
+        ((MVCxHtmlEditor)s).StylesDocument.Font.Size = FontUnit.Point(14);
+        ((MVCxHtmlEditor)s).StylesDocument.ForeColor = System.Drawing.Color.FromArgb(25, 25, 25, 0);
+        ((MVCxHtmlEditor)s).StylesDocument.Font.Name = "Tahoma";
+    };
     if (Model != null)
         settings.Html = Model.BodyMon;
     settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;    
