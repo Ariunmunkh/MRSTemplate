@@ -103,7 +103,7 @@
                                                             @foreach (var item3 in Model.Where(x => x.ParentId == item2.MenuID))
                                                             {
                                                                 <li>
-                                                                    if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                                    if (string.IsNullOrEmpty(@item3.NavigateUrl))
                                                                     {
                                                                     <a href='@Url.Action("MenuClick", "News", new { id = item3.MenuID })'>
                                                                         @if (language == "en-US")
@@ -118,14 +118,14 @@
                                                                     }
                                                                     else
                                                                     {
-                                                                    <a href='@item.NavigateUrl'>
+                                                                    <a href='@item3.NavigateUrl'>
                                                                         @if (language == "en-US")
                                                                         {
-                                                                            @item.NameEng
+                                                                            @item3.NameEng
                                                                         }
                                                                         else
                                                                         {
-                                                                            @item.NameMon
+                                                                            @item3.NameMon
                                                                         }
                                                                     </a>
                                                                     }
@@ -135,7 +135,7 @@
                                                     }
                                                     else
                                                     {
-                                                        if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                        if (string.IsNullOrEmpty(@item2.NavigateUrl))
                                                         {
                                                             <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
                                                                 @if (language == "en-US")
@@ -150,14 +150,14 @@
                                                         }
                                                         else
                                                         {
-                                                            <a href='@item.NavigateUrl'>
+                                                            <a href='@item2.NavigateUrl'>
                                                                 @if (language == "en-US")
                                                                 {
-                                                                    @item.NameEng
+                                                                    @item2.NameEng
                                                                 }
                                                                 else
                                                                 {
-                                                                    @item.NameMon
+                                                                    @item2.NameMon
                                                                 }
                                                             </a>
                                                         }
@@ -219,7 +219,7 @@
                                                         @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
                                                         {
                                                             <li>
-                                                                @if (string.IsNullOrEmpty(@item.NavigateUrl))
+                                                                @if (string.IsNullOrEmpty(@item2.NavigateUrl))
                                                                 {
                                                                     <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
                                                                         <i class="fa fa-list-ul"></i>
@@ -235,14 +235,14 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    <a href='@item.NavigateUrl'>
+                                                                    <a href='@item2.NavigateUrl'>
                                                                         @if (language == "en-US")
                                                                         {
-                                                                            @item.NameEng
+                                                                            @item2.NameEng
                                                                         }
                                                                         else
                                                                         {
-                                                                            @item.NameMon
+                                                                            @item2.NameMon
                                                                         }
                                                                     </a>
                                                                 }
