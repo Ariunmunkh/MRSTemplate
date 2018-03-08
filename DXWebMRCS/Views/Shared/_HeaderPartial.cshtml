@@ -3,7 +3,8 @@
     ViewBag.Title = "_HeaderPartial";
 }
 @{
-    string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
+    string language = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var listBranch = DXWebMRCS.Models.NorthwindDataProvider.GetAllBranchs();}
 <!-- Header -->
 <header id="header" class="header">
     <div class="header-top bg-theme-color-2 sm-text-center">
@@ -31,13 +32,13 @@
                             @if (language == "mn-MN")
                             {
                                 <li>
-                                    <img src="~/Content/eng.png" width="25"/> <a>@Html.ActionLink("English", "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    <img src="~/Content/eng.png" width="25" style=" margin-bottom: 3px;" /> <a>@Html.ActionLink("English", "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
                                 </li>
                             }
                             else
                             {
                                 <li>
-                                    <img src="~/Content/mon.png" width="25"/> <a>@Html.ActionLink("Монгол", "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    <img src="~/Content/mon.png" width="25" style=" margin-bottom: 3px;" /> <a>@Html.ActionLink("Монгол", "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
                                 </li>
                             }
                         </ul>
@@ -286,6 +287,54 @@
                                 }
                             </li>
                         }
+                        <li>
+
+                            @if (language == "en-US")
+                            {
+                                <a href='~/Home/BranchList'>Branches</a>
+                            }
+                            else
+                            {
+                                <a href='~/Home/BranchList'>Салбар</a>
+                            }
+
+                            <div class="megamenu">
+                                <div class="megamenu-row">
+
+                                    @for (int index = 0, count = 10; index < (listBranch as List<DXWebMRCS.Models.Branch>).Count; index += 10)
+                                    {
+                                        if (index + count > (listBranch as List<DXWebMRCS.Models.Branch>).Count)
+                                        {
+                                            count = (listBranch as List<DXWebMRCS.Models.Branch>).Count % 10;
+                                        }
+                                        <div class="col3">
+                                            <ul class="list-unstyled list-dashed">
+                                                @foreach (var item2 in (listBranch as List<DXWebMRCS.Models.Branch>).GetRange(index, count))
+                                                {
+                                                    <li>
+                                                        <a href='@Url.Action("BranchView", "Branch", new { branchId = @item2.BranchID, menuID = 0 })'>
+                                                            <i class="fa fa-list-ul"></i>
+                                                            @if (language == "en-US")
+                                                            {
+                                                                @item2.NameEng
+                                                            }
+                                                            else
+                                                            {
+                                                                @item2.NameMon
+                                                            }
+                                                        </a>
+
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+
+                        </li>
+
                     </ul>
 
                 </nav>

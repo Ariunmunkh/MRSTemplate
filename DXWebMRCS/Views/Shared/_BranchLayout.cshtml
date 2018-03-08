@@ -94,40 +94,44 @@
                         <div class="col-md-3 pt-10 pb-10">
                             <div class="widget no-border m-0">
                                 <ul class="list-inline text-right sm-text-center">
-                                    <li>
-                                        <a href="#" class="text-white">FAQ</a>
-                                    </li>
-                                    <li class="text-white">|</li>
-                                    <li>
-                                        <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.English, "Change", "Branch", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
-                                    </li>
-                                    <li class="text-white">|</li>
-                                    <li>
-                                        <a>@Html.ActionLink(DXWebMRCS.Language.RGlobal.Mongolia, "Change", "Branch", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    @if (Roles.IsUserInRole("Admin") || Roles.IsUserInRole("BranchUser"))
+                                    {
+                                        <li>
+                                            <a href="~/News" class="text-white">Admin panel</a>
+                                        </li>
+                                        <li class="text-white">|</li>
+                                    }
+                                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "mn-MN")
+                                    {
+                                        <li>
+                                            <img src="~/Content/eng.png" width="25" style=" margin-bottom: 3px;" /> <a>@Html.ActionLink("English", "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <img src="~/Content/mon.png" width="25" style=" margin-bottom: 3px;" /> <a>@Html.ActionLink("Монгол", "Change", "Home", new { lan = "mn-MN" }, htmlAttributes: new { @class = "text-white" })</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pb-10">
+                            <div class="widget no-border m-0">
+                                <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
+                                    <li class="mt-sm-10 mb-sm-10">
+                                        @Html.Partial("_LoginPartial")
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        @*<div class="col-md-2 pb-10">
-                            <div class="widget no-border m-0">
-                                <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
-                                    <li class="mt-sm-10 mb-sm-10">
-
-                                        <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 ajaxload-popup" href="ajax-load/donation-form.html">Donate Now</a>
-                                    </li>
-                                    <li class="mt-sm-10 mb-sm-10">
-                                        <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 ajaxload-popup" href="ajax-load/volunteer-apply-form.html">Join Us</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>*@
                     </div>
                 </div>
             </div>
 
-            @{ Html.RenderAction("BranchHeaderPartial", "Branch", new { branchId = Model.BranchID}); }
+            @{ Html.RenderAction("BranchHeaderPartial", "Branch", new { branchId = Model.BranchID }); }
         </header>
-        
+
         <!-- Start main-content -->
         <div class="main-content">
             @{ string imageUrl = string.IsNullOrEmpty(Model.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Image; }
@@ -157,7 +161,7 @@
                                 else
                                 {
                                     <img class="img-responsive" src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Logo)" alt="" />
-                                }                                
+                                }
                             </div>
                         </div>
                     </div>
@@ -166,7 +170,6 @@
             @RenderBody()
         </div>
         <!-- end main-content -->
-          
         @Html.Partial("_FooterPartial");
 
         <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
