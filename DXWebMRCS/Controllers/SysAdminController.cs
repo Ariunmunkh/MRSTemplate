@@ -465,6 +465,9 @@ namespace DXWebMRCS.Controllers
         {
             if (ModelState.IsValid)
             {
+                UserProfile temp = db.UserProfiles.Find(User.UserId);
+                temp.BranchId = User.BranchId;
+                User = temp;
                 db.Entry(User).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
