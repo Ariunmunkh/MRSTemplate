@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DXWebMRCS.Models.videos>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Шинэ бичлэг нэмэх", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Д/Д")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Link)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Link)
+        </td>
+        <td>
+            @Html.ActionLink("Засах", "Edit", new { id=item.VID }) |
+            @Html.ActionLink("Устгах", "Delete", new { id=item.VID })
+        </td>
+    </tr>
+}
+
+</table>

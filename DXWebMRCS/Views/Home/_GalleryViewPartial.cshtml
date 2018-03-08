@@ -31,12 +31,12 @@
             <div class="@Url.Content("gallery-item tags" + item.TagID)">
                 <div class="thumb">
                     @{  string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "http://placehold.it/360x240";}
-                    <img alt="project" src=@imageUrl class="img-fullwidth">
+                    <img alt="project" src="@imageUrl" class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">
                         <div class="icons-holder-inner">
                             <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                <a href=@imageUrl data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
+                                <a href="@imageUrl" data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
                             </div>
                         </div>
                     </div>

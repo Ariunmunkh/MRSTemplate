@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DXWebMRCS.Models.videos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    string language = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+
+<!-- Start main-content -->
+<div class="main-content bg-lighter">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="../Content/IMG_0725.JPG">
+        <div class="container pt-60 pb-60">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if (language == "en-US")
+                        {
+                            <h2 class="title text-white">Videos</h2>
+                        }
+                        else
+                        {
+                            <h2 class="title text-white">Видео сан</h2>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Gallery -->
+    <section id="gallery">
+        <div class="container pt-50 pb-30">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Portfolio Gallery Grid -->
+                        <div id="grid" class="gallery-isotope grid-3 gutter clearfix">
+                            @foreach (var item in Model)
+                            {
+                                                            <!-- Portfolio Item Start -->
+                                <div class="gallery-item wheel">
+                                    <div class="work-gallery">
+                                        <div class="gallery-thumb">
+                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/@item.Link" `class="img-fullwidth" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                        </div>
+                                        <div class="gallery-bottom-part text-center">
+                                            <h4 class="title text-uppercase font-raleway font-weight-500 m-0">@item.title</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- Portfolio Item End -->
+                            }
+                        </div>
+                        <!-- End Portfolio Gallery Grid -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<!-- end main-content -->

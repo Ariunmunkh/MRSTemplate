@@ -1,0 +1,54 @@
+﻿@model DXWebMRCS.Models.videos
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>videos</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.VID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.title, new { @class = "form-control", @style = "background-color:white", placeholder = "Бичлэг гарчиг оруулна" })
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body buttons-spacing-vertical">
+                        <p>
+                            <b class="text-primary">САНАМЖ</b><br />Линк /youtube бичлэг оруулахдаа "www.youtube.com/watch?v=UJvXwNWQACc" тэнцүүгийн тэмдэгийн
+                            арын кодыг "UJvXwNWQACc" хуулж тавьна уу!!
+                        </p>
+                    </div>
+                </div>
+                @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @style = "background-color:white", placeholder = "Youtube холбоос оруулна" })
+                @Html.ValidationMessageFor(model => model.Link)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Засах" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

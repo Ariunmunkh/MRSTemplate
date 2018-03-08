@@ -1,0 +1,40 @@
+﻿@model DXWebMRCS.Models.videos
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+
+<h3>Энэ бичлэгийг устгахдаа та итгэлтэй байна уу?</h3>
+<div>
+    <h4>videos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Устгах" class="btn btn-default" /> |
+            @Html.ActionLink("Буцах", "List")
+        </div>
+    }
+</div>

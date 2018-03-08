@@ -1,0 +1,121 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Magazine>
+@{
+    ViewBag.Title = "MagazineList";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <button type="button" class="btn btn-primary" id="SliderCreate">Сэтгүүл нэмэх</button>
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">Зураг</th>
+                                <th style="text-align: center">Монгол гарчиг</th>
+                                <th style="text-align: center">Англи гарчиг</th>
+                                <th style="text-align: center">Тайлбайр Англи</th>
+                                <th style="text-align: center">Тайлбайр Монгол</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+
+                        <form id="formId" class="horizontal-form" role="form" enctype="multipart/form-data">
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    @{string imageUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @item.Image;}
+                                    <td class="a-center" style="vertical-align:middle;text-align:center"><img id="user_img" height="100" width="90" src="@imageUrl" /></td>
+                                    <td class="a-center" style="vertical-align:middle">@item.TitleEng</td>
+                                    <td class="a-center" style="vertical-align:middle">@item.TitleMon</td>
+                                    <td class="a-center" style="vertical-align:middle">@item.DescriptionEng</td>
+                                    <td class="a-center" style="vertical-align:middle">@item.DescriptionMon</td>
+                                    <td class="a-center" style="vertical-align: middle; text-align: center">
+                                        @Html.ActionLink("Click here to download", "Download", new { id = @item.Id })
+                                    </td>
+                                    <td class="a-center" style="vertical-align:middle;text-align:center">
+                                        <a class="btn btn-default btn-xs" sliderid="@item.Id" href='@Url.Action("_UploadMagazine", "SysAdmin", new { id = @item.Id })'>
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="ActionEdit btn btn-danger btn-xs" id="@item.Id" sliderid="@item.Id" href="javascript:;">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+                                    @*<td id="" class="a-center" style="vertical-align:middle">
+
+                                        </td>*@
+                                </tr>
+                            }
+
+                        </form>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(".ActionEdit").click(function (e) {
+        e.preventDefault();
+        console.log("---------1----------");
+        var id = $(this).attr('itemid');
+        var sliderId = $(this).attr('sliderId');
+        //alert(ButtonId + ' ' + jobPostId);
+        console.log("id = " + id);
+        console.log("sliderId = " + sliderId);
+
+        var row = document.getElementById(sliderId);
+        console.log("row = " + row.parentNode.parentNode.tagName);
+        var table = row.parentNode.parentNode;
+        while (table.tagName != 'TR') {
+            table = table.parentNode;
+        }
+        table.parentNode.removeChild(table);
+        //console.log("row.rowIndex = " + row.parentNode.rowIndex);
+        //table.deleteRow(row.parentNode.rowIndex);
+
+
+        var baseurl = '@Url.Action("MagazineDelete", "SysAdmin")';
+        $.ajax({
+            url: baseurl,
+            type: 'POST',
+            data: { 'id': sliderId },
+            datatype: 'json',
+            success: function (data) {
+                //window.location.href = '@Url.Action("MagazineList", "SysAdmin")';
+                console.log(data);
+
+            },
+
+        });
+    });
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        /* Save JobPost */
+        $('#formId').submit(function (e) {
+            e.preventDefault();
+            return false;
+        });
+
+        $('#SliderCreate').click(function () {
+            var id = $(this).attr('sliderId');
+            window.location.href = '@Url.Action("_UploadMagazine", "SysAdmin", new { id = 0 })';
+        });
+    });
+</script>

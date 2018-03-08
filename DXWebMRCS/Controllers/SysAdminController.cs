@@ -33,7 +33,116 @@ namespace DXWebMRCS.Controllers
 
             return RedirectToAction("index", "News");
         }
+        #region Magazine upload
+        [HttpGet]
+        public ActionResult _UploadMagazine(int id)
+        {
+            if (id > 0)
+            {
+                Magazine file = new Magazine();
+                file = db.Magazine.FirstOrDefault(x => x.Id == id);
+                return View(file);
+            }
+            else
+            {
+                Magazine file = new Magazine();
+                return View(file);
+            }
+        }
 
+        [HttpGet]
+        public ActionResult MagazineList()
+        {
+            // DXCOMMENT: Pass a data model for GridView      
+            var list = db.Magazine.OrderByDescending(x => x.Id).ToList();
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult MagazineDelete(int id)
+        {
+            //var file = db.FileContents.FirstOrDefault(x => x.Id == id);
+            //System.IO.File.Delete(file.FilePath);
+            db.Database.ExecuteSqlCommand("DELETE FROM Magazines WHERE id = " + id);
+            return Json("Success");
+        }
+
+        public FileResult MagazineDownLoad(int id)
+        {
+            var file = db.Database.SqlQuery<Magazine>("SELECT TOP 1 * FROM Magazines WHERE id = " + id).FirstOrDefault();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\Magazine\\";
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
+            string fileName = file.FileName + file.FileExtension;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+        [HttpPost]
+        //[AllowAnonymous]
+        public ActionResult _UploadMagazine(Magazine model, HttpPostedFileBase ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                string imageName = string.Empty;
+                string fileName = string.Empty;
+                String FileExt = Path.GetExtension(model.File.FileName).ToUpper();
+
+                if (FileExt == ".PDF" || FileExt == ".DOCX")
+                {
+
+                    string subPath = "/Content/Magazine"; // your code goes here
+
+                    bool exists = System.IO.Directory.Exists(Server.MapPath(subPath));
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath(subPath));
+
+                    if (ImageFile != null)
+                    {
+                        imageName = Path.GetFileNameWithoutExtension(ImageFile.FileName);
+                        string extension = Path.GetExtension(ImageFile.FileName);
+                        imageName = imageName + DateTime.Now.ToString("yymmssfff") + extension;
+                        model.Image = "/Content/Magazine/" + imageName;
+                        imageName = Path.Combine(Server.MapPath("~/Content/Magazine/"), imageName);
+                        ImageFile.SaveAs(imageName);
+                    }
+
+                    if (model.File != null)
+                    {
+                        fileName = Path.GetFileNameWithoutExtension(model.File.FileName);
+                        string extension2 = Path.GetExtension(model.File.FileName);
+
+                        model.FileName = fileName + DateTime.Now.ToString("yymmssfff");
+                        model.FileExtension = extension2;
+                        fileName = model.FileName + extension2;
+
+                        model.FilePath = "/Content/Magazine/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Content/Magazine/"), fileName);
+                        model.File.SaveAs(fileName);
+                    }
+
+                    if (model != null && model.Id > 0)
+                    {
+                        db.Entry(model).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        db.Magazine.Add(model);
+                        db.SaveChanges();
+                    }
+
+                    return View("MagazineList", db.Magazine.ToList());
+                }
+                else
+                {
+                    ViewBag.FileStatus = "Invalid file format.";
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+        #endregion
         #region Upload FIle
         [HttpGet]
         public ActionResult _UploadFile(int id)

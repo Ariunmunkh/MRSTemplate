@@ -1,0 +1,116 @@
+﻿@model DXWebMRCS.Models.Magazine
+@{
+    ViewBag.Title = "_UploadMagazine";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Upload file</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_content">
+                    @using (Html.BeginForm("_UploadMagazine", "SysAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Training</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(m => m.Id)
+                            @Html.HiddenFor(m => m.Image)
+                            @Html.HiddenFor(m => m.FilePath)
+                            @Html.HiddenFor(m => m.FileName)
+                            @Html.HiddenFor(m => m.FileExtension)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @if (string.IsNullOrEmpty(Model.Image))
+                                    {
+                                        <img id="user_img" src="~/Content/images/defaultImage.png" class="avatar" width="120" height="100" alt="Avatar">
+                                    }
+                                    else
+                                    {
+                                        <img id="user_img" src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Image)" height="120" width="100" alt="Avatar" />
+                                    }
+
+                                    <div class="media-body">
+                                        <input type="file" name="ImageFile" class="btn btn-white btn-sm paper-shadow relative" onchange="show(this)">
+                                        @*<a href="#" class="btn btn-white btn-sm paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated> Add Image<i class="fa fa-upl"></i></a>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TitleEng, new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.TextBoxFor(model => model.TitleEng, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TitleEng)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TitleMon, new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.TextBoxFor(model => model.TitleMon, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TitleMon)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DescriptionEng, new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.TextBoxFor(model => model.DescriptionEng, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DescriptionEng)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DescriptionMon, new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.TextBoxFor(model => model.DescriptionMon, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DescriptionMon)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FilePath, new { @class = "control-label col-md-2" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.File, "", new { @type = "file", @multiple = "multiple" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<!-- /page content -->
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>  

@@ -120,45 +120,43 @@
                         </div>
                         <a class="btn btn-colored btn-theme-colored btn-lg text-uppercase font-13 mt-10" href="~/Content/#">View Details</a>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="9s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-0">Хэрэгжиж буй <span class="text-theme-colored"> төслүүд</span></h3>
-                        <div class="owl-carousel-1col">
-                            @{Html.RenderAction("ProjectListPartial", "Home");}
+                    <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
+                        <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
+                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
+                            </a>
+                            <div class="ml-80">
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
+                                <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                            </div>
                         </div>
-                    </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                                <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
-                                <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
-                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                        <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
-                                    </a>
-                                    <div class="ml-80">
-                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
-                                        <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
-                                    </div>
-                                </div>
-                                <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
-                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                        <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
-                                    </a>
-                                    <div class="ml-80">
-                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
-                                        <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
-                                    </div>
-                                </div>
-                                <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
-                                    <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
-                                        <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
-                                    </a>
-                                    <div class="ml-80">
-                                        <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
-                                        <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
-                                    </div>
-                                </div>
+                        <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
+                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
+                            </a>
+                            <div class="ml-80">
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
+                                <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                            </div>
+                        </div>
+                        <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
+                            <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
+                                <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
+                            </a>
+                            <div class="ml-80">
+                                <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
+                                <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <h3 class="text-uppercase line-bottom mt-0">Хэрэгжиж буй <span class="text-theme-colored"> төслүүд</span></h3>
+                        @{Html.RenderAction("ProjectListPartial", "Home");}
+                    </div>
                 </div>
+            </div>
+        </div>
     </section>
 
     <!-- Section: Features  -->
@@ -885,7 +883,7 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-uppercase">Мэдээ,  <span class="text-theme-colored"> Мэдээлэл</span></h2>
+                        <a href="@Url.Action("NewsList", "News")"><h2 class="mt-0 line-height-1 text-uppercase">Мэдээ,  <span class="text-theme-colored"> Мэдээлэл</span></h2></a>
                         <p>МУЗН-ийн үйл ажиллагаатай холбоотой мэдээ мэдээллийг харж болно!</p>
                     </div>
                 </div>

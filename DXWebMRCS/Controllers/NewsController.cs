@@ -26,7 +26,7 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.News.ToList());
+            return View(db.News.ToList().OrderByDescending(x => x.Date));
         }
 
         #region News Role user
@@ -118,7 +118,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult NewsList()
         {
             var pageNumber = 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
@@ -482,7 +482,7 @@ namespace DXWebMRCS.Controllers
         [ValidateInput(false)]
         public ActionResult NewsViewPartial()
         {
-            var model = db1.News;
+            var model = db1.News.OrderByDescending(x=>x.Date);
             return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
 

@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<DXWebMRCS.Models.Project>
 
-@foreach(var item in Model)
+@foreach (var item in Model)
 {
 
-        @*<div class="item">
+    <div class="owl-carousel-1col">
+        <div class="item">
             <div class="causes">
                 <div class="thumb">
                     @{  string imageUrl = item.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.Image : "https://placehold.it/220x160";   }
@@ -14,33 +15,71 @@
                             <div class="progress-bar" data-percent="84"></div>
                         </div>
                     </div>*@
-                @*<div class="causes-details bg-white clearfix border-2px p-15 pt-10">
+                <div class="causes-details bg-white clearfix border-2px p-15 pt-10">
                     @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                     {
-                        <h4><a href="~/Content/#">@item.TitleEng</a></h4>
+                        <h4><a href="@Url.Action("Details", "Project", new { id = item.ProjectID })">@item.TitleEng</a></h4>
                     }
                     else
                     {
-                        <h4><a href="~/Content/#">@item.TitleMon</a></h4>
+                        <h4><a href="@Url.Action("Details", "Project", new { id = item.ProjectID })">@item.TitleMon</a></h4>
                     }
                     <ul class="list-inline clearfix font-16 pt-0 pb-10">
-                        <li class="pull-left pr-0">@item.BeginDate - @item.EndDate</li>
+                        <li class="pull-left pr-0">
+                            @item.BeginDate.Value.ToString("yyyy-MM-dd")
+                            @if (item.EndDate == null)
+                            {
+                                var s = "";
+                            }
+                            else
+                            {
+                                var v = "-" + item.EndDate.Value.ToString("yyyy-MM-dd");
+                                v.ToString();
+                            }
+                        </li>
                         <li class="text-theme-colored pull-right pr-0">@item.Type</li>
                     </ul>
+
                     @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
                     {
-                         if (@item.BodyEng.Length > 100)
-                         {
-                            <p class="font-15">@Html.Raw(item.BodyEng.Substring(0,100))</p>
-                                                }
-                                                else
-                                                {
+                        if (@item.BodyEng.Length > 300)
+                        {
+                            var steng = @Html.Raw(item.BodyMon).ToString().Substring(0, 700);
+                            var dteng = @Html.Raw(HttpUtility.HtmlDecode("<p class='font-15'"+steng));
+                            <p class="font-15">@dteng</p>
+                        }
+                        else
+                        {
+                            <p class="font-15">@Html.Raw(item.BodyEng)</p>
+                        }
+                    }
+                    else
+                    {
+                        if (@item.BodyMon.Length > 300)
+                        {
+                            var stmon = @Html.Raw(item.BodyMon).ToString().Substring(0, 700);
+                            var dtmon = @Html.Raw(HttpUtility.HtmlDecode(stmon));
+                            <p class="font-15">@dtmon</p>
+                        }
+                        else
+                        {
                             <p class="font-15">@Html.Raw(item.BodyMon)</p>
-                         }
-                        <div class="mt-10">
-                            <a class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" href="~/Content/#">Дэлгэрэнгүй</a>
-                        </div>
+                        }
+                    }
+                    <div class="mt-10">
+                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <a href="@Url.Action("Details", "Project", new { id = item.ProjectID })" class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" target="_blank">View Details</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Details", "Project", new { id = item.ProjectID })" class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" target="_blank">Дэлгэрэнгүй</a>
+                        }
+                        <a class="" href="~/Content/#"></a>
                     </div>
                 </div>
-            </div>*@
+            </div>
+        </div>
+    </div>
+
 }

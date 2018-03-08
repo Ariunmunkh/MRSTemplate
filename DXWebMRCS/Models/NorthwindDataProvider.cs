@@ -428,7 +428,7 @@ namespace DXWebMRCS.Models
                 exists (select null from userprofile join webpages_UsersInRoles on webpages_UsersInRoles.userid = userprofile.userid join webpages_Roles on webpages_Roles.RoleId = webpages_UsersInRoles.RoleId where userprofile.userid = '" + UserID + @"' and webpages_Roles.RoleName = 'Admin') 
                 or exists (select null from userprofile where userid = '" + UserID + "' and branchid = news.branchid)", connection);
                 else
-                    selectCommand = new SqlCommand("SELECT * FROM News ", connection);
+                    selectCommand = new SqlCommand("SELECT * FROM News ORDER BY Date DESC", connection);
                 connection.Open();
 
                 SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);

@@ -10,18 +10,14 @@
  <!-- Start main-content -->
 <div class="main-content">
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-8" data-bg-img="http://placehold.it/1920x1280">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="../Content/IMG_0725.JPG">
         <div class="container pt-60 pb-60">
             <!-- Section Content -->
             <div class="section-content">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 class="title text-white">Blog</h2>
-                        <ol class="breadcrumb text-center text-black mt-10">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li class="active text-white">Page Title</li>
-                        </ol>
+                        <h2 class="title text-white">Мэдээ, мэдээлэл</h2>
+
                     </div>
                 </div>
             </div>
@@ -29,80 +25,115 @@
     </section>
 
     <section>
-        <div class="container">
-            <div class="row multi-row-clearfix">
-                <div class="blog-posts">
-                    @foreach (var item in Model)
-                    {
-                    <div class="col-md-6">
-                        <article class="post clearfix mb-30 bg-lighter">
-                            <div class="entry-header">
-                                <div class="post-thumb thumb">
-                                    @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "http://placehold.it/360x240";}
-                                    <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
-                                </div>
-                            </div>
-                            <div class="entry-content border-1px p-20 pr-10">
-                                <div class="entry-meta media mt-0 no-bg no-border">
-                                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                                        <ul>
-                                            <li class="font-16 text-white font-weight-600">@item.Date.Day</li>
-                                            <li class="font-10 text-white text-uppercase">                                                
-                                                @if (language == "en-US")
-                                                {
-                                                    @item.Date.ToString("MMM")
-                                                }
-                                                else
-                                                {
-                                                    @item.Date.ToString("MM' сар'") 
-                                                }
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="media-body pl-15">
-                                        <div class="event-content pull-left flip">
-                                            <h4 class="entry-title text-white text-uppercase m-0 mt-5">
-                                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
-                                                    @if (language == "en-US")
-                                                    {
-                                                        @item.TitleEng
-                                                    }
-                                                    else
-                                                    {
-                                                        @item.TitleMon
-                                                    }
-                                                </a>
-                                            </h4>
-                                            <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                            <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
+        <div class="container mt-30 mb-30 pt-30 pb-30">
+            <div class="row blog-posts">
+                <div class="col-md-12">
+                    <!-- Blog Masonry -->
+                    <div id="grid" class="gallery-isotope grid-3 masonry gutter-30 clearfix">
+
+                        <div class="gallery-item gallery-item-sizer"></div>
+                        @foreach (var item in Model)
+                        {
+                            if (language == "en-US")
+                            {
+                                <div class="gallery-item">
+                                    <article class="post clearfix mb-30 bg-lighter">
+                                        <div class="entry-header">
+                                            <div class="post-thumb thumb">
+                                                @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "http://placehold.it/360x240";}
+                                                <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="entry-content border-1px p-20 pr-10">
+                                            <div class="entry-meta media mt-0 no-bg no-border">
+                                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                                                    <ul>
+                                                        <li class="font-16 text-white font-weight-600">@item.Date.Day</li>
+                                                        <li class="font-10 text-white text-uppercase">
+                                                            @item.Date.ToString("MMM")
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="media-body pl-15">
+                                                    <div class="event-content pull-left flip">
+                                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5">
+                                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                                                @item.TitleEng
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-10">
+                                                @Html.Raw(item.BodyEng)
+                                            </p>
+                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Read more</a>
+                                            @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </article>
                                 </div>
-                                <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                                <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Read more</a>
-                                @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
-                                <div class="clearfix"></div>
-                            </div>
-                        </article>
-                    </div>
-                    }                    
-                    
-                    <div class="col-md-12">
-                        @Html.PagedListPager(Model, page => Url.Action("PageClick", new { page = page }))
-                        @*<nav>                            
-                            <ul class="pagination">
-                                <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">...</a></li>
-                                <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
-                            </ul>
-                        </nav>*@
+                            }
+                            else
+                            {
+                                <div class="gallery-item">
+                                    <article class="post clearfix mb-30 bg-lighter">
+                                        <div class="entry-header">
+                                            <div class="post-thumb thumb">
+                                                @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "http://placehold.it/360x240";}
+                                                <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
+                                            </div>
+                                        </div>
+                                        <div class="entry-content border-1px p-20 pr-10">
+                                            <div class="entry-meta media mt-0 no-bg no-border">
+                                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                                                    <ul>
+                                                        <li class="font-16 text-white font-weight-600">@item.Date.Day</li>
+                                                        <li class="font-10 text-white text-uppercase">
+                                                            @item.Date.ToString("MM' сар'")
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="media-body pl-15">
+                                                    <div class="event-content pull-left flip">
+                                                        <h4 class="entry-title text-white text-uppercase m-0 mt-5">
+                                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
+                                                                @item.TitleMon
+                                                            </a>
+                                                        </h4>
+                                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
+                                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-10">@Html.Raw(Server.HtmlDecode(item.BodyMon)).ToString().Replace("\n", "<br/>")).Substring(0,50)</p>
+                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Үргэлжлүүлж унших...</a>
+                                            @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </article>
+                                </div>
+                            }
+                        }
+
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-12">
+                @Html.PagedListPager(Model, page => Url.Action("PageClick", new { page = page }))
+                @*<nav>
+                <ul class="pagination">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">...</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                </ul>
+            </nav>*@
             </div>
         </div>
     </section>

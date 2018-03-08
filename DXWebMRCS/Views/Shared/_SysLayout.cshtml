@@ -154,10 +154,17 @@
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
+                            <a href="#forum-videos"><i class="fa fa-youtube"></i><span>Бичлэг /Video/</span></a>
+                            <ul id="forum-videos">
+                                <li class="active"><a href="@Url.Action("List", "videos")"><span>Бичлэг /Video/ жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("Create", "videos")"><span>Бичлэг /Video/ нэмэх</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu active">
                             <a href="#forum-events"><i class="fa fa-file-text-o"></i><span>Явагдах сургалт /Events/</span></a>
                             <ul id="forum-events">
                                 <li class="active"><a href="@Url.Action("Index", "Training")"><span>Явагдах сургалт жагсаалт</span></a></li>
-                                <li class="active"><a href="@Url.Action("SliderCreate", "Training")"><span>Явагдах сургалт нэмэх</span></a></li>
+                                <li class="active"><a href="@Url.Action("Create", "Training")"><span>Явагдах сургалт нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
@@ -165,6 +172,13 @@
                             <ul id="forum-file">
                                 <li class="active"><a href="@Url.Action("FileContentList", "SysAdmin")"><span>Файл жагсаалт</span></a></li>
                                 <li class="active"><a href="@Url.Action("_UploadFile/0", "SysAdmin")"><span>Файл нэмэх</span></a></li>
+                            </ul>
+                        </li>
+                         <li class="hasSubmenu active">
+                            <a href="#forum-magazine"><i class="fa fa-file-text-o"></i><span>Сэтгүүл оруулах /Magazine/</span></a>
+                            <ul id="forum-magazine">
+                                <li class="active"><a href="@Url.Action("MagazineList", "SysAdmin")"><span>Сэтгүүл жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("_UploadMagazine/0", "SysAdmin")"><span>Сэтгүүл нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">

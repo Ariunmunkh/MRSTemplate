@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<DXWebMRCS.Models.News>
 
-@{  string language = System.Globalization.CultureInfo.CurrentCulture.Name; }
+@{  string language = System.Globalization.CultureInfo.CurrentCulture.Name;
+    char[] chArr = {'<','/','>'};
+    char[] chArr1 = {'%'};
+    }
 <div class="row">
     @foreach (var item in Model)
     {
@@ -43,8 +46,34 @@
                             </h4>
                         </div>
                     </div>
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                        if (@item.BodyEng.Length > 200)
+                        {
+                            var steng = @Html.Raw(item.BodyMon).ToString().Substring(0, 200);
+                            var dteng = @Html.Raw(HttpUtility.HtmlDecode(steng));
+                            <p class="mt-10">@dteng</p>
+                        }
+                        else
+                        {
+                            <p class="mt-10">@Html.Raw(item.BodyEng)</p>
+                        }
+                    }
+                    else
+                    {
+                        if (@item.BodyMon.Length > 200)
+                        {
+                            var stmon = @Html.Raw(item.BodyMon).ToString().Substring(0, 200);
+                            var dtmon = @Html.Raw(HttpUtility.HtmlDecode(stmon + "%"));
+                            var text = dtmon.ToHtmlString().Trim().TrimStart(chArr).TrimEnd(chArr1);
+                            <p class="mt-10">@Html.Raw(@text)</p>
+                        }
+                        else
+                        {
+                            <p class="mt-10">@Html.Raw(item.BodyMon)</p>
+                        }
+                    }
                     <p class="mt-10">
-                        Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis
                     </p>
                     <div class="clearfix"></div>
                 </div>

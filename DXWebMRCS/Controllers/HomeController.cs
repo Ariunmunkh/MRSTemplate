@@ -75,6 +75,43 @@ namespace DXWebMRCS.Controllers
         } 
         #endregion
 
+        #region Magazines
+        public ActionResult Magazine()
+        {
+            var pageNumber = 1;
+            var pageSize = 8;
+            var files = db.Database.SqlQuery<Magazine>("SELECT * FROM Magazines ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (files == null)
+            {
+                return HttpNotFound();
+            }
+            return View(files);
+        }
+
+        [AllowAnonymous]
+        public ActionResult MagazinePageClick(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var pageSize = 8;
+            var filelist = db.Database.SqlQuery<Magazine>("SELECT * FROM Magazines ORDER BY Id DESC").ToPagedList(pageNumber, pageSize);
+            if (filelist == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Magazine", filelist);
+        }
+
+        public FileResult DownLoadMagazine(int id)
+        {
+            var file = db.Database.SqlQuery<Magazine>("SELECT TOP 1 * FROM Magazines WHERE id = " + id).FirstOrDefault();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content\\Magazine\\";
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path + file.FileName + file.FileExtension);
+            string fileName = file.FileName + file.FileExtension;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+        #endregion
+
         #region Partial Page
         [HttpGet]
         public ActionResult GalleryViewPartial()
@@ -122,8 +159,8 @@ namespace DXWebMRCS.Controllers
 
         public ActionResult ProjectListPartial()
         {
-            
-            return PartialView("_ProjectListPartial");
+            var model = db.Projects.ToList();
+            return PartialView("_ProjectListPartial", model);
         }
 
         //public  async Task<ActionResult> Contact(ContactViewModel model)

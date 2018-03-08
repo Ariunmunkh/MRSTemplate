@@ -38,6 +38,9 @@ namespace DXWebMRCS.Models
         public DbSet<Elearn> Elearn { get; set; }
         public DbSet<eService> eService { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Magazine> Magazine { get; set; }
+
+        public System.Data.Entity.DbSet<DXWebMRCS.Models.videos> videos { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile

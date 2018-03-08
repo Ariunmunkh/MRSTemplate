@@ -45,7 +45,21 @@ namespace DXWebMRCS.Controllers
             var model = db.Projects;
             return PartialView("_ProjectViewPartial", db.Projects.ToList());
         }
-
+        [AllowAnonymous]
+        // GET: /News/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Project project = db.Projects.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(project);
+        }
         #region Project Create, Edit, Delete
         // GET: /Project/Create
         public ActionResult Create()

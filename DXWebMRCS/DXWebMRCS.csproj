@@ -1845,6 +1845,7 @@
     <Content Include="Content\Images\shadow-overlay.png" />
     <Content Include="Content\Images\signature.png" />
     <Content Include="Content\Images\title-dots.png" />
+    <Content Include="Content\IMG_0725.JPG" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -2384,7 +2385,15 @@
     <Content Include="Views\elearning\ImageHtmlEditPartial.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\_ProjectListPartial.cshtml" />
-    <Content Include="Views\Home\ProjectListPartial.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\videos\Create.cshtml" />
+    <Content Include="Views\videos\Delete.cshtml" />
+    <Content Include="Views\videos\Edit.cshtml" />
+    <Content Include="Views\videos\Index.cshtml" />
+    <Content Include="Views\videos\List.cshtml" />
+    <Content Include="Views\Home\Magazine.cshtml" />
+    <Content Include="Views\SysAdmin\MagazineList.cshtml" />
+    <Content Include="Views\SysAdmin\_UploadMagazine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2416,6 +2425,7 @@
     <Compile Include="Controllers\SysAdminController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\videosController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2436,6 +2446,18 @@
     <Compile Include="Migrations\201802270920281_initial-branch.Designer.cs">
       <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803080610042_videos.cs" />
+    <Compile Include="Migrations\201803080610042_videos.Designer.cs">
+      <DependentUpon>201803080610042_videos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803080734039_videos1.cs" />
+    <Compile Include="Migrations\201803080734039_videos1.Designer.cs">
+      <DependentUpon>201803080734039_videos1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803080819548_magazine.cs" />
+    <Compile Include="Migrations\201803080819548_magazine.Designer.cs">
+      <DependentUpon>201803080819548_magazine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -2445,6 +2467,7 @@
     <Compile Include="Models\eService.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\FileContent.cs" />
+    <Compile Include="Models\Magazine.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
@@ -2453,6 +2476,7 @@
     <Compile Include="Models\SliderPhoto.cs" />
     <Compile Include="Models\Training.cs" />
     <Compile Include="Models\TrainingRequest.cs" />
+    <Compile Include="Models\videos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2475,6 +2499,7 @@
     <Folder Include="Content\Images\NewsImage\" />
     <Folder Include="Content\Images\SliderImage\" />
     <Folder Include="Content\Images\UserAvatar\" />
+    <Folder Include="Content\Magazine\" />
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
@@ -2492,6 +2517,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802270920281_initial-branch.resx">
       <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803080610042_videos.resx">
+      <DependentUpon>201803080610042_videos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803080734039_videos1.resx">
+      <DependentUpon>201803080734039_videos1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803080819548_magazine.resx">
+      <DependentUpon>201803080819548_magazine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>
