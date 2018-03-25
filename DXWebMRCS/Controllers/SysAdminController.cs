@@ -16,7 +16,7 @@ using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
-    //[Authorize(Roles = "Admin,BranchUser")]
+    [Authorize(Roles = "Admin,BranchUser")]
     [InitializeSimpleMembership]
     [RequireHttps]
     public class SysAdminController : Controller
@@ -26,12 +26,7 @@ namespace DXWebMRCS.Controllers
         // GET: /SysAdmin/
         public ActionResult Index()
         {
-            if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
-            {
-                return View();
-            }
-
-            return RedirectToAction("index", "News");
+            return View();
         }
         #region Magazine upload
         [HttpGet]
@@ -319,7 +314,7 @@ namespace DXWebMRCS.Controllers
                 db.SaveChanges();
 
                 var token = WebSecurity.GeneratePasswordResetToken(model.Email);
-                  WebSecurity.ResetPassword(token, model.EditPassword);
+                WebSecurity.ResetPassword(token, model.EditPassword);
             }
             return View(model);
         }

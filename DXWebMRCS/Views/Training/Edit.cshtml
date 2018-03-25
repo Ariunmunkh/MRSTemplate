@@ -5,112 +5,141 @@
     Layout = "~/Views/Shared/_SysLayout.cshtml";
 }
 
-<h2>Edit</h2>
-<div class="right_col" role="main">
-    @using (Html.BeginForm("Edit", "Training", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
+<div class="rigsht_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @using (Html.BeginForm("Edit", "Training", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Training</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.TrainingID)
+                    <div class="form-horizontal">
+                        <h4>Training</h4>
+                        <hr />
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.TrainingID)
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Type", new List<SelectListItem> { new SelectListItem { Text = "Үйл ажилгаа", Value = "1" }, new SelectListItem { Text = "Явагдах сургалт", Value = "2" } })
-                    @Html.ValidationMessageFor(model => model.Type)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("Type", new List<SelectListItem> { new SelectListItem { Text = "Үйл ажилгаа", Value = "1" }, new SelectListItem { Text = "Явагдах сургалт", Value = "2" } }, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Type)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.NameMon, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.NameMon)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.NameEng, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.NameEng)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContentMon, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(model => model.ContentMon, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ContentMon)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContentEng, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(model => model.ContentEng, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ContentEng)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.When, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.DevExpress().DateEdit(
+                settings =>
+                {
+                    settings.Name = "When";
+                    settings.Properties.UseMaskBehavior = true;
+                    settings.Properties.EditFormat = EditFormat.Custom;
+                    settings.Properties.EditFormatString = "yyyy-MM-dd HH:mm";
+                    settings.Properties.TimeSectionProperties.Visible = true;
+                    settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                    settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "HH:mm";
+                    settings.Date = Model.When;
+                    settings.Width = Unit.Percentage(100);
+                }
+            ).GetHtml()
+                                @Html.ValidationMessageFor(model => model.When)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Where, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Where, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Where)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Duration, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Duration, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Duration)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("Status",
+                                new List<SelectListItem>{
+                                    new SelectListItem { Text = "Бүртгэж байна", Value = "0" },
+                                    new SelectListItem { Text = "Хүлээгдэж байна", Value = "1" },
+                                    new SelectListItem { Text = "Заралсан", Value = "2" },
+                                    new SelectListItem { Text = "Явагдаж байна", Value = "3" },
+                                    new SelectListItem { Text = "Дууссан", Value = "4" },
+                                    new SelectListItem { Text = "Цуцалсан", Value = "5" }
+                                }, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @{string imageUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @Model.Image;}
+                                <input type="file" name="ImageFile" onchange="show(this)">
+                                <img id="user_img" src=@imageUrl height="100" width="90" />
+                                @Html.HiddenFor(model => model.Image)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-9">
+                                <input type="submit" value="Edit" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.NameMon, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NameMon)
-                    @Html.ValidationMessageFor(model => model.NameMon)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NameEng, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NameEng)
-                    @Html.ValidationMessageFor(model => model.NameEng)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ContentMon, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ContentMon)
-                    @Html.ValidationMessageFor(model => model.ContentMon)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ContentEng, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ContentEng)
-                    @Html.ValidationMessageFor(model => model.ContentEng)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Where, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Where)
-                    @Html.ValidationMessageFor(model => model.Where)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.When, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.When)
-                    @Html.ValidationMessageFor(model => model.When)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Duration, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Duration)
-                    @Html.ValidationMessageFor(model => model.Duration)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Status)
-                    @Html.ValidationMessageFor(model => model.Status)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @{string imageUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @Model.Image;}
-                    <input type="file" name="ImageFile" onchange="show(this)">
-                    <img id="user_img" src=@imageUrl height="100" width="90" />
-                    @Html.HiddenFor(model => model.Image)
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
             </div>
         </div>
-    }
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+
     </div>
 </div>
-
 <script type="text/javascript">
     function show(input) {
         if (input.files && input.files[0]) {

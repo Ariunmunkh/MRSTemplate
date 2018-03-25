@@ -289,6 +289,7 @@ namespace DXWebMRCS.Models
         public DateTime When { get; set; }
         public decimal Duration { get; set; }
 
+        public string Image { get; set; }
         /*
          0-Бүртгэж байна
          1-Хүлээгдэж байна

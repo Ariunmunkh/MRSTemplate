@@ -1,20 +1,17 @@
-﻿
-@Html.DevExpress().GridView(
+﻿@Html.DevExpress().GridView(
     settings =>
     {
         settings.Name = "gvEditing" + ViewData["TrainingID"];
         settings.KeyFieldName = "ID";
         settings.SettingsDetail.MasterGridName = "TrainingView";
         settings.CallbackRouteValues = new { Controller = "Training", Action = "GridViewDetailPartial", TrainingID = ViewData["TrainingID"] };
-        //settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Training", Action = "DetailsAddNewPartial" };
-        //settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Training", Action = "DetailsUpdatePartial" };
-        //settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Training", Action = "DetailsDeletePartial" };
 
-        //settings.CommandColumn.Visible = true;
-        //settings.CommandColumn.ShowNewButton = true;
-        //settings.CommandColumn.ShowDeleteButton = true;
-        //settings.CommandColumn.ShowEditButton = true;
-        
+        settings.SettingsPager.Visible = true;
+        settings.SettingsSearchPanel.Visible = true;
+        settings.Settings.ShowFilterBar = GridViewStatusBarMode.Visible;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+
         settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
         settings.SettingsBehavior.ConfirmDelete = true;
         settings.SettingsEditing.ShowModelErrorsForEditors = true;
@@ -22,12 +19,20 @@
         //settings.Columns.Add("TrainingID");
         //settings.Columns.Add("UserID");
         //settings.Columns.Add("Status");
-
-        settings.Columns.Add("LastName");
-        settings.Columns.Add("FirstName");
-        settings.Columns.Add("Gender");
-        settings.Columns.Add("Phone");
-        settings.Columns.Add("Email");
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "Status";
+            column.Caption = "Төлөв";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.Items.Add("Хүсэлт илгээсэн", 0);
+            comboBoxProperties.Items.Add("Цуцалсан", 9);
+        });
+        settings.Columns.Add("LastName", "Эцэг/Эх/-ийн нэр");
+        settings.Columns.Add("FirstName", "Нэр");
+        settings.Columns.Add("Gender", "Хүйс");
+        settings.Columns.Add("Phone", "Утас");
+        settings.Columns.Add("Email", "Э-Шуудан");
 
         settings.DataBinding = (sender, e) =>
         {

@@ -64,9 +64,20 @@
         settings.Columns.Add("ContentMon");
         settings.Columns.Add("ContentEng");
         settings.Columns.Add("Where");
-        settings.Columns.Add("When");
-        settings.Columns.Add("Duration");
-        settings.Columns.Add("Status");
+        settings.Columns.Add("When", MVCxGridViewColumnType.DateEdit);
+        settings.Columns.Add("Duration", MVCxGridViewColumnType.SpinEdit);
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = "Status";
+            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.Items.Add("Бүртгэж байна", 0);
+            comboBoxProperties.Items.Add("Хүлээгдэж байна", 1);
+            comboBoxProperties.Items.Add("Заралсан", 2);
+            comboBoxProperties.Items.Add("Явагдаж байна", 3);
+            comboBoxProperties.Items.Add("Дууссан", 4);
+            comboBoxProperties.Items.Add("Цуцалсан", 5);
+        });
 
         settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
         settings.SettingsDetail.ShowDetailRow = true;
