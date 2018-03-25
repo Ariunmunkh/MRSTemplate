@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Questionnaire>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+    }
+<h2>Сургалтын сэтгэл ханамжийн судалгаа</h2>
+@using (Html.BeginForm("ExportToXls", "Questionnaires"))
+{
+<p>
+    <input type="submit" value="ExportToXls" />
+</p>
+}
+@Html.Action("GridViewPartial")
+

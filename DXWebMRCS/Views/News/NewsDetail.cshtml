@@ -8,7 +8,7 @@
 <div class="main-content">
     @{string imageUrl = @Model.Item1.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @Model.Item1.Image : "http://placehold.it/1920x1280";}
     <!-- Section: inner-header -->
-    <section class="inner-header divider layer-overlay overlay-8" data-bg-img=@imageUrl>
+    <section class="inner-header divider layer-overlay overlay-1" data-bg-img=@imageUrl>
         <div class="container pt-60 pb-60">
             <!-- Section Content -->
             <div class="section-content">

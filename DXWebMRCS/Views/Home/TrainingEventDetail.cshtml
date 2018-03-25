@@ -16,7 +16,7 @@
                     <script type="text/javascript">
                         $(document).ready(function () {
                             $('#basic-coupon-clock').countdown('@Model.When.ToString("yyyy/MM/dd")', function (event) {
-                                $(this).html(event.strftime('%D days %H:%M:%S'));
+                                $(this).html(event.strftime('Үйл ажиллагаа эхэлхэд %D өдөр %H:%M:%S үлдсэн байна.'));
                             });
                         });
                     </script>
@@ -65,11 +65,11 @@
                     </ul>
                 </div>
                 <div class="col-md-8">
-                    <img src="https://placehold.it/755x480" alt="">
+                    <img src="~/Content/IMG_0725.JPG" alt="">
                 </div>
             </div>
             <div class="row mt-60">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h4 class="mt-0">
                         @if (language == "en-US")
                         {

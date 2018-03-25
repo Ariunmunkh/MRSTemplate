@@ -1,0 +1,35 @@
+﻿@model DXWebMRCS.Models.userid
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.uname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.uname, new { @class = "form-control", @style = "background-color:white", placeholder = "Сургагч багшийг нэмэх" })
+                @Html.ValidationMessageFor(model => model.uname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Нэмэх" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Буцах", "Index")
+</div>

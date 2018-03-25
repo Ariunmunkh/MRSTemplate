@@ -1,0 +1,207 @@
+﻿@model DXWebMRCS.Models.Questionnaire
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+  <!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="font-28 text-white">Сургалтын сэтгэл ханамжийн судалгаа</h2>
+                    </div>
+                </div>
+            </div>
+    </section>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-push-2">
+                    @Html.ValidationSummary(true)
+                    <p class="text-gray">Та энэхүү асуумжийг 5-10 минутанд бөглөнө үү. Та өөрийн нэрийг бчих шаардлагагүй. Энэ асуумж нь бидний дараа дараагийн сургалтуудыг сайжруулахад тус болох юм.
+Та доор дурдагдсан зүйлүүдэд өөрийн юу ойлгож мэдсэнээр бөглөнө үү. Сэтгэл ханамжийн түвшнээр 1 (зөвшөөрөхгүй) буюу сэтгэл ханамжгүйгээс 5 сэтгэл ханамж маш өндөр (зөвшөөрч байна) сонгон тэмдэглэгээ хийнэ үү.
+</p>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.Label("Сургагч багшийн нэр")
+                            @Html.DropDownList("UID", String.Empty)
+                            @Html.ValidationMessageFor(model => model.UID)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.Label("Хичээлийн нэр")
+                            @Html.DropDownList("LID", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LID)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a1)
+                            @Html.RadioButtonFor(model => model.c1a1, "1") 1
+                            @Html.RadioButtonFor(model => model.c1a1, "2") 2
+                            @Html.RadioButtonFor(model => model.c1a1, "3") 3
+                            @Html.RadioButtonFor(model => model.c1a1, "4") 4
+                            @Html.RadioButtonFor(model => model.c1a1, "5") 5
+                            @Html.ValidationMessageFor(model => model.c1a1)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a2)
+                            @Html.RadioButtonFor(model => model.c1a2, "1") 1
+                            @Html.RadioButtonFor(model => model.c1a2, "2") 2
+                            @Html.RadioButtonFor(model => model.c1a2, "3") 3
+                            @Html.RadioButtonFor(model => model.c1a2, "4") 4
+                            @Html.RadioButtonFor(model => model.c1a2, "5") 5
+                            @Html.ValidationMessageFor(model => model.c1a2)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a3)
+                            @Html.RadioButtonFor(model => model.c1a3, "1") 1
+                            @Html.RadioButtonFor(model => model.c1a3, "2") 2
+                            @Html.RadioButtonFor(model => model.c1a3, "3") 3
+                            @Html.RadioButtonFor(model => model.c1a3, "4") 4
+                            @Html.RadioButtonFor(model => model.c1a3, "5") 5
+                            @Html.ValidationMessageFor(model => model.c1a3)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a4)
+                            @Html.RadioButtonFor(model => model.c1a4, "1") 1
+                            @Html.RadioButtonFor(model => model.c1a4, "2") 2
+                            @Html.RadioButtonFor(model => model.c1a4, "3") 3
+                            @Html.RadioButtonFor(model => model.c1a4, "4") 4
+                            @Html.RadioButtonFor(model => model.c1a4, "5") 5
+                            @Html.ValidationMessageFor(model => model.c1a4)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a5)
+                            @Html.RadioButtonFor(model => model.c1a5, "1") 1
+                            @Html.RadioButtonFor(model => model.c1a5, "2") 2
+                            @Html.RadioButtonFor(model => model.c1a5, "3") 3
+                            @Html.RadioButtonFor(model => model.c1a5, "4") 4
+                            @Html.RadioButtonFor(model => model.c1a5, "5") 5
+                            @Html.ValidationMessageFor(model => model.c1a5)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c1a6)
+                            @Html.TextBoxFor(model => model.c1a6, new { @class = "form-control", @style = "background-color:white", placeholder = "Санал хүсэлтээ бичнэ үү" })
+                            @Html.ValidationMessageFor(model => model.c1a6)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c2a1)
+                            @Html.RadioButtonFor(model => model.c2a1, "1") 1
+                            @Html.RadioButtonFor(model => model.c2a1, "2") 2
+                            @Html.RadioButtonFor(model => model.c2a1, "3") 3
+                            @Html.RadioButtonFor(model => model.c2a1, "4") 4
+                            @Html.RadioButtonFor(model => model.c2a1, "5") 5
+                            @Html.ValidationMessageFor(model => model.c2a1)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c2a2)
+                            @Html.RadioButtonFor(model => model.c2a2, "1") 1
+                            @Html.RadioButtonFor(model => model.c2a2, "2") 2
+                            @Html.RadioButtonFor(model => model.c2a2, "3") 3
+                            @Html.RadioButtonFor(model => model.c2a2, "4") 4
+                            @Html.RadioButtonFor(model => model.c2a2, "5") 5
+                            @Html.ValidationMessageFor(model => model.c2a2)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c2a3)
+                            @Html.RadioButtonFor(model => model.c2a3, "1") 1
+                            @Html.RadioButtonFor(model => model.c2a3, "2") 2
+                            @Html.RadioButtonFor(model => model.c2a3, "3") 3
+                            @Html.RadioButtonFor(model => model.c2a3, "4") 4
+                            @Html.RadioButtonFor(model => model.c2a3, "5") 5
+                            @Html.ValidationMessageFor(model => model.c2a3)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c2a4)
+                            @Html.RadioButtonFor(model => model.c2a4, "1") 1
+                            @Html.RadioButtonFor(model => model.c2a4, "2") 2
+                            @Html.RadioButtonFor(model => model.c2a4, "3") 3
+                            @Html.RadioButtonFor(model => model.c2a4, "4") 4
+                            @Html.RadioButtonFor(model => model.c2a4, "5") 5
+                            @Html.ValidationMessageFor(model => model.c2a4)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c2a5)
+                            @Html.RadioButtonFor(model => model.c2a5, "1") 1
+                            @Html.RadioButtonFor(model => model.c2a5, "2") 2
+                            @Html.RadioButtonFor(model => model.c2a5, "3") 3
+                            @Html.RadioButtonFor(model => model.c2a5, "4") 4
+                            @Html.RadioButtonFor(model => model.c2a5, "5") 5
+                            @Html.ValidationMessageFor(model => model.c2a5)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c3a1)
+                            @Html.RadioButtonFor(model => model.c3a1, "1") 1
+                            @Html.RadioButtonFor(model => model.c3a1, "2") 2
+                            @Html.RadioButtonFor(model => model.c3a1, "3") 3
+                            @Html.RadioButtonFor(model => model.c3a1, "4") 4
+                            @Html.RadioButtonFor(model => model.c3a1, "5") 5
+                            @Html.ValidationMessageFor(model => model.c3a1)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c3a2)
+                            @Html.RadioButtonFor(model => model.c3a2, "1") 1
+                            @Html.RadioButtonFor(model => model.c3a2, "2") 2
+                            @Html.RadioButtonFor(model => model.c3a2, "3") 3
+                            @Html.RadioButtonFor(model => model.c3a2, "4") 4
+                            @Html.RadioButtonFor(model => model.c3a2, "5") 5
+                            @Html.ValidationMessageFor(model => model.c3a2)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c3a3)
+                            @Html.RadioButtonFor(model => model.c3a3, "1") 1
+                            @Html.RadioButtonFor(model => model.c3a3, "2") 2
+                            @Html.RadioButtonFor(model => model.c3a3, "3") 3
+                            @Html.RadioButtonFor(model => model.c3a3, "4") 4
+                            @Html.RadioButtonFor(model => model.c3a3, "5") 5
+                            @Html.ValidationMessageFor(model => model.c3a3)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c3a4)
+                            @Html.RadioButtonFor(model => model.c3a4, "1") 1
+                            @Html.RadioButtonFor(model => model.c3a4, "2") 2
+                            @Html.RadioButtonFor(model => model.c3a4, "3") 3
+                            @Html.RadioButtonFor(model => model.c3a4, "4") 4
+                            @Html.RadioButtonFor(model => model.c3a4, "5") 5
+                            @Html.ValidationMessageFor(model => model.c3a4)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.c3a5)
+                            @Html.RadioButtonFor(model => model.c3a5, "1") 1
+                            @Html.RadioButtonFor(model => model.c3a5, "2") 2
+                            @Html.RadioButtonFor(model => model.c3a5, "3") 3
+                            @Html.RadioButtonFor(model => model.c3a5, "4") 4
+                            @Html.RadioButtonFor(model => model.c3a5, "5") 5
+                            @Html.ValidationMessageFor(model => model.c3a5)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Бөглөх</button>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+</div>

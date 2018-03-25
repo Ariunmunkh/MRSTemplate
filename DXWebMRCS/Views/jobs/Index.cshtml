@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DXWebMRCS.Models.jobs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="../Content/IMG_0725.JPG">
+        <div class="container pt-60 pb-60">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title text-white">Нээлттэй ажлын байр</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-lighter">
+        <div class="container">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-7">
+                            <h5 class="mt-15">Нээлттэй ажлын байр</h5>
+                            <ul class="list theme-colored check">
+                                <li>Тогтвор суурьшилтай ажиллах сонирхолтой</li>
+                                <li>Үнэнч, шударга. Ажилдаа хариуцлагатай ханддаг</li>
+                                <li>Харилцааны өндөр ур чадвартай</li>
+                                <li>Хариуцсан ажлаа чанарын өндөр түвшинд гүйцэтгэх чадвартай</li>
+                                <li>Шинийг эрэлхийлэгч, идэвх санаачлагатай</li>
+                                <li>Нягт, нямбай, хувийн зохион байгуулалт сайтай</li>
+                                <li>Багаар болон бие даан ажиллах чадвартай</li>
+                                <li>Компьютерийн хэрэглээний программууд дээр чөлөөтэй ажиллах чадвартай</li>
+                                <li>Англи хэлний дундаас дээш түвшний мэдлэгтэй</li>
+                            </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <br />
+                        <p style="text-align: justify;">Хэрвээ та дээрх шаардлагуудыг хангасан гэж үзэж байгаа бол&nbsp;<a href="@Url.Action("application","jobdetails")" target="_blank"><span style="color:#CC0000;">онлайн анкетыг</span></a>&nbsp;бөглөн ирүүлээрэй.</p>
+                        <p style="text-align: justify;"><strong><u>Жич</u></strong>: Манай байгууллага хийж бүтээх тэмүүлэл дүүрэн чадварлаг залууст үргэлж нээлттэй тул Таны сонирхсон ажлын байр энэхүү жагсаалтад байхгүй бол өөрийгөө маш сайн илэрхийлэх намтрыг (CV) <a href="mailto:hr@redcross.mn">hr@redcross.mn</a>&nbsp;хаягаар ирүүлэх болон 11-323334&nbsp;утсаар бидэнтэй холбогдох боломжтой.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container pb-0">
+            <div class="row text-center">
+                @foreach (var item in Model)
+                {
+                    string strvalue = item.DateEnd.ToString();
+                    var datetime = DateTime.Parse(strvalue);
+                    if (datetime >= DateTime.Now)
+                    {
+                        <div class="col-sm-4">
+                            <div class="icon-box iconbox-border iconbox-theme-colored p-40">
+                                <a href="@Url.Action("Details", "jobs", new { id = @item.JID})" class="icon icon-gray icon-bordered icon-border-effect effect-flat">
+                                    <i class="pe-7s-users"></i>
+                                </a>
+                                <h5 class="icon-box-title">@item.JobName</h5>
+                                <p class="text-gray">Анкет хүлээн авч байна.</p>
+                                <p class="text-gray"><i class="fa fa-calendar text-theme-colored mt-5 font-15"></i> @item.DateEnd.ToString("dd-MM-yyyy")</p>
+                                <a class="btn btn-colored btn-theme-colored btn-sm mt-15" href="@Url.Action("Details", "jobs", new { id = @item.JID})">Анкет илгээх</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <br />
+        </div>
+    </section>
+
+</div>

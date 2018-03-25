@@ -1,0 +1,31 @@
+﻿@model DXWebMRCS.Models.userid
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h3>Сургагч багшийг устгах уу?</h3>
+<div>
+    <h4>userid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

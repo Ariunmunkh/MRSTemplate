@@ -1,5 +1,6 @@
-﻿
+﻿@*@model DXWebMRCS.Models.Subscribes*@
 @{
+    
     ViewBag.Title = "_FooterPartial";
 }
 <!-- Footer -->
@@ -73,17 +74,20 @@
                         <li><a href="~/Content/#">hello@yourdomain.com</a></li>
                         <li><a href="~/Content/#" class="lineheight-20">121 King Street, Melbourne Victoria 3000, Australia</a></li>
                     </ul>
-                    <p class="font-16 text-white mb-5 mt-15">Subscribe to our newsletter</p>
-                    <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
-                        <label class="display-block" for="mce-EMAIL"></label>
-                        <div class="input-group">
-                            <input type="email" value="" name="EMAIL" placeholder="Your Email" class="form-control" data-height="37px" id="mce-EMAIL">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i class="fa fa-paper-plane-o text-white"></i></button>
-                            </span>
-                        </div>
-                    </form>
-
+                    <p class="font-16 text-white mb-5 mt-15">Бидний мэдээллийг авах бол</p>
+                    @using (Html.BeginForm("Create", "Subscribes", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
+                            <label class="display-block" for="mce-EMAIL"></label>
+                            <div class="input-group">
+                                @*@Html.TextBoxFor(model => model.email, new { @class = "form-control", @style = "background-color:white; height:37px", placeholder = "И-мэйл хаяг", @type="email" })*@
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i class="fa fa-paper-plane-o text-white"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    }
                     <!-- Mailchimp Subscription Form Validation-->
                     <script type="text/javascript">
                         $('#footer-mailchimp-subscription-form').ajaxChimp({

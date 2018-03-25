@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DXWebMRCS.Models.lessonid>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Хичээлийн жагсаалт</h2>
+
+<p>
+    @Html.ActionLink("Судалгааны хичээл нэмэх", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lname)
+        </td>
+        <td>
+            @Html.ActionLink("Засах", "Edit", new { id=item.LID }) |
+            @Html.ActionLink("Устгах", "Delete", new { id=item.LID })
+        </td>
+    </tr>
+}
+
+</table>

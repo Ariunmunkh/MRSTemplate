@@ -1,0 +1,55 @@
+﻿@model DXWebMRCS.Models.jobs
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>jobs</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.JobName, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн нэр оруулна уу" })
+                @Html.ValidationMessageFor(model => model.JobName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @using (Html.BeginForm())
+                {
+                    @Html.Action("DescriptionHtmlEditorPartial")
+                }
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DevExpress().DateEdit(settings => { settings.Name = "DateEnd"; settings.Properties.DisplayFormatString = "D"; }).GetHtml()
+                @Html.ValidationMessageFor(model => model.DateEnd)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Буцах", "List")
+</div>

@@ -1,0 +1,15 @@
+@using DXWebMRCS.Controllers;
+
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "Description";
+    settings.CallbackRouteValues = new { Controller = "jobs", Action = "DescriptionHtmlEditorPartial" };
+    settings.Width = 500;
+	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
+    if (Model != null)
+    	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "jobs", Action = "DescriptionHtmlEditorPartialImageUpload" };
+    settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadFolder = jobsControllerDescriptionSettings.ImageUploadDirectory;
+	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(jobsControllerDescriptionSettings.ImageUploadValidationSettings);
+
+
+			settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector.Assign(jobsControllerDescriptionSettings.ImageSelectorSettings);
+	}).GetHtml()

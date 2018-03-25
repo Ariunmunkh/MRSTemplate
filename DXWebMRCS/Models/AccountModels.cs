@@ -39,8 +39,15 @@ namespace DXWebMRCS.Models
         public DbSet<eService> eService { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Magazine> Magazine { get; set; }
+        public DbSet<Subscribes> Subscribes { get; set; }
+        public DbSet<jobs> jobs { get; set; }
+        public DbSet<Questionnaire> Questionnaire { get; set; }
+        public DbSet<lessonid> lessonid { get; set; }
+        public DbSet<userid> userid { get; set; }
 
         public System.Data.Entity.DbSet<DXWebMRCS.Models.videos> videos { get; set; }
+
+        public System.Data.Entity.DbSet<DXWebMRCS.Models.jobdetail> jobdetails { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile

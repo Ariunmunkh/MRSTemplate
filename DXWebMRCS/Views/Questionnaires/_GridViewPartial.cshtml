@@ -1,0 +1,73 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "Questionnaires", Action = "GridViewPartial" };
+        settings.Width = Unit.Percentage(100);
+        
+        
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+        settings.Settings.VerticalScrollableHeight = 200;
+        settings.SettingsPager.PageSize = 50;
+        
+
+        settings.KeyFieldName = "QID";
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+
+        if (ViewData["exportRowType"] != null)
+            settings.SettingsExport.ExportSelectedRowsOnly =
+            ViewData["exportRowType"] as GridViewExportedRowType? == GridViewExportedRowType.Selected;
+        
+        
+        
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Questionnaires", Action = "GridViewPartialDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+
+		settings.KeyFieldName = "QID";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+        
+
+		settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+		settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+		settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+		settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+		settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+        
+        settings.Columns.Add("QID").HeaderStyle.Wrap = DefaultBoolean.True;
+        settings.Columns.Add("userid.uname").HeaderStyle.Wrap = DefaultBoolean.True;
+        settings.Columns.Add("lessonid.lname").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a1").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a2").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a3").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a4").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a5").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c1a6").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c2a1").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c2a2").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c2a3").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c2a4").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c2a5").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c3a1").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c3a2").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c3a3").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c3a4").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("c3a5").HeaderStyle.Wrap = DefaultBoolean.True;
+                settings.Columns.Add("DateEnd").HeaderStyle.Wrap = DefaultBoolean.True;
+			});
+            
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

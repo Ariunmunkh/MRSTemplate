@@ -1,0 +1,104 @@
+﻿
+
+<section id="apply" class="divider parallax layer-overlay overlay-white-8" data-bg-img="~/Content/IMG_0725.JPG">
+    <div class="container-fluid">
+        @using (Html.BeginForm("Create", "jobdetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 bg-lightest-transparent p-30 pt-10">
+                    <h3 class="text-center text-theme-colored mb-20">Хувийн мэдээлэл</h3>
+                    <form id="job_apply_form" name="job_apply_form" action="includes/job.php" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Овог <small>*</small></label>
+                                    <input name="form_name" type="text" placeholder="Овог оруулна" required="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Нэр <small>*</small></label>
+                                    <input name="form_email" class="form-control" type="text" placeholder="Нэр оруулна">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>И-мэйл <small>*</small></label>
+                                    <input name="form_email" class="form-control required email" type="email" placeholder="И-мэйл">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Утасны дугаар <small>*</small></label>
+                                    <input name="form_name" type="number" placeholder="Утасны дугаар" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Хүйс <small>*</small></label>
+                                    <select name="form_sex" class="form-control required">
+                                        <option value="Male">эр</option>
+                                        <option value="Female">эм</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Гэрийн хаяг <small>*</small></label>
+                                    <input name="form_name" type="text" placeholder="Гэрийн хаяг" required="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Тайлбар <small>*</small></label>
+                            <textarea id="form_message" name="form_message" class="form-control required" rows="5" placeholder="Your cover letter/message sent to the employer"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>C/V хавсаргах</label>
+                            @*@Html.TextBoxFor(model => model.File, "", new { @type = "file", @multiple = "multiple" })*@
+                            <small>Файлын хэмжээ: 12 MB</small>
+                        </div>
+                        <div class="form-group">
+                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
+                            <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Илгээх</button>
+                        </div>
+                    </form>
+                    <!-- Job Form Validation-->
+                    <script type="text/javascript">
+                            $("#job_apply_form").validate({
+                                submitHandler: function (form) {
+                                    var form_btn = $(form).find('button[type="submit"]');
+                                    var form_result_div = '#form-result';
+                                    $(form_result_div).remove();
+                                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                                    var form_btn_old_msg = form_btn.html();
+                                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                                    $(form).ajaxSubmit({
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.status == 'true') {
+                                                $(form).find('.form-control').val('');
+                                            }
+                                            form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                            $(form_result_div).html(data.message).fadeIn('slow');
+                                            setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
+                                        }
+                                    });
+                                }
+                            });
+                    </script>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

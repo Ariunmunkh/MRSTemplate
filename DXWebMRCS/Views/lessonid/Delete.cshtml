@@ -1,0 +1,31 @@
+﻿@model DXWebMRCS.Models.lessonid
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+
+<h3>Хичээлийн нэрийг устгах уу?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Устгах" class="btn btn-default" /> |
+            @Html.ActionLink("Буцах", "Index")
+        </div>
+    }
+</div>

@@ -2394,6 +2394,35 @@
     <Content Include="Views\Home\Magazine.cshtml" />
     <Content Include="Views\SysAdmin\MagazineList.cshtml" />
     <Content Include="Views\SysAdmin\_UploadMagazine.cshtml" />
+    <Content Include="Views\Subscribes\Create.cshtml" />
+    <Content Include="Views\Subscribes\Delete.cshtml" />
+    <Content Include="Views\Subscribes\Index.cshtml" />
+    <Content Include="Views\jobs\Create.cshtml" />
+    <Content Include="Views\jobs\Delete.cshtml" />
+    <Content Include="Views\jobs\Details.cshtml" />
+    <Content Include="Views\jobs\Edit.cshtml" />
+    <Content Include="Views\jobs\Index.cshtml" />
+    <Content Include="Views\jobs\_DescriptionHtmlEditorPartial.cshtml" />
+    <Content Include="Views\jobs\List.cshtml" />
+    <Content Include="Views\jobdetails\Create.cshtml" />
+    <Content Include="Views\jobdetails\Delete.cshtml" />
+    <Content Include="Views\jobdetails\Index.cshtml" />
+    <Content Include="Views\Shared\apply.cshtml" />
+    <Content Include="Views\Shared\_PartialPage1.cshtml" />
+    <Content Include="Views\Shared\createPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutCreate.cshtml" />
+    <Content Include="Views\Questionnaires\Create.cshtml" />
+    <Content Include="Views\Questionnaires\Index.cshtml" />
+    <Content Include="Views\jobdetails\application.cshtml" />
+    <Content Include="Views\userids\Create.cshtml" />
+    <Content Include="Views\userids\Delete.cshtml" />
+    <Content Include="Views\userids\Edit.cshtml" />
+    <Content Include="Views\userids\Index.cshtml" />
+    <Content Include="Views\lessonid\Create.cshtml" />
+    <Content Include="Views\lessonid\Delete.cshtml" />
+    <Content Include="Views\lessonid\Edit.cshtml" />
+    <Content Include="Views\lessonid\Index.cshtml" />
+    <Content Include="Views\Questionnaires\_GridViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2418,13 +2447,19 @@
     <Compile Include="Controllers\eLearntController.cs" />
     <Compile Include="Controllers\eServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\jobdetailsController.cs" />
+    <Compile Include="Controllers\jobsController.cs" />
+    <Compile Include="Controllers\lessonidController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\QuestionnairesController.cs" />
     <Compile Include="Controllers\SafeController.cs" />
+    <Compile Include="Controllers\SubscribesController.cs" />
     <Compile Include="Controllers\SysAdminController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\useridsController.cs" />
     <Compile Include="Controllers\videosController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -2458,6 +2493,42 @@
     <Compile Include="Migrations\201803080819548_magazine.Designer.cs">
       <DependentUpon>201803080819548_magazine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803130248207_subscribes.cs" />
+    <Compile Include="Migrations\201803130248207_subscribes.Designer.cs">
+      <DependentUpon>201803130248207_subscribes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131412255_jobs.cs" />
+    <Compile Include="Migrations\201803131412255_jobs.Designer.cs">
+      <DependentUpon>201803131412255_jobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803140702108_jobdetail.cs" />
+    <Compile Include="Migrations\201803140702108_jobdetail.Designer.cs">
+      <DependentUpon>201803140702108_jobdetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803190550589_jobdetails.cs" />
+    <Compile Include="Migrations\201803190550589_jobdetails.Designer.cs">
+      <DependentUpon>201803190550589_jobdetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803190723474_jobdetaials.cs" />
+    <Compile Include="Migrations\201803190723474_jobdetaials.Designer.cs">
+      <DependentUpon>201803190723474_jobdetaials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803210813110_v2-jobs.cs" />
+    <Compile Include="Migrations\201803210813110_v2-jobs.Designer.cs">
+      <DependentUpon>201803210813110_v2-jobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803211142106_questionnaire.cs" />
+    <Compile Include="Migrations\201803211142106_questionnaire.Designer.cs">
+      <DependentUpon>201803211142106_questionnaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803250607204_jobdet.cs" />
+    <Compile Include="Migrations\201803250607204_jobdet.Designer.cs">
+      <DependentUpon>201803250607204_jobdet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803250820492_questionna.cs" />
+    <Compile Include="Migrations\201803250820492_questionna.Designer.cs">
+      <DependentUpon>201803250820492_questionna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -2467,15 +2538,21 @@
     <Compile Include="Models\eService.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\FileContent.cs" />
+    <Compile Include="Models\jobdetail.cs" />
+    <Compile Include="Models\jobs.cs" />
+    <Compile Include="Models\lessonid.cs" />
     <Compile Include="Models\Magazine.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Questionnaire.cs" />
     <Compile Include="Models\SafeUser.cs" />
     <Compile Include="Models\SliderPhoto.cs" />
+    <Compile Include="Models\Subscribes.cs" />
     <Compile Include="Models\Training.cs" />
     <Compile Include="Models\TrainingRequest.cs" />
+    <Compile Include="Models\userid.cs" />
     <Compile Include="Models\videos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -2484,13 +2561,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="Views\eLearnt\getCertificate.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\CV\" />
     <Folder Include="Content\FileContents\" />
     <Folder Include="Content\HtmlEditor\AudioFiles\" />
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
@@ -2526,6 +2603,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803080819548_magazine.resx">
       <DependentUpon>201803080819548_magazine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130248207_subscribes.resx">
+      <DependentUpon>201803130248207_subscribes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131412255_jobs.resx">
+      <DependentUpon>201803131412255_jobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803140702108_jobdetail.resx">
+      <DependentUpon>201803140702108_jobdetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803190550589_jobdetails.resx">
+      <DependentUpon>201803190550589_jobdetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803190723474_jobdetaials.resx">
+      <DependentUpon>201803190723474_jobdetaials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803210813110_v2-jobs.resx">
+      <DependentUpon>201803210813110_v2-jobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211142106_questionnaire.resx">
+      <DependentUpon>201803211142106_questionnaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803250607204_jobdet.resx">
+      <DependentUpon>201803250607204_jobdet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803250820492_questionna.resx">
+      <DependentUpon>201803250820492_questionna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>

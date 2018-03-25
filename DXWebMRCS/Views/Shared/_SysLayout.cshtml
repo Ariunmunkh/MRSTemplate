@@ -110,7 +110,7 @@
                 </div>
                 <ul class="sidebar-menu">
                     @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
-                        {
+                    {
                         <li class="hasSubmenu active">
                             <a href="#forum-user"><i class="fa fa-file-text-o"></i><span>Хэрэглэгч /Users/</span></a>
                             <ul id="forum-user">
@@ -174,7 +174,7 @@
                                 <li class="active"><a href="@Url.Action("_UploadFile/0", "SysAdmin")"><span>Файл нэмэх</span></a></li>
                             </ul>
                         </li>
-                         <li class="hasSubmenu active">
+                        <li class="hasSubmenu active">
                             <a href="#forum-magazine"><i class="fa fa-file-text-o"></i><span>Сэтгүүл оруулах /Magazine/</span></a>
                             <ul id="forum-magazine">
                                 <li class="active"><a href="@Url.Action("MagazineList", "SysAdmin")"><span>Сэтгүүл жагсаалт</span></a></li>
@@ -202,11 +202,32 @@
                                 <li class="active"><a href="@Url.Action("Create", "Project")"><span>Төсөл нэмэх</span></a></li>
                             </ul>
                         </li>
-                        }
+                        <li class="hasSubmenu active">
+                            <a href="#forum-jobs"><i class="fa fa-user-md"></i><span>Ажлын зар</span></a>
+                            <ul id="forum-jobs">
+                                <li class="active"><a href="@Url.Action("list", "jobs")"><span>Ажлын зар жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("create", "jobs")"><span>Ажлын зар нэмэх</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu active">
+                            <a href="#forum-anket"><i class="fa fa-user-md"></i><span>Ажлын анкет</span></a>
+                            <ul id="forum-anket">
+                                <li class="active"><a href="@Url.Action("index", "jobdetails")"><span>Ажлын анкет жагсаалт</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu active">
+                            <a href="#forum-questionnaire"><i class="fa fa-user-md"></i><span>Судалгаа</span></a>
+                            <ul id="forum-questionnaire">
+                                <li class="active"><a href="@Url.Action("index", "questionnaires")"><span>Судалгаа жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("create", "userids")"><span>Судалгаа багш нэмэх</span></a></li>
+                                <li class="active"><a href="@Url.Action("create", "lessonid")"><span>Судалгаа хичээл нэр нэмэх</span></a></li>
+                            </ul>
+                        </li>
+                    }
                     else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
                     {
-                            <li class="active"><a href="@Url.Action("Index", "News")"><i class="fa fa-bar-chart-o"></i><span>Мэдээ мэдээлэл</span></a></li>
-                        }
+                        <li class="active"><a href="@Url.Action("Index", "News")"><i class="fa fa-bar-chart-o"></i><span>Мэдээ мэдээлэл</span></a></li>
+                    }
                 </ul>
             </div>
         </div>

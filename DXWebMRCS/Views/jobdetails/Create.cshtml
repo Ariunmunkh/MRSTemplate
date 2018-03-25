@@ -1,0 +1,84 @@
+﻿@model DXWebMRCS.Models.jobdetail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "";
+}
+<section id="apply" class="divider parallax layer-overlay overlay-white-8" data-bg-img="~/Content/IMG_0725.JPG">
+    <div class="container-fluid">
+        @using (Html.BeginForm("create", "jobdetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 bg-lightest-transparent p-30 pt-10">
+                    <h3 class="text-center text-theme-colored mb-20">Хувийн мэдээлэл</h3>
+                    <form id="job_apply_form" name="job_apply_form" action="includes/job.php" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Овог <small>*</small></label>
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @style = "background-color:white", placeholder = "Овог оруулна уу" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Нэр <small>*</small></label>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @style = "background-color:white", placeholder = "Нэр оруулна уу" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>И-мэйл <small>*</small></label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @style = "background-color:white", placeholder = "И-мэйл оруулна уу", @type="email" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Утасны дугаар <small>*</small></label>
+                                    @Html.TextBoxFor(model => model.phone, new { @class = "form-control", @style = "background-color:white", placeholder = "Утасны дугаар оруулна уу", @type="number" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Хүйс <small>*</small></label>
+                                    @Html.DropDownList(
+                                                    "gender",
+                                                    new List<SelectListItem>
+                                                    {
+                                                        new SelectListItem { Text = "эр", Value = "эр" },
+                                                        new SelectListItem { Text = "эм",  Value = "эм" },
+                                                    },
+                                 new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Сонирхсон ажлын байр <small>*</small></label>
+                                    @Html.DropDownList("JobName", (IEnumerable<SelectListItem>)ViewBag.JID, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Тайлбар <small>*</small></label>
+                            @Html.TextAreaFor(model => model.description, new { @class = "form-control", @style = "background-color:white", placeholder = "Утасны дугаар оруулна уу" })
+                        </div>
+                        <div class="form-group">
+                            <label>C/V хавсаргах</label>
+                            @Html.TextBoxFor(model => model.File, "", new { @type = "file", @multiple = "multiple" })
+                            <small>Файлын хэмжээ: 12 MB</small>
+                        </div>
+                        <div class="form-group">
+                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
+                            <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Илгээх</button>
+                        </div>
+                    </form>
+                    <!-- Job Form Validation-->
+                </div>
+            </div>
+        }
+    </div>
+</section>

@@ -16,6 +16,7 @@ using PagedList;
 using DXWebMRCS.Filters;
 using System.Collections;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
@@ -27,16 +28,44 @@ namespace DXWebMRCS.Controllers
         public IEnumerable<Menu> menuList;
         public ActionResult Index()
         {
-            // DXCOMMENT: Pass a data model for GridView            
+            // DXCOMMENT: Pass a data model for GridView     
             return View();    
         }
+        protected void sendEmail()
+        {
+            var elist = db.Database.SqlQuery<Subscribes>(@"select * from subscribes").ToList();
+            string systemEmailAddress = "info@redcross.mn";
+            string systemEmailPassword = "Mrcs323334";
+            string systemEmailHost = "smtp.office365.com";
+            string systemEmailPort = "587";
+            foreach (var item in elist)
+            {
+                SmtpClient client = new SmtpClient(systemEmailHost, Convert.ToInt32(systemEmailPort));
+                client.EnableSsl = true;
+                client.Timeout = 100000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(systemEmailAddress, systemEmailPassword);
 
+                var body = string.Format("Сайн байна уу,<BR/>" +
+                                         "Нийгүүлсэл сэтгүүлийн шинэ дугаар гарлаа. Та доорх холбоосоор уншиж танилцаарай.<BR/>" +
+                                         "<a href='www.redcross.mn/Home/Magazine'>ХОЛБООС</a><BR/>" +
+                                         "<BR/>Хүндэтгэсэн,<BR/>Монголын улаан загалмай нийгэмлэг", DateTime.Now.Year);
+
+                MailMessage mailMessage = new MailMessage(systemEmailAddress, item.email, "Нийгүүлсэл сэтгүүл шинэ дугаар", body);
+                mailMessage.IsBodyHtml = true;
+                mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+                client.Send(mailMessage);
+            }
+        }
         //Branch uudiin list user haragdah
         public ActionResult BranchList()
         {
             var branchlist = db.Database.SqlQuery<Branch>("SELECT * FROM Branches").ToList();
             return View(branchlist);
         }
+
+       
 
         #region File content Hadgalsan Pdf bolon Docx haruulah heseg
         public ActionResult FileContentView()

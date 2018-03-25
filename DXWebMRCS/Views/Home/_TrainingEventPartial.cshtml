@@ -3,11 +3,11 @@
 @{  string language = System.Globalization.CultureInfo.CurrentCulture.Name; }
 <div class="row">
     <div class="col-md-4 hidden-sm">
-        <h3 class="text-uppercase title line-bottom mt-0 mb-30"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Upcoming <span class="text-theme-colored">Events</span></h3>
-        @foreach (var item in Model.Item1.Take(3).ToList())
+        <h3 class="text-uppercase title line-bottom mt-0 mb-30"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Явагдах <span class="text-theme-colored">сургалт</span></h3>
+        @foreach (var item in Model.Item1.ToList().Take(3))
         {
             <article class="post media-post clearfix pb-0 mb-10">
-                <a href="~/Content/#" class="post-thumb mr-20"><img alt="" src="http://placehold.it/120x120"></a>
+                <a href="#" class="post-thumb mr-20"><img alt="" src="~/Content/IMG_0725.JPG"></a>
                 <div class="post-right">
                     <h4 class="mt-0 mb-5">
                         <a href='@Url.Action("TrainingEventDetail", "Home", new { id = @item.TrainingID })'>
@@ -72,13 +72,13 @@
         }
     </div>
     <div class="col-md-8 col-sm-12">
-        <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>Branches <span class="text-theme-colored"> Worldwide</span></h3>
+        <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>Үйл <span class="text-theme-colored"> ажиллагаа</span></h3>
         <div class="row mt-20 multi-row-clearfix">
             <div class="owl-carousel-3col" data-nav="true">
-                @foreach (var item2 in Model.Item2.Take(3).ToList())
+                @foreach (var item2 in Model.Item2.ToList().Take(3))
 	            {
 		            <div class="item">
-                        <div class="thumb"> <a href="~/Content/#"><img class="img-fullwidth mb-20" src="http://placehold.it/250x215" alt="..."></a> </div>
+                        <div class="thumb"> <a href="@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })"><img class="img-fullwidth mb-20" src="~/Content/IMG_0725.JPG" alt="..."></a> </div>
                         <div class="caption">
                             <h4 class="text-uppercase letter-space-1 mt-0"><span class="text-theme-colored"> 
                                 @if (language == "en-US")
@@ -115,7 +115,7 @@
                                 }
                             </p>
                             <p>
-                                <a class="text-theme-colored font-13" href='@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })'>Read More →</a>
+                                <a class="text-theme-colored font-13" href='@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })'>Үргэлжлүүлж унших →</a>
                             </p>
                         </div>
                     </div>

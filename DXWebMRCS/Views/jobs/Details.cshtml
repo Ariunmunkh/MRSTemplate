@@ -1,0 +1,61 @@
+﻿@model DXWebMRCS.Models.jobs
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+  <!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="../Content/IMG_0725.JPG">
+        <div class="container pt-60 pb-60">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title text-white">@Model.JobName</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="job-overview">
+                        <dl class="dl-horizontal">
+                            <dt><i class="fa fa-calendar text-theme-colored mt-5 font-15"></i></dt>
+                            <dd>
+                                <h5 class="mt-0">Анкет авах хугацаа:</h5>
+                                <p>@Model.DateEnd.ToString("dd-MM-yyyy")</p>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt><i class="fa fa-map-marker text-theme-colored mt-5 font-15"></i></dt>
+                            <dd>
+                                <h5 class="mt-0">Байршил:</h5>
+                                <p>Монгол улс, Улаанбаатар хот Сүхбаатар дүүрэг 1-р хороо Монголын улаан загалмай нийгэмлэг</p>
+                            </dd>
+                        </dl>
+                        <a class="btn btn-dark mt-20" href="#apply">Анкет илгээх</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="icon-box mb-0 p-0">
+                        <a href="#" class="icon icon-gray pull-left mb-0 mr-10">
+                            <i class="pe-7s-users"></i>
+                        </a>
+                        <h3 class="icon-box-title pt-15 mt-0 mb-40">@Model.JobName</h3>
+                        <hr>
+                        @Html.Raw(Model.Description)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Job Apply Form -->
+    @Html.Action("create", "jobdetails")
+</div>
