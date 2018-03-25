@@ -22,12 +22,13 @@
     settings.CommandColumn.NewButton.Text = "Дэд";
     settings.CommandColumn.UpdateButton.Text = "Хадгалах";
     settings.CommandColumn.CancelButton.Text = "Болих";
-    
+
     settings.Columns.Add("NameMon", "Нэр (Монгол)");
     settings.Columns.Add("NameEng", "Нэр (Англи)");
     settings.Columns.Add("MenuType", "Төрөл", MVCxTreeListColumnType.ComboBox);
-    settings.Columns.Add("NavigateUrl","Линк");
-    //settings.Columns.Add("Image","", MVCxTreeListColumnType.ComboBox);
+    settings.Columns.Add("NavigateUrl", "Линк");
+    settings.Columns.Add("Image", "", MVCxTreeListColumnType.ComboBox);
+    settings.Columns.Add("OrderNum", "Эрэмбэ", MVCxTreeListColumnType.SpinEdit);
     settings.Columns.Add(column =>
     {
         column.FieldName = "BranchID";
@@ -50,22 +51,72 @@
         if (e.Column.FieldName == "MenuType")
         {
             ASPxComboBox cb = (ASPxComboBox)e.Editor;
-            cb.Items.Add("Нэг баганаар", "Single");//, "https://quwa.org/wp-content/uploads/2016/10/TAI-Anka-01-TAI-692x360.png");
-            cb.Items.Add("Олон баганаар", "Multi");//, "https://quwa.org/wp-content/plugins/accesspress-social-icons/icon-sets/png/set7/facebook.png");
+            cb.Items.Add("Нэг баганаар", "Single");
+            cb.Items.Add("Олон баганаар", "Multi");
         }
         else if (e.Column.FieldName == "Image")
         {
             ASPxComboBox cb = (ASPxComboBox)e.Editor;
-            cb.Items.Add("about.svg", "about.svg", "https://marketplace.canva.com/MAB7k1mbVlU/1/thumbnail/canva-png-file-icon-MAB7k1mbVlU.png");
-            cb.Items.Add("accept_database.svg", "accept_database.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/accept_database.svg");
-            cb.Items.Add("add_column.svg", "add_column.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_column.svg");
-            cb.Items.Add("add_database.svg", "add_database.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_database.svg");
-            cb.Items.Add("add_image.svg", "add_image.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_image.svg");
-            cb.Items.Add("add_row.svg", "add_row.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/add_row.svg");
-            cb.Items.Add("address_book.svg", "address_book.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/address_book.svg");
-            cb.Items.Add("advance.svg", "advance.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/advance.svg");
-            cb.Items.Add("advertising.svg", "advertising.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/advertising.svg");
-            cb.Items.Add("alarm_clock.svg", "alarm_clock.svg", "http://localhost:4659/Content/Images/flat-color-icons-svg/alarm_clock.svg");
+            cb.Items.Add("Accordion", "fa fa-list-ul");
+            cb.Items.Add("Alerts", "fa fa-exclamation-circle");
+            cb.Items.Add("Animations", "fa fa-magic");
+            cb.Items.Add("HTML5 Background Video", "fa fa-video-camera");
+            cb.Items.Add("Blockquotes", "fa fa-quote-right");
+            cb.Items.Add("Button Groups", "fa fa-link");
+            cb.Items.Add("Button Hover Effect", "fa fa-flag-o");
+            cb.Items.Add("Buttons", "fa fa-external-link");
+            cb.Items.Add("Call To Actions", "fa fa-plus-square");
+            cb.Items.Add("Charts", "fa fa-pie-chart");
+            cb.Items.Add("Columns Grids", "fa fa-columns");
+            cb.Items.Add("Divider", "fa fa-indent");
+            cb.Items.Add("Dropcaps", "fa fa-bold");
+            cb.Items.Add("Date Picker", "fa fa-calendar");
+            cb.Items.Add("Time Picker", "fa fa-calendar");
+            cb.Items.Add("Bootstrap Date-Time Picker", "fa fa-calendar");
+            cb.Items.Add("Date Pair", "fa fa-calendar");
+            cb.Items.Add("Flickr Feed", "fa fa-flickr");
+            cb.Items.Add("Flipbox", "fa fa-square");
+            cb.Items.Add("Forms", "fa fa-align-justify");
+            cb.Items.Add("Icon Box", "fa fa-unsorted");
+            cb.Items.Add("Icons 7stroke", "fa fa-circle-o");
+            cb.Items.Add("Icons Elegant", "fa fa-eye-slash");
+            cb.Items.Add("Icons Flat Color", "fa fa-i-cursor");
+            cb.Items.Add("Icons FontAwesome", "fa fa-fort-awesome");
+            cb.Items.Add("Icons FontAwesome Tutorial", "fa fa-fonticons");
+            cb.Items.Add("Icons Strokegap", "strokegap-icon strokegap-icon-WorldWide");
+            cb.Items.Add("Image Box", "fa fa-file-image-o");
+            cb.Items.Add("Instagram Feed", "fa fa-instagram");
+            cb.Items.Add("Labels Badges", "fa fa-check-square-o");
+            cb.Items.Add("Listgroup Panels", "fa fa-th-list");
+            cb.Items.Add("Lists", "fa fa-list");
+            cb.Items.Add("Maps", "fa fa-map-o");
+            cb.Items.Add("Media Embed", "fa fa-play-circle-o");
+            cb.Items.Add("Modal", "fa fa-search-plus");
+            cb.Items.Add("Lightbox", "fa fa-expand");
+            cb.Items.Add("Navigation", "fa fa-navicon");
+            cb.Items.Add("Owl Carousel", "fa fa-sliders");
+            cb.Items.Add("Pagination", "fa fa-arrow-circle-o-right");
+            cb.Items.Add("Progress Bars", "fa fa-tasks");
+            cb.Items.Add("Responsive", "fa fa-tablet");
+            cb.Items.Add("Separator", "fa fa-minus-square-o");
+            cb.Items.Add("Sitemap", "fa fa-sitemap");
+            cb.Items.Add("Sliders", "fa fa-sliders");
+            cb.Items.Add("Smoothscrolling", "fa fa-binoculars");
+            cb.Items.Add("Styled Icons ", "fa fa-facebook-square");
+            cb.Items.Add("Subscribe", "fa fa-user-plus");
+            cb.Items.Add("Tables", "fa fa-table");
+            cb.Items.Add("Tabs", "fa fa-indent");
+            cb.Items.Add("Textblock", "fa fa-bold");
+            cb.Items.Add("Thumbnails/carousels", "fa fa-sliders");
+            cb.Items.Add("Title", "fa fa-text-height");
+            cb.Items.Add("Timer Final Countdown", "fa fa-text-height");
+            cb.Items.Add("Timer Flipclock", "fa fa-text-height");
+            cb.Items.Add("Timer Slick Circular", "fa fa-text-height");
+            cb.Items.Add("Twitter Feed", "fa fa-twitter-square");
+            cb.Items.Add("Typography", "fa fa-font");
+            cb.Items.Add("Vertical Timeline", "fa fa-arrows-v");
+            cb.Items.Add("Widgets", "fa fa-gift");
+            cb.Items.Add("Working Process", "fa fa-exchange");
         }
     };
     settings.PreRender = (s, e) =>
