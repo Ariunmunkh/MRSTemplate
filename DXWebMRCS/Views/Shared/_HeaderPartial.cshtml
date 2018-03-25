@@ -25,7 +25,7 @@
                 <div class="col-md-3 pt-10 pb-10">
                     <div class="widget no-border m-0">
                         <ul class="list-inline text-right sm-text-center">
-                            
+
                             @if (Roles.IsUserInRole("Admin"))
                             {
                                 <li>
@@ -220,45 +220,6 @@
 
                                         <div class="megamenu">
                                             <div class="megamenu-row">
-<<<<<<< HEAD
-                                                <div class="col3">
-                                                    <ul class="list-unstyled list-dashed">
-                                                        @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID))
-                                                        {
-                                                            <li>
-                                                                @if (string.IsNullOrEmpty(@item2.NavigateUrl))
-                                                                {
-                                                                    <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
-                                                                        <i class="fa fa-list-ul"></i>
-                                                                        @if (language == "en-US")
-                                                                        {
-                                                                            @item2.NameEng
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            @item2.NameMon
-                                                                        }
-                                                                    </a>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <a href='@item2.NavigateUrl'>
-                                                                        @if (language == "en-US")
-                                                                        {
-                                                                            @item2.NameEng
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            @item2.NameMon
-                                                                        }
-                                                                    </a>
-                                                                }
-                                                            </li>
-                                                        }
-                                                    </ul>
-                                                </div>
-
-=======
 
                                                 @for (int Counter = Model.Where(x => x.ParentId == item.MenuID).Count(), index = 0, step = Counter / 4, length = Counter / 4, count = 0; index < Counter; index += length)
                                                 {
@@ -305,7 +266,6 @@
                                                         </ul>
                                                     </div>
                                                 }
->>>>>>> dd3116918c345a1c206c729862a6e48377a7bedc
                                             </div>
                                         </div>
 
@@ -345,47 +305,47 @@
                         <li>
 
                             @*@if (language == "en-US")
-                            {
-                                <a href='~/Home/BranchList'>Branches</a>
-                            }
-                            else
-                            {
-                                <a href='~/Home/BranchList'>Салбар</a>
-                            }
+                                {
+                                    <a href='~/Home/BranchList'>Branches</a>
+                                }
+                                else
+                                {
+                                    <a href='~/Home/BranchList'>Салбар</a>
+                                }
 
-                            <div class="megamenu">
-                                <div class="megamenu-row">
+                                <div class="megamenu">
+                                    <div class="megamenu-row">
 
-                                    @for (int index = 0, count = 10; index < (listBranch as List<DXWebMRCS.Models.Branch>).Count; index += 10)
-                                    {
-                                        if (index + count > (listBranch as List<DXWebMRCS.Models.Branch>).Count)
+                                        @for (int index = 0, count = 10; index < (listBranch as List<DXWebMRCS.Models.Branch>).Count; index += 10)
                                         {
-                                            count = (listBranch as List<DXWebMRCS.Models.Branch>).Count % 10;
-                                        }
-                                        <div class="col3">
-                                            <ul class="list-unstyled list-dashed">
-                                                @foreach (var item2 in (listBranch as List<DXWebMRCS.Models.Branch>).GetRange(index, count))
-                                                {
-                                                    <li>
-                                                        <a href='@Url.Action("BranchView", "Branch", new { branchId = @item2.BranchID, menuID = 0 })'>
-                                                            <i class="fa fa-list-ul"></i>
-                                                            @if (language == "en-US")
-                                                            {
-                                                                @item2.NameEng
-                                                            }
-                                                            else
-                                                            {
-                                                                @item2.NameMon
-                                                            }
-                                                        </a>
+                                            if (index + count > (listBranch as List<DXWebMRCS.Models.Branch>).Count)
+                                            {
+                                                count = (listBranch as List<DXWebMRCS.Models.Branch>).Count % 10;
+                                            }
+                                            <div class="col3">
+                                                <ul class="list-unstyled list-dashed">
+                                                    @foreach (var item2 in (listBranch as List<DXWebMRCS.Models.Branch>).GetRange(index, count))
+                                                    {
+                                                        <li>
+                                                            <a href='@Url.Action("BranchView", "Branch", new { branchId = @item2.BranchID, menuID = 0 })'>
+                                                                <i class="fa fa-list-ul"></i>
+                                                                @if (language == "en-US")
+                                                                {
+                                                                    @item2.NameEng
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item2.NameMon
+                                                                }
+                                                            </a>
 
-                                                    </li>
-                                                }
-                                            </ul>
-                                        </div>
-                                    }
-                                </div>
-                            </div>*@
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>*@
 
 
                         </li>
