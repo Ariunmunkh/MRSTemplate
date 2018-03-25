@@ -36,6 +36,9 @@ namespace DXWebMRCS.Models
         [Display(Name = "Салбар")]
         public int? BranchID { get; set; }
 
+        [Display(Name = "Эрэмбэ")]
+        public int? OrderNum { get; set; }
+
     }
 
     public class MenuJoinTable
@@ -61,6 +64,8 @@ namespace DXWebMRCS.Models
         public string Image { get; set; }
 
         public int? ParentId { get; set; }
+
+        public int? OrderNum { get; set; }
 
         [Display(Name = "Салбар")]
         public int? BranchID { get; set; }

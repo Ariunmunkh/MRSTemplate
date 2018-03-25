@@ -35,6 +35,7 @@ namespace DXWebMRCS.Models
                         MenuType = reader["MenuType"] == DBNull.Value ? string.Empty : (string)reader["MenuType"],
                         Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
                         ParentId = (reader["ParentId"] == DBNull.Value ? null : (int?)reader["ParentId"]),
+                        OrderNum = (reader["OrderNum"] == DBNull.Value ? null : (int?)reader["OrderNum"]),
                         BranchID = (reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"])
                     });
                 }
@@ -76,6 +77,7 @@ namespace DXWebMRCS.Models
                         MenuType = reader["MenuType"] == DBNull.Value ? string.Empty : (string)reader["MenuType"],
                         Image = reader["Image"] == DBNull.Value ? string.Empty : (string)reader["Image"],
                         ParentId = (reader["ParentId"] == DBNull.Value ? null : (int?)reader["ParentId"]),
+                        OrderNum = (reader["OrderNum"] == DBNull.Value ? null : (int?)reader["OrderNum"]),
                         BranchID = (reader["BranchID"] == DBNull.Value ? null : (int?)reader["BranchID"]),
                         BranchNameMon = (reader["BranchNameMon"] == DBNull.Value ? string.Empty : (string)reader["BranchNameMon"]),
                         BranchNameEng = (reader["BranchNameEng"] == DBNull.Value ? string.Empty : (string)reader["BranchNameEng"]),
@@ -91,7 +93,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO Menu (NameMon, NameEng, NavigateUrl, MenuType, Image, ParentId, BranchID) VALUES (@NameMon, @NameEng, @NavigateUrl, @MenuType, @Image, @ParentId, @BranchID)", connection);
+                SqlCommand insertCommand = new SqlCommand("INSERT INTO Menu (NameMon, NameEng, NavigateUrl, MenuType, Image, ParentId, OrderNum, BranchID) VALUES (@NameMon, @NameEng, @NavigateUrl, @MenuType, @Image, @ParentId, @OrderNum, @BranchID)", connection);
 
                 insertCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon.Replace("\"", string.Empty));
                 insertCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng.Replace("\"", string.Empty));
@@ -109,6 +111,11 @@ namespace DXWebMRCS.Models
                     insertCommand.Parameters.AddWithValue("@Image", DBNull.Value);
                 else
                     insertCommand.Parameters.AddWithValue("@Image", Menu.Image.Replace("\"", string.Empty));
+
+                if (Menu.OrderNum.HasValue)
+                    insertCommand.Parameters.AddWithValue("@OrderNum", Menu.OrderNum);
+                else
+                    insertCommand.Parameters.AddWithValue("@OrderNum", DBNull.Value);
 
                 if (Menu.ParentId.HasValue)
                     insertCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
@@ -129,7 +136,7 @@ namespace DXWebMRCS.Models
         {
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand updateCommand = new SqlCommand("UPDATE [Menu] SET [NameMon] = @NameMon, [NameEng] = @NameEng, [NavigateUrl] = @NavigateUrl, [MenuType] = @MenuType, Image = @Image, [ParentId] = @ParentId, BranchID = @BranchID WHERE [MenuID] = @MenuID", connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE [Menu] SET [NameMon] = @NameMon, [NameEng] = @NameEng, [NavigateUrl] = @NavigateUrl, [MenuType] = @MenuType, Image = @Image, [ParentId] = @ParentId, OrderNum = @OrderNum, BranchID = @BranchID WHERE [MenuID] = @MenuID", connection);
 
                 updateCommand.Parameters.AddWithValue("@NameMon", Menu.NameMon.Replace("\"", string.Empty));
                 updateCommand.Parameters.AddWithValue("@NameEng", Menu.NameEng.Replace("\"", string.Empty));
@@ -151,6 +158,11 @@ namespace DXWebMRCS.Models
                     updateCommand.Parameters.AddWithValue("@ParentId", Menu.ParentId);
                 else
                     updateCommand.Parameters.AddWithValue("@ParentId", DBNull.Value);
+
+                if (Menu.OrderNum.HasValue)
+                    updateCommand.Parameters.AddWithValue("@OrderNum", Menu.OrderNum);
+                else
+                    updateCommand.Parameters.AddWithValue("@OrderNum", DBNull.Value);
 
                 if (Menu.BranchID.HasValue)
                     updateCommand.Parameters.AddWithValue("@BranchID", Menu.BranchID);

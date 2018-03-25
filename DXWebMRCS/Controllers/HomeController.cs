@@ -249,18 +249,18 @@ namespace DXWebMRCS.Controllers
             IEnumerable<TrainingModel> traininglist2;
             if (WebSecurity.CurrentUserId > 0)
             {
-                traininglist1 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                traininglist1 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
                                                                     "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId + " WHERE Type = 2").ToList();
 
-                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
                                                                     "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId + " WHERE Type = 1").ToList();     
             }
             else
             {
-                traininglist1= db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                traininglist1 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(3) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
                                                                     "FROM Trainings t WHERE Type = 2").ToList();
 
-                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                traininglist2 = db.Database.SqlQuery<TrainingModel>("SELECT TOP(7) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
                                                                     "FROM Trainings t WHERE Type = 1").ToList();
             }
             var model = new Tuple<IEnumerable<TrainingModel>, IEnumerable<TrainingModel>>(traininglist1, traininglist2);
@@ -287,12 +287,12 @@ namespace DXWebMRCS.Controllers
             TrainingModel training;
             if (WebSecurity.CurrentUserId > 0)
             {
-                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
                                                                     "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
             }
             else
             {
-                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
+                training = db.Database.SqlQuery<TrainingModel>("SELECT TOP(1) t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status] " +
                                                                     "FROM Trainings t ").FirstOrDefault();
             }
             if (training == null)
@@ -305,7 +305,7 @@ namespace DXWebMRCS.Controllers
         {
             var pageNumber = 1;
             var pageSize = 8;
-            var list = db.Database.SqlQuery<TrainingModel>("SELECT t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+            var list = db.Database.SqlQuery<TrainingModel>("SELECT t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
                                                            "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).ToPagedList(pageNumber, pageSize);
             return View(list);
         }
@@ -314,7 +314,7 @@ namespace DXWebMRCS.Controllers
         {
             var pageNumber = page ?? 1;
             var pageSize = 8;
-            var list = db.Database.SqlQuery<TrainingModel>("SELECT t.TrainingID, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
+            var list = db.Database.SqlQuery<TrainingModel>("SELECT t.TrainingID, t.Image, t.NameMon, t.NameEng, t.ContentMon, t.ContentEng, t.[Where], t.[When], t.Duration, t.[Status], r.ID AS RequestID, r.UserID, r.[Status] AS RequestStatus " +
                                                           "FROM Trainings t LEFT JOIN TrainingRequests r ON t.TrainingID = r.TrainingID AND r.UserID = " + WebSecurity.CurrentUserId).ToPagedList(pageNumber, pageSize);
             if (list == null)
             {
