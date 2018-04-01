@@ -11,12 +11,11 @@ using System.IO;
 
 namespace DXWebMRCS.Controllers
 {
+    [RequireHttps]
+    [Authorize(Roles = "Admin")]
     public class jobdetailsController : Controller
     {
         private UsersContext db = new UsersContext();
-        [RequireHttps]
-        [Authorize(Roles = "Admin")]
-
         // GET: jobdetails
         public ActionResult Index()
         {

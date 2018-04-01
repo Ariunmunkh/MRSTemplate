@@ -21,6 +21,7 @@ namespace DXWebMRCS.Controllers
         private UsersContext db = new UsersContext();
 
         // GET: /elearning/
+        [RequireHttps]
         [InitializeSimpleMembership]
         [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
         public ActionResult Index()

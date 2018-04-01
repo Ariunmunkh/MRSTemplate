@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
-                    <img class="mt-10 mb-15" alt="" src="~/Content/images/logo-wide-white.png">
-                    <p class="font-16 mb-10">GreenPeace is a library of Crowdfunding and Charity templates with predefined elements which helps you to build your own site. Lorem ipsum dolor sit amet consectetur.</p>
-                    <a class="font-14" href="~/Content/#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                    <img class="mt-10 mb-15" alt="" src="~/Content/logo.png" width="200">
+                    <p class="font-16 mb-10">Монголын улаан загалмай нийгэмлэг</p>
+                    @*<a class="font-14" href="~/Content/#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>*@
                     <ul class="styled-icons icon-dark mt-20">
                         <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s" data-wow-offset="10"><a href="https://www.facebook.com/MongolianRedCrossSociety/" target="_blank" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
                         <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s" data-wow-offset="10"><a href="https://twitter.com/MRCS_MN" target="_blank" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
@@ -75,39 +75,21 @@
                         <li><a href="~/Content/#" class="lineheight-20">121 King Street, Melbourne Victoria 3000, Australia</a></li>
                     </ul>
                     <p class="font-16 text-white mb-5 mt-15">Бидний мэдээллийг авах бол</p>
-                    @using (Html.BeginForm("Create", "Subscribes", FormMethod.Post))
+                    @*@using (Html.BeginForm("Create", "Subscribes", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
                             <label class="display-block" for="mce-EMAIL"></label>
                             <div class="input-group">
-                                @*@Html.TextBoxFor(model => model.email, new { @class = "form-control", @style = "background-color:white; height:37px", placeholder = "И-мэйл хаяг", @type="email" })*@
+                                <input id="Text1" type="email" class="form-control"/>
+                                @Html.TextBoxFor(model => model.email, new { @class = "form-control", @style = "background-color:white; height:37px", placeholder = "И-мэйл хаяг", @type="email" })
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i class="fa fa-paper-plane-o text-white"></i></button>
                                 </span>
                             </div>
                         </form>
-                    }
+                    }*@
                     <!-- Mailchimp Subscription Form Validation-->
-                    <script type="text/javascript">
-                        $('#footer-mailchimp-subscription-form').ajaxChimp({
-                            callback: mailChimpCallBack,
-                            url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
-                        });
-
-                        function mailChimpCallBack(resp) {
-                            // Hide any previous response text
-                            var $mailchimpform = $('#footer-mailchimp-subscription-form'),
-                                $response = '';
-                            $mailchimpform.children(".alert").remove();
-                            if (resp.result === 'success') {
-                                $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                            } else if (resp.result === 'error') {
-                                $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                            }
-                            $mailchimpform.prepend($response);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -116,21 +98,21 @@
         <div class="container pt-20 pb-20">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="font-11 text-black-777 m-0">Copyright &copy;2015 ThemeMascot. All Rights Reserved</p>
+                    <p class="font-11 text-black-777 m-0">Copyright &copy;@System.DateTime.Now.Year Mongolian Red Cross Society. All Rights Reserved</p>
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="widget no-border m-0">
                         <ul class="list-inline sm-text-center mt-5 font-12">
                             <li>
-                                <a href="~/Content/#">FAQ</a>
+                                <a href="~/Content/#">Бидний тухай</a>
                             </li>
                             <li>|</li>
                             <li>
-                                <a href="~/Content/#">Help Desk</a>
+                                <a href="~/Content/#">Салбар</a>
                             </li>
                             <li>|</li>
                             <li>
-                                <a href="~/Content/#">Support</a>
+                                <a href="~/Content/#">Холбоо барих</a>
                             </li>
                         </ul>
                     </div>

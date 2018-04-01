@@ -3,7 +3,7 @@
 @Html.DevExpress().HtmlEditor(settings => {
     settings.Name = "Description";
     settings.CallbackRouteValues = new { Controller = "jobs", Action = "DescriptionHtmlEditorPartial" };
-    settings.Width = 500;
+    settings.Width = 800;
 	settings.ToolbarMode = HtmlEditorToolbarMode.Ribbon;
     if (Model != null)
     	settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.UploadCallbackRouteValues = new { Controller = "jobs", Action = "DescriptionHtmlEditorPartialImageUpload" };
