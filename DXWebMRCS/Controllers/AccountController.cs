@@ -43,7 +43,7 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (!Roles.RoleExists("Admin"))
+            if (!WebSecurity.UserExists("admin@admin.mn"))
                 AddUserAndRoles();
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -51,7 +51,8 @@ namespace DXWebMRCS.Controllers
 
         private void AddUserAndRoles()
         {
-            Roles.CreateRole("Admin");
+            if (!Roles.RoleExists("Admin"))
+                Roles.CreateRole("Admin");
             WebSecurity.CreateUserAndAccount("admin@admin.mn", "Pa$$word123", propertyValues: new
             {
                 Name = "Admin",
