@@ -6,8 +6,9 @@
     ViewBag.Title = "NewsList";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
- <!-- Start main-content -->
+@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;
+string tempBody = string.Empty;}
+<!-- Start main-content -->
 <div class="main-content">
     <!-- Section: inner-header -->
     <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="../Content/IMG_0725.JPG">
@@ -106,7 +107,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p class="mt-10">@Html.Raw(Server.HtmlDecode(item.BodyMon)).ToString().Replace("\n", "<br/>")).Substring(0,50)</p>
+                                            @{
+                                                tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item.BodyEng : item.BodyMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
+                                                tempBody = tempBody.Substring(0, tempBody.Length > 250 ? 250 : tempBody.Length) + (tempBody.Length > 250 ? "..." : "");
+                                            }
+                                            <p class="mt-10">@tempBody</p>
                                             <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Үргэлжлүүлж унших...</a>
                                             @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
                                             <div class="clearfix"></div>
@@ -123,20 +128,19 @@
             <div class="col-md-12">
                 @Html.PagedListPager(Model, page => Url.Action("PageClick", new { page = page }))
                 @*<nav>
-                <ul class="pagination">
-                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">...</a></li>
-                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
-                </ul>
-            </nav>*@
+                        <ul class="pagination">
+                            <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">...</a></li>
+                            <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                        </ul>
+                    </nav>*@
             </div>
         </div>
     </section>
 </div>
 <!-- end main-content -->
-
