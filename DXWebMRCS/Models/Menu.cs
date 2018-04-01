@@ -79,5 +79,7 @@ namespace DXWebMRCS.Models
         [Display(Name = "Таг")]
         public string Tags { get; set; }
 
+        [Display(Name = "Баганы дугаар")]//олон баганаар үед утга авна.
+        public int? columnNum { get; set; }
     }
 }
