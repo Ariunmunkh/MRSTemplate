@@ -122,7 +122,6 @@
                             <a href="#forum-menu"><i class="fa fa-file-text-o"></i><span>Цэс /Menu/</span></a>
                             <ul id="forum-menu">
                                 <li class="active"><a href="@Url.Action("Index", "Menu")"><span>Цэсний жагсаалт</span></a></li>
-                                <li class="active"><a href="@Url.Action("Index", "Menu")"><span>Цэс нэмэх</span></a></li>
                             </ul>
                         </li>
                         <li class="hasSubmenu active">
@@ -242,15 +241,7 @@
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner padding-none">
                     <div class="container-fluid">
-                        <div class="panel panel-default">
-                            <div class="media v-middle ">
-                                <div class="media-body">
-                                    <br />
-                                    @RenderBody()
-                                </div>
-                               
-                            </div>
-                        </div>
+                        @RenderBody()
                     </div>
                 </div>
                 <!-- /st-content-inner -->

@@ -1840,7 +1840,6 @@
     <Content Include="Content\Images\preloaders\7.gif" />
     <Content Include="Content\Images\preloaders\8.gif" />
     <Content Include="Content\Images\preloaders\9.gif" />
-    <Content Include="Content\Images\redcrosslog.png" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Images\shadow-overlay.png" />
     <Content Include="Content\Images\signature.png" />
@@ -2220,6 +2219,7 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -2477,57 +2477,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802270920281_initial-branch.cs" />
-    <Compile Include="Migrations\201802270920281_initial-branch.Designer.cs">
-      <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
+    <Compile Include="Migrations\201804010439360_new_db.cs" />
+    <Compile Include="Migrations\201804010439360_new_db.Designer.cs">
+      <DependentUpon>201804010439360_new_db.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803080610042_videos.cs" />
-    <Compile Include="Migrations\201803080610042_videos.Designer.cs">
-      <DependentUpon>201803080610042_videos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803080734039_videos1.cs" />
-    <Compile Include="Migrations\201803080734039_videos1.Designer.cs">
-      <DependentUpon>201803080734039_videos1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803080819548_magazine.cs" />
-    <Compile Include="Migrations\201803080819548_magazine.Designer.cs">
-      <DependentUpon>201803080819548_magazine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803130248207_subscribes.cs" />
-    <Compile Include="Migrations\201803130248207_subscribes.Designer.cs">
-      <DependentUpon>201803130248207_subscribes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803131412255_jobs.cs" />
-    <Compile Include="Migrations\201803131412255_jobs.Designer.cs">
-      <DependentUpon>201803131412255_jobs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803140702108_jobdetail.cs" />
-    <Compile Include="Migrations\201803140702108_jobdetail.Designer.cs">
-      <DependentUpon>201803140702108_jobdetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803190550589_jobdetails.cs" />
-    <Compile Include="Migrations\201803190550589_jobdetails.Designer.cs">
-      <DependentUpon>201803190550589_jobdetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803190723474_jobdetaials.cs" />
-    <Compile Include="Migrations\201803190723474_jobdetaials.Designer.cs">
-      <DependentUpon>201803190723474_jobdetaials.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803210813110_v2-jobs.cs" />
-    <Compile Include="Migrations\201803210813110_v2-jobs.Designer.cs">
-      <DependentUpon>201803210813110_v2-jobs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803211142106_questionnaire.cs" />
-    <Compile Include="Migrations\201803211142106_questionnaire.Designer.cs">
-      <DependentUpon>201803211142106_questionnaire.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803250607204_jobdet.cs" />
-    <Compile Include="Migrations\201803250607204_jobdet.Designer.cs">
-      <DependentUpon>201803250607204_jobdet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803250820492_questionna.cs" />
-    <Compile Include="Migrations\201803250820492_questionna.Designer.cs">
-      <DependentUpon>201803250820492_questionna.cs</DependentUpon>
+    <Compile Include="Migrations\201804010450567_admin.cs" />
+    <Compile Include="Migrations\201804010450567_admin.Designer.cs">
+      <DependentUpon>201804010450567_admin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -2580,7 +2536,6 @@
     <Folder Include="Content\Thumb\" />
     <Folder Include="Content\Uploadfile\" />
     <Folder Include="Content\UploadImages\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\BranchView\" />
   </ItemGroup>
   <ItemGroup>
@@ -2592,44 +2547,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802270920281_initial-branch.resx">
-      <DependentUpon>201802270920281_initial-branch.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804010439360_new_db.resx">
+      <DependentUpon>201804010439360_new_db.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803080610042_videos.resx">
-      <DependentUpon>201803080610042_videos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803080734039_videos1.resx">
-      <DependentUpon>201803080734039_videos1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803080819548_magazine.resx">
-      <DependentUpon>201803080819548_magazine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803130248207_subscribes.resx">
-      <DependentUpon>201803130248207_subscribes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803131412255_jobs.resx">
-      <DependentUpon>201803131412255_jobs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803140702108_jobdetail.resx">
-      <DependentUpon>201803140702108_jobdetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803190550589_jobdetails.resx">
-      <DependentUpon>201803190550589_jobdetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803190723474_jobdetaials.resx">
-      <DependentUpon>201803190723474_jobdetaials.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803210813110_v2-jobs.resx">
-      <DependentUpon>201803210813110_v2-jobs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803211142106_questionnaire.resx">
-      <DependentUpon>201803211142106_questionnaire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803250607204_jobdet.resx">
-      <DependentUpon>201803250607204_jobdet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803250820492_questionna.resx">
-      <DependentUpon>201803250820492_questionna.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804010450567_admin.resx">
+      <DependentUpon>201804010450567_admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>

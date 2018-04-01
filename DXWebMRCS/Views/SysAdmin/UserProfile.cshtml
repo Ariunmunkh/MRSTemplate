@@ -9,19 +9,16 @@
 <link href="~/Content/Admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
 <link href="~/Content/Admin/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
+  <!-- Start main-content -->
 <div class="main-content">
-    <div class="main-content">
-        <div class="page-title">
-            <div class="title_left">
-                <h3>User Profile</h3>
-            </div>
-        </div>
-
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_content">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-push-1">
+                    <div class="border-1px p-25">
+                        <h4 class="text-theme-colored text-uppercase m-0">Хэрэглэгчийн мэдээлэл</h4>
+                        <div class="line-bottom mb-30"></div>
+                        <p>Та өөрийн хэрэглэгчийн мэдээллийг засах боломжтой.</p>
                         @using (Html.BeginForm("UserProfile", "SysAdmin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
                         {
                             @Html.HiddenFor(m => m.Id)
@@ -29,13 +26,13 @@
                                 @*<form class="form-horizontal">*@
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Зураг</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <div class="media v-middle">
                                             @*<div class="media-left">
-                                                    <div class="icon-block width-100 bg-grey-100">
-                                                        <i class="fa fa-photo text-light"></i>
-                                                    </div>
-                                                </div>*@
+                                <div class="icon-block width-100 bg-grey-100">
+                                    <i class="fa fa-photo text-light"></i>
+                                </div>
+                            </div>*@
                                             @if (string.IsNullOrEmpty(Model.AvatarPath))
                                             {
                                                 <img id="user_img" src="~/Content/images/defaultImage.png" class="avatar" width="120" height="100" alt="Avatar">
@@ -53,20 +50,37 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-md-2 control-label">Бүтэн нэр</label>
-                                    <div class="col-md-8">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-control-material">
-                                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder = "Өөрийн нэр", @id = "exampleInputFirstName" })
-                                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                                                </div>
+                                    <label for="inputEmail3" class="col-md-2 control-label">Овог</label>
+                                    <div class="col-md-9">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @PlaceHolder = "Овог", @id = "exampleInputLastName" })
+                                                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-control-material">
-                                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @PlaceHolder = "Овог нэр", @id = "exampleInputLastName" })
-                                                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
-                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">Нэр</label>
+                                    <div class="col-md-9">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder = "Нэр", @id = "exampleInputFirstName" })
+                                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-md-2 control-label">Утас</label>
+                                    <div class="col-md-9">
+                                        <div class="form-control-material">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control used", @id = "website", @type = "number", @PlaceHolder = "Утасны дугаар" })
+                                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +89,7 @@
                                 {
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-md-2 control-label">Төрсөн он сар</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-9">
                                             <div class="form-control-material">
                                                 <div class="input-group">
                                                     <label class="form-control">@Model.BirthOfDay.ToString("yyyy-MM-dd")</label>
@@ -83,10 +97,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                }                                
+                                }
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-md-2 control-label">E-мэйл</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <div class="form-control-material">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -98,7 +112,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-md-2 control-label">Утас</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <div class="form-control-material">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
@@ -111,9 +125,10 @@
 
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-md-2 control-label">Шинэ нууц үг</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <div class="form-control-material">
                                             <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                                 @Html.TextBoxFor(m => m.EditPassword, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(m => m.EditPassword, "", new { @class = "text-danger" })
                                             </div>
@@ -132,8 +147,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
+<!-- end main-content -->
+
 
 <!-- /page content -->
 <script type="text/javascript">
