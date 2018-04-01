@@ -59,7 +59,12 @@ namespace DXWebMRCS.Controllers
                 LastName = "Admin",
                 BirthOfDay = DateTime.Now,
                 Gender = 1,
-                PhoneNumber = 0
+                PhoneNumber = 0,
+                orderField41 = false,
+                orderField42 = false,
+                orderField43 = false,
+                orderField44 = false,
+                orderField45 = false
             });
             Roles.AddUserToRole("admin@redcross.mn", "Admin");
         }
