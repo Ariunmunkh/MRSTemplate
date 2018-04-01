@@ -39,6 +39,8 @@ namespace DXWebMRCS.Models
         [Display(Name = "Эрэмбэ")]
         public int? OrderNum { get; set; }
 
+        [Display(Name = "Баганы дугаар")]//олон баганаар үед утга авна.
+        public int? ColumnNum { get; set; }
     }
 
     public class MenuJoinTable
@@ -80,6 +82,6 @@ namespace DXWebMRCS.Models
         public string Tags { get; set; }
 
         [Display(Name = "Баганы дугаар")]//олон баганаар үед утга авна.
-        public int? columnNum { get; set; }
+        public int? ColumnNum { get; set; }
     }
 }
