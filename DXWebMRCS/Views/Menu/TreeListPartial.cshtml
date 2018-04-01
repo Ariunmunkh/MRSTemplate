@@ -28,7 +28,15 @@
     settings.Columns.Add("MenuType", "Төрөл", MVCxTreeListColumnType.ComboBox);
     settings.Columns.Add("NavigateUrl", "Линк");
     settings.Columns.Add("Image", "", MVCxTreeListColumnType.ComboBox);
-    settings.Columns.Add("ColumnNum", "Баганы дугаар", MVCxTreeListColumnType.SpinEdit);
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "ColumnNum";
+        column.Caption = "Багана";
+        column.ColumnType = MVCxTreeListColumnType.SpinEdit;
+        var spinEditProperties = column.PropertiesEdit as SpinEditProperties;
+        spinEditProperties.MaxValue = 4;
+        spinEditProperties.MinValue = 0;
+    });
     settings.Columns.Add("OrderNum", "Эрэмбэ", MVCxTreeListColumnType.SpinEdit);
     settings.Columns.Add(column =>
     {
@@ -54,6 +62,7 @@
             ASPxComboBox cb = (ASPxComboBox)e.Editor;
             cb.Items.Add("Нэг баганаар", "Single");
             cb.Items.Add("Олон баганаар", "Multi");
+            cb.Items.Add("Бүлэг", "Group");//menutype = 'Multi' үед ашиглана.
         }
         else if (e.Column.FieldName == "Image")
         {

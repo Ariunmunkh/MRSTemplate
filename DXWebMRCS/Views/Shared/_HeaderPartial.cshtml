@@ -74,7 +74,7 @@
                         {
                             <li>
 
-                                @if (item.MenuType == "Single" || item.MenuType == null)
+                                @if (item.MenuType != "Multi" || item.MenuType == null)
                                 {
                                     if (Model.Where(x => x.ParentId == item.MenuID).Count() > 0)
                                     {
@@ -220,37 +220,34 @@
 
                                         <div class="megamenu">
                                             <div class="megamenu-row">
-
-                                                @for (int Counter = Model.Where(x => x.ParentId == item.MenuID).Count(), index = 0, step = Counter / 4, length = Counter / 4, count = 0; index < Counter; index += length)
+                                                @for (int i = 1; i <= (item.ColumnNum.HasValue ? (int)(item.ColumnNum) : 0); i++)
                                                 {
-                                                    length = step;
-                                                    if ((Counter - count) % 4 > 0)
-                                                    {
-                                                        count++;
-                                                        length++;
-                                                    }
-                                                    <div class="col3">
+                                                    <div class="col@(12 / (item.ColumnNum.HasValue ? (int)(item.ColumnNum) : 1))">
                                                         <ul class="list-unstyled list-dashed">
-                                                            @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID).OrderBy(x => x.OrderNum).ToList().GetRange(index, length))
+                                                            @foreach (var item2 in Model.Where(x => x.ParentId == item.MenuID && x.ColumnNum == i).OrderBy(x => x.OrderNum).ToList())
                                                             {
                                                                 <li>
-                                                                    @if (string.IsNullOrEmpty(@item2.NavigateUrl))
+                                                                    @if (item2.MenuType == "Group")
                                                                     {
-                                                                        <a href='@Url.Action("MenuClick", "News", new { id = @item2.MenuID })'>
-                                                                            <i class="@item2.Image"></i>
-                                                                            @if (language == "en-US")
-                                                                            {
-                                                                                @item2.NameEng
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                @item2.NameMon
-                                                                            }
-                                                                        </a>
+                                                                        <div class="post-right">
+                                                                            <h5 class="post-title mt-0">
+                                                                                <a href='@(string.IsNullOrEmpty(item2.NavigateUrl) ? Url.Action("MenuClick", "News", new { id = item2.MenuID }) : item2.NavigateUrl)'>
+                                                                                    @if (language == "en-US")
+                                                                                    {
+                                                                                        @item2.NameEng
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        @item2.NameMon
+                                                                                    }
+                                                                                </a>
+                                                                            </h5>
+                                                                        </div>
                                                                     }
                                                                     else
                                                                     {
-                                                                        <a href='@item2.NavigateUrl'>
+                                                                        <a href='@(string.IsNullOrEmpty(item2.NavigateUrl) ? Url.Action("MenuClick", "News", new { id = item2.MenuID }) : item2.NavigateUrl)'>
+                                                                            <i class="@item2.Image"></i>
                                                                             @if (language == "en-US")
                                                                             {
                                                                                 @item2.NameEng
