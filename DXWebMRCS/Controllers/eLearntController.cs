@@ -17,6 +17,7 @@ using DevExpress.Web.Mvc;
 namespace DXWebMRCS.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class eLearntController : Controller
     {
         private UsersContext db = new UsersContext();

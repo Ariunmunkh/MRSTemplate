@@ -43,7 +43,7 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (!WebSecurity.UserExists("admin@admin.mn"))
+            if (!WebSecurity.UserExists("admin@redcross.mn"))
                 AddUserAndRoles();
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -53,7 +53,7 @@ namespace DXWebMRCS.Controllers
         {
             if (!Roles.RoleExists("Admin"))
                 Roles.CreateRole("Admin");
-            WebSecurity.CreateUserAndAccount("admin@admin.mn", "Pa$$word123", propertyValues: new
+            WebSecurity.CreateUserAndAccount("admin@redcross.mn", "Pa$$word123", propertyValues: new
             {
                 Name = "Admin",
                 LastName = "Admin",
@@ -61,7 +61,7 @@ namespace DXWebMRCS.Controllers
                 Gender = 1,
                 PhoneNumber = 0
             });
-            Roles.AddUserToRole("admin@admin.mn", "Admin");
+            Roles.AddUserToRole("admin@redcross.mn", "Admin");
         }
 
         //

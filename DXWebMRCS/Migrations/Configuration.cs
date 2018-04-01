@@ -50,7 +50,7 @@
         new Branch() { NameMon = "Хил хамгаалах ерөнхий газар", NameEng = "Khil hamgaalah" },
         new Branch() { NameMon = "Ховд", NameEng = "Khovd" },
         new Branch() { NameMon = "Хэнтий", NameEng = "Khentii" },
-        new Branch() { NameMon = "Хөвсгөл", NameEng = "Khentii" },
+        new Branch() { NameMon = "Хөвсгөл", NameEng = "Khuvsgul" },
         new Branch() { NameMon = "Чингэлтэй дүүрэг", NameEng = "Chingeltei" },
         new Branch() { NameMon = "Өвөрхангай", NameEng = "Uvurkhangai" },
         new Branch() { NameMon = "Өмнөговь", NameEng = "Umnugovi" }
@@ -59,10 +59,23 @@
             context.Tag.AddOrUpdate(x => x.NameMon,
         new Tag() { NameMon = "Байгууллагын хөгжил", NameEng = "Organization Development" },
         new Tag() { NameMon = "Гамшгийн менежментийн хөтөлбөр", NameEng = "Disaster Management programme" },
-        new Tag() { NameMon = "Нийгмийн оролцоог дэмжих хөтөлбөр", NameEng = "Social Inclusion, Development programme" },
+        new Tag() { NameMon = "Нийгмийн оролцоо, хөгжлийг дэмжих хөтөлбөр", NameEng = "Social inclusion, development program" },
         new Tag() { NameMon = "Нийгмийн эрүүл мэндийг дэмжих хөтөлбөр", NameEng = "Public Health Promotion programme" },
         new Tag() { NameMon = "Хүүхэд, залуучуудын хөтөлбөр", NameEng = "Red Cross Youth programme" }
         );
+        }
+        private void AddUserAndRoles()
+        {
+            Roles.CreateRole("Admin");
+            WebSecurity.CreateUserAndAccount("admin@redcross.mn", "Pa$$word123", propertyValues: new
+            {
+                Name = "Admin",
+                LastName = "Admin",
+                BirthOfDay = DateTime.Now,
+                Gender = 1,
+                PhoneNumber = 0
+            });
+            Roles.AddUserToRole("admin@redcross.mn", "Admin");
         }
     }
 }
