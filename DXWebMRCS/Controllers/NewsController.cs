@@ -31,7 +31,7 @@ namespace DXWebMRCS.Controllers
 
         #region News Role user
         [AllowAnonymous]
-        public ActionResult MenuClick(int id)
+        public ActionResult Page(int id)
         {
             var pageNumber = 1;
             var pageSize = 4;

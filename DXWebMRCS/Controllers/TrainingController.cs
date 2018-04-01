@@ -27,7 +27,7 @@ namespace DXWebMRCS.Controllers
             return View(db.Trainings.ToList());
         }
 
-        public ActionResult MenuClick(int id)
+        public ActionResult Page(int id)
         {
             var pageNumber = 1;
             var pageSize = 4;

@@ -312,9 +312,11 @@ namespace DXWebMRCS.Controllers
 
                 db.Entry(_user).State = EntityState.Modified;
                 db.SaveChanges();
-
-                var token = WebSecurity.GeneratePasswordResetToken(model.Email);
-                WebSecurity.ResetPassword(token, model.EditPassword);
+                if (model.EditPassword != null && !string.IsNullOrEmpty(model.EditPassword))
+                {
+                    var token = WebSecurity.GeneratePasswordResetToken(model.Email);
+                    WebSecurity.ResetPassword(token, model.EditPassword);
+                }
             }
             return View(model);
         }
