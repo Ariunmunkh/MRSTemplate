@@ -16,7 +16,7 @@ using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize(Roles = "Admin,BranchUser")]
+    [Authorize(Roles = "Admin")]
     [InitializeSimpleMembership]
     [RequireHttps]
     public class SysAdminController : Controller
@@ -24,6 +24,7 @@ namespace DXWebMRCS.Controllers
         private UsersContext db = new UsersContext();
         //
         // GET: /SysAdmin/
+
         public ActionResult Index()
         {
             return View();
@@ -419,7 +420,16 @@ namespace DXWebMRCS.Controllers
                 WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
                 {
                     Name = model.UserName,
-                    BranchId = model.BranchId
+                    LastName = "BranchUser",
+                    BranchId = model.BranchId,
+                    BirthOfDay = DateTime.Now,
+                    Gender = 1,
+                    PhoneNumber = 0,
+                    orderField41 = false,
+                    orderField42 = false,
+                    orderField43 = false,
+                    orderField44 = false,
+                    orderField45 = false
                 });
                 var isRole = Roles.RoleExists("BranchUser");
                 if (!isRole)
