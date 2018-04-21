@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DXWebMRCS.Language {
+namespace Resources {
     using System;
     
     
@@ -29,7 +29,7 @@ namespace DXWebMRCS.Language {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public RGlobal() {
+        internal RGlobal() {
         }
         
         /// <summary>
@@ -70,11 +70,623 @@ namespace DXWebMRCS.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to l1.
+        /// </summary>
+        public static string l1 {
+            get {
+                return ResourceManager.GetString("l1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l10.
+        /// </summary>
+        public static string l10 {
+            get {
+                return ResourceManager.GetString("l10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l2.
+        /// </summary>
+        public static string l2 {
+            get {
+                return ResourceManager.GetString("l2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l3.
+        /// </summary>
+        public static string l3 {
+            get {
+                return ResourceManager.GetString("l3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l4.
+        /// </summary>
+        public static string l4 {
+            get {
+                return ResourceManager.GetString("l4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l5.
+        /// </summary>
+        public static string l5 {
+            get {
+                return ResourceManager.GetString("l5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l6.
+        /// </summary>
+        public static string l6 {
+            get {
+                return ResourceManager.GetString("l6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l7.
+        /// </summary>
+        public static string l7 {
+            get {
+                return ResourceManager.GetString("l7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l8.
+        /// </summary>
+        public static string l8 {
+            get {
+                return ResourceManager.GetString("l8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to l9.
+        /// </summary>
+        public static string l9 {
+            get {
+                return ResourceManager.GetString("l9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mongolia.
         /// </summary>
         public static string Mongolia {
             get {
                 return ResourceManager.GetString("Mongolia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p1.
+        /// </summary>
+        public static string p1 {
+            get {
+                return ResourceManager.GetString("p1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p1_t.
+        /// </summary>
+        public static string p1_t {
+            get {
+                return ResourceManager.GetString("p1_t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p10.
+        /// </summary>
+        public static string p10 {
+            get {
+                return ResourceManager.GetString("p10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p11.
+        /// </summary>
+        public static string p11 {
+            get {
+                return ResourceManager.GetString("p11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p12.
+        /// </summary>
+        public static string p12 {
+            get {
+                return ResourceManager.GetString("p12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p13.
+        /// </summary>
+        public static string p13 {
+            get {
+                return ResourceManager.GetString("p13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p14.
+        /// </summary>
+        public static string p14 {
+            get {
+                return ResourceManager.GetString("p14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2.
+        /// </summary>
+        public static string p2 {
+            get {
+                return ResourceManager.GetString("p2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2_t.
+        /// </summary>
+        public static string p2_t {
+            get {
+                return ResourceManager.GetString("p2_t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p3.
+        /// </summary>
+        public static string p3 {
+            get {
+                return ResourceManager.GetString("p3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p3_t.
+        /// </summary>
+        public static string p3_t {
+            get {
+                return ResourceManager.GetString("p3_t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string p4 {
+            get {
+                return ResourceManager.GetString("p4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p5.
+        /// </summary>
+        public static string p5 {
+            get {
+                return ResourceManager.GetString("p5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p6.
+        /// </summary>
+        public static string p6 {
+            get {
+                return ResourceManager.GetString("p6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p7.
+        /// </summary>
+        public static string p7 {
+            get {
+                return ResourceManager.GetString("p7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p8.
+        /// </summary>
+        public static string p8 {
+            get {
+                return ResourceManager.GetString("p8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p9.
+        /// </summary>
+        public static string p9 {
+            get {
+                return ResourceManager.GetString("p9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1-1-h1.
+        /// </summary>
+        public static string r1_1_h1 {
+            get {
+                return ResourceManager.GetString("r1_1_h1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_h2.
+        /// </summary>
+        public static string r1_1_h2 {
+            get {
+                return ResourceManager.GetString("r1_1_h2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_h3.
+        /// </summary>
+        public static string r1_1_h3 {
+            get {
+                return ResourceManager.GetString("r1_1_h3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_h4.
+        /// </summary>
+        public static string r1_1_h4 {
+            get {
+                return ResourceManager.GetString("r1_1_h4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_p1.
+        /// </summary>
+        public static string r1_1_p1 {
+            get {
+                return ResourceManager.GetString("r1_1_p1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_p2.
+        /// </summary>
+        public static string r1_1_p2 {
+            get {
+                return ResourceManager.GetString("r1_1_p2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_p3.
+        /// </summary>
+        public static string r1_1_p3 {
+            get {
+                return ResourceManager.GetString("r1_1_p3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r1_1_p4.
+        /// </summary>
+        public static string r1_1_p4 {
+            get {
+                return ResourceManager.GetString("r1_1_p4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r2_1_1_h1.
+        /// </summary>
+        public static string r2_1_1_h1 {
+            get {
+                return ResourceManager.GetString("r2_1_1_h1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r2_1_h1.
+        /// </summary>
+        public static string r2_1_h1 {
+            get {
+                return ResourceManager.GetString("r2_1_h1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r2_1_p1.
+        /// </summary>
+        public static string r2_1_p1 {
+            get {
+                return ResourceManager.GetString("r2_1_p1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r2_2_1_h1.
+        /// </summary>
+        public static string r2_2_1_h1 {
+            get {
+                return ResourceManager.GetString("r2_2_1_h1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to r2_2_1_h2.
+        /// </summary>
+        public static string r2_2_1_h2 {
+            get {
+                return ResourceManager.GetString("r2_2_1_h2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to read more....
+        /// </summary>
+        public static string Read {
+            get {
+                return ResourceManager.GetString("Read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t1.
+        /// </summary>
+        public static string t1 {
+            get {
+                return ResourceManager.GetString("t1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t1_1.
+        /// </summary>
+        public static string t1_1 {
+            get {
+                return ResourceManager.GetString("t1_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t10.
+        /// </summary>
+        public static string t10 {
+            get {
+                return ResourceManager.GetString("t10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t11.
+        /// </summary>
+        public static string t11 {
+            get {
+                return ResourceManager.GetString("t11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t12.
+        /// </summary>
+        public static string t12 {
+            get {
+                return ResourceManager.GetString("t12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t13.
+        /// </summary>
+        public static string t13 {
+            get {
+                return ResourceManager.GetString("t13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t14.
+        /// </summary>
+        public static string t14 {
+            get {
+                return ResourceManager.GetString("t14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t14_1.
+        /// </summary>
+        public static string t14_1 {
+            get {
+                return ResourceManager.GetString("t14_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t15.
+        /// </summary>
+        public static string t15 {
+            get {
+                return ResourceManager.GetString("t15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t16.
+        /// </summary>
+        public static string t16 {
+            get {
+                return ResourceManager.GetString("t16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t16_1.
+        /// </summary>
+        public static string t16_1 {
+            get {
+                return ResourceManager.GetString("t16_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t17.
+        /// </summary>
+        public static string t17 {
+            get {
+                return ResourceManager.GetString("t17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t18.
+        /// </summary>
+        public static string t18 {
+            get {
+                return ResourceManager.GetString("t18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t18_1.
+        /// </summary>
+        public static string t18_1 {
+            get {
+                return ResourceManager.GetString("t18_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t2.
+        /// </summary>
+        public static string t2 {
+            get {
+                return ResourceManager.GetString("t2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t2_1.
+        /// </summary>
+        public static string t2_1 {
+            get {
+                return ResourceManager.GetString("t2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t3.
+        /// </summary>
+        public static string t3 {
+            get {
+                return ResourceManager.GetString("t3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t3_1.
+        /// </summary>
+        public static string t3_1 {
+            get {
+                return ResourceManager.GetString("t3_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t4.
+        /// </summary>
+        public static string t4 {
+            get {
+                return ResourceManager.GetString("t4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t4_1.
+        /// </summary>
+        public static string t4_1 {
+            get {
+                return ResourceManager.GetString("t4_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t5.
+        /// </summary>
+        public static string t5 {
+            get {
+                return ResourceManager.GetString("t5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t5_1.
+        /// </summary>
+        public static string t5_1 {
+            get {
+                return ResourceManager.GetString("t5_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t6.
+        /// </summary>
+        public static string t6 {
+            get {
+                return ResourceManager.GetString("t6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t6_1.
+        /// </summary>
+        public static string t6_1 {
+            get {
+                return ResourceManager.GetString("t6_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t7.
+        /// </summary>
+        public static string t7 {
+            get {
+                return ResourceManager.GetString("t7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t8.
+        /// </summary>
+        public static string t8 {
+            get {
+                return ResourceManager.GetString("t8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t9.
+        /// </summary>
+        public static string t9 {
+            get {
+                return ResourceManager.GetString("t9", resourceCulture);
             }
         }
     }

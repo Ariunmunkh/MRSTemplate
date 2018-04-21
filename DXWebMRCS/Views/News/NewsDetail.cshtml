@@ -6,41 +6,21 @@
 @{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 <!-- Start main-content -->
 <div class="main-content">
-    @{string imageUrl = @Model.Item1.Image != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + @Model.Item1.Image : "http://placehold.it/1920x1280";}
-    <!-- Section: inner-header -->
-    <section class="inner-header divider layer-overlay overlay-1" data-bg-img=@imageUrl>
-        <div class="container pt-60 pb-60">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-2" data-bg-img="@Model.Item1.Image">
+        <div class="container pt-90 pb-90">
             <!-- Section Content -->
             <div class="section-content">
                 <div class="row">
-                    <div class="col-sm-8 text-left flip xs-text-center text-white" >
-                        <h2 class="title">
-                            @if (language == "en-US")
-                            {
-                                @Model.Item1.TitleEng
-                            }
-                            else
-                            {
-                                @Model.Item1.TitleMon
-                            }
-                        </h2>
+                    <div class="col-md-12 text-center">
+                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <h2 class="title text-white">@Model.Item1.TitleEng</h2>
+                        }
+                        else
+                        {
+                            <h2 class="title text-white">@Model.Item1.TitleMon</h2>
+                        }
                     </div>
-                    @*<div class="col-sm-4">
-                        <ol class="breadcrumb text-right sm-text-center text-black mt-10">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Detail</a></li>
-                            <li class="active text-gray-silver">
-                                @if (language == "en-US")
-                                {
-                                    @Model.Item1.TitleEng
-                                }
-                                else
-                                {
-                                    @Model.Item1.TitleMon
-                                }
-                            </li>
-                        </ol>
-                    </div>*@
                 </div>
             </div>
         </div>
@@ -65,14 +45,20 @@
                 <div class="col-md-3">
                     <div class="sidebar sidebar-left mt-sm-30">
                         <div class="widget">
+                        @if (language == "en-US")
+                        {
                             <h5 class="widget-title line-bottom">Latest News</h5>
+                        }
+                        else
+                        {
+                            <h5 class="widget-title line-bottom">Сүүлд нэмэгдсэн мэдээ</h5>
+                        }
                             <div class="latest-posts">
                                 @foreach (var item in Model.Item2)
                                 {
                                     <article class="post media-post clearfix pb-0 mb-10">
                                         <a class="post-thumb" href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
-                                            @{string itemImageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "https://placehold.it/75x75";}
-                                            <img src=@itemImageUrl alt="">
+                                            <img src="@item.Image" alt="">
 
                                         </a>
                                         <div class="post-right">
@@ -102,7 +88,6 @@
                                                     }
                                                 </a>
                                             </h5>
-                                            <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
                                         </div>
                                     </article>
                                 }

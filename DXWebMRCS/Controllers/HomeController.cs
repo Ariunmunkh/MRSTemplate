@@ -153,6 +153,11 @@ namespace DXWebMRCS.Controllers
             return PartialView("_GalleryViewPartial", model);
         }
 
+        public ActionResult DonorSayViewPartial()
+        {
+            var model = db.Donor.ToList();
+            return PartialView("_DonorSayViewPartial", model);
+        }
         public ActionResult GridViewPartialView()
         {
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter            

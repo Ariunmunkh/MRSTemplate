@@ -67,6 +67,8 @@
         else if (e.Column.FieldName == "Image")
         {
             ASPxComboBox cb = (ASPxComboBox)e.Editor;
+            cb.Items.Add("Angle double right", "fa fa-angle-double-right text-theme-colored");
+            cb.Items.Add("Angle right", "fa fa-angle-right");
             cb.Items.Add("Accordion", "fa fa-list-ul");
             cb.Items.Add("Alerts", "fa fa-exclamation-circle");
             cb.Items.Add("Animations", "fa fa-magic");

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Donor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Жагсаалт</h2>
+
+<p>
+    @Html.ActionLink("Шинээр нэмэх", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pnamemon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pnameeng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParagraphMon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParagraphEng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionMon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionEng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pnamemon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pnameeng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParagraphMon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParagraphEng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionMon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionEng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DID })
+        </td>
+    </tr>
+}
+
+</table>

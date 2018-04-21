@@ -2423,6 +2423,12 @@
     <Content Include="Views\lessonid\Edit.cshtml" />
     <Content Include="Views\lessonid\Index.cshtml" />
     <Content Include="Views\Questionnaires\_GridViewPartial.cshtml" />
+    <Content Include="Views\DonorSay\Create.cshtml" />
+    <Content Include="Views\DonorSay\Delete.cshtml" />
+    <Content Include="Views\DonorSay\Details.cshtml" />
+    <Content Include="Views\DonorSay\Edit.cshtml" />
+    <Content Include="Views\DonorSay\Index.cshtml" />
+    <Content Include="Views\Home\_DonorSayViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2443,6 +2449,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\BranchViewController.cs" />
+    <Compile Include="Controllers\DonorSayController.cs" />
     <Compile Include="Controllers\elearningController.cs" />
     <Compile Include="Controllers\eLearntController.cs" />
     <Compile Include="Controllers\eServiceController.cs" />
@@ -2485,11 +2492,16 @@
     <Compile Include="Migrations\201804010450567_admin.Designer.cs">
       <DependentUpon>201804010450567_admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804031058487_donors.cs" />
+    <Compile Include="Migrations\201804031058487_donors.Designer.cs">
+      <DependentUpon>201804031058487_donors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\CountViewModel.cs" />
+    <Compile Include="Models\Donor.cs" />
     <Compile Include="Models\Elearn.cs" />
     <Compile Include="Models\eService.cs" />
     <Compile Include="Models\Gallery.cs" />
@@ -2529,6 +2541,7 @@
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
     <Folder Include="Content\HtmlEditor\Images\" />
     <Folder Include="Content\HtmlEditor\VideoFiles\" />
+    <Folder Include="Content\Images\DonorSay\" />
     <Folder Include="Content\Images\NewsImage\" />
     <Folder Include="Content\Images\SliderImage\" />
     <Folder Include="Content\Images\UserAvatar\" />
@@ -2540,12 +2553,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Language\RGlobal.mn.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.mn.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Language\RGlobal.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RGlobal.Designer.cs</LastGenOutput>
+      <BrowseToURL>DXWebMRCS.Language</BrowseToURL>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804010439360_new_db.resx">
       <DependentUpon>201804010439360_new_db.cs</DependentUpon>
@@ -2553,6 +2569,10 @@
     <EmbeddedResource Include="Migrations\201804010450567_admin.resx">
       <DependentUpon>201804010450567_admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031058487_donors.resx">
+      <DependentUpon>201804031058487_donors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DXWebMRCS.Models.Donor>
+
+<style>
+    #img01 {
+        max-width: 20%;
+    }
+</style>
+
+@if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+{
+<div class="container pt-60 pb-60">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-uppercase mt-0 pb-0  text-center text-white">@Resources.RGlobal.t17</h2>
+            <div class="owl-carousel-1col" data-dots="true">
+                @foreach(var item in Model)
+                {
+                <div class="item">
+                    <div class="testimonial-wrapper text-center">
+                        <div class="thumb"><img class="" alt="" src="@item.Image" id="img01"></div>
+                        <div class="content pt-10">
+                            <p class="lead text-white">@item.ParagraphEng</p>
+                            <h4 class="author text-white mb-0">@item.Pnameeng</h4>
+                            <h6 class="title text-white mt-0 mb-15">@item.PositionEng</h6>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <div class="container pt-60 pb-60">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="text-uppercase mt-0 pb-0  text-center text-white">@Resources.RGlobal.t17</h2>
+            <div class="owl-carousel-1col" data-dots="true">
+                @foreach(var item in Model)
+                {
+                <div class="item">
+                    <div class="testimonial-wrapper text-center">
+                        <div class="thumb"><img class="" alt="" src="@item.Image" id="img01"></div>
+                        <div class="content pt-10">
+                            <p class="lead text-white">@item.ParagraphMon</p>
+                            <h4 class="author text-white mb-0">@item.Pnamemon</h4>
+                            <h6 class="title text-white mt-0 mb-15">@item.PositionMon</h6>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+

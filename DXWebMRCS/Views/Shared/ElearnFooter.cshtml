@@ -15,9 +15,6 @@
                     <li><a href="@Url.Action("FAQ", "Elearning")">Зөвлөмж</a></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="fb-page" data-href="https://www.facebook.com/MongolianRedCrossSociety/" data-tabs="timeline" data-width="580" data-height="194" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/MongolianRedCrossSociety/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MongolianRedCrossSociety/">Mongolian Red Cross Society</a></blockquote></div>
-            </div>
             <div class="col-xs-12 col-md-3">
                 <h4 class="text-headline text-light">Бидэнтэй холбогдох</h4>
                 <br />
@@ -27,7 +24,7 @@
                     <a href="https://www.youtube.com/user/RedCrossmn" class="btn btn-pink-500 btn-circle"><i class="fa fa-youtube"></i></a>
                 </p>
                 <p class="text-subhead">
-                    &copy; 2015 Learning Platform
+                    &copy; Copyright @System.DateTime.Now.Year Learning Platform
                 </p>
             </div>
         </div>
@@ -35,15 +32,5 @@
 </section>
 <!-- Footer -->
 <footer class="footer">
-    <strong>Монголын улаан загалмай нийгэмлэг</strong> Learning Platform &copy; Copyright 2015
+    <strong>Монголын улаан загалмай нийгэмлэг</strong> Learning Platform &copy; Copyright @System.DateTime.Now.Year
 </footer>
-
-<div id="fb-root"></div>
-<script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>

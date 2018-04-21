@@ -419,7 +419,15 @@ namespace DXWebMRCS.Controllers
                 WebSecurity.CreateUserAndAccount(model.Email, model.Password, propertyValues: new
                 {
                     Name = model.UserName,
-                    BranchId = model.BranchId
+                    BranchId = model.BranchId,
+                    BirthOfDay = DateTime.Now,
+                    Gender = 1,
+                    PhoneNumber = 0,
+                    orderField41 = false,
+                    orderField42 = false,
+                    orderField43 = false,
+                    orderField44 = false,
+                    orderField45 = false
                 });
                 var isRole = Roles.RoleExists("BranchUser");
                 if (!isRole)
@@ -681,7 +689,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;

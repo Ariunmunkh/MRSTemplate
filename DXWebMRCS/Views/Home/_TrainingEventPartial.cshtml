@@ -3,7 +3,7 @@
 @{  string language = System.Globalization.CultureInfo.CurrentCulture.Name; }
 <div class="row">
     <div class="col-md-4 hidden-sm">
-        <h3 class="text-uppercase title line-bottom mt-0 mb-30"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Явагдах <span class="text-theme-colored">сургалт</span></h3>
+        <h3 class="text-uppercase title line-bottom mt-0 mb-30"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>@Resources.RGlobal.t14 <span class="text-theme-colored">@Resources.RGlobal.t14_1</span></h3>
         @foreach (var item in Model.Item1.ToList().Take(3))
         {
             <article class="post media-post clearfix pb-0 mb-10">

@@ -62,11 +62,6 @@
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav">
                         <li class="dropdown active">
-                            <a href="@Url.Action("Index", "Menu")"><span class="fa fa-plus-circle"></span> Меню нэмэх</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown active">
                             <a href="@Url.Action("Create", "News")"><span class="fa fa-plus-square"></span> Мэдээ нэмэх</a>
                         </li>
                     </ul>
@@ -220,6 +215,13 @@
                                 <li class="active"><a href="@Url.Action("index", "questionnaires")"><span>Судалгаа жагсаалт</span></a></li>
                                 <li class="active"><a href="@Url.Action("create", "userids")"><span>Судалгаа багш нэмэх</span></a></li>
                                 <li class="active"><a href="@Url.Action("create", "lessonid")"><span>Судалгаа хичээл нэр нэмэх</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu active">
+                            <a href="#forum-donorsay"><i class="fa fa-user-md"></i><span>Донор ишлэл</span></a>
+                            <ul id="forum-donorsay">
+                                <li class="active"><a href="@Url.Action("index", "donorsay")"><span>Донор ишлэл жагсаалт</span></a></li>
+                                <li class="active"><a href="@Url.Action("create", "donorsay")"><span>Донор ишлэл нэмэх</span></a></li>
                             </ul>
                         </li>
                     }

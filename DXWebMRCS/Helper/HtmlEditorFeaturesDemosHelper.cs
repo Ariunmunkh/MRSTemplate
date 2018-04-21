@@ -20,7 +20,7 @@ namespace DXWebMRCS
 
         public static readonly UploadControlValidationSettings ImageUploadValidationSettings = new UploadControlValidationSettings {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static HtmlEditorFileSaveSettings fileSaveSettings;
