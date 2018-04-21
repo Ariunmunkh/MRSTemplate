@@ -2484,18 +2484,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804010439360_new_db.cs" />
-    <Compile Include="Migrations\201804010439360_new_db.Designer.cs">
-      <DependentUpon>201804010439360_new_db.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804010450567_admin.cs" />
-    <Compile Include="Migrations\201804010450567_admin.Designer.cs">
-      <DependentUpon>201804010450567_admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804031058487_donors.cs" />
-    <Compile Include="Migrations\201804031058487_donors.Designer.cs">
-      <DependentUpon>201804031058487_donors.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -2563,16 +2551,6 @@
       <BrowseToURL>DXWebMRCS.Language</BrowseToURL>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804010439360_new_db.resx">
-      <DependentUpon>201804010439360_new_db.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804010450567_admin.resx">
-      <DependentUpon>201804010450567_admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804031058487_donors.resx">
-      <DependentUpon>201804031058487_donors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Views\eLearnt\getCertificate.resx">
       <DependentUpon>getCertificate.cs</DependentUpon>
     </EmbeddedResource>
