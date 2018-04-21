@@ -58,7 +58,46 @@
                         </a>
                     </div>
                 </div>
+                
                 <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="main-nav">
+                    @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="@Url.Action("Index", "Menu")"><span class="fa fa-plus-circle"></span> Меню нэмэх</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="@Url.Action("Create", "News")"><span class="fa fa-plus-square"></span> Мэдээ нэмэх</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="@Url.Action("SliderCreate", "SysAdmin")"><span class="fa fa-file-image-o"></span> Слайд зураг нэмэх</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="@Url.Action("FileContentList", "SysAdmin")"><span class="fa fa-file-pdf-o"></span> Файл нэмэх</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="@Url.Action("Create", "elearning")"><span class="fa fa-file-code-o"></span> Онлайн сургалт нэмэх</a>
+                            </li>
+                        </ul>
+                    }
+                        <ul class="nav navbar-nav navbar-nav-bordered">
+                            <!-- User -->
+                            <li class="dropdown">
+                                <br />
+                                    @Html.Partial("_LoginPartial")
+                            </li>
+                        </ul>
+                    </div>
+                <!-- /.navbar-collapse -->                
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav">
                         <li class="dropdown active">
@@ -228,6 +267,7 @@
                     else if (Roles.IsUserInRole(User.Identity.Name, "BranchUser"))
                     {
                         <li class="active"><a href="@Url.Action("Index", "News")"><i class="fa fa-bar-chart-o"></i><span>Мэдээ мэдээлэл</span></a></li>
+                        <li class="active"><a href="@Url.Action("Index", "Menu")"><i class="fa fa-file-text-o"></i><span>Цэсний жагсаалт</span></a></li>
                     }
                 </ul>
             </div>

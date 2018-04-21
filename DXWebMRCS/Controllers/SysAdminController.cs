@@ -16,7 +16,7 @@ using System.Text;
 
 namespace DXWebMRCS.Controllers
 {
-    [Authorize(Roles = "Admin,BranchUser")]
+    [Authorize(Roles = "Admin")]
     [InitializeSimpleMembership]
     [RequireHttps]
     public class SysAdminController : Controller
@@ -24,6 +24,7 @@ namespace DXWebMRCS.Controllers
         private UsersContext db = new UsersContext();
         //
         // GET: /SysAdmin/
+
         public ActionResult Index()
         {
             return View();

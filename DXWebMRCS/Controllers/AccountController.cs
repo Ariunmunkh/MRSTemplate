@@ -43,6 +43,10 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (WebSecurity.CurrentUserId > 0)
+            {
+                return Redirect("/Home");
+            }
             if (!WebSecurity.UserExists("admin@redcross.mn"))
                 AddUserAndRoles();
             ViewBag.ReturnUrl = returnUrl;
@@ -93,7 +97,7 @@ namespace DXWebMRCS.Controllers
                     //HttpContext.Application["UserProfile"] = user;
                     if (Roles.IsUserInRole(model.Email, "BranchUser"))
                     {
-                        return Redirect(returnUrl ?? "/SysAdmin");
+                        return Redirect(returnUrl ?? "/News");
                     }
                     if (Roles.IsUserInRole(model.Email, "Admin"))
                     {
