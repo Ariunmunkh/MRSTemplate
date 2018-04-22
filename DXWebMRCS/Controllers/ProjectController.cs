@@ -264,7 +264,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;
@@ -294,7 +294,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings UploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
         public static void FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
         {
@@ -313,7 +313,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;

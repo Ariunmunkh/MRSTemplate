@@ -240,7 +240,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;

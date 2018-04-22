@@ -109,7 +109,7 @@ namespace DXWebMRCS.Controllers
                 return HttpNotFound();
             }
 
-            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " ORDER BY Date ASC").ToList();
+            IEnumerable<News> newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE CID <> " + news.CID + " ORDER BY Date DESC").ToList();
             var detail = new Tuple<News, IEnumerable<News>>(news, newslist);
             return View(detail);
         }
@@ -603,7 +603,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;
@@ -633,7 +633,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings UploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
         public static void FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
         {
@@ -652,7 +652,7 @@ namespace DXWebMRCS.Controllers
         public static DevExpress.Web.UploadControlValidationSettings ImageUploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
         {
             AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".jpe", ".gif", ".png" },
-            MaxFileSize = 4000000
+            MaxFileSize = 8000000
         };
 
         static DevExpress.Web.Mvc.MVCxHtmlEditorImageSelectorSettings imageSelectorSettings;

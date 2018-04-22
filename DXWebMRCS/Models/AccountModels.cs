@@ -48,6 +48,7 @@ namespace DXWebMRCS.Models
         public System.Data.Entity.DbSet<DXWebMRCS.Models.videos> videos { get; set; }
 
         public System.Data.Entity.DbSet<DXWebMRCS.Models.jobdetail> jobdetails { get; set; }
+        public DbSet<Donor> Donor { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile

@@ -1,0 +1,75 @@
+﻿@model DXWebMRCS.Models.Donor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Donor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pnamemon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pnamemon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pnameeng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pnameeng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParagraphMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParagraphMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParagraphEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParagraphEng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionEng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

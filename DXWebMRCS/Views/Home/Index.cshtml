@@ -6,7 +6,6 @@
 
 <!-- Start main-content -->
 <div class="main-content">
-
     @{Html.RenderAction("SliderViewPartial", "Home");}
     @*@if (WebSecurity.CurrentUserName == "")
     {
@@ -19,17 +18,11 @@
                     <div class="col-sm-12 col-md-3 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay1">
                         <div class="sm-height-auto bg-theme-colored">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Сайн дурын идэвхтэнээр элсэх</h3>
+                                <h3 class="text-uppercase text-white mt-0">@Resources.RGlobal.r1_1_h1</h3>
                                 <p class="text-white text-justify">
-                                    МУЗН-ийн Сайн дурын идэвхтэн нь Хөдөлгөөний
-                                    үндсэн зарчмыг хүлээн зөвшөөрч, оршин
-                                    суугаа нутаг дэвсгэрийнхээ МУЗН-ийн аль нэг
-                                    шатны хороонд бүртгүүлж, Улаан загалмайн
-                                    үйл ажиллагаанд тогтмол идэвхтэй оролцож,
-                                    нийгэм, хүний сайн сайхны төлөө сайн дураараа
-                                    ажилладаг иргэн байна.
+                                    @Resources.RGlobal.r1_1_p1
                                 </p>
-                                <a href="~/Content/page-become-a-volunteer.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
+                                <a href="~/Content/page-become-a-volunteer.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">@Resources.RGlobal.Read</a>
                             </div>
                             <i class="flaticon-charity-shaking-hands-inside-a-heart bg-icon"></i>
                         </div>
@@ -37,12 +30,11 @@
                     <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay2">
                         <div class="sm-height-auto bg-theme-colored-darker2">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Гишүүнээр элсэх</h3>
+                                <h3 class="text-uppercase text-white mt-0">@Resources.RGlobal.r1_1_h2</h3>
                                 <p class="text-white text-justify">
-                                    Монголын улаан загалмай нийгэмлэгийн гишүүнчлэл нь Татвар төлөгч гишүүн, Ивээн тэтгэгч гишүүн
-                                    (онцгой), Гишүүн хүмүүнлэгийн байгууллага гэсэн төрлүүдтэй байна.
+                                   @Resources.RGlobal.r1_1_p2
                                 </p>
-                                <a href="~/Content/#" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
+                                <a href="~/Content/#" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">@Resources.RGlobal.Read</a>
                             </div>
                             <i class="flaticon-charity-home-insurance bg-icon"></i>
                         </div>
@@ -50,13 +42,11 @@
                     <div class="col-sm-12 col-md-3 pl-0 pr-0 pl-sm-15 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay3">
                         <div class="sm-height-auto bg-theme-colored-darker3">
                             <div class="p-30">
-                                <h3 class="text-uppercase text-white mt-0">Хэрхэн цусны донор болох</h3>
+                                <h3 class="text-uppercase text-white mt-0">@Resources.RGlobal.r1_1_h3</h3>
                                 <p class="text-white text-justify">
-                                    Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул
-                                    донорын цусны хэрэгцээ, ач холбогдлын талаар нийгэм, олон нийтэд сурталчлан таниулах,
-                                    шинээр цусны донорын эгнээг өргөжүүлэхэд дэмжлэг үзүүлэн ажиллах;
+                                    @Resources.RGlobal.r1_1_p3
                                 </p>
-                                <a href="~/Content/page-donate.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
+                                <a href="~/Content/page-donate.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">@Resources.RGlobal.Read</a>
                             </div>
                             <i class="flaticon-charity-make-an-online-donation bg-icon"></i>
                         </div>
@@ -64,9 +54,9 @@
                     <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay4">
                         <div class="sm-height-auto bg-theme-colored-darker4">
                             <div class="p-30">
-                                <h3 class="text-white mt-0 mb-5">Холбоо барих</h3>
-                                <p class="text-white text-justify">Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, Энхтайвны гудамж, МУЗН-ийн төв байр <br /><span class="fa fa-envelope-o"></span> info@redcross.mn<br /><span class="fa fa-phone"></span> (+976)-11-323334</p>
-                                <a href="~/Content/page-contact1.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">Дэлгэрэнгүй унших</a>
+                                <h3 class="text-white mt-0 mb-5">@Resources.RGlobal.r1_1_h4</h3>
+                                <p class="text-white text-justify">@Resources.RGlobal.r1_1_p4</p>
+                                <a href="~/Content/page-contact1.html" class="btn btn-border btn-circled btn-transparent btn-xs mt-5">@Resources.RGlobal.Read</a>
                             </div>
                             <i class="fa fa-mobile bg-icon"></i>
                         </div>
@@ -81,54 +71,39 @@
             <div class="section-content">
                 <div class="row mt-10">
                     <div class="col-xs-12 col-sm-6 col-md-4 mb-sm-20 p-20 pt-0 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h3 class="text-uppercase line-bottom mt-0">МУЗН-ийн<span class="text-theme-colored"> танилцуулга</span></h3>
-                        <p class="mb-15">
-                            Монголын улаан загалмай
-                            нийгэмлэгийн Эрх зүйн
-                            байдлын тухай хуулиар Улаан
-                            загалмай нийгэмлэгийг Монгол
-                            Улсын нутаг дэвсгэр дээр
-                            хүмүүнлэгийн салбарт төрдөө
-                            нэмэлт хүч болж ажиллах
-                            цорын ганц үндэсний нийгэмлэг
-                            мөн болохыг баталгаажуулсан
-                            билээ. Манай нийгэмлэг нь төр,
-                            захиргааны байгууллагатай
-                            харилцахдаа бие даасан
-                            байдлаа хадгалж, төрийн
-                            хүмүүнлэгийн үйл ажиллагааг
-                            хэрэгжүүлэхэд төрдөө нэмэлт хүч
-                            болон ажиллаж байна.
+                        <h3 class="text-uppercase line-bottom mt-0">@Resources.RGlobal.r2_1_1_h1<span class="text-theme-colored"> @Resources.RGlobal.r2_2_1_h1</span></h3>
+                        <p class="mb-15 text-justify">
+                            @Resources.RGlobal.r2_1_p1
                         </p>
                         <div class="row">
                             <div class="col-xs-6">
                                 <ul class="mt-10">
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Family Support</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Group Work</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Child Adoption</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Fund Raising</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l1</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l2</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l3</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l4</li>
                                 </ul>
                             </div>
                             <div class="col-xs-6">
                                 <ul class="mt-10">
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Tree Plantation</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Childhood Care</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Build Orphanage</li>
-                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Volunteer Work</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l6</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l7</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l8</li>
+                                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;@Resources.RGlobal.l9</li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="btn btn-colored btn-theme-colored btn-lg text-uppercase font-13 mt-10" href="~/Content/#">View Details</a>
+                        <a class="btn btn-colored btn-theme-colored btn-lg text-uppercase font-13 mt-10" href="~/Content/#">@Resources.RGlobal.Read</a>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 hidden-sm pl-40 pl-sm-20 mr-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Бидэнтэй <span class="text-theme-colored"> нэгдснээр</span></h3>
+                        <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">@Resources.RGlobal.t1 <span class="text-theme-colored"> @Resources.RGlobal.t1_1</span></h3>
                         <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
                             <a href="~/Content/#" class="icon mb-0 mr-0 pull-left flip">
                                 <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Цусны донор болсноор</strong></h4>
-                                <p class="text-gray">Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ,<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5">@Resources.RGlobal.t2 <strong>@Resources.RGlobal.t2_1</strong></h4>
+                                <p class="text-gray text-justify">@Resources.RGlobal.p1<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> @Resources.RGlobal.Read...</a></p>
                             </div>
                         </div>
                         <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-3px">
@@ -136,8 +111,8 @@
                                 <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Сайн дурын идэвхтэн болсноор</strong></h4>
-                                <p class="text-gray">Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5">@Resources.RGlobal.t3 <strong>@Resources.RGlobal.t3_1</strong></h4>
+                                <p class="text-gray text-justify">@Resources.RGlobal.p2<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> @Resources.RGlobal.Read...</a></p>
                             </div>
                         </div>
                         <div class="icon-box icon-box-effect p-15 bg-light border-bottom-3px">
@@ -145,13 +120,13 @@
                                 <i class="flaticon-charity-hand-holding-a-heart text-theme-colored font-48"></i>
                             </a>
                             <div class="ml-80">
-                                <h4 class="icon-box-title mt-15 mb-5"><strong>Хандив өгснөөр</strong></h4>
-                                <p class="text-gray">Хүмүүнлэгийн үйл ажиллагаанд өөрийн хувь нэмрээ оруулах боломжтой<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> үргэлжүүлж унших...</a></p>
+                                <h4 class="icon-box-title mt-15 mb-5">@Resources.RGlobal.t4 <strong>@Resources.RGlobal.t4_1</strong></h4>
+                                <p class="text-gray text-justify">@Resources.RGlobal.p3<a class="font-14 pl-10 text-theme-colored" href="~/Content/page-about1.html"> @Resources.RGlobal.Read...</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h3 class="text-uppercase line-bottom mt-0">Хэрэгжиж буй <span class="text-theme-colored"> төслүүд</span></h3>
+                        <h3 class="text-uppercase line-bottom mt-0">@Resources.RGlobal.t5 <span class="text-theme-colored"> @Resources.RGlobal.t5_1</span></h3>
                         @{Html.RenderAction("ProjectListPartial", "Home");}
                     </div>
                 </div>
@@ -165,8 +140,8 @@
             <div class="section-title text-center mt-0">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1">Бидний <span class="text-theme-colored"> үнэт зүйл</span></h2>
-                        @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>*@
+                        <h2 class="mt-0 line-height-1">@Resources.RGlobal.t6 <span class="text-theme-colored"> @Resources.RGlobal.t6_1</span></h2>
+                        <p>@Resources.RGlobal.p4</p>
                     </div>
                 </div>
             </div>
@@ -174,45 +149,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
-                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-make-an-online-donation text-theme-colored"></i></a>
-                            <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">ХҮМҮҮС </h4>
-                                <p class="text-justify">
-                                    Эмзэг байдлаас гарах арга замаа олоход нь хүмүүст тусалж,
-                                    тогтвортой үйл ажиллагааны чадавхи бий болгоно.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
-                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-shaking-hands-inside-a-heart text-theme-colored"></i></a>
-                            <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">ШУДАРГА БАЙДАЛ</h4>
-                                <p class="text-justify">Бид өөрсдийн үндсэн зарчмын дагуу ил тод, ашиг сонирхлын зөрчилгүй үйл ажиллагаагаа явуулна. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
-                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-hand-holding-a-gift text-theme-colored"></i></a>
-                            <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">ХАМТЫН АЖИЛЛАГАА</h4>
-                                <p class="text-justify">
-                                    Олон Улсын Улаан загалмай, Улаан хавирган сар хөдөлгөөний дүрэм, журам, үндсэн зарчмын хүрээнд МУЗН-
-                                    ийн эрх зүйн байдлын тухай Монгол Улсын хуулийн дагуу төр ба бусад хуулийн этгээдтэй хамтран ажиллана.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-dove-of-peace-1 text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">ОЛОН ТАЛТ БАЙДАЛ</h4>
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t7</h4>
                                 <p class="text-justify">
-                                    Бид хамтран ажиллаж байгаа нийгмийн бүлгүүдийн олон талт байдлыг хүндэтгэн үзэж, Улаан загалмайн гишүүн,
-                                    сайн дурын идэвхтэн, ажилтантай ялгаварлан гадуурхахгүй, шударга, нэгдмэл зарчмыг баримтлан ажиллана.
+                                    @Resources.RGlobal.p5
                                 </p>
                             </div>
                         </div>
@@ -221,10 +162,9 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-shelter text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">МАНЛАЙЛАЛ</h4>
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t8</h4>
                                 <p class="text-justify">
-                                    Бид манлайлагч болохоо харуулж, Улаан загалмайн үйл ажиллагааг явуулахдаа олон нийтийн эрх, хэрэгцээ,
-                                    эмзэг байдал болон түүний үр дагаварт анхаарал хандуулан ажиллана.
+                                    @Resources.RGlobal.p6
                                 </p>
                             </div>
                         </div>
@@ -233,10 +173,53 @@
                         <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-30 pb-20">
                             <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-food-donation-1 text-theme-colored"></i></a>
                             <div class="media-body">
-                                <h4 class="media-heading heading text-uppercase">САНААЧИЛГА</h4>
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t9</h4>
                                 <p class="text-justify">
-                                    Бид өөрчлөгдөн шинэчлэгдэж байгаа дэлхий дээрх хүмүүний сайн сайхан байдалд заналхийлж буй асуудалд
-                                    тогтвортой шийдэл олохын төлөө бүтээлч, нэгдмэл, тэгш эрхтэй ажиллана.
+                                    @Resources.RGlobal.p7
+                                </p>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-20 pb-20">
+                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-make-an-online-donation text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t10</h4>
+                                <p class="text-justify">
+                                   @Resources.RGlobal.p8
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-20 pb-20">
+                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-make-an-online-donation text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t11</h4>
+                                <p class="text-justify">
+                                    @Resources.RGlobal.p9
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-20 pb-20">
+                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-shaking-hands-inside-a-heart text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t12</h4>
+                                <p class="text-justify">@Resources.RGlobal.p10</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="icon-box bg-white left media border-3px bg-hover-theme-colored mb-30 p-20 pb-20">
+                            <a class="media-left pull-left flip" href="~/Content/#"><i class="flaticon-charity-hand-holding-a-gift text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h4 class="media-heading heading text-uppercase">@Resources.RGlobal.t13</h4>
+                                <p class="text-justify">
+                                    @Resources.RGlobal.p11
                                 </p>
                             </div>
                         </div>
@@ -800,8 +783,8 @@
             <div class="section-content">
                 <div class="row">
                     <div class="col-md-7">
-                        <h3 class="text-white text-uppercase font-30 font-weight-600 mt-0 mb-20">Сайн дурын идэвхтэн болсоноор</h3>
-                        <p class="mb-20 text-white lead">МУЗН-ийн Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ МУЗН-ийн аль нэг шатны хороонд бүртгүүлж, Улаан загалмайн үйл ажиллагаанд тогтмол идэвхтэй оролцож, нийгэм, хүний сайн сайхны төлөө сайн дураараа ажилладаг иргэн байна.</p>
+                        <h3 class="text-white text-uppercase font-30 font-weight-600 mt-0 mb-20">@Resources.RGlobal.t15</h3>
+                        <p class="mb-20 text-white lead">@Resources.RGlobal.p12</p>
                         <a class="btn btn-default btn-circled btn-lg pull-left pl-30 pr-30" href="~/Content/#">Нэгдэх</a>
                     </div>
                     <div class="col-md-5">
@@ -820,8 +803,8 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase">Зургийн <span class="text-theme-colored"> цомог</span></h2>
-                        <p>Бидний үйл ажиллагааны зургийг харж болно !</p>
+                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase">@Resources.RGlobal.t16 <span class="text-theme-colored"> @Resources.RGlobal.t16_1/span></h2>
+                        <p>@Resources.RGlobal.p13</p>
                     </div>
                 </div>
             </div>
@@ -835,46 +818,8 @@
     </section>
 
     <!-- Section: Client Say -->
-    <section class="divider parallax layer-overlay overlay-dark-7" data-background-ratio="0.5" data-bg-img="http://placehold.it/1920x1280">
-        <div class="container pt-60 pb-60">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-uppercase mt-0 pb-0  text-center text-white">Our Donors  say</h2>
-                    <div class="owl-carousel-1col" data-dots="true">
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="" alt="" src="http://placehold.it/100x100"></div>
-                                <div class="content pt-10">
-                                    <p class="lead text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</p>
-                                    <h4 class="author text-white mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="" alt="" src="http://placehold.it/100x100"></div>
-                                <div class="content pt-10">
-                                    <p class="lead text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</p>
-                                    <h4 class="author text-white mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="" alt="" src="http://placehold.it/100x100"></div>
-                                <div class="content pt-10">
-                                    <p class="lead text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</p>
-                                    <h4 class="author text-white mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="divider parallax layer-overlay overlay-dark-7" data-background-ratio="0.5" data-bg-img="~/Content/IMG_0725.JPG">
+        @{Html.RenderAction("DonorSayViewPartial", "Home");}
     </section>
 
     <!-- Section: Blog -->
@@ -883,8 +828,8 @@
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <a href="@Url.Action("NewsList", "News")"><h2 class="mt-0 line-height-1 text-uppercase">Мэдээ,  <span class="text-theme-colored"> Мэдээлэл</span></h2></a>
-                        <p>МУЗН-ийн үйл ажиллагаатай холбоотой мэдээ мэдээллийг харж болно!</p>
+                        <a href="@Url.Action("NewsList", "News")"><h2 class="mt-0 line-height-1 text-uppercase">@Resources.RGlobal.t18  <span class="text-theme-colored"> @Resources.RGlobal.t18_1</span></h2></a>
+                        <p>@Resources.RGlobal.p14</p>
                     </div>
                 </div>
             </div>
