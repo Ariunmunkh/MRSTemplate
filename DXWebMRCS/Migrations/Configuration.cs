@@ -55,7 +55,14 @@
         new Branch() { NameMon = "Өвөрхангай", NameEng = "Uvurkhangai" },
         new Branch() { NameMon = "Өмнөговь", NameEng = "Umnugovi" }
         );
-
+            context.SaveChanges();
+            foreach (var item in context.Branchs.ToList())
+            {
+                if (context.Menus.Where(x => x.BranchID == item.BranchID).Count() == 0)
+                {
+                    context.Menus.AddOrUpdate(new Menu() { NameMon = "Мэдээ мэдээлэл", NameEng = "News", BranchID = item.BranchID }, new Menu() { NameMon = "Салбар танилцуулга", NameEng = "About us", BranchID = item.BranchID }, new Menu() { NameMon = "Холбоо барих", NameEng = "Contact us", BranchID = item.BranchID });
+                }
+            }
             context.Tag.AddOrUpdate(x => x.NameMon,
         new Tag() { NameMon = "Байгууллагын хөгжил", NameEng = "Organization Development" },
         new Tag() { NameMon = "Гамшгийн менежментийн хөтөлбөр", NameEng = "Disaster Management programme" },

@@ -16,10 +16,19 @@ namespace DXWebMRCS.Models
         {
             List<Menu> Menu = new List<Menu>();
 
+            int UserID = -1;
+            if (WebMatrix.WebData.WebSecurity.CurrentUserId > 0)
+                UserID = WebMatrix.WebData.WebSecurity.CurrentUserId;
+
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Menu", connection);
-
+                SqlCommand selectCommand;
+                if (UserID > 0)
+                    selectCommand = new SqlCommand(@"SELECT * FROM Menu where 
+                (exists (select null from userprofile join webpages_UsersInRoles on webpages_UsersInRoles.userid = userprofile.userid join webpages_Roles on webpages_Roles.RoleId = webpages_UsersInRoles.RoleId where userprofile.userid = '" + UserID + @"' and webpages_Roles.RoleName = 'Admin') and Menu.branchid is null)
+                or exists (select null from userprofile where userid = '" + UserID + "' and branchid = Menu.branchid)", connection);
+                else
+                    selectCommand = new SqlCommand("SELECT * FROM Menu", connection);
                 connection.Open();
 
                 SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.CloseConnection);
