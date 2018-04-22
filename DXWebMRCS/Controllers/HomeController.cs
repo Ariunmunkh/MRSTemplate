@@ -235,7 +235,7 @@ namespace DXWebMRCS.Controllers
         [HttpGet]
         public ActionResult RecentNewsPartial()
         {
-            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News ORDER BY Date DESC").ToList();
+            var newslist = db.Database.SqlQuery<News>("SELECT TOP 3 * FROM News WHERE BranchId IS NULL ORDER BY Date DESC").ToList();
             return PartialView("_RecentNewsPartial", newslist);
         }
 
