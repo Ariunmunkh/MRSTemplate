@@ -23,7 +23,7 @@ namespace DXWebMRCS.Controllers
         // GET: /elearning/
         [RequireHttps]
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             var eservice = db.Database.SqlQuery<eServiceModel>(@"select  t.UserId, 
@@ -54,7 +54,7 @@ namespace DXWebMRCS.Controllers
             return View(list);
         }
 
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult List()
         {
             return View(db.Elearn.ToList());
@@ -108,7 +108,7 @@ namespace DXWebMRCS.Controllers
         }
         [InitializeSimpleMembership]
         // GET: /elearning/Details/5
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Any)]
         public ActionResult Details(int? id)
         {
             if (id == null)

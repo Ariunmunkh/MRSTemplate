@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DXWebMRCS.Models;
 using DevExpress.Web.Mvc;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -18,6 +19,7 @@ namespace DXWebMRCS.Controllers
         private UsersContext db = new UsersContext();
 
         // GET: Questionnaires
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             var questionnaire = db.Questionnaire.Include(q => q.lessonid).Include(q => q.userid);

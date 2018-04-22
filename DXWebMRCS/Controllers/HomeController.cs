@@ -17,6 +17,7 @@ using DXWebMRCS.Filters;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Text;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -26,6 +27,7 @@ namespace DXWebMRCS.Controllers
     {
         private UsersContext db = new UsersContext();
         public IEnumerable<Menu> menuList;
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             // DXCOMMENT: Pass a data model for GridView     
@@ -68,6 +70,7 @@ namespace DXWebMRCS.Controllers
        
 
         #region File content Hadgalsan Pdf bolon Docx haruulah heseg
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult FileContentView()
         {
             var pageNumber = 1;
@@ -105,6 +108,7 @@ namespace DXWebMRCS.Controllers
         #endregion
 
         #region Magazines
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Magazine()
         {
             var pageNumber = 1;
@@ -143,6 +147,7 @@ namespace DXWebMRCS.Controllers
 
         #region Partial Page
         [HttpGet]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public ActionResult GalleryViewPartial()
         {
             var taglist = db.Database.SqlQuery<Tag>("SELECT * FROM Tags").ToList();
@@ -152,7 +157,7 @@ namespace DXWebMRCS.Controllers
 
             return PartialView("_GalleryViewPartial", model);
         }
-
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public ActionResult DonorSayViewPartial()
         {
             var model = db.Donor.ToList();
@@ -190,7 +195,7 @@ namespace DXWebMRCS.Controllers
 
             return Redirect(Request.UrlReferrer.ToString());
         }
-
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public ActionResult ProjectListPartial()
         {
             var model = db.Projects.ToList();
@@ -231,6 +236,7 @@ namespace DXWebMRCS.Controllers
         }
         #region Home Partial Page
         [HttpGet]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public ActionResult SliderViewPartial()
         {
             var list = db.SliderPhotos.ToList();
@@ -246,6 +252,7 @@ namespace DXWebMRCS.Controllers
 
         //Surgalt bolon Uil ajillagaa
         [HttpGet]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
         public ActionResult TrainingEventPartial()
         {
             var user = HttpContext.Session["UserProfile"] as UserProfile;

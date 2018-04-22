@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DXWebMRCS.Models;
 using DevExpress.Web.Mvc;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -19,6 +20,7 @@ namespace DXWebMRCS.Controllers
 
         // GET: jobs
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             return View(db.jobs.ToList());
