@@ -13,6 +13,7 @@ using System.Web.Security;
 using DXWebMRCS.Filters;
 using System.Net;
 using System.Text;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -24,7 +25,7 @@ namespace DXWebMRCS.Controllers
         private UsersContext db = new UsersContext();
         //
         // GET: /SysAdmin/
-
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             return View();

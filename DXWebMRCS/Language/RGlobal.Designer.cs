@@ -574,6 +574,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to t19.
+        /// </summary>
+        public static string t19 {
+            get {
+                return ResourceManager.GetString("t19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t19_1.
+        /// </summary>
+        public static string t19_1 {
+            get {
+                return ResourceManager.GetString("t19_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to t2.
         /// </summary>
         public static string t2 {

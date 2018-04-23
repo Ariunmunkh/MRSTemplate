@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DXWebMRCS.Models;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -18,6 +19,7 @@ namespace DXWebMRCS.Controllers
 
         // GET: videos
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             return View(db.videos.ToList());

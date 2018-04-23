@@ -24,7 +24,7 @@ namespace DXWebMRCS.Controllers
 
         // GET: /eLearnt/
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", Location = OutputCacheLocation.Client)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
 

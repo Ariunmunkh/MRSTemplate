@@ -1,10 +1,16 @@
 ﻿@model System.Collections.IEnumerable
-<div class="right_col" role="main">
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_SysLayout.cshtml";
-    }
 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SysLayout.cshtml";
+}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Салбар</h3>
+    </div>
+
+</div>
+<div class="right_col" role="main">
     @using (Html.BeginForm())
     {
         @Html.Action("GridViewPartialView")

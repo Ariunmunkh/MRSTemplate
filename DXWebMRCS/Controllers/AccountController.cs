@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Text;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
@@ -41,6 +42,7 @@ namespace DXWebMRCS.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Login(string returnUrl)
         {
             if (WebSecurity.CurrentUserId > 0)
@@ -137,6 +139,7 @@ namespace DXWebMRCS.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
