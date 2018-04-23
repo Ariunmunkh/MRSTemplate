@@ -248,7 +248,7 @@ namespace DXWebMRCS.Controllers
                         string token = WebSecurity.GeneratePasswordResetToken(mail.Email);
                         WebSecurity.ResetPassword(token, password);
 
-                        return RedirectToAction("ChangePasswordSuccess");
+                        return RedirectToAction("ChangePasswordSuccess", new { result = true });
                     }
                     catch (Exception)
                     {
@@ -258,8 +258,8 @@ namespace DXWebMRCS.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Not Send";
-                    return View();
+
+                    return RedirectToAction("ChangePasswordSuccess", new { result = false });
                 }
             }
 
@@ -289,7 +289,7 @@ namespace DXWebMRCS.Controllers
                 }
                 if (changePasswordSucceeded)
                 {
-                    return RedirectToAction("ChangePasswordSuccess");
+                    return RedirectToAction("ChangePasswordSuccess", new { result = true });
                 }
                 else
                 {
@@ -363,8 +363,18 @@ namespace DXWebMRCS.Controllers
         //
         // GET: /Account/ChangePasswordSuccess
         [AllowAnonymous]
-        public ActionResult ChangePasswordSuccess()
+        public ActionResult ChangePasswordSuccess(bool result)
         {
+            if (result)
+            {
+                ViewBag.Title = "Change Password";
+                ViewBag.Message = "Your password has been changed successfully.";
+            }
+            else
+            {
+                ViewBag.Title = "This email does not exist";
+                ViewBag.Message = "Not Send";
+            }
             return View();
         }
 

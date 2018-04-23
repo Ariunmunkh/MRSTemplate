@@ -62,7 +62,7 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Birthday</label>
-                                @Html.TextBoxFor(model => model.BirthOfDay, new { @class = "form-control datepicker" })
+                                @Html.TextBoxFor(model => model.BirthOfDay, new { @class = "form-control date-picker", @value = "12-02-2012" })
                                 @Html.ValidationMessageFor(m => m.BirthOfDay, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group col-md-6">

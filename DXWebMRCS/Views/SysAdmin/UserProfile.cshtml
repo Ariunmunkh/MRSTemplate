@@ -22,6 +22,8 @@
                         @using (Html.BeginForm("UserProfile", "SysAdmin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
                         {
                             @Html.HiddenFor(m => m.Id)
+                            @Html.HiddenFor(m => m.BirthOfDay)
+                            @Html.HiddenFor(m => m.AvatarPath)
                             <div id="account" class="tab-pane active">
                                 @*<form class="form-horizontal">*@
                                 <div class="form-group">
@@ -116,7 +118,7 @@
                                         <div class="form-control-material">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                @Html.TextBoxFor(m => m.EditPassword, new { @class = "form-control" })
+                                                @Html.PasswordFor(m => m.EditPassword, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(m => m.EditPassword, "", new { @class = "text-danger" })
                                             </div>
                                         </div>

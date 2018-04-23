@@ -331,23 +331,31 @@ namespace DXWebMRCS.Controllers
         [Authorize]
         public ActionResult TrainingRegister(int id)
         {
-            var user = HttpContext.Session["UserProfile"] as UserProfile;
-            var user2 = HttpContext.Application["UserProfile"] as UserProfile;
+            //var user = HttpContext.Session["UserProfile"] as UserProfile;
+            //var user2 = HttpContext.Application["UserProfile"] as UserProfile;
             var count = db.Database.SqlQuery<TrainingRequest>("SELECT TOP 1 * FROM TrainingRequests WHERE TrainingID = " + id + " AND UserID = " + WebSecurity.CurrentUserId).FirstOrDefault();
             if (count != null)
             {
-                db.Database.ExecuteSqlCommand("UPDATE TrainingRequests SET [Status] = 0 WHERE UserID = " + WebSecurity.CurrentUserId + " AND TrainingID = " + id);
-                return Json(new { success = true, userId = count.UserID }, JsonRequestBehavior.AllowGet);
+                if (count.Status == 1)
+                {
+                    db.Database.ExecuteSqlCommand("UPDATE TrainingRequests SET [Status] = 0 WHERE UserID = " + WebSecurity.CurrentUserId + " AND TrainingID = " + id);
+                    return Json(new { success = true, userId = count.UserID, status = 0 }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    db.Database.ExecuteSqlCommand("UPDATE TrainingRequests SET [Status] = 1 WHERE UserID = " + WebSecurity.CurrentUserId + " AND TrainingID = " + id);
+                    return Json(new { success = true, userId = count.UserID, status = 1 }, JsonRequestBehavior.AllowGet);
+                }
             }
             else
             {
                 TrainingRequest request = new TrainingRequest();
                 request.TrainingID = id;
                 request.UserID = WebSecurity.CurrentUserId;
-                request.Status = 0;
+                request.Status = 1;
                 db.TrainingRequests.Add(request);
                 db.SaveChanges();
-                return Json(new { success = true, userId = request.UserID }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, userId = request.UserID, status = 1 }, JsonRequestBehavior.AllowGet);
             }
         }
 

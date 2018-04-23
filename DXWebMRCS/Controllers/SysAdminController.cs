@@ -308,8 +308,7 @@ namespace DXWebMRCS.Controllers
                 _user.UserName = model.Email;
                 _user.Email = model.Email;
                 _user.PhoneNumber = model.PhoneNumber;
-
-                _user.AvatarPath = "/Content/Images/UserAvatar/" + fileName;
+                _user.AvatarPath = model.AvatarPath;
 
                 db.Entry(_user).State = EntityState.Modified;
                 db.SaveChanges();

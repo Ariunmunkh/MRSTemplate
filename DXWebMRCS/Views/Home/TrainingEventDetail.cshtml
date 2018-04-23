@@ -95,13 +95,20 @@
             </div>
             <div class="row mt-20">
                     @{
-                        string requestBtnText = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? "Бүртгүүлэх" : @Model.RequestStatus == 0 ? "Хүлээнэ үү" : "Хүлээн авсан";
+                        string requestBtnText = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? "Бүртгүүлэх" : @Model.RequestStatus == 0 ? "Бүртгэгдсэн" : "Хүлээн авсан";
+                        string requestBtnIcon = @Model.RequestStatus == null || @Model.RequestStatus == 0 ? "fa fa-check" : "fa fa-close";
                         bool requestIsDisabled = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? false : true;
                         bool cancelIsDisabled = @Model.RequestStatus == null || @Model.RequestStatus == 9 ? true : false;
                     }
-                    <button id="@Url.Content("request" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@requestIsDisabled userid=@Model.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
-                    <button id="@Url.Content("cancel" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@cancelIsDisabled userid=@Model.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>
+                    @*<button id="@Url.Content("request" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@requestIsDisabled userid=@Model.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
+                    <button id="@Url.Content("cancel" + @Model.TrainingID)" trainingid=@Model.TrainingID disabled=@cancelIsDisabled userid=@Model.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>*@
                
+                <a id="@Url.Content("request" + @Model.TrainingID)" trainingid=@Model.TrainingID userid=@Model.UserID class="ActionRegister btn btn-dark btn-theme-colored">
+                    
+                    <i class="@Url.Content(requestBtnIcon)"></i> @requestBtnText
+                                        
+                </a> 
+
             </div>
 
             <div class="row mt-40">
@@ -164,10 +171,12 @@
 
                 if (data.success == true) {
                     console.log(data.userId);
-                    $("#request" + id + "").html('Хүлээнэ үү');
-                    document.getElementById(tagId).disabled = true;
-                    document.getElementById("cancel" + id).disabled = false;
-                    document.getElementById("cancel" + id).setAttribute("userid", data.userId);
+                    if (data.status == 1) {
+                        $("#request" + id + "").html('<i class="fa fa-close"></i> Бүртгэгдсэн');
+                    }
+                    else {
+                        $("#request" + id + "").html('<i class="fa fa-check"></i> Бүртгүүлэх');
+                    }
                 }
             },
         });

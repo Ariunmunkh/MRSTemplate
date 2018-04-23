@@ -60,12 +60,20 @@
                     </p>
                     <p>
                         @{
-                            string requestBtnText = @item.RequestStatus == null || @item.RequestStatus == 9 ? "Бүртгүүлэх" : @item.RequestStatus == 0 ? "Хүлээнэ үү" : "Хүлээн авсан";
+                            string requestBtnText = @item.RequestStatus == null || @item.RequestStatus == 0 ? "Бүртгүүлэх" : "Бүртгэгдсэн";
+                            string requestBtnIcon = @item.RequestStatus == null || @item.RequestStatus == 0 ? "fa fa-check" : "fa fa-close";
                             bool requestIsDisabled = @item.RequestStatus == null || @item.RequestStatus == 9 ? false : true;
                             bool cancelIsDisabled = @item.RequestStatus == null || @item.RequestStatus == 9 ? true : false;
                         }
-                        <button id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@requestIsDisabled userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
-                        <button id="@Url.Content("cancel" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@cancelIsDisabled userid=@item.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>
+                        @*<button id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@requestIsDisabled userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
+                        <button id="@Url.Content("cancel" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@cancelIsDisabled userid=@item.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>*@
+                        
+
+                        <a id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored">
+                            
+                            <i class="@Url.Content(requestBtnIcon)"></i> @requestBtnText                          
+                           
+                        </a> 
                     </p>                    
                 </div>
             </article>
@@ -74,22 +82,28 @@
     <div class="col-md-8 col-sm-12">
         <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>Үйл <span class="text-theme-colored"> ажиллагаа</span></h3>
         <div class="row mt-20 multi-row-clearfix">
-            <div class="owl-carousel-3col" data-nav="true">
+            @{
+                string owlCarousel = Model.Item2.Count() > 2 ? "owl-carousel-3col" : Model.Item2.Count() == 2 ? "owl-carousel-2col" : "owl-carousel-1col";                
+            }
+
+            <div class="@Url.Content(owlCarousel)" data-nav="true">
                 @foreach (var item2 in Model.Item2.ToList().Take(3))
-	            {
-		            <div class="item">
+                {
+                    <div class="item">
                         <div class="thumb"> <a href="@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })"><img class="img-fullwidth mb-20" src="~/Content/IMG_0725.JPG" alt="..."></a> </div>
                         <div class="caption">
-                            <h4 class="text-uppercase letter-space-1 mt-0"><span class="text-theme-colored"> 
-                                @if (language == "en-US")
-                                {
-                                    @item2.NameEng
-                                }
-                                else
-                                {
-                                    @item2.NameMon
-                                }
-                                </span></h4>
+                            <h4 class="text-uppercase letter-space-1 mt-0">
+                                <span class="text-theme-colored">
+                                    @if (language == "en-US")
+                                    {
+                                        @item2.NameEng
+                                    }
+                                    else
+                                    {
+                                        @item2.NameMon
+                                    }
+                                </span>
+                            </h4>
                             <p>
                                 @if (language == "en-US")
                                 {
@@ -119,7 +133,7 @@
                             </p>
                         </div>
                     </div>
-	            }
+                }
             </div>
         </div>
     </div>
@@ -152,10 +166,18 @@
 
                 if (data.success == true) {
                     console.log(data.userId);
-                    $("#request" + id + "").html('Хүлээнэ үү');
-                    document.getElementById(tagId).disabled = true;
-                    document.getElementById("cancel" + id).disabled = false;
-                    document.getElementById("cancel" + id).setAttribute("userid", data.userId);
+                    if (data.status == 1)
+                    {
+                        $("#request" + id + "").html('<i class="fa fa-close"></i> Бүртгэгдсэн');
+                    }
+                    else
+                    {
+                        $("#request" + id + "").html('<i class="fa fa-check"></i> Бүртгүүлэх');
+                    }
+                    
+                    //document.getElementById(tagId).disabled = true;
+                    //document.getElementById("cancel" + id).disabled = false;
+                    //document.getElementById("cancel" + id).setAttribute("userid", data.userId);
                 }
             },
         });
