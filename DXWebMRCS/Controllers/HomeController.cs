@@ -22,7 +22,7 @@ using System.Web.UI;
 namespace DXWebMRCS.Controllers
 {
     [InitializeSimpleMembership]
-    //[RequireHttps]
+    [RequireHttps]
     public class HomeController : Controller
     {
         private UsersContext db = new UsersContext();

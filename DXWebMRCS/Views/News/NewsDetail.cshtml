@@ -64,7 +64,7 @@
                                         <div class="post-right">
                                             <h5 class="post-title mt-0">
                                                 <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })'>
-                                                    @if (language == "en-US")
+                                                    @if (language == "en-US" && item.TitleEng != null)
                                                     {
                                                         if (@item.TitleEng.Count() > 50)
                                                         {
@@ -75,7 +75,7 @@
                                                             @item.TitleEng
                                                         }
                                                     }
-                                                    else
+                                                    else if (language != "en-US")
                                                     {
                                                         if (@item.TitleMon.Count() > 50)
                                                         {
