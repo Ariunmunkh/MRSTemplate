@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class eServiceController : ApiController
     {
         private UsersContext db = new UsersContext();

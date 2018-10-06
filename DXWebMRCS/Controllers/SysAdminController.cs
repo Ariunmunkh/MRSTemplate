@@ -19,13 +19,13 @@ namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin")]
     [InitializeSimpleMembership]
-    [RequireHttps]
+    //[RequireHttps]
     public class SysAdminController : Controller
     {
         private UsersContext db = new UsersContext();
         //
         // GET: /SysAdmin/
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             return View();

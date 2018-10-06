@@ -21,7 +21,7 @@ namespace DXWebMRCS.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    [RequireHttps]
+    //[RequireHttps]
     public class AccountController : Controller
     {
 
@@ -42,7 +42,7 @@ namespace DXWebMRCS.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Login(string returnUrl)
         {
             if (WebSecurity.CurrentUserId > 0)
@@ -139,7 +139,7 @@ namespace DXWebMRCS.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)

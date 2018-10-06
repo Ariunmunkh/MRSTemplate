@@ -42,7 +42,7 @@ string tempBody = string.Empty;}
                                         <div class="entry-header">
                                             <div class="post-thumb thumb">
                                                 @{string imageUrl = item.ImageMedium != null ? HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + item.ImageMedium : "http://placehold.it/360x240";}
-                                                <img src=@imageUrl alt="" class="img-responsive img-fullwidth">
+                                                <img src="@imageUrl" alt="" class="img-responsive img-fullwidth">
                                             </div>
                                         </div>
                                         <div class="entry-content border-1px p-20 pr-10">
@@ -103,8 +103,6 @@ string tempBody = string.Empty;}
                                                                 @item.TitleMon
                                                             </a>
                                                         </h4>
-                                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
                                                     </div>
                                                 </div>
                                             </div>

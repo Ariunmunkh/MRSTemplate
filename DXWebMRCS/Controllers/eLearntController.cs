@@ -17,14 +17,14 @@ using DevExpress.Web.Mvc;
 namespace DXWebMRCS.Controllers
 {
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class eLearntController : Controller
     {
         private UsersContext db = new UsersContext();
 
         // GET: /eLearnt/
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
 

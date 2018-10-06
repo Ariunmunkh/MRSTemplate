@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.JobName)
+                @Html.TextBoxFor(model => model.JobName, new { @class = "form-control", @style = "background-color:white", placeholder = "Хичээлийн нэр оруулна уу" })
                 @Html.ValidationMessageFor(model => model.JobName)
             </div>
         </div>
@@ -28,15 +28,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description)
+                @Html.Partial("_DescriptionHtmlEditorPartial")
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateEnd)
+            <div class="col-md-5">
+                @Html.DevExpress().DateEdit(settings => { settings.Name = "DateEnd"; settings.Properties.DisplayFormatString = "D"; }).Bind(Model.DateEnd).GetHtml()
                 @Html.ValidationMessageFor(model => model.DateEnd)
             </div>
         </div>

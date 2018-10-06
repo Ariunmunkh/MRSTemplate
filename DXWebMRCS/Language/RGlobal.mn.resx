@@ -124,41 +124,41 @@
     <value>Монгол</value>
   </data>
   <data name="r1_1_h1" xml:space="preserve">
-    <value>САЙН ДУРЫН ИДЭВХТЭНЭЭР ЭЛСЭХ</value>
-  </data>
-  <data name="r1_1_h2" xml:space="preserve">
     <value>ГИШҮҮНЭЭР ЭЛСЭХ</value>
   </data>
+  <data name="r1_1_h2" xml:space="preserve">
+    <value>ЦУСНЫ ДОНОР ХЭРХЭН  БОЛОХ ВЭ?</value>
+  </data>
   <data name="r1_1_h3" xml:space="preserve">
-    <value>ХЭРХЭН ЦУСНЫ ДОНОР БОЛОХ</value>
+    <value>АНХНЫ ТУСЛАМЖИЙН ТӨЛБӨРТЭЙ  СУРГАЛТ</value>
   </data>
   <data name="r1_1_h4" xml:space="preserve">
     <value>ХОЛБОО БАРИХ</value>
   </data>
   <data name="r1_1_p1" xml:space="preserve">
-    <value>МУЗН-ийн Сайн дурын идэвхтэн нь Хөдөлгөөний үндсэн зарчмыг хүлээн зөвшөөрч, оршин суугаа нутаг дэвсгэрийнхээ МУЗН-ийн аль нэг шатны хороонд бүртгүүлж, Улаан загалмайн үйл ажиллагаанд тогтмол идэвхтэй оролцож, нийгэм, хүний сайн сайхны төлөө сайн дураараа ажилладаг иргэн байна.</value>
+    <value>Та Монголын улаан загалмай нийгэмлэгийн 249,770 гишүүд, дэмжигчдийн нэг болсноор хүмүүнлэгийн үйлсэд хувь нэмэр оруулж,  өөрийгөө хөгжүүлэх төрөл бүрийн сургалтад хамрагдаж, гамшиг ослоос урьдчилан сэргийлэх, бэлэн байдлыг хангах, эрүүл мэнд, анхны тусламж, нийгэм сэтгэл зүйн дэмжлэг үзүүлэх чадвартай болно.</value>
   </data>
   <data name="r1_1_p2" xml:space="preserve">
-    <value>Монголын улаан загалмай нийгэмлэгийн гишүүнчлэл нь Татвар төлөгч гишүүн, Ивээн тэтгэгч гишүүн (онцгой), Гишүүн хүмүүнлэгийн байгууллага гэсэн төрлүүдтэй байна.</value>
+    <value>Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ, ач холбогдлын талаар нийгэм, олон нийтэд сурталчлан таниулах, шинээр цусны донорын эгнээг өргөжүүлэхэд дэмжлэг үзүүлэн ажиллна.</value>
   </data>
   <data name="r1_1_p3" xml:space="preserve">
-    <value>Цусны донорын сургалт, сурталчилгааг явуулах үүргийг Донорын тухай хуулиар хүлээсэн тул донорын цусны хэрэгцээ, ач холбогдлын талаар нийгэм, олон нийтэд сурталчлан таниулах, шинээр цусны донорын эгнээг өргөжүүлэхэд дэмжлэг үзүүлэн ажиллах.</value>
+    <value>Гэнэтийн өвчлөл, осолд өртөн анхны тусламж үзүүлэх нөхцөл байдал хэзээ ч, хэнд ч тохиолдож болзошгүй. Анхны тусламжийн мэдлэг, чадвартай байснаар Та өөрийгөө болон өөрийн ойр дотны хүмүүсийн амь насыг аврах болно.</value>
   </data>
   <data name="r1_1_p4" xml:space="preserve">
-    <value>&lt;h3 class="text-white mt-0 mb-5"&gt;Холбоо барих&lt;/h3&gt;
-                                &lt;p class="text-white text-justify"&gt;Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, Энхтайвны гудамж, МУЗН-ийн төв байр &lt;br /&gt;&lt;span class="fa fa-envelope-o"&gt;&lt;/span&gt; info@redcross.mn&lt;br /&gt;&lt;span class="fa fa-phone"&gt;&lt;/span&gt; (+976)-11-323334&lt;/p&gt;</value>
+    <value>Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, Энхтайвны гудамж, МУЗН-ийн төв байр 
+info@redcross.mn (+976)-11-323334</value>
   </data>
   <data name="Read" xml:space="preserve">
     <value>дэлгэрэнгүй унших</value>
   </data>
   <data name="l1" xml:space="preserve">
-    <value>l1</value>
+    <value>Олон улсын Улаан загалмай хороо</value>
   </data>
   <data name="l10" xml:space="preserve">
     <value>l10</value>
   </data>
   <data name="l2" xml:space="preserve">
-    <value>l2</value>
+    <value>МУЗН-ийн он цагийн товчоон</value>
   </data>
   <data name="l3" xml:space="preserve">
     <value>l3</value>
@@ -170,7 +170,7 @@
     <value>l5</value>
   </data>
   <data name="l6" xml:space="preserve">
-    <value>l6</value>
+    <value>Олон улсын Улаан загалмай Улаан хавирган сар хөдөлгөөний түүх</value>
   </data>
   <data name="l7" xml:space="preserve">
     <value>l7</value>
@@ -179,7 +179,7 @@
     <value>l8</value>
   </data>
   <data name="l9" xml:space="preserve">
-    <value>l9</value>
+    <value>Салбар, хороод</value>
   </data>
   <data name="p1" xml:space="preserve">
     <value>p1</value>
@@ -200,120 +200,213 @@
     <value>p3_t</value>
   </data>
   <data name="t1" xml:space="preserve">
-    <value>t1</value>
+    <value>ҮНДСЭН</value>
   </data>
   <data name="t1_1" xml:space="preserve">
-    <value>t1_1</value>
+    <value>ХӨТӨЛБӨРҮҮД</value>
   </data>
   <data name="p10" xml:space="preserve">
-    <value>p10</value>
+    <value>Аливаа улсад нэг л Улаан загалмай эсхүл Улаан
+хавирган сар нийгэмлэг байна. Энэ нь бүх нийтэд
+нээлттэй байх ба хүмүүнлэгийн үйл ажиллагааг
+нийт нутаг дэвсгэрийн хэмжээнд явуулна.</value>
   </data>
   <data name="p11" xml:space="preserve">
-    <value>p11</value>
+    <value>Олон улсын Улаан загалмай болон Улаан хавирган
+сар хөдөлгөөнд аливаа нийгэмлэг бүр тэгш эрхтэй
+байх ба бие биедээ харилцан туслах талаар адил
+үүрэг, хариуцлага хүлээдгээрээ дэлхийд түгээмэл
+шинжтэй байна.</value>
   </data>
   <data name="p12" xml:space="preserve">
-    <value>p12</value>
+    <value>Та Монголын улаан загалмай нийгэмлэгийн 14,800 сайн дурын идэвхтний нэг болохын тулд дараах шалгуурыг хангах ёстой.
+Шалгуур:
+• Хүмүүнлэг, энэрэнгүй сэтгэлээр бусдад туслах чин хүсэл эрмэлзэлтэй, өөрийн цаг, хөдөлмөрийг бусдын сайн сайхны төлөө зориулах боломжтой байх;
+• Арьс өнгө, шашин шүтлэг, нас, хүйсээр ялгаварлан гадуурхалтад өртөлгүйгээр хэн ч Монголын улаан загалмай нийгэмлэгийн сайн дурын идэвхтэн болох боломжтой.</value>
   </data>
   <data name="p13" xml:space="preserve">
-    <value>p13</value>
+    <value />
   </data>
   <data name="p14" xml:space="preserve">
-    <value>p14</value>
+    <value>Сүүлийн үеийн мэдээ, мэдээлэл</value>
   </data>
   <data name="p5" xml:space="preserve">
-    <value>p5</value>
+    <value>Олон улсын Улаан загалмай, Улаан хавирган
+сар хөдөлгөөний хүмүүнлэгийн үйл ажиллагаа
+нь тулалдааны талбарт шархдагсдад
+ялгаварлалгүйгээр тусламж үзүүлэх, олон улсын
+болон үндэсний хэмжээнд хаана ч болов хүнийг
+зовлон зүдгүүрээс урьдчилан сэргийлэх, хуваалцан
+хөнгөвчлөх чин хүслээр туслах явдал юм.</value>
   </data>
   <data name="p6" xml:space="preserve">
-    <value>p6</value>
+    <value>Нийгэмлэг нь хүнийг яс үндэс, арьс өнгө, шашин
+шүтлэг, нийгмийн давхарга, улс төрийн үзэл
+бодлоор ялгаварлан гадуурхахгүй. Хувь хүний
+зовлонг нимгэлж, гагцхүү тэдний хэрэгцээнд
+тулгуурлах бөгөөд хамгийн хүнд нөхцөлд байгаа
+хүмүүст эн тэргүүнд анхаарал тавина.</value>
   </data>
   <data name="p7" xml:space="preserve">
-    <value>p7</value>
+    <value>Олны итгэл найдварыг хүлээхийн тулд
+Хөдөлгөөн нь сөргөлдсөн талуудын аль нэг талыг
+баримтлахгүй байх бөгөөд ямар ч үед улс төр,
+арьс өнгө, шашин, үзэл бодлын шинж чанартай
+сөргөлдөөнд орж болохгүй.</value>
   </data>
   <data name="p8" xml:space="preserve">
-    <value>p8</value>
+    <value>Хөдөлгөөн нь бие даасан байна. Үндэсний
+нийгэмлэг нь өөрийн улсын төр засгийн
+хүмүүнлэгийн үйл ажиллагаанд нэмэлт хүч болж,
+улсын хууль тогтоомжид захирагдахын зэрэгцээ
+ямар ч үед Хөдөлгөөний зарчимд нийцсэн үйл
+ажиллагаа явуулж байхын тулд өөрсдийн бие
+даасан байдлыг ямагт хангаж байх ёстой.</value>
   </data>
   <data name="p9" xml:space="preserve">
-    <value>p9</value>
+    <value>Нийгэмлэг нь тусламж үзүүлэх зорилготой сайн
+дурын хөдөлгөөн бөгөөд ямар ч үед ашиг олохыг
+эрмэлзэх ёсгүй.</value>
   </data>
   <data name="t10" xml:space="preserve">
-    <value>t10</value>
+    <value>БИЕ ДААХ</value>
   </data>
   <data name="t11" xml:space="preserve">
-    <value>t11</value>
+    <value>САЙН ДУРЫН БАЙХ</value>
   </data>
   <data name="t12" xml:space="preserve">
-    <value>t12</value>
+    <value>НЭГДМЭЛ БАЙХ</value>
   </data>
   <data name="t13" xml:space="preserve">
-    <value>t13</value>
+    <value>ТҮГЭЭМЭЛ БАЙХ</value>
   </data>
   <data name="t14" xml:space="preserve">
-    <value>t14</value>
+    <value />
   </data>
   <data name="t14_1" xml:space="preserve">
-    <value>t14_1</value>
+    <value>СУРГАЛТ</value>
   </data>
   <data name="t15" xml:space="preserve">
-    <value>t15</value>
+    <value>САЙН ДУРЫН ИДЭВХТНЭЭР ЭЛСЭХ</value>
   </data>
   <data name="t16" xml:space="preserve">
-    <value>t16</value>
+    <value>ЗУРГИЙН</value>
   </data>
   <data name="t16_1" xml:space="preserve">
-    <value>t16_1</value>
+    <value>ЦОМОГ</value>
   </data>
   <data name="t17" xml:space="preserve">
-    <value>t17</value>
+    <value>ТЭД БИДНИЙ ТУХАЙ</value>
   </data>
   <data name="t18" xml:space="preserve">
-    <value>t18</value>
+    <value>МЭДЭЭ, </value>
   </data>
   <data name="t18_1" xml:space="preserve">
-    <value>t18_1</value>
+    <value>МЭДЭЭЛЭЛ</value>
   </data>
   <data name="t2" xml:space="preserve">
-    <value>t2</value>
+    <value>Гамшгийн менежментийн </value>
   </data>
   <data name="t2_1" xml:space="preserve">
-    <value>t2_1</value>
+    <value>хөтөлбөр</value>
   </data>
   <data name="t3" xml:space="preserve">
-    <value>t3</value>
+    <value>Нийгмийн эрүүл мэндийг дэмжих</value>
   </data>
   <data name="t3_1" xml:space="preserve">
-    <value>t3_1</value>
+    <value>хөтөлбөр</value>
   </data>
   <data name="t4" xml:space="preserve">
-    <value>t4</value>
+    <value>Хүүхэд залуучуудын</value>
   </data>
   <data name="t4_1" xml:space="preserve">
-    <value>t4_1</value>
+    <value>хөтөлбөр</value>
   </data>
   <data name="t5" xml:space="preserve">
-    <value>t5</value>
+    <value>ХЭРЭГЖИЖ БУЙ</value>
   </data>
   <data name="t5_1" xml:space="preserve">
-    <value>t5_1</value>
+    <value>ТӨСЛҮҮД</value>
   </data>
   <data name="t6" xml:space="preserve">
-    <value>t6</value>
+    <value>БИДНИЙ ҮНЭТ ЗҮЙЛ</value>
   </data>
   <data name="t6_1" xml:space="preserve">
-    <value>t6_1</value>
+    <value>7 ЗАРЧИМ</value>
   </data>
   <data name="t7" xml:space="preserve">
-    <value>t7</value>
+    <value>ЭНЭРЭНГҮЙ БАЙХ</value>
   </data>
   <data name="t8" xml:space="preserve">
-    <value>t8</value>
+    <value>ШУДАРГА БАЙХ</value>
   </data>
   <data name="t9" xml:space="preserve">
-    <value>t9</value>
+    <value>ТӨВИЙГ САХИХ</value>
   </data>
   <data name="t19" xml:space="preserve">
     <value>t19</value>
   </data>
   <data name="t19_1" xml:space="preserve">
     <value>t19_1</value>
+  </data>
+  <data name="r2_1_1_h1" xml:space="preserve">
+    <value>МУЗН</value>
+  </data>
+  <data name="r2_1_h1" xml:space="preserve">
+    <value>r2_1_h1</value>
+  </data>
+  <data name="r2_1_p1" xml:space="preserve">
+    <value>Монголын улаан загалмай
+нийгэмлэгийн Эрх зүйн
+байдлын тухай хуулиар Улаан
+загалмай нийгэмлэгийг Монгол
+Улсын нутаг дэвсгэр дээр
+хүмүүнлэгийн салбарт төрдөө
+нэмэлт хүч болж ажиллах
+цорын ганц үндэсний нийгэмлэг
+мөн болохыг баталгаажуулсан
+билээ. Манай нийгэмлэг нь төр,
+захиргааны байгууллагатай
+харилцахдаа бие даасан
+байдлаа хадгалж, төрийн
+хүмүүнлэгийн үйл ажиллагааг
+хэрэгжүүлэхэд төрдөө нэмэлт хүч
+болон ажиллаж байна.</value>
+  </data>
+  <data name="r2_2_1_h1" xml:space="preserve">
+    <value>танилцуулга</value>
+  </data>
+  <data name="r2_2_1_h2" xml:space="preserve">
+    <value>r2_2_1_h2</value>
+  </data>
+  <data name="t20" xml:space="preserve">
+    <value>ҮЙЛ</value>
+  </data>
+  <data name="t20_1" xml:space="preserve">
+    <value>АЖИЛЛАГАА</value>
+  </data>
+  <data name="join" xml:space="preserve">
+    <value>Нэгдэх</value>
+  </data>
+  <data name="p15" xml:space="preserve">
+    <value>p15</value>
+  </data>
+  <data name="t21" xml:space="preserve">
+    <value>Нийгмийн оролцоо, хөгжлийг дэмжих</value>
+  </data>
+  <data name="t21_1" xml:space="preserve">
+    <value>хөтөлбөр</value>
+  </data>
+  <data name="too1" xml:space="preserve">
+    <value>Дунд шатны хороо</value>
+  </data>
+  <data name="too2" xml:space="preserve">
+    <value>Мэргэшсэн сайн дурынхан</value>
+  </data>
+  <data name="too3" xml:space="preserve">
+    <value>Өсвөрийн Улаан загалмайч</value>
+  </data>
+  <data name="too4" xml:space="preserve">
+    <value>Хүмүүнлэгийн гишүүн байгууллага</value>
   </data>
 </root>

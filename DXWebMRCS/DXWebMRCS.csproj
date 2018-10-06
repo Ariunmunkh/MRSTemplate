@@ -19,9 +19,10 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UpgradeBackupLocation />
   </PropertyGroup>
@@ -55,7 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\MSNew\MSNew\bin\CKFinder.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\DevExpress.DataAccess.v16.2.dll</HintPath>
@@ -66,7 +69,9 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 16.2\Components\Bin\Framework\DevExpress.Office.v16.2.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet">
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
@@ -1334,6 +1339,58 @@
     <Content Include="Content\ckfinder\skins\v1\skin.js" />
     <Content Include="Content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\ckfinder\translations.txt" />
+    <Content Include="Content\Cont\dm1.JPG" />
+    <Content Include="Content\Cont\dm2.jpg" />
+    <Content Include="Content\Cont\dm3.jpg" />
+    <Content Include="Content\Cont\dm4.jpg" />
+    <Content Include="Content\Cont\dmlogo1.jpg" />
+    <Content Include="Content\Cont\dmlogo10.jpg" />
+    <Content Include="Content\Cont\dmlogo11.jpg" />
+    <Content Include="Content\Cont\dmlogo12.jpg" />
+    <Content Include="Content\Cont\dmlogo13.jpg" />
+    <Content Include="Content\Cont\dmlogo14.jpg" />
+    <Content Include="Content\Cont\dmlogo15.jpg" />
+    <Content Include="Content\Cont\dmlogo2.jpg" />
+    <Content Include="Content\Cont\dmlogo3.jpg" />
+    <Content Include="Content\Cont\dmlogo4.jpg" />
+    <Content Include="Content\Cont\dmlogo5.jpg" />
+    <Content Include="Content\Cont\dmlogo6.jpg" />
+    <Content Include="Content\Cont\dmlogo7.jpg" />
+    <Content Include="Content\Cont\dmlogo8.jpg" />
+    <Content Include="Content\Cont\dmlogo9.jpg" />
+    <Content Include="Content\Cont\h2.jpg" />
+    <Content Include="Content\Cont\h3.jpg" />
+    <Content Include="Content\Cont\h4.jpg" />
+    <Content Include="Content\Cont\h5.jpg" />
+    <Content Include="Content\Cont\h6.jpg" />
+    <Content Include="Content\Cont\hp1.jpg" />
+    <Content Include="Content\Cont\hp2.jpg" />
+    <Content Include="Content\Cont\hp3.jpg" />
+    <Content Include="Content\Cont\hp4.jpg" />
+    <Content Include="Content\Cont\hp5.jpg" />
+    <Content Include="Content\Cont\hp6.jpg" />
+    <Content Include="Content\Cont\hp7.JPG" />
+    <Content Include="Content\Cont\hp8.jpg" />
+    <Content Include="Content\Cont\icrc1.jpg" />
+    <Content Include="Content\Cont\icrc2.jpg" />
+    <Content Include="Content\Cont\icrc3.jpg" />
+    <Content Include="Content\Cont\icrc4.jpg" />
+    <Content Include="Content\Cont\icrc5.jpg" />
+    <Content Include="Content\Cont\icrc6.jpg" />
+    <Content Include="Content\Cont\icrc7.jpg" />
+    <Content Include="Content\Cont\rcy1.JPG" />
+    <Content Include="Content\Cont\rcy2.JPG" />
+    <Content Include="Content\Cont\rcy3.JPG" />
+    <Content Include="Content\Cont\rcy4.JPG" />
+    <Content Include="Content\Cont\rcy5.jpg" />
+    <Content Include="Content\Cont\rcy6.jpg" />
+    <Content Include="Content\Cont\rcy7.jpg" />
+    <Content Include="Content\Cont\sid1.jpg" />
+    <Content Include="Content\Cont\sid2.jpg" />
+    <Content Include="Content\Cont\sid3.jpg" />
+    <Content Include="Content\Cont\sid4.png" />
+    <Content Include="Content\Cont\sid5.png" />
+    <Content Include="Content\Cont\un-logo.png" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-rtl.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -1787,6 +1844,10 @@
     <Content Include="Content\Images\flat-color-icons-svg\workflow.svg" />
     <Content Include="Content\Images\footer-bg.png" />
     <Content Include="Content\Images\GlassHeader.jpg" />
+    <Content Include="Content\Images\icon1.png" />
+    <Content Include="Content\Images\icon2.png" />
+    <Content Include="Content\Images\icon3.png" />
+    <Content Include="Content\Images\icon4.png" />
     <Content Include="Content\Images\logo-white-footer.png" />
     <Content Include="Content\Images\logo-wide%402x.png" />
     <Content Include="Content\Images\logo-wide-white%402x.png" />
@@ -1844,7 +1905,9 @@
     <Content Include="Content\Images\shadow-overlay.png" />
     <Content Include="Content\Images\signature.png" />
     <Content Include="Content\Images\title-dots.png" />
+    <Content Include="Content\Images\Volunteer.jpg" />
     <Content Include="Content\IMG_0725.JPG" />
+    <Content Include="Content\IMG_0884.JPG" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -2104,12 +2167,23 @@
     <Content Include="Content\js\vertical-timeline\img\cd-icon-picture.svg" />
     <Content Include="Content\js\vertical-timeline\js\main.js" />
     <Content Include="Content\js\vertical-timeline\js\modernizr.js" />
+    <Content Include="Content\js\widgets.js" />
     <Content Include="Content\logo.PNG" />
+    <Content Include="Content\logo\1.png" />
+    <Content Include="Content\logo\2.png" />
+    <Content Include="Content\logo\3.png" />
+    <Content Include="Content\logo\4.png" />
+    <Content Include="Content\logo\5.png" />
+    <Content Include="Content\logo\6.png" />
+    <Content Include="Content\logo\7.png" />
     <Content Include="Content\logo\logo.png" />
     <Content Include="Content\mon.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\w3w.png" />
     <Content Include="Global.asax" />
+    <Content Include="logo.ico" />
+    <Content Include="logo.png" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\app.js" />
@@ -2247,6 +2321,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Content\HtmlEditor\DemoHtml\InsertMediaContent.html" />
+    <Content Include="Content\Cont\h1.jpg" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
@@ -2429,6 +2504,17 @@
     <Content Include="Views\DonorSay\Edit.cshtml" />
     <Content Include="Views\DonorSay\Index.cshtml" />
     <Content Include="Views\Home\_DonorSayViewPartial.cshtml" />
+    <Content Include="Views\Content\ICRC.cshtml" />
+    <Content Include="Views\Content\Timeline.cshtml" />
+    <Content Include="Views\Content\YouthCamp.cshtml" />
+    <Content Include="Views\Content\Branches.cshtml" />
+    <Content Include="Views\Content\who_we_are.cshtml" />
+    <Content Include="Views\Content\SID.cshtml" />
+    <Content Include="Views\Content\HPP.cshtml" />
+    <Content Include="Views\Content\DM.cshtml" />
+    <Content Include="Views\Content\RCY.cshtml" />
+    <Content Include="Views\Content\IFRC.cshtml" />
+    <Content Include="Views\Content\history.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2449,6 +2535,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\BranchViewController.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DonorSayController.cs" />
     <Compile Include="Controllers\elearningController.cs" />
     <Compile Include="Controllers\eLearntController.cs" />
@@ -2525,6 +2612,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\CV\" />
     <Folder Include="Content\FileContents\" />
+    <Folder Include="Content\files\" />
     <Folder Include="Content\HtmlEditor\AudioFiles\" />
     <Folder Include="Content\HtmlEditor\FlashFiles\" />
     <Folder Include="Content\HtmlEditor\Images\" />
@@ -2559,6 +2647,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -2579,7 +2670,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4659</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44300/</IISUrl>
+          <IISUrl>http://localhost:24998/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -11,7 +11,7 @@ using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class videosController : Controller
     {
@@ -19,10 +19,10 @@ namespace DXWebMRCS.Controllers
 
         // GET: videos
         [AllowAnonymous]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
-            return View(db.videos.ToList());
+            return View(db.videos.OrderByDescending(m=>m.VID).ToList());
         }
         public ActionResult List()
         {

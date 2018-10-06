@@ -18,7 +18,7 @@ using DevExpress.Web;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [RequireHttps]
+    //[RequireHttps]
     public class ProjectController : Controller
     {
         private UsersContext db = new UsersContext();

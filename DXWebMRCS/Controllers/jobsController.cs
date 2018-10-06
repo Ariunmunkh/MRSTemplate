@@ -12,7 +12,7 @@ using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class jobsController : Controller
     {
@@ -20,7 +20,7 @@ namespace DXWebMRCS.Controllers
 
         // GET: jobs
         [AllowAnonymous]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             return View(db.jobs.ToList());
@@ -34,6 +34,7 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Details(int? id)
         {
+            ViewBag.JID = new SelectList(db.jobs, "JobName", "JobName");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -49,6 +50,7 @@ namespace DXWebMRCS.Controllers
         // GET: jobs/Create
         public ActionResult Create()
         {
+            ViewBag.JID = new SelectList(db.jobs, "JobName", "JobName");
             return View();
         }
 

@@ -12,14 +12,14 @@ using System.Web.UI;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class QuestionnairesController : Controller
     {
         private UsersContext db = new UsersContext();
 
         // GET: Questionnaires
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var questionnaire = db.Questionnaire.Include(q => q.lessonid).Include(q => q.userid);

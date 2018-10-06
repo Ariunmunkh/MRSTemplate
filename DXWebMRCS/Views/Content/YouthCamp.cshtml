@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "YouthCamp";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/IMG_0725.jpg">
+        <div class="container pt-200 pb-200">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <h2 class="font-48 text-white">Blog Timeline Masonry</h2>
+                        }
+                        else
+                        {
+                            <h2 class="font-48 text-white">ОН ЦАГИЙН ТОВЧООН</h2>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 mb-60">
+                    <h4 class="text-theme-colored title-border mb-20 pb-10">Map: style2</h4>
+
+                    <!-- Google Map HTML Codes -->
+                    <div id="google-map3"
+                         data-address="121 King Street, Melbourne Victoria 3000 Australia"
+                         data-popupstring-id="#popupstring1"
+                         class="map-canvas autoload-map"
+                         data-mapstyle="style2"
+                         data-height="400"
+                         data-latlng="-37.817314,144.955431"
+                         data-title="sample title"
+                         data-zoom="12"
+                         data-marker="images/map-marker.png">
+                    </div>
+                    <div class="map-popupstring hidden" id="popupstring1">
+                        <div class="text-center">
+                            <h3>Medinova Office</h3>
+                            <p>121 King Street, Melbourne Victoria 3000 Australia</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

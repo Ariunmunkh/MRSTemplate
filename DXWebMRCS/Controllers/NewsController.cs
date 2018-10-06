@@ -17,7 +17,7 @@ using DevExpress.Web;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin,BranchUser")]
-    [RequireHttps]
+    //[RequireHttps]
     public class NewsController : Controller
     {
         private UsersContext db = new UsersContext();

@@ -22,12 +22,12 @@ using System.Web.UI;
 namespace DXWebMRCS.Controllers
 {
     [InitializeSimpleMembership]
-    [RequireHttps]
+    //[RequireHttps]
     public class HomeController : Controller
     {
         private UsersContext db = new UsersContext();
         public IEnumerable<Menu> menuList;
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             // DXCOMMENT: Pass a data model for GridView     
@@ -70,7 +70,7 @@ namespace DXWebMRCS.Controllers
        
 
         #region File content Hadgalsan Pdf bolon Docx haruulah heseg
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult FileContentView()
         {
             var pageNumber = 1;
@@ -108,7 +108,7 @@ namespace DXWebMRCS.Controllers
         #endregion
 
         #region Magazines
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Magazine()
         {
             var pageNumber = 1;

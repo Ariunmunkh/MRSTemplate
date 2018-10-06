@@ -7,7 +7,7 @@
         @foreach (var item in Model.Item1.ToList().Take(3))
         {
             <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb mr-20"><img alt="" src="~/Content/IMG_0725.JPG"></a>
+                <a href="#" class="post-thumb mr-20"><img alt="" src="@item.Image"></a>
                 <div class="post-right">
                     <h4 class="mt-0 mb-5">
                         <a href='@Url.Action("TrainingEventDetail", "Home", new { id = @item.TrainingID })'>
@@ -35,28 +35,12 @@
                         </li>
                     </ul>
                     <p class="mb-0 font-13">
-                        @if (language == "en-US")
-                        {
-                            if (@item.ContentEng.Length > 100)
-                            {
-                                @item.ContentEng.Substring(0, 100)
-                            }
-                            else
-                            {
-                                @item.ContentEng
-                            }
+                        @{
+                            string tempBody = string.Empty;
+                            tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item.ContentEng : item.ContentMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
+                            tempBody = tempBody.Substring(0, tempBody.Length > 150 ? 150 : tempBody.Length) + (tempBody.Length > 150 ? "..." : "");
                         }
-                        else
-                        {
-                            if (@item.ContentMon.Length > 100)
-                            {
-                                @item.ContentMon.Substring(0, 100)
-                            }
-                            else
-                            {
-                                @item.ContentMon
-                            }
-                        }
+                        @tempBody
                     </p>
                     <p>
                         @{
@@ -68,19 +52,25 @@
                         @*<button id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@requestIsDisabled userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored btn-sm mt-10">@requestBtnText</button>
                         <button id="@Url.Content("cancel" + @item.TrainingID)" trainingid=@item.TrainingID disabled=@cancelIsDisabled userid=@item.UserID class="ActionCancel btn btn-dark btn-sm mt-10">Цуцлах</button>*@
                         
-
-                        <a id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored">
+                        @if(item.type == 1)
+                        {
+                            
+                        }
+                        else
+                        {
+                            <a id="@Url.Content("request" + @item.TrainingID)" trainingid=@item.TrainingID userid=@item.UserID class="ActionRegister btn btn-dark btn-theme-colored">
                             
                             <i class="@Url.Content(requestBtnIcon)"></i> @requestBtnText                          
                            
                         </a> 
+                        }
                     </p>                    
                 </div>
             </article>
         }
     </div>
     <div class="col-md-8 col-sm-12">
-        <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>Үйл <span class="text-theme-colored"> ажиллагаа</span></h3>
+        <h3 class="title mt-0 mt-sm-30 text-black-666 line-bottom"><i class="fa fa-thumb-tack text-gray-darkgray mr-10"></i>@Resources.RGlobal.t20 <span class="text-theme-colored"> @Resources.RGlobal.t20_1</span></h3>
         <div class="row mt-20 multi-row-clearfix">
             @{
                 string owlCarousel = Model.Item2.Count() > 2 ? "owl-carousel-3col" : Model.Item2.Count() == 2 ? "owl-carousel-2col" : "owl-carousel-1col";                
@@ -90,9 +80,9 @@
                 @foreach (var item2 in Model.Item2.ToList().Take(3))
                 {
                     <div class="item">
-                        <div class="thumb"> <a href="@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })"><img class="img-fullwidth mb-20" src="~/Content/IMG_0725.JPG" alt="..."></a> </div>
+                        <div class="thumb"> <a href="@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })"><img class="img-fullwidth mb-20" src="@item2.Image" alt="..."></a> </div>
                         <div class="caption">
-                            <h4 class="text-uppercase letter-space-1 mt-0">
+                            <h4 class="mt-0">
                                 <span class="text-theme-colored">
                                     @if (language == "en-US")
                                     {
@@ -105,28 +95,12 @@
                                 </span>
                             </h4>
                             <p>
-                                @if (language == "en-US")
-                                {
-                                    if (@item2.ContentEng.Length > 100)
-                                    {
-                                        @item2.ContentEng.Substring(0, 100)
-                                    }
-                                    else
-                                    {
-                                        @item2.ContentEng
-                                    }
-                                }
-                                else
-                                {
-                                    if (@item2.ContentMon.Length > 100)
-                                    {
-                                        @item2.ContentMon.Substring(0, 100)
-                                    }
-                                    else
-                                    {
-                                        @item2.ContentMon
-                                    }
-                                }
+                               @{
+                                    string tempBody = string.Empty;
+                                    tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item2.ContentEng : item2.ContentMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
+                                    tempBody = tempBody.Substring(0, tempBody.Length > 150 ? 150 : tempBody.Length) + (tempBody.Length > 150 ? "..." : "");
+}
+                                @tempBody
                             </p>
                             <p>
                                 <a class="text-theme-colored font-13" href='@Url.Action("TrainingEventDetail", "Home", new { id = @item2.TrainingID })'>Үргэлжлүүлж унших →</a>

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Branches";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/IMG_0725.jpg">
+        <div class="container pt-200 pb-200">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if(System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <h2 class="font-48 text-white">Blog Timeline Masonry</h2>
+                        }
+                        else
+                        {
+                            <h2 class="font-48 text-white">САЛБАР</h2>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />
+    <iframe src="https://www.google.com/maps/d/embed?mid=1u1dsuJoAUq938DpoyQsC84e9ykJfDQiG" width="640" height="480"></iframe>
+    <br />
+</div>

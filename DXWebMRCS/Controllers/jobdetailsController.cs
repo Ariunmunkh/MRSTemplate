@@ -11,7 +11,7 @@ using System.IO;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class jobdetailsController : Controller
     {
@@ -51,6 +51,7 @@ namespace DXWebMRCS.Controllers
             return result;
         }  
         // GET: jobdetails/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             ViewBag.JID = new SelectList(db.jobs, "JobName", "JobName");
@@ -61,6 +62,7 @@ namespace DXWebMRCS.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Create(jobdetail model, HttpPostedFileBase ImageFile)
         {
@@ -109,7 +111,6 @@ namespace DXWebMRCS.Controllers
             return PartialView(model);
         }
 
-        // GET: jobdetails/Create
         public ActionResult application()
         {
             ViewBag.JID = new SelectList(db.jobs, "JobName", "JobName");            

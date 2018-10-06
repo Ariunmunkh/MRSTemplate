@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "who_we_are";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/IMG_0725.jpg">
+        <div class="container pt-200 pb-200">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                        {
+                            <h2 class="font-48 text-white">Blog Timeline Masonry</h2>
+                        }
+                        else
+                        {
+                            <h2 class="font-48 text-white">ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ УЛААН ХАВИРГАН САР ХӨДӨЛГӨӨНИЙ ТҮҮХ</h2>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="col-md-3">
+                        <div class="sidebar sidebar-right mt-sm-30">
+                            <div class="widget">
+                                <div class="fb-page" data-href="https://www.facebook.com/MongolianRedCrossSociety/" data-tabs="timeline" data-width="292" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/MongolianRedCrossSociety/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/MongolianRedCrossSociety/">Mongolian Red Cross Society</a></blockquote></div>
+                            </div>
+                            <div class="widget" style="width:292px">
+                                <a class="twitter-timeline" href="https://twitter.com/MRCS_MN?ref_src=twsrc%5Etfw" data-height="500" data-width="292">Tweets by MRCS_MN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<script src="~/Content/js/widgets.js"></script>

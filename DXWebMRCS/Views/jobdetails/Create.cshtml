@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 <section id="apply" class="divider parallax layer-overlay overlay-white-8" data-bg-img="~/Content/IMG_0725.JPG">
     <div class="container-fluid">
@@ -58,7 +58,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Сонирхсон ажлын байр <small>*</small></label>
-                                    @Html.DropDownList("JobName", (IEnumerable<SelectListItem>)ViewBag.JID, new { @class = "form-control" })
+                                    @Html.DropDownList("JobName", (IEnumerable<SelectListItem>)ViewBag.JID,string.Empty, new { @class = "form-control" })
                                 </div>
                             </div>
                         </div>

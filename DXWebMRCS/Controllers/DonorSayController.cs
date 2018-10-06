@@ -12,7 +12,7 @@ using ImageResizer;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class DonorSayController : Controller
     {

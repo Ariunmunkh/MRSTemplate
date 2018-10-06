@@ -166,13 +166,13 @@
     <value>read more...</value>
   </data>
   <data name="l1" xml:space="preserve">
-    <value>l1</value>
+    <value>ICRC</value>
   </data>
   <data name="l10" xml:space="preserve">
     <value>l10</value>
   </data>
   <data name="l2" xml:space="preserve">
-    <value>l2</value>
+    <value>MRCS timeline</value>
   </data>
   <data name="l3" xml:space="preserve">
     <value>l3</value>
@@ -193,7 +193,7 @@
     <value>l8</value>
   </data>
   <data name="l9" xml:space="preserve">
-    <value>l9</value>
+    <value>Branches</value>
   </data>
   <data name="p1" xml:space="preserve">
     <value>p1</value>
@@ -229,7 +229,7 @@
     <value>p12</value>
   </data>
   <data name="p13" xml:space="preserve">
-    <value>p13</value>
+    <value>Our action photos</value>
   </data>
   <data name="p14" xml:space="preserve">
     <value>p14</value>
@@ -280,7 +280,7 @@
     <value>t16_1</value>
   </data>
   <data name="t17" xml:space="preserve">
-    <value>t17</value>
+    <value>WHAT IS MRCS YOU</value>
   </data>
   <data name="t18" xml:space="preserve">
     <value>t18</value>
@@ -332,5 +332,35 @@
   </data>
   <data name="t19_1" xml:space="preserve">
     <value>t19_1</value>
+  </data>
+  <data name="t20" xml:space="preserve">
+    <value />
+  </data>
+  <data name="t20_1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="join" xml:space="preserve">
+    <value>JOIN</value>
+  </data>
+  <data name="p15" xml:space="preserve">
+    <value>p15</value>
+  </data>
+  <data name="t21" xml:space="preserve">
+    <value>t21</value>
+  </data>
+  <data name="t21_1" xml:space="preserve">
+    <value>t_21_1</value>
+  </data>
+  <data name="too1" xml:space="preserve">
+    <value>Mid-level branches</value>
+  </data>
+  <data name="too2" xml:space="preserve">
+    <value>Volunteers</value>
+  </data>
+  <data name="too3" xml:space="preserve">
+    <value>Red Cross Youth member</value>
+  </data>
+  <data name="too4" xml:space="preserve">
+    <value>Humanitarian Organization</value>
   </data>
 </root>

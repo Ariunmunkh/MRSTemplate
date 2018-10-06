@@ -2,75 +2,10 @@
 @{
     
     ViewBag.Title = "_FooterPartial";
+    string language = System.Globalization.CultureInfo.CurrentCulture.Name;
 }
 <!-- Footer -->
 <footer id="footer" class="footer bg-black-222" data-bg-img="Content/Images/footer-bg.png">
-    <div class="container pt-70 pb-40">
-        <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <img class="mt-10 mb-15 ml-30" alt="" src="~/Content/logo.png" width="200">
-                    <p class="font-16 mb-10 text-center">Монголын улаан загалмай нийгэмлэг</p>
-                    @*<a class="font-14" href="~/Content/#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>*@
-                    <ul class="styled-icons icon-dark mt-20">
-                        <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s" data-wow-offset="10"><a href="https://www.facebook.com/MongolianRedCrossSociety/" target="_blank" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s" data-wow-offset="10"><a href="https://twitter.com/MRCS_MN" target="_blank" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-                        <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".5s" data-wow-offset="10"><a href="https://www.youtube.com/user/RedCrossmn" target="_blank" data-bg-color="#C22E2A"><i class="fa fa-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Useful Links</h5>
-                    <ul class="list angle-double-right list-border">
-                        <li><a href="~/Content/#">Privacy Policy</a></li>
-                        <li><a href="~/Content/#">Donor Privacy Policy</a></li>
-                        <li><a href="~/Content/#">Disclaimer</a></li>
-                        <li><a href="~/Content/#">Terms of Use</a></li>
-                        <li><a href="~/Content/#">Media Center</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Useful Links</h5>
-                    <ul class="list angle-double-right list-border">
-                        <li><a href="~/Content/#">Privacy Policy</a></li>
-                        <li><a href="~/Content/#">Donor Privacy Policy</a></li>
-                        <li><a href="~/Content/#">Disclaimer</a></li>
-                        <li><a href="~/Content/#">Terms of Use</a></li>
-                        <li><a href="~/Content/#">Media Center</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Холбоо барих</h5>
-                    <ul class="list-border">
-                        <li><a href="#">+(976) 11 323334</a></li>
-                        <li><a href="mailto:info@redcross.mn">info@redcross.mn</a></li>
-                        <li><a href="#" class="lineheight-20">Монгол улс, Улаанбаатар хот Сүхбаатар дүүрэг 1-р хороо МУЗН-ийн төв байр</a></li>
-                    </ul>
-                    @*<p class="font-16 text-white mb-5 mt-15">Бидний мэдээллийг авах бол</p>*@
-                    @*@using (Html.BeginForm("Create", "Subscribes", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
-                            <label class="display-block" for="mce-EMAIL"></label>
-                            <div class="input-group">
-                                <input id="Text1" type="email" class="form-control"/>
-                                @Html.TextBoxFor(model => model.email, new { @class = "form-control", @style = "background-color:white; height:37px", placeholder = "И-мэйл хаяг", @type="email" })
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i class="fa fa-paper-plane-o text-white"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                    }*@
-                    <!-- Mailchimp Subscription Form Validation-->
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="footer-bottom bg-black-333">
         <div class="container pt-20 pb-20">
             <div class="row">
@@ -80,18 +15,47 @@
                 <div class="col-md-6 text-right">
                     <div class="widget no-border m-0">
                         <ul class="list-inline sm-text-center mt-5 font-12">
-                            <li>
-                                <a href="~/Content/#">Бидний тухай</a>
-                            </li>
+                            @if (language == "en-US")
+                            {
+                                <li>
+                                    <a href="~/Content/history">About Us</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="~/Content/history">Бидний тухай</a>
+                                </li>
+                            }
+
                             <li>|</li>
-                            <li>
-                                <a href="~/Content/#">Салбар</a>
-                            </li>
+                            @if (language == "en-US")
+                            {
+                                <li>
+                                    <a href="~/Content/Branches">Branches</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="~/Content/Branches">Салбар</a>
+                                </li>
+                            }
                             <li>|</li>
-                            <li>
-                                <a href="~/Content/#">Холбоо барих</a>
-                            </li>
+                            @if (language == "en-US")
+                            {
+                                <li>
+                                    <a href="~/jobs">Jobs</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="~/jobs">Нээлттэй ажлын байр</a>
+                                </li>
+                            }
                         </ul>
+
                     </div>
                 </div>
             </div>

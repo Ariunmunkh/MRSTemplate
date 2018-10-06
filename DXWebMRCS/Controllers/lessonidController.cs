@@ -10,7 +10,7 @@ using DXWebMRCS.Models;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize(Roles = "Admin")]
     public class lessonidController : Controller
     {

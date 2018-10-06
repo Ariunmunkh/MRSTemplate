@@ -1,0 +1,279 @@
+﻿
+@{
+    ViewBag.Title = "HPP";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .pb-200 {
+        padding-bottom: 50px !important;
+    }
+
+    .pt-200 {
+        padding-top: 50px !important;
+    }
+
+    .h1, .h2, .h3, h1, h2, h3 {
+        margin-top: 500px;
+    }
+</style>
+<section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/Cont/hp1.jpg">
+    <div class="container pt-200 pb-200">
+        <!-- Section Content -->
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                        <h2 class="font-48 text-white">SOCIAL INCLUSION, DEVELOPMENT PROGRAM</h2>
+                    }
+                    else
+                    {
+                        <h2 class="font-48 text-white">НИЙГМИЙН ЭРҮҮЛ МЭНДИЙГ ДЭМЖИХ ХӨТӨЛБӨР</h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+{
+    <section>
+        <div class="container pt-20 pb-20">
+            <div class="section-content">
+                <div class="row">
+                    <section class="bg-white-f7">
+                        <div class="container alert alert-info pb-0 pt-0">
+                            <div class="section-title">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h2 class="title mt-40">Стратегийн зорилго 2:</h2>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-left flip">
+                                            <p class="left-bordered mt-50">
+                                                Нийгмийн эрүүл мэндийг дэмжих үйл ажиллагааг олон нийтийн оролцоонд тулгуурлан хэрэгжүүлэх.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="separator">
+                        <span class="text-theme-colored">Нийгмийн эрүүл мэндийг дэмжих хөтөлбөр</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp5.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Анхны тусламжийн сургалт, үйлчилгээ үзүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp6.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Олон нийтэд халдварт бус өвчөөс сэргийлэх, амьдралын эрүүл, зөв хэв маягийг сурталчлах;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Сүрьеэ, БЗДХ/ХДХВ/ДОХ-оос сэргийлэх, илрүүлэлт хийх, эмчилгээнд хамруулах, нийгмийн дэмжлэг үзүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp7.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Гамшиг, онцгой байдлын үед эрүүл мэнд, анхны тусламж,  нийгэм, сэтгэлзүйн дэмжлэг үзүүлж хариу арга хэмжээ авах чадавхийг бэхжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Олон нийтийн ус ариун цэвэр, эрүүл ахуйн байдлыг тогтвортой дэмжих, мэдлэг олгох, зан үйл өөрчлөх сургалт сурталчилгаа явуулах;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Хүн амын дунд сайн дурын, авлагагүй цусны донорын хөдөлгөөнийг сурталчилж, үндэсний хэмжээнд аюулгүй цус, цусан бүтээгдэхүүний хангалттай нөөцийг бүрдүүлэхэд хувь нэмрээ оруулж цусны донорын эгнээг тасралтгүй өргөжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp8.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Эрүүл мэнд, эмчилгээний чиглэлээр олон улсын хамтын ажиллагааг төрийн болон төрийн бус, хувийн хэвшлийн байгууллагуудтай хамтран хэрэгжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section>
+        <div class="container pt-20 pb-20">
+            <div class="section-content">
+                <div class="row">
+                    <section class="bg-white-f7">
+                        <div class="container alert alert-info pb-0 pt-0">
+                            <div class="section-title">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h2 class="title mt-40">Стратегийн зорилго 2:</h2>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-left flip">
+                                            <p class="left-bordered mt-50">
+                                                Нийгмийн эрүүл мэндийг дэмжих үйл ажиллагааг олон нийтийн оролцоонд тулгуурлан хэрэгжүүлэх.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="separator">
+                        <span class="text-theme-colored">Нийгмийн эрүүл мэндийг дэмжих хөтөлбөр</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp5.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Анхны тусламжийн сургалт, үйлчилгээ үзүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp6.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Олон нийтэд халдварт бус өвчөөс сэргийлэх, амьдралын эрүүл, зөв хэв маягийг сурталчлах;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Сүрьеэ, БЗДХ/ХДХВ/ДОХ-оос сэргийлэх, илрүүлэлт хийх, эмчилгээнд хамруулах, нийгмийн дэмжлэг үзүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp7.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Гамшиг, онцгой байдлын үед эрүүл мэнд, анхны тусламж,  нийгэм, сэтгэлзүйн дэмжлэг үзүүлж хариу арга хэмжээ авах чадавхийг бэхжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Олон нийтийн ус ариун цэвэр, эрүүл ахуйн байдлыг тогтвортой дэмжих, мэдлэг олгох, зан үйл өөрчлөх сургалт сурталчилгаа явуулах;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Хүн амын дунд сайн дурын, авлагагүй цусны донорын хөдөлгөөнийг сурталчилж, үндэсний хэмжээнд аюулгүй цус, цусан бүтээгдэхүүний хангалттай нөөцийг бүрдүүлэхэд хувь нэмрээ оруулж цусны донорын эгнээг тасралтгүй өргөжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/hp8.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    Эрүүл мэнд, эмчилгээний чиглэлээр олон улсын хамтын ажиллагааг төрийн болон төрийн бус, хувийн хэвшлийн байгууллагуудтай хамтран хэрэгжүүлэх;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

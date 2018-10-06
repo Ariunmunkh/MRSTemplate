@@ -70,7 +70,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to l1.
+        ///   Looks up a localized string similar to JOIN.
+        /// </summary>
+        public static string join {
+            get {
+                return ResourceManager.GetString("join", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ICRC.
         /// </summary>
         public static string l1 {
             get {
@@ -88,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to l2.
+        ///   Looks up a localized string similar to MRCS timeline.
         /// </summary>
         public static string l2 {
             get {
@@ -151,7 +160,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to l9.
+        ///   Looks up a localized string similar to Branches.
         /// </summary>
         public static string l9 {
             get {
@@ -214,7 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p13.
+        ///   Looks up a localized string similar to Our action photos.
         /// </summary>
         public static string p13 {
             get {
@@ -228,6 +237,15 @@ namespace Resources {
         public static string p14 {
             get {
                 return ResourceManager.GetString("p14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p15.
+        /// </summary>
+        public static string p15 {
+            get {
+                return ResourceManager.GetString("p15", resourceCulture);
             }
         }
         
@@ -547,7 +565,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t17.
+        ///   Looks up a localized string similar to WHAT IS MRCS YOU.
         /// </summary>
         public static string t17 {
             get {
@@ -606,6 +624,42 @@ namespace Resources {
         public static string t2_1 {
             get {
                 return ResourceManager.GetString("t2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string t20 {
+            get {
+                return ResourceManager.GetString("t20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string t20_1 {
+            get {
+                return ResourceManager.GetString("t20_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t21.
+        /// </summary>
+        public static string t21 {
+            get {
+                return ResourceManager.GetString("t21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to t_21_1.
+        /// </summary>
+        public static string t21_1 {
+            get {
+                return ResourceManager.GetString("t21_1", resourceCulture);
             }
         }
         
@@ -705,6 +759,42 @@ namespace Resources {
         public static string t9 {
             get {
                 return ResourceManager.GetString("t9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mid-level branches.
+        /// </summary>
+        public static string too1 {
+            get {
+                return ResourceManager.GetString("too1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volunteers.
+        /// </summary>
+        public static string too2 {
+            get {
+                return ResourceManager.GetString("too2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Cross Youth member.
+        /// </summary>
+        public static string too3 {
+            get {
+                return ResourceManager.GetString("too3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Humanitarian Organization.
+        /// </summary>
+        public static string too4 {
+            get {
+                return ResourceManager.GetString("too4", resourceCulture);
             }
         }
     }

@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = "ICRC";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .pb-200 {
+        padding-bottom: 50px !important;
+    }
+
+    .pt-200 {
+        padding-top: 50px !important;
+    }
+
+    .h1, .h2, .h3, h1, h2, h3 {
+        margin-top: 500px;
+    }
+</style>
+<section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/Cont/icrc1.jpg">
+    <div class="container pt-200 pb-200">
+        <!-- Section Content -->
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                    <h2 class="font-48 text-white">INTERNATIONAL COMMITTEE OF THE RED CROSS</h2>
+                    }
+                    else
+                    {
+                    <h2 class="font-48 text-white">ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ ХОРОО</h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+{
+    <section>
+        <div class="container pt-70 pb-70">
+            <div class="section-title text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="mt-0 line-height-1 text-uppercase"><span class="text-theme-colored">ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ ХОРОО</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <section class="bg-white-f7">
+                        <div class="container alert alert-info pb-0 pt-0">
+                            <div class="section-title">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-left flip">
+                                            <p class="left-bordered mt-40 text-justify">
+                                                Олон улсын улаан загалмай хороо (ОУУЗХ) нь зэвсэгт мөргөлдөөн болон бусад хүчирхийллийн нөхцөл байдлын улмаас зовж шаналсан хохирогчдын амь нас, нэр хүндийг хамгаалах, тэдэнд тусламж үзүүлэх зорилготой шударга, төвийг сахисан, бие даасан хүмүүнлэгийн байгууллага юм. ОУУЗХ нь хүний зовлон шаналлыг нимгэлэх, урьдчилан сэргийлэх зорилгоор олон улсын хүмүүнлэгийн эрх зүй, хүмүүнлэгийн зарчмуудыг сурталчлан таниулах, бэхжүүлэхээр чармайж ажилладаг. 1863 онд байгуулагдсан ОУУЗХ нь дэлхий даяар зэвсэгт мөргөлдөөн болон хүчирхийллийн бусад нөхцөл байдалд олон улсын хүмүүнлэгийн тусламжийн үйл ажиллагааг удирдан зохицуулдаг.
+                                                Женевийн конвенц түүний нэмэлт протокол нь нэгдэн орсон улс орнуудын мөрдвөл зохих олон улсын гэрээ юм.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="separator">
+                        <span>ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ ХОРОО</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн I конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайтаж байгаа армийн шархадсан ба өвчтэй
+                                    цэргийг асран хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн II конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Тэнгисийн зэвсэгт хүчний шархадсан, өвчтэй болон
+                                    хөлөг онгоцны сүйрэлд нэрвэгдсэн хүмүүсийг халамжлан
+                                    хамгаалах, нөхцөл байдлыг сайжруулах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн III конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайны олзлогдогсодтой хэрхэн
+                                    харьцах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн IV конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc5.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайны үед энгийн иргэдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="separator">
+                                <span class="text-theme-colored text-uppercase"><b>Нэмэлт 2 протокол 1977 он</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">I Нэмэлт протокол</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc6.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Олон улсын шинж чанартай зэвсэгт
+                                    мөргөлдөөнд хэлмэгдэгсдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">II Нэмэлт протокол</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc7.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Олон улсын бус шинж чанартай зэвсэгт
+                                    мөргөлдөөнд хэлмэгдэгсдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section>
+        <div class="container pt-70 pb-70">
+            <div class="section-title text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="mt-0 line-height-1 text-uppercase"><span class="text-theme-colored">ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ ХОРОО</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <section class="bg-white-f7">
+                        <div class="container alert alert-info pb-0 pt-0">
+                            <div class="section-title">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-left flip">
+                                            <p class="left-bordered mt-40 text-justify">
+                                                Олон улсын улаан загалмай хороо (ОУУЗХ) нь зэвсэгт мөргөлдөөн болон бусад хүчирхийллийн нөхцөл байдлын улмаас зовж шаналсан хохирогчдын амь нас, нэр хүндийг хамгаалах, тэдэнд тусламж үзүүлэх зорилготой шударга, төвийг сахисан, бие даасан хүмүүнлэгийн байгууллага юм. ОУУЗХ нь хүний зовлон шаналлыг нимгэлэх, урьдчилан сэргийлэх зорилгоор олон улсын хүмүүнлэгийн эрх зүй, хүмүүнлэгийн зарчмуудыг сурталчлан таниулах, бэхжүүлэхээр чармайж ажилладаг. 1863 онд байгуулагдсан ОУУЗХ нь дэлхий даяар зэвсэгт мөргөлдөөн болон хүчирхийллийн бусад нөхцөл байдалд олон улсын хүмүүнлэгийн тусламжийн үйл ажиллагааг удирдан зохицуулдаг.
+                                                Женевийн конвенц түүний нэмэлт протокол нь нэгдэн орсон улс орнуудын мөрдвөл зохих олон улсын гэрээ юм.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="separator">
+                        <span>ОЛОН УЛСЫН УЛААН ЗАГАЛМАЙ ХОРОО</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн I конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайтаж байгаа армийн шархадсан ба өвчтэй
+                                    цэргийг асран хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн II конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Тэнгисийн зэвсэгт хүчний шархадсан, өвчтэй болон
+                                    хөлөг онгоцны сүйрэлд нэрвэгдсэн хүмүүсийг халамжлан
+                                    хамгаалах, нөхцөл байдлыг сайжруулах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн III конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайны олзлогдогсодтой хэрхэн
+                                    харьцах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Женевийн IV конвенц</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc5.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Дайны үед энгийн иргэдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="separator">
+                                <span class="text-theme-colored text-uppercase"><b>Нэмэлт 2 протокол 1977 он</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">I Нэмэлт протокол</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc6.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Олон улсын шинж чанартай зэвсэгт
+                                    мөргөлдөөнд хэлмэгдэгсдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">II Нэмэлт протокол</h3>
+                            </div>
+                            <div class="team-upper-block text-center">
+                                <img class="img-fullwidth" src="~/Content/Cont/icrc7.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <h5>
+                                    Олон улсын бус шинж чанартай зэвсэгт
+                                    мөргөлдөөнд хэлмэгдэгсдийг
+                                    хамгаалах тухай
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

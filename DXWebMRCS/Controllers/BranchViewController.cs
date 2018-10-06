@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace DXWebMRCS.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class BranchViewController : Controller
     {
         private UsersContext db = new UsersContext();

@@ -1,6 +1,6 @@
 ﻿@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
 @model DXWebMRCS.Models.LoginModel
-
+@{string language = System.Globalization.CultureInfo.CurrentCulture.Name;}
 @using (Html.BeginForm(Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, null)))
 {
     @Html.AntiForgeryToken()
@@ -15,13 +15,28 @@
                         <form name="login-form" class="clearfix">
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="form_username_email">Хэрэглэгчийн мэйл</label>
+                                    @if (language == "en-US")
+                                    {
+                                        <label for="form_username_email">Email</label>
+                                    }
+                                    else
+                                    {
+                                        <label for="form_username_email">Хэрэглэгчийн и-мэйл</label>
+                                    }
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
+                                    @if (language == "en-US")
+                                    {
+                                        <label for="form_password">Password</label>
+                                    }
+                                    else
+                                    {
+                                        <label for="form_password">Нууц үг</label>
+                                    }
                                     <label for="form_password">Нууц үг</label>
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -40,14 +55,6 @@
                             </div>
                             <div class="clear text-center pt-10">
                                 <a>@Html.ActionLink("Forget Password", "ChangePasswordSendEmail", "Account", routeValues: null, htmlAttributes: new { title = "Forget", @class = "text-theme-colored font-weight-600 font-12" })</a>
-                            </div>
-                            <div class="clear text-center pt-10">
-                                <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>
-                                <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a>
-
-                                @*<section id="socialLoginForm">
-                                        @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
-                                    </section>*@
                             </div>
                         </form>
                     </div>

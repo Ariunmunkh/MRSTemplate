@@ -15,15 +15,15 @@ using System.Web.UI;
 namespace DXWebMRCS.Controllers
 {
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class elearningController : Controller
     {
         private UsersContext db = new UsersContext();
 
         // GET: /elearning/
-        [RequireHttps]
+        //[RequireHttps]
         [InitializeSimpleMembership]
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var eservice = db.Database.SqlQuery<eServiceModel>(@"select  t.UserId, 
@@ -54,7 +54,7 @@ namespace DXWebMRCS.Controllers
             return View(list);
         }
 
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "none", NoStore = true, Location = OutputCacheLocation.Client)]
         public ActionResult List()
         {
             return View(db.Elearn.ToList());
@@ -108,7 +108,7 @@ namespace DXWebMRCS.Controllers
         }
         [InitializeSimpleMembership]
         // GET: /elearning/Details/5
-        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Any)]
+        [OutputCache(CacheProfile = "CacheMax", VaryByParam = "ID", Location = OutputCacheLocation.Client)]
         public ActionResult Details(int? id)
         {
             if (id == null)

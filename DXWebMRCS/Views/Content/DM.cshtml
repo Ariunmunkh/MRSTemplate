@@ -1,0 +1,398 @@
+﻿
+@{
+    ViewBag.Title = "DM";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .pb-200 {
+        padding-bottom: 50px !important;
+    }
+
+    .pt-200 {
+        padding-top: 50px !important;
+    }
+
+    .h1, .h2, .h3, h1, h2, h3 {
+        margin-top: 500px;
+    }
+</style>
+<section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="/Content/Cont/dm1.jpg">
+    <div class="container pt-200 pb-200">
+        <!-- Section Content -->
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+                    {
+                        <h2 class="font-48 text-white">DISASTER MANAGEMENT PROGRAMME</h2>
+                    }
+                    else
+                    {
+                        <h2 class="font-48 text-white">ГАМШГИЙН МЕНЕЖМЕНТИЙН ХӨТӨЛБӨР</h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (System.Globalization.CultureInfo.CurrentCulture.Name == "en-US")
+{
+    <section>
+        <div class="container pt-0 pb-0">
+            <div class="section-content">
+                <div class="row">
+                    <div class="section-title">
+                        <div class="col-md-12 mt-20">
+                            <div class="alert alert-info">
+                                <p class="left-bordered text-justify">
+                                    <span class="text-theme-colored text-uppercase"><b>Programme aim:</b></span><br />
+                                    To build capacity on prevention, preparedness and recovery activities to save lives and livelihoods of people during disasters and in emergencies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-title">
+                        <div class="col-md-12 mt-20">
+                            <div class="alert alert-info">
+                                <p class="left-bordered text-justify">
+                                    <span class="text-theme-colored text-uppercase"><b>Programme objective:</b></span><br />
+                                    <ul class="list list-divider list-border text-left">
+                                        <li><i class="fa fa-arrow-right mr-10 text-black-light"></i>Mongolian Red Cross Society to be a leading actor to community resilience through disaster risk reduction and climate change adaptation programme.</li>
+                                        <li>
+                                            <i class="fa fa-arrow-right mr-10 text-black-light"></i>Institutional capacity of the Mongolian Red Cross Society is strengthened and has full capacity to respond to disasters.
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="separator">
+                            <span class="text-theme-colored"><b>In the newly approved Disaster protection law, MRCS’s roles and responsibilities are clearly indicated:</b></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    13.5. Mongolian Red Cross Society shall cooperate and provide support in organizing the disaster protection trainings within its scope of activities.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    24.3. Mongolian Red Cross Society is to be auxiliary power in organizing disaster protection activities accordance with law and regulations. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    39.4. Mongolian Red Cross Society is to request humanitarian assistance from the International federation of Red Cross and Red Crescent societies and implement the process of receiving, registering, storing, transporting and distributing the humanitarian aid in accordance with law and regulations. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 mt-20">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Disaster prevention and risk reduction:</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Work together with herder communities and involve them in disaster protection trainings;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Assist them with winter preparedness through winter shelter activities;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Assist them in preparing hays and fodders for winter through mid-level branches, provide hays and fodder for low-income, vulnerable herder families; </li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Establish community based fire-fighting teams and provide equipment and trainings;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Work with National Emergency Management Agency to develop IEC materials for public;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Organize public campaign on disaster preparedness and prevention; </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 mt-20">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Disaster preparedness:</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Train staffs and volunteers for National Disaster Response Team, Branch Disaster Response Teams, Emergency Response Teams who are able to provide first-aid, psychosocial support and relief assistance and provide support to National Emergency Management Agency in organizing disaster protection simulation exercises according to the law;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>To establish emergency relief funds and items;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Organize disaster preparedness trainings at school and assist with school contingency plan based on non-structural assessment; </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Disaster response:</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>To provide emergency relief to disaster affected population:</li>
+                                    <ul class="list list-divider list-border text-left">
+                                        <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Emergency cash assistance to herder communities affected by “Dzud” – extreme winter situation;</li>
+                                        <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Based on emergency assessment, to provide food and non-food items to and to provide psychosocial support to the affected population</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Disaster recovery:</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Assist herders who have lost their livestock to participate in vocational trainings to have alternative livelihood resources; </li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Provide assistance such as ger, basic household items  to disaster affected population to re-establish\recover from disaster quickly; </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="separator">
+                            <span class="text-theme-colored"><b>Our partners</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="owl-carousel-6col clients-logo">
+                        <div class="item"> <a href="http://nema.gov.mn/"><img src="/Content/Cont/dmlogo1.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.icrc.org/en"><img src="/Content/Cont/dmlogo2.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://media.ifrc.org/ifrc/"><img src="/Content/Cont/dmlogo3.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.org.au/"><img src="/Content/Cont/dmlogo4.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.org.uk/"><img src="/Content/Cont/dmlogo5.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.fi/"><img src="/Content/Cont/dmlogo6.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://ec.europa.eu/echo/"><img src="/Content/Cont/dmlogo7.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.adpc.net/igo/?"><img src="/Content/Cont/dmlogo8.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.wvi.org/mongolia"><img src="/Content/Cont/dmlogo9.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.clovekvtisni.cz/en/"><img src="/Content/Cont/dmlogo10.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://savethechildren.mn/"><img src="/Content/Cont/dmlogo11.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.mercycorps.org/"><img src="/Content/Cont/dmlogo12.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.charita.cz/en/"><img src="/Content/Cont/dmlogo13.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.un.org/en/index.html"><img src="/Content/Cont/dmlogo14.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.worldanimalprotection.org/"><img src="/Content/Cont/dmlogo15.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+}
+else
+{
+    <section>
+        <div class="container pt-0 pb-0">
+           
+            <div class="section-content">
+                <div class="row">
+                    <div class="section-title">
+                        <div class="col-md-12 mt-20">
+                            <div class="alert alert-info">
+                                <p class="left-bordered text-justify">
+                                    <span class="text-theme-colored text-uppercase"><b>Хөтөлбөрийн зорилго:</b></span><br />
+                                    Гамшиг, аюулт үзэгдлээс ард иргэдийн урьдчилан сэргийлэх, бэлэн байдлыг хангах чадавхийг нэмэгдүүлэх болон гамшгийн дараахь нөхөн сэргээх үйл ажиллагаа явуулсанаар иргэдийн амь нас, эд хөрөнгийг авран хамгаална.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-title">
+                        <div class="col-md-12 mt-20">
+                            <div class="alert alert-info">
+                                <p class="left-bordered text-justify">
+                                    <span class="text-theme-colored text-uppercase"><b>Хөтөлбөрийн зорилт:</b></span><br />
+                                    <ul class="list list-divider list-border text-left">
+                                        <li><i class="fa fa-arrow-right mr-10 text-black-light"></i>Гамшгийн эрсдэлийг бууруулах, уур амьсгалын өөрчлөлтөд дасан зохицох хөтөлбөрөөр дамжуулан олон нийтийн даван туулах чадварыг бэхжүүлэхэд Монголын улаан загалмай нийгэмлэг манлайлан оролцоно.</li>
+                                        <li>
+                                            <i class="fa fa-arrow-right mr-10 text-black-light"></i>Монголын улаан загалмай нийгэмлэг нь байгууллагын хүчин чадлыг нэмэгдүүлж, гамшгийн үед хариу арга хэмжээ авах бүрэн чадавхитай болсон байна.
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="separator">
+                            <span class="text-theme-colored"><b>Монгол Улсын Гамшгаас хамгаалах тухай шинэчлэн батлагдсан хуульд:</b></span>
+                        </div>
+                    </div>
+                   
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm2.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    13.5. Гамшгаас хамгаалах сургалтыг зохион байгуулахад Монголын улаан загалмай нийгэмлэг эрхлэх асуудлынхаа хүрээнд дэмжлэг үзүүлж, хамтран ажиллана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm3.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    24.3. Монголын улаан загалмай нийгэмлэг нь гамшгаас хамгаалах үйл ажиллагааг зохион байгуулах, хэрэгжүүлэхэд хууль тогтоомжийн хүрээнд нэмэлт хүч болон ажиллана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <img class="img-fullwidth" src="~/Content/Cont/dm4.jpg" alt="">
+                            </div>
+                            <div class="team-lower-block text-left text-justify pt-10 p-20">
+                                <p class="text text-black-light">
+                                    39.4. Монголын улаан загалмай нийгэмлэг нь олон улсын Улаан загалмай, Улаан хавирган сар нийгэмлэг, холбоонд хандан гамшгаас хамгаалах хүмүүнлэгийн тусламж хүсэх, хүлээж авах, бүртгэх, байршуулах, хадгалах, тээвэрлэх, хуваарилах үйл ажиллагааг хууль тогтоомжийн хүрээнд хэрэгжүүлнэ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Гамшгаас урьдчилан сэргийлэх болон эрсдэлийг бууруулах</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Малчдын бүлгүүдтэй хамтран ажиллаж, гамшгаас хамгаалах сургалтад хамруулах;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Малчдыг өвөлжөөгөөр хангаж зудын эрсдэлийг бууруулах;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Дунд шатны хороодоор дамжуулж малчдад өвс, тэжээл бэлтгэхэд тусламж үзүүлэх, эмзэг бүлгийн малчин өрхүүдэд өвс, тэжээлийн тусламж үзүүлэх;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Орон нутгийн гал түймэртэй тэмцэх багуудыг байгуулж, мэргэжлийн сургалт болон техник хэрэгслээр хангах;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Онцгой байдлын ерөнхий газартай хамтран гамшгаас урьдчилан сэргийлэх тухай мэдлэг олгох материалыг боловсруулж, түгээх;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшгийн бэлэн байдлыг хангах, эрсдэлийг бууруулахын тулд олон нийтийг хамарсан үйл ажиллагаа зохион байгуулах;</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Гамшгийн бэлэн байдал</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшиг, аюулт үзэгдлийн үед анхны тусламж, нийгэм-сэтгэл зүйн дэмжлэг үзүүлэх, нөхөн сэргээх үйл ажиллагаанд оролцож Гамшгаас хамгаалах хуулийн дагуу Онцгой байдлын ерөнхий газарт гамшгаас хамгаалах иж бүрэн дадлага, сургуулийг зохион байгуулахад дэмжлэг үзүүлэх чадавхи бүхий Үндэсний гамшигтай тэмцэх баг, Орон нутгийн гамшигтай тэмцэх багийг бэлтгэх;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшиг, яаралтай үед ашиглагдах нөөц санг бүрдүүлэх;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшиг, аюулт үзэгдлийн бэлэн байдлыг хангах сургалтыг сургуулиудад зохион байгуулж, үнэлгээнд үндэслэсэн гамшгийн үеийн аюулгүй байдлын төлөвлөгөөг гаргахад туслалцаа үзүүлэх;</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Гамшигтай тэмцэх</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшигт нэрвэгдсэн ард иргэдэд тусламж үзүүлэх:</li>
+                                    <ul class="list list-divider list-border text-left">
+                                        <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Зуд буюу өвөлжилтийн хүнд нөхцөлд буй малчин өрхүүдэд бэлэн мөнгөний тусламж үзүүлэх;</li>
+                                        <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшигт нэрвэгдсэн ард иргэдэд яаралтай үеийн үнэлгээнд үндэслэн хүнсний болон хүнсний бус тусламж, нийгэм-сэтгэлзүйн дэмжлэг үзүүлэх;</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="maxwidth500 mb-sm-30 border-2px">
+                            <div class="image-box-details text-center p-10 pt-20 pb-10 bg-lighter">
+                                <h3 class="title mt-0 text-theme-colored">Гамшгийн дараахь нөхөн сэргээлт</h3>
+                            </div>
+                            <div class="team-lower-block text-center pt-10 p-20">
+                                <ul class="list list-divider list-border text-left">
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшигт малаа алдсан малчин иргэдэд эх үүсвэрийг орлохуйц мэргэжил эзэмшүүлэх сургалт явуулах;</li>
+                                    <li><i class="fa fa-check-square-o mr-10 text-black-light"></i>Гамшигт өртсөн ард иргэдэд хүмүүнлэгийн тусламж үзүүлж, хэвийн амьдралд орох хугацааг богиносгох;</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="separator">
+                            <span class="text-theme-colored"><b>Бидний түншүүд</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="owl-carousel-6col clients-logo">
+                        <div class="item"> <a href="http://nema.gov.mn/"><img src="/Content/Cont/dmlogo1.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.icrc.org/en"><img src="/Content/Cont/dmlogo2.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://media.ifrc.org/ifrc/"><img src="/Content/Cont/dmlogo3.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.org.au/"><img src="/Content/Cont/dmlogo4.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.org.uk/"><img src="/Content/Cont/dmlogo5.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.redcross.fi/"><img src="/Content/Cont/dmlogo6.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://ec.europa.eu/echo/"><img src="/Content/Cont/dmlogo7.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.adpc.net/igo/?"><img src="/Content/Cont/dmlogo8.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.wvi.org/mongolia"><img src="/Content/Cont/dmlogo9.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.clovekvtisni.cz/en/"><img src="/Content/Cont/dmlogo10.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://savethechildren.mn/"><img src="/Content/Cont/dmlogo11.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.mercycorps.org/"><img src="/Content/Cont/dmlogo12.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.charita.cz/en/"><img src="/Content/Cont/dmlogo13.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="http://www.un.org/en/index.html"><img src="/Content/Cont/dmlogo14.jpg" alt=""></a> </div>
+                        <div class="item"> <a href="https://www.worldanimalprotection.org/"><img src="/Content/Cont/dmlogo15.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+}
+<script type="text/javascript">
+    $('#footer-mailchimp-subscription-form').ajaxChimp({
+        callback: mailChimpCallBack,
+        url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
+    });
+
+    function mailChimpCallBack(resp) {
+        // Hide any previous response text
+        var $mailchimpform = $('#footer-mailchimp-subscription-form'),
+            $response = '';
+        $mailchimpform.children(".alert").remove();
+        if (resp.result === 'success') {
+            $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+        } else if (resp.result === 'error') {
+            $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+        }
+        $mailchimpform.prepend($response);
+    }
+</script>
+
+
+

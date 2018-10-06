@@ -18,7 +18,7 @@ using System.Globalization;
 namespace DXWebMRCS.Controllers
 {
     [Authorize(Roles = "Admin,BranchUser")]
-    [RequireHttps]
+    //[RequireHttps]
     public class BranchController : Controller
     {
         private UsersContext db = new UsersContext();

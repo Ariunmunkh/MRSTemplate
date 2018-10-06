@@ -29,7 +29,7 @@ string tempBody = string.Empty;}
                             tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item.BodyEng : item.BodyMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
                             tempBody = tempBody.Substring(0, tempBody.Length > 250 ? 250 : tempBody.Length) + (tempBody.Length > 250 ? "..." : "");
                                 }
-                    <p class="font-15">@tempBody</p>
+                    <p class="font-15 text-justify">@tempBody</p>
                     <div class="mt-10">
                             <a href="@Url.Action("Details", "Project", new { id = item.ProjectID })" class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" target="_blank">Read more</a>
                         <a class="" href="~/Content/#"></a>
@@ -69,7 +69,7 @@ else
                             tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item.BodyEng : item.BodyMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
                             tempBody = tempBody.Substring(0, tempBody.Length > 250 ? 250 : tempBody.Length) + (tempBody.Length > 250 ? "..." : "");
                     }
-                            <p class="font-15">@tempBody</p>
+                            <p class="font-15 text-justify">@tempBody</p>
                     <div class="mt-10">
                             <a href="@Url.Action("Details", "Project", new { id = item.ProjectID })" class="btn btn-dark btn-md font-16 btn-theme-colored btn-sm pull-left mt-10" target="_blank">Дэлгэрэнгүй</a>
                         <a class="" href="~/Content/#"></a>
