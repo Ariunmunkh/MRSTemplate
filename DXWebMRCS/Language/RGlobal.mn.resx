@@ -409,4 +409,10 @@ info@redcross.mn (+976)-11-323334</value>
   <data name="too4" xml:space="preserve">
     <value>Хүмүүнлэгийн гишүүн байгууллага</value>
   </data>
+  <data name="camp_p" xml:space="preserve">
+    <value />
+  </data>
+  <data name="camp_t" xml:space="preserve">
+    <value />
+  </data>
 </root>

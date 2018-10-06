@@ -363,4 +363,10 @@
   <data name="too4" xml:space="preserve">
     <value>Humanitarian Organization</value>
   </data>
+  <data name="camp_p" xml:space="preserve">
+    <value />
+  </data>
+  <data name="camp_t" xml:space="preserve">
+    <value />
+  </data>
 </root>
