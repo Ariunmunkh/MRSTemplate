@@ -1904,6 +1904,9 @@
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Images\shadow-overlay.png" />
     <Content Include="Content\Images\signature.png" />
+    <Content Include="Content\Images\SliderImage\IMG_0209181257170.JPG" />
+    <Content Include="Content\Images\SliderImage\IMG_0725180030746.JPG" />
+    <Content Include="Content\Images\SliderImage\IMG_4816 %281%29185935999.JPG" />
     <Content Include="Content\Images\title-dots.png" />
     <Content Include="Content\Images\Volunteer.jpg" />
     <Content Include="Content\IMG_0725.JPG" />
@@ -2619,7 +2622,6 @@
     <Folder Include="Content\HtmlEditor\VideoFiles\" />
     <Folder Include="Content\Images\DonorSay\" />
     <Folder Include="Content\Images\NewsImage\" />
-    <Folder Include="Content\Images\SliderImage\" />
     <Folder Include="Content\Images\UserAvatar\" />
     <Folder Include="Content\Magazine\" />
     <Folder Include="Content\Thumb\" />
