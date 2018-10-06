@@ -1,0 +1,157 @@
+﻿@model Sub.Models.BranchViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Mongolian Red Cross Society | MRCS " />
+    <meta name="keywords" content="Монголын улаан загалмай нийгэмлэг |  МУЗН" />
+    <meta property="og:image" content="http://www.redcross.mn/logo.png">
+    <meta name="author" content="MRCS" />
+
+    <!-- Favicon and Touch Icons -->
+    <link href="~/Content/logo.png" rel="shortcut icon" type="image/png">
+    <link href="~/Content/logo.png" rel="apple-touch-icon">
+    <link href="~/Content/logo.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/Content/logo.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/Content/logo.png" rel="apple-touch-icon" sizes="144x144">
+    
+    <!-- Stylesheet -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/css-plugin-collections.css" rel="stylesheet" />
+    <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="~/Content/css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet" />
+    <!-- CSS | Main style file -->
+    <link href="~/Content/css/style-main.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Preloader Styles -->
+    <link href="~/Content/css/preloader.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Custom Margin Padding Collection -->
+    <link href="~/Content/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Responsive media queries -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+    
+    <!-- Revolution Slider 5.x CSS settings -->
+    <link href="~/Content/js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/js/revolution-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/css/colors/theme-skin-color-set-1.css" rel="stylesheet" type="text/css">
+
+    <script src="~/Content/js/jquery-2.2.4.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery-plugin-collection.js"></script>
+
+    <script src="~/Content/js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Content/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+</head>
+<body class="">
+    <div id="wrapper" class="clearfix">
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="header-top bg-theme-color-2 sm-text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 pt-10 pb-10">
+                            <div class="widget no-border m-0">
+                                <ul class="list-inline">
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">@Model.phone</a> </li>
+                                    <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>@Model.address </li>
+                                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">@Model.email</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @*<div class="col-md-3 pt-10 pb-10">
+                            <div class="widget no-border m-0">
+                                <ul class="list-inline text-right sm-text-center">                                    
+                                    <li>
+                                        <img src="~/Content/eng.png" width="25" style=" margin-bottom: 3px;" /> <a>@Html.ActionLink("English", "Change", "Home", new { lan = "en-US" }, htmlAttributes: new { @class = "text-white" })</a>
+                                    </li>                                   
+                                </ul>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            
+            @{ Html.RenderAction("MenuHeaderPartial", "Home", new { branchId = Model.BranchID }); }
+        </header>
+
+        <!-- Start main-content -->
+        <div class="main-content">
+            @{ string imageUrl = string.IsNullOrEmpty(Model.Image) ? "http://www.redcross.mn/images/branch/4663d56592843737c883e9039ef438af.JPG" : HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Image; }
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay" data-bg-img=@imageUrl>
+                <div class="container pt-60 pb-60">
+                    <!-- Section Content -->
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-9 text-left pull-left">
+                                <h2 class="font-28 text-white">                                   
+                                    @Model.NameMon                                
+                                </h2>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                @if (string.IsNullOrEmpty(Model.Logo))
+                                {
+                                    <img class="img-responsive" src="http://www.arkhangai.redcross.mn/images/branch/279e0c43fab6c14e7b9e5aed1d30682b.png" alt="" />
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="@Url.Content(HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.AbsolutePath, "/") + Model.Logo)" alt="" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            @RenderBody()
+        </div>
+        <!-- end main-content -->
+        <!-- Footer -->
+        <footer id="footer" class="footer bg-black-222" data-bg-img="Content/Images/footer-bg.png">
+            <div class="footer-bottom bg-black-333">
+                <div class="container pt-20 pb-20">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="font-11 text-black-777 m-0">Copyright &copy;@System.DateTime.Now.Year Mongolian Red Cross Society. All Rights Reserved</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="widget no-border m-0">
+                                <ul class="list-inline sm-text-center mt-5 font-12">                                   
+                                    <li>
+                                        <a href="~/Content/history">Бидний тухай</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/history">Салбар танилцуулга</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/history">Холбоо барих</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a class="scrollToTop" href="~/Content/#"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
+    <!-- JS | Custom script for all pages -->
+    <script src="~/Content/js/custom.js"></script>
+
+</body>
+</html>
