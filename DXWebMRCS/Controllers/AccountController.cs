@@ -279,25 +279,25 @@ namespace DXWebMRCS.Controllers
             if (ModelState.IsValid)
             {
                 return View(model);//ашиглахгүй болсон
-                bool changePasswordSucceeded;
-                try
-                {
-                    //changePasswordSucceeded = WebSecurity.ChangePassword(model.email, model.OldPassword, model.NewPassword);
-                    var token = WebSecurity.GeneratePasswordResetToken(model.email);
-                    changePasswordSucceeded = WebSecurity.ResetPassword(token, model.NewPassword);
-                }
-                catch (Exception)
-                {
-                    changePasswordSucceeded = false;
-                }
-                if (changePasswordSucceeded)
-                {
-                    return RedirectToAction("ChangePasswordSuccess", new { result = true });
-                }
-                else
-                {
-                    ViewBag.ErrorMessage = "The current password is incorrect or the new password is invalid.";
-                }
+                //bool changePasswordSucceeded;
+                //try
+                //{
+                //    //changePasswordSucceeded = WebSecurity.ChangePassword(model.email, model.OldPassword, model.NewPassword);
+                //    var token = WebSecurity.GeneratePasswordResetToken(model.email);
+                //    changePasswordSucceeded = WebSecurity.ResetPassword(token, model.NewPassword);
+                //}
+                //catch (Exception)
+                //{
+                //    changePasswordSucceeded = false;
+                //}
+                //if (changePasswordSucceeded)
+                //{
+                //    return RedirectToAction("ChangePasswordSuccess", new { result = true });
+                //}
+                //else
+                //{
+                //    ViewBag.ErrorMessage = "The current password is incorrect or the new password is invalid.";
+                //}
 
             }
 

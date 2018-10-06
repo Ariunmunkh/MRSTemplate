@@ -66,11 +66,15 @@ string tempBody = string.Empty;}
                                                 </div>
                                             </div>
 
-                                            <p class="mt-10">
-                                                @Html.Raw(item.BodyEng)
-                                            </p>
-                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Read more</a>
-                                            @*@Html.ActionLink("Read more", "NewsDetail2", "News", item, htmlAttributes: new { @class = "btn-read-more" })*@
+                                          
+
+                                            @{
+                                                  tempBody = System.Text.RegularExpressions.Regex.Replace((language == "en-US" ? item.BodyEng : item.BodyMon), "<(.|\n)*?>", "").Replace("&nbsp;", " ").Replace("&bull;", "");
+                                                  tempBody = tempBody.Substring(0, tempBody.Length > 250 ? 250 : tempBody.Length) + (tempBody.Length > 250 ? "..." : "");
+                                            }
+                                            <p class="mt-10">@tempBody</p>
+                                            <a href='@Url.Action("NewsDetail", "News", new { id = @item.CID })' class="btn-read-more">Read more...</a>
+                                           
                                             <div class="clearfix"></div>
                                         </div>
                                     </article>

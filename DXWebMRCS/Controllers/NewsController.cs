@@ -33,9 +33,14 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult Page(int id)
         {
+            string language = string.Empty;
+            if (System.Globalization.CultureInfo.CurrentCulture.Name.Equals("en-US"))
+            {
+                language = " AND TitleEng is not null ";
+            }
             var pageNumber = 1;
             var pageSize = 4;
-            var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + id + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + id + language + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
@@ -117,9 +122,14 @@ namespace DXWebMRCS.Controllers
         [AllowAnonymous]
         public ActionResult NewsList()
         {
+            string language = string.Empty;
+            if (System.Globalization.CultureInfo.CurrentCulture.Name.Equals("en-US"))
+            {
+                language = " where TitleEng is not null and  REPLACE(TitleEng,' ','') <>'' ";
+            }
             var pageNumber = 1;
             var pageSize = 6;
-            var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News " + language + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
@@ -362,7 +372,7 @@ namespace DXWebMRCS.Controllers
         {
             if (ModelState.IsValid)
             {
-              
+
                 db.Tag.Add(Tag);
                 db.SaveChanges();
                 return RedirectToAction("Tag");
@@ -482,7 +492,7 @@ namespace DXWebMRCS.Controllers
         [ValidateInput(false)]
         public ActionResult NewsViewPartial()
         {
-            var model = db1.News.OrderByDescending(x=>x.Date);
+            var model = db1.News.OrderByDescending(x => x.Date);
             return PartialView("_NewsViewPartial", NorthwindDataProvider.GetNews(WebMatrix.WebData.WebSecurity.CurrentUserId));
         }
 
