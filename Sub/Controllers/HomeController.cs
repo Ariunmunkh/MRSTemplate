@@ -22,7 +22,7 @@ namespace Sub.Controllers
                 var branchId = System.Configuration.ConfigurationManager.AppSettings["SubId"];
 
                 var pageNumber = 1;
-                var pageSize = 4;
+                var pageSize = 6;
                 
                 var branch = db.Database.SqlQuery<BranchViewModel>("SELECT TOP(1) BranchID, NameMon, NameEng, Logo, Image, email, phone, address FROM Branches WHERE BranchID = " + branchId).FirstOrDefault();
                 branch.menuID = post.menuID;

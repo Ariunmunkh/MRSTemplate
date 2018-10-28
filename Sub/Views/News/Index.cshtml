@@ -1,0 +1,23 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model Sub.Models.BranchViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 blog-pull-right">
+                <div class="blog-posts">
+                    <div class="col-md-12">
+                        <div class="list-dashed">
+                          @Model.news.TitleMon
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

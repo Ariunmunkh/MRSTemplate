@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to MRCS youth training center is located 68 km away from Ulaanbaatar city, near the iconic Tsonjinboldog Chinggis Khan statue..
         /// </summary>
         public static string camp_p {
             get {
@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to MRCS YOUTH TRAINING CENTER.
         /// </summary>
         public static string camp_t {
             get {
@@ -214,7 +214,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p10.
+        ///   Looks up a localized string similar to There can be only one Red Cross or one Red Crescent Society in any one country. It must be open to all. It must carry on its humanitarian work throughout its territory..
         /// </summary>
         public static string p10 {
             get {
@@ -223,7 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p11.
+        ///   Looks up a localized string similar to The International Red Cross and Red Crescent Movement, in which all Societies have equal status and share equal responsibilities and duties in helping each other, is worldwide..
         /// </summary>
         public static string p11 {
             get {
@@ -232,7 +232,9 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p12.
+        ///   Looks up a localized string similar to You will need to satisfy the following criterias to become of the MRCS’s 14.800 volunteers:
+        ///Criterias:
+        ///• Be able to dedicate your time and effort to the welfare of others, with a sincere desire to help others with humility and compassion; • Anyone can become a Mongolian Red Cross Society volunteer without being subject to discrimination on the basis of race, religion, age, or gender..
         /// </summary>
         public static string p12 {
             get {
@@ -241,7 +243,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our action photos.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string p13 {
             get {
@@ -313,7 +315,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p5.
+        ///   Looks up a localized string similar to The International Red Cross and Red Crescent Movement, born of a desire to bring assistance without discrimination to the wounded on the battlefield, endeavours, in its international and national capacity, to prevent and alleviate human suffering wherever it may be found. Its purpose is to protect life and health and to ensure respect for the human being. It promotes mutual understanding, friendship, cooperation and lasting peace amongst all peoples..
         /// </summary>
         public static string p5 {
             get {
@@ -322,7 +324,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p6.
+        ///   Looks up a localized string similar to It makes no discrimination as to nationality, race, religious beliefs, class or political opinions. It endeavours to relieve the suffering of individuals, being guided solely by their needs, and to give priority to the most urgent cases of distress..
         /// </summary>
         public static string p6 {
             get {
@@ -331,7 +333,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p7.
+        ///   Looks up a localized string similar to In order to continue to enjoy the confidence of all, the Movement may not take sides in hostilities or engage at any time in controversies of a political, racial, religious or ideological nature..
         /// </summary>
         public static string p7 {
             get {
@@ -340,7 +342,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p8.
+        ///   Looks up a localized string similar to The Movement is independent. The National Societies, while auxiliaries in the humanitarian services of their governments and subject to the laws of their respective countries, must always maintain their autonomy so that they may be able at all times to act in accordance with the principles of the Movement..
         /// </summary>
         public static string p8 {
             get {
@@ -349,7 +351,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to p9.
+        ///   Looks up a localized string similar to It is a voluntary relief movement not prompted in any manner by desire for gain..
         /// </summary>
         public static string p9 {
             get {
@@ -358,7 +360,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1-1-h1.
+        ///   Looks up a localized string similar to Become a member.
         /// </summary>
         public static string r1_1_h1 {
             get {
@@ -367,7 +369,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_h2.
+        ///   Looks up a localized string similar to How to become a blood donor.
         /// </summary>
         public static string r1_1_h2 {
             get {
@@ -376,7 +378,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_h3.
+        ///   Looks up a localized string similar to Commercial first aid training.
         /// </summary>
         public static string r1_1_h3 {
             get {
@@ -385,7 +387,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_h4.
+        ///   Looks up a localized string similar to Contact us.
         /// </summary>
         public static string r1_1_h4 {
             get {
@@ -394,7 +396,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_p1.
+        ///   Looks up a localized string similar to As one of the 249,770 members and supporters of the Mongolian Red Cross Society, you will be able to contribute to humanitarian activities and receive various training for self-development, and build capacity for disaster prevention, preparedness, health care, first aid and psychological support..
         /// </summary>
         public static string r1_1_p1 {
             get {
@@ -403,7 +405,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_p2.
+        ///   Looks up a localized string similar to In accordance with the Mongolian Law on Blood Donation, the MRCS is responsible for disseminating and attracting blood donors and providing them with training. Based on this obligation, the MRCS promotes the importance of blood donation, disseminates information on the benefits of becoming a blood donor to the public and works to increase the number of active blood donors..
         /// </summary>
         public static string r1_1_p2 {
             get {
@@ -412,7 +414,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_p3.
+        ///   Looks up a localized string similar to Anyone could be affected by the situations of sudden accident or disease anytime and need for first aid. By obtaining the knowledge and skills of first aid, you will be capable of saving your or your loved ones’ lives..
         /// </summary>
         public static string r1_1_p3 {
             get {
@@ -421,7 +423,8 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to r1_1_p4.
+        ///   Looks up a localized string similar to MRCS building, Peace street, Sukhbaatar district, Ulaanbaatar, Mongolia
+        ///info@redcross.mn (+976)-11-323334.
         /// </summary>
         public static string r1_1_p4 {
             get {
@@ -484,7 +487,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t1.
+        ///   Looks up a localized string similar to Our.
         /// </summary>
         public static string t1 {
             get {
@@ -493,7 +496,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t1_1.
+        ///   Looks up a localized string similar to Programs.
         /// </summary>
         public static string t1_1 {
             get {
@@ -502,7 +505,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t10.
+        ///   Looks up a localized string similar to Independence.
         /// </summary>
         public static string t10 {
             get {
@@ -511,7 +514,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t11.
+        ///   Looks up a localized string similar to Voluntary service.
         /// </summary>
         public static string t11 {
             get {
@@ -520,7 +523,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t12.
+        ///   Looks up a localized string similar to Unity.
         /// </summary>
         public static string t12 {
             get {
@@ -529,7 +532,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t13.
+        ///   Looks up a localized string similar to Universality.
         /// </summary>
         public static string t13 {
             get {
@@ -538,7 +541,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t14.
+        ///   Looks up a localized string similar to Upcoming.
         /// </summary>
         public static string t14 {
             get {
@@ -547,7 +550,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t14_1.
+        ///   Looks up a localized string similar to training.
         /// </summary>
         public static string t14_1 {
             get {
@@ -556,7 +559,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t15.
+        ///   Looks up a localized string similar to BECOME A VOLUNTEER.
         /// </summary>
         public static string t15 {
             get {
@@ -565,7 +568,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t16.
+        ///   Looks up a localized string similar to Our.
         /// </summary>
         public static string t16 {
             get {
@@ -574,7 +577,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t16_1.
+        ///   Looks up a localized string similar to Gallery.
         /// </summary>
         public static string t16_1 {
             get {
@@ -592,7 +595,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t18.
+        ///   Looks up a localized string similar to Activity .
         /// </summary>
         public static string t18 {
             get {
@@ -601,7 +604,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t18_1.
+        ///   Looks up a localized string similar to news.
         /// </summary>
         public static string t18_1 {
             get {
@@ -628,7 +631,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t2.
+        ///   Looks up a localized string similar to DISASTER .
         /// </summary>
         public static string t2 {
             get {
@@ -637,7 +640,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t2_1.
+        ///   Looks up a localized string similar to MANAGEMENT PROGRAM.
         /// </summary>
         public static string t2_1 {
             get {
@@ -646,7 +649,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to UPCOMING.
         /// </summary>
         public static string t20 {
             get {
@@ -655,7 +658,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to EVENTS.
         /// </summary>
         public static string t20_1 {
             get {
@@ -664,7 +667,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t21.
+        ///   Looks up a localized string similar to SOCIAL INCLUSION, .
         /// </summary>
         public static string t21 {
             get {
@@ -673,7 +676,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t_21_1.
+        ///   Looks up a localized string similar to DEVELOPMENT PROGRAM.
         /// </summary>
         public static string t21_1 {
             get {
@@ -682,7 +685,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t3.
+        ///   Looks up a localized string similar to PUBLIC HEALTH PROMOTION.
         /// </summary>
         public static string t3 {
             get {
@@ -691,7 +694,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t3_1.
+        ///   Looks up a localized string similar to PROGRAM.
         /// </summary>
         public static string t3_1 {
             get {
@@ -700,7 +703,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t4.
+        ///   Looks up a localized string similar to RED CROSS YOUTH .
         /// </summary>
         public static string t4 {
             get {
@@ -709,7 +712,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t4_1.
+        ///   Looks up a localized string similar to PROGRAM.
         /// </summary>
         public static string t4_1 {
             get {
@@ -718,7 +721,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t5.
+        ///   Looks up a localized string similar to ONGOING.
         /// </summary>
         public static string t5 {
             get {
@@ -727,7 +730,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t5_1.
+        ///   Looks up a localized string similar to PROJECTS.
         /// </summary>
         public static string t5_1 {
             get {
@@ -736,7 +739,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t6.
+        ///   Looks up a localized string similar to The seven .
         /// </summary>
         public static string t6 {
             get {
@@ -745,7 +748,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t6_1.
+        ///   Looks up a localized string similar to Fundamental Principles.
         /// </summary>
         public static string t6_1 {
             get {
@@ -754,7 +757,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t7.
+        ///   Looks up a localized string similar to Humanity.
         /// </summary>
         public static string t7 {
             get {
@@ -763,7 +766,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t8.
+        ///   Looks up a localized string similar to Impartiality.
         /// </summary>
         public static string t8 {
             get {
@@ -772,7 +775,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to t9.
+        ///   Looks up a localized string similar to Neutrality.
         /// </summary>
         public static string t9 {
             get {
@@ -790,7 +793,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volunteers.
+        ///   Looks up a localized string similar to trained volunteers.
         /// </summary>
         public static string too2 {
             get {
@@ -808,7 +811,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Humanitarian Organization.
+        ///   Looks up a localized string similar to Humanitarian member organizations.
         /// </summary>
         public static string too4 {
             get {

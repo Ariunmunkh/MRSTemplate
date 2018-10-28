@@ -39,7 +39,7 @@ namespace DXWebMRCS.Controllers
                 language = " AND TitleEng is not null ";
             }
             var pageNumber = 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + id + language + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
@@ -61,7 +61,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult MenuPageClick(int? page, int menuId)
         {
             var pageNumber = page ?? 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News WHERE MenuID = " + menuId + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
@@ -75,7 +75,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult PageClick(int? page)
         {
             var pageNumber = page ?? 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
@@ -129,7 +129,7 @@ namespace DXWebMRCS.Controllers
             }
             var pageNumber = 1;
             var pageSize = 6;
-            var news = db.Database.SqlQuery<News>("SELECT * FROM News " + language + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
+            var news = db.Database.SqlQuery<News>("SELECT * FROM News where branchId is null" + language + " ORDER BY Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
                 return HttpNotFound();
@@ -141,7 +141,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult TagNewsList(int tagID)
         {
             var pageNumber = 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News n INNER JOIN TagDetails t ON n.CID = t.SourceID WHERE t.Source = 'News' AND t.TagID = " + tagID + " ORDER BY n.Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
@@ -155,7 +155,7 @@ namespace DXWebMRCS.Controllers
         public ActionResult TagNewsPageClick(int? page, int tagID)
         {
             var pageNumber = page ?? 1;
-            var pageSize = 4;
+            var pageSize = 6;
             var news = db.Database.SqlQuery<News>("SELECT * FROM News n INNER JOIN TagDetails t ON n.CID = t.SourceID WHERE t.Source = 'News' AND t.TagID = " + tagID + " ORDER BY n.Date DESC").ToPagedList(pageNumber, pageSize);
             if (news == null)
             {
